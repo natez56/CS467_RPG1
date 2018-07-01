@@ -1,2 +1,2 @@
-# CS462_RPG1
+# CS467_RPG1
 Text based RPG adventure.
