@@ -6,7 +6,8 @@ class Room:
         description (string): Message printed to player.
         item_list (list(Item)): List of all Item objects in the room.
         monster_list (list(Monster)): List of all Monster objects in room.
-        player_in_room (bool): True if player is in this room.
+        player (Player): Player object used to access player in the room. Is
+            None if no player is present.
         adjacent_rooms (list[Room]): List of rooms that can be reached from
             this room.
         door_map (dictionary(string, bool)): Map of doors in room. Takes a
@@ -15,18 +16,22 @@ class Room:
         feature_list(list(string)): List contains all the text descriptions
             of the rooms features.
     """
-    def __init__(self, description, item_list, monster_list, player_in_room,
-                 adjacent_rooms, door_map, feature_list):
+    def __init__(self, name, description, item_list, monster_list,
+                 player, adjacent_rooms, door_map, feature_list):
+        self.name = name
         self.description = description
         self.item_list = item_list
         self.monster_list = monster_list
-        self.player_in_room = player_in_room
-        self.adjacent_rooms = ajacent_rooms
+        self.player = player
+        self.adjacent_rooms = adjacent_rooms
         self.door_map = door_map
         self.feature_list = feature_list
 
     def get_description(self):
         return self.description
+
+    def set_adjacent_room(self, room):
+        self.adjacent_rooms.append(room)
 
     def get_monsters(self):
         return self.monster_list
@@ -45,13 +50,13 @@ class Room:
             self.item_list.remove(item)
 
     def add_monster(self, monster):
-        monster_list.append(monster)
+        self.monster_list.append(monster)
 
     def remove_monster(self, monster):
         if monster in self.monster_list:
             self.monster_list.remove(monster)
 
-    def has_player(self):
+    def get_player(self):
         return self.player
 
     def is_locked(self, door):
@@ -59,3 +64,6 @@ class Room:
 
     def unlock(self, door):
         self.door_map[door] = False
+
+    def get_name(self):
+        return self.name
