@@ -2,6 +2,68 @@ from game_classes import *
 from file_manager import *
 
 
+def starting_menu():
+    print("Welcome to Nightfall... The path that lies ahead is dark "
+          "and full of terrors.")
+
+    invalidSelection = True
+
+    while invalidSelection:
+        print("Starting Menu:")
+        print("    Start New Game")
+        print("    Load Game File")
+        print("    Quit Game")
+        print("Please select an option by entering:")
+        print("Start, Load, or Quit")
+
+        # should we use input() or raw_input()?
+        menuChoice = raw_input().lower().strip()
+
+        if menuChoice != "load" and menuChoice != "start" and
+        menuChoice != "quit":
+            print("You entered an invalid option!")
+        else:
+            invalidSelection = False
+
+    return menuChoice
+
+
+def choose_character():
+    print()
+
+
+def game_menu():  # we need to add a command that brings up the game menu
+    invalidSelection = True
+
+    while invalidSelection:
+        print("Game Menu: ")
+        print("    Save Game File ")
+        print("    Return to Game ")
+        print("    Quit Game ")
+        print("Please select an option by entering: ")
+        print("Save, Return, or Quit ")
+
+        # should we use input() or raw_input()?
+        menuChoice = raw_input().lower().strip()
+
+        if menuChoice != "save" and menuChoice != "return" and
+        menuChoice != "quit":
+            print("You entered an invalid option! ")
+        else:
+            invalidSelection = False
+
+        if menuChoice == "save":
+            print("Saving the current game... ")
+            # save the game
+            print("Game state successfully saved! ")
+        elif menuChoice == "quit":
+            print("Thank you for playing Nightfall. "
+                  "Have a fortuitous evening... ")
+            exit()
+        else:
+            print("Returning to the game!")
+
+
 def travel(current_room, direction):
     """Move player from one room to another."""
     player = current_room.get_player()

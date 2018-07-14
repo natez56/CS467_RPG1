@@ -3,11 +3,23 @@ from text_parser import *
 
 
 def main():
-    current_room = start_game()
+    # Run the starting menu of the game and start, load, or exit the game
+    startingSelection = starting_menu()
 
-    player = current_room.get_player()
+    if startingSelection == "start":
+        current_room = start_game()
 
-    print("Initial location: {}".format(current_room.get_name()))
+        player = current_room.get_player()
+
+        print("Initial location: {}".format(current_room.get_name()))
+
+    elif startingSelection == "load":
+        print("Please select which game file to load:")
+
+    else:
+        print("Thank you for playing Nightfall. "
+              "Have a fortuitous evening. ")
+        exit()
 
     while not is_game_over(player):
         user_input = get_input()
