@@ -15,7 +15,8 @@ def init_room_1():
 
     item_list = []
     monster_list = []
-    adjacent_rooms = []
+    player = None
+    adjacent_rooms = {'north': 'entrance_hall'}
     door_map = {'north': False}
 
     door_feature = ("The doors are thick and sturdy. One door appears to be "
@@ -37,7 +38,7 @@ def init_room_1():
 
     feature_list = [door_feature, body_feature, cloak_feature, bag_feature]
 
-    dungeon_entrance = Room(name, description, item_list, monster_list, None,
+    dungeon_entrance = Room(name, description, item_list, monster_list, player,
                             adjacent_rooms, door_map, feature_list)
 
     return dungeon_entrance
@@ -54,7 +55,8 @@ def init_room_2():
 
     item_list = []
     monster_list = []
-    adjacent_rooms = []
+    player = None
+    adjacent_rooms = {}
     door_map = {'east': False, 'south': False}
 
     goblin_graffitii_feature = ("You've seen this type of writing before at "
@@ -68,55 +70,84 @@ def init_room_2():
 
     feature_list = [goblin_graffitii_feature, east_door_feature]
 
-    entrance_hall = Room(name, description, item_list, monster_list, None,
+    entrance_hall = Room(name, description, item_list, monster_list, player,
                          adjacent_rooms, door_map, feature_list)
 
     return entrance_hall
 
 
-def init_game_objects():
+def init_room_objects():
     """Creates the starting game objects"""
     room_list = []
 
     dungeon_entrance = init_room_1()
     entrance_hall = init_room_2()
 
-    dungeon_entrance.set_adjacent_room(entrance_hall)
-
     room_list.extend((dungeon_entrance, entrance_hall))
 
     return room_list
+
+
+def init_player_object():
+    """Instantiates the inital Player object."""
+    health = 100
+    magic = 100
+    level = 1
+    magic_defense = 0
+    magic_power = 1
+    defense = 0
+    attack_power = 1
+    num_lives = 3
+    experience = 0
+    memory = []
+    backpack = []
+    equipped_item = None
+
+    player = Player(health, magic, level, magic_defense, magic_power, defense,
+                    attack_power, num_lives, experience, memory, backpack,
+                    equipped_item)
+
+    return player
 
 
 def init_game_files():
     """Serializes starting game state into game files."""
     room_list = []
 
-    room_list = init_game_objects()
-
-    file_path = Path("game_files/init_files/")
+    room_list = init_room_objects()
 
     for room in room_list:
-        file_name = room.get_name() + '.bin'
-        file = file_path / file_name
+        save_object_state(room)
 
-        binary_file = open(str(file), mode='wb')
-
-        pickle.dump(room, binary_file)
-
-        binary_file.close()
+    player = init_player_object()
+    save_object_state(player)
 
 
-def load_room(room_name):
+def load_object(object_name):
     """Load room object from binary file."""
-    file_path = Path("game_files/init_files/")
+    file_path = Path("game_files/")
 
-    file_name = room_name + '.bin'
+    file_name = object_name + '.bin'
 
     file = file_path / file_name
 
     binary_file = open(str(file), mode='rb')
 
-    room = pickle.load(binary_file)
+    game_object = pickle.load(binary_file)
 
-    return room
+    return game_object
+
+
+def save_object_state(game_object):
+    """Serialize object into binary file"""
+    file_path = Path("game_files/")
+
+    file_name = game_object.get_name() + '.bin'
+
+    file = file_path / file_name
+
+    binary_file = open(str(file), mode='wb')
+
+    pickle.dump(game_object, binary_file)
+
+    binary_file.close()
