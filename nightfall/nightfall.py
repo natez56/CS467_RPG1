@@ -7,6 +7,12 @@ def main():
     starting_selection = starting_menu()
 
     if starting_selection == "start":
+        # need to add Ranger and Wizard class to intialize
+        character_choice = choose_character()
+
+        # need to add ability for the player name to be stored in the object
+        player_name = choose_name(character_choice)
+
         current_room = start_game()
 
         player = current_room.get_player()

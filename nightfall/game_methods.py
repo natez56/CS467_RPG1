@@ -30,8 +30,37 @@ def starting_menu():
 
 
 def choose_character():
+    invalid_selection = True
+
     print("Before embarking on this tumultuous adventure, "
-          "please would you like to play as a fear")
+          "would you like to play as a fearless Ranger "
+          "or a brilliant Wizard? ")
+
+    while invalid_selection:
+        character_choice = raw_input().lower().strip()
+
+        if character_choice != "ranger" and character_choice != "wizard":
+            print("You entered an invalid selection, please choose "
+                  "between Ranger and Wizard: ")
+        else:
+            invalid_selection = False
+
+    character_choice = character_choice.capitalize()
+
+    return character_choice
+
+
+def choose_name(character_choice):
+    print("Excellent choice! I am sure your %s will make a fine adventurer. "
+          "What would you like to name your %s? " % (character_choice,
+                                                     character_choice))
+
+    player_name = raw_input().strip()
+
+    print("Salutations %s! It is now time to embark on the adventure... "
+          % (player_name))
+
+    return player_name
 
 
 def game_menu():  # we need to add a command that brings up the game menu
