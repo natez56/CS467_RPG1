@@ -6,9 +6,9 @@ def starting_menu():
     print("Welcome to Nightfall... The path that lies ahead is dark "
           "and full of terrors.")
 
-    invalidSelection = True
+    invalid_selection = True
 
-    while invalidSelection:
+    while invalid_selection:
         print("Starting Menu:")
         print("    Start New Game")
         print("    Load Game File")
@@ -17,25 +17,27 @@ def starting_menu():
         print("Start, Load, or Quit")
 
         # should we use input() or raw_input()?
-        menuChoice = raw_input().lower().strip()
+        menu_choice = raw_input().lower().strip()
 
-        if menuChoice != "load" and menuChoice != "start" and
-        menuChoice != "quit":
+        if menu_choice != "load" and menu_choice != "start" and
+        menu_choice != "quit":
             print("You entered an invalid option!")
-        else:
-            invalidSelection = False
 
-    return menuChoice
+        else:
+            invalid_selection = False
+
+    return menu_choice
 
 
 def choose_character():
-    print()
+    print("Before embarking on this tumultuous adventure, "
+          "please would you like to play as a fear")
 
 
 def game_menu():  # we need to add a command that brings up the game menu
-    invalidSelection = True
+    invalid_selection = True
 
-    while invalidSelection:
+    while invalid_selection:
         print("Game Menu: ")
         print("    Save Game File ")
         print("    Return to Game ")
@@ -44,22 +46,25 @@ def game_menu():  # we need to add a command that brings up the game menu
         print("Save, Return, or Quit ")
 
         # should we use input() or raw_input()?
-        menuChoice = raw_input().lower().strip()
+        menu_choice = raw_input().lower().strip()
 
-        if menuChoice != "save" and menuChoice != "return" and
-        menuChoice != "quit":
+        if menu_choice != "save" and menu_choice != "return" and
+        menu_choice != "quit":
             print("You entered an invalid option! ")
-        else:
-            invalidSelection = False
 
-        if menuChoice == "save":
+        else:
+            invalid_selection = False
+
+        if menu_choice == "save":
             print("Saving the current game... ")
             # save the game
             print("Game state successfully saved! ")
-        elif menuChoice == "quit":
+
+        elif menu_choice == "quit":
             print("Thank you for playing Nightfall. "
                   "Have a fortuitous evening... ")
             exit()
+
         else:
             print("Returning to the game!")
 
@@ -113,6 +118,8 @@ def take_action(current_room, action):
 def is_game_over(player):
     """Checks to see if the player still has lives."""
     if player.get_lives() > 0:
+        return False
+    if player.rescue_evelyn is False:
         return False
     else:
         return True

@@ -156,7 +156,7 @@ class Player(Character):
     """
     def __init__(self, health, magic, level, magic_defense, magic_power,
                  defense, attack_power, num_lives, experience, memory,
-                 backpack, equipped_item):
+                 backpack, equipped_item, rescue_evelyn):
         super().__init__(health, magic, level, magic_defense, magic_power,
                          defense, attack_power)
         self.num_lives = num_lives
@@ -164,6 +164,7 @@ class Player(Character):
         self.memory = memory
         self.backpack = backpack
         self.equipped_item = equipped_item
+        self.rescue_evelyn = False
 
     def get_experience(self):
         return self.experience

@@ -4,16 +4,16 @@ from text_parser import *
 
 def main():
     # Run the starting menu of the game and start, load, or exit the game
-    startingSelection = starting_menu()
+    starting_selection = starting_menu()
 
-    if startingSelection == "start":
+    if starting_selection == "start":
         current_room = start_game()
 
         player = current_room.get_player()
 
         print("Initial location: {}".format(current_room.get_name()))
 
-    elif startingSelection == "load":
+    elif starting_selection == "load":
         print("Please select which game file to load:")
 
     else:
@@ -22,9 +22,12 @@ def main():
         exit()
 
     while not is_game_over(player):
+        print("What would you like to do? ")
+
         user_input = get_input()
 
         action = parse_input(user_input)
+        # add functionality to run game menu
 
         current_room = take_action(current_room, action)
 
