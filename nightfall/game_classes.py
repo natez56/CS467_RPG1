@@ -101,6 +101,9 @@ class Character:
         self.defense = defense
         self.attack_power = attack_power
 
+    def get_name(self):
+        return self.name
+
     def get_health(self):
         return self.health
 
@@ -155,11 +158,11 @@ class Player(Character):
         backpack (list(item)): Tracks items that the character is carrying.
         equipped_item (item): Tracks item that the character is using.
     """
-    def __init__(self, health, magic, level, magic_defense, magic_power,
+    def __init__(self, name, health, magic, level, magic_defense, magic_power,
                  defense, attack_power, num_lives, experience, memory,
                  backpack, equipped_item, rescue_evelyn=False):
-        super().__init__(health, magic, level, magic_defense, magic_power,
-                         defense, attack_power)
+        super().__init__(name, health, magic, level, magic_defense,
+                         magic_power, defense, attack_power)
         self.num_lives = num_lives
         self.experience = experience
         self.memory = memory
@@ -197,9 +200,6 @@ class Player(Character):
     def get_equipped_item(self):
         return self.equipped_item
 
-    def get_name(self):
-        return "player"
-
     def get_lives(self):
         return self.num_lives
 
@@ -222,4 +222,3 @@ class Player(Character):
         self.magic_power += 1
         self.defense += 1
         self.attack_power += 1
-        self.experience = 0

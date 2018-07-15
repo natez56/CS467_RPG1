@@ -1,5 +1,6 @@
 from game_classes import *
 from file_manager import *
+from random import *
 
 
 def starting_menu():
@@ -121,30 +122,58 @@ def travel(current_room, direction):
 
 def combat(player, monster):
     # Begin combat dialogue
-    print("You have encountered %s" % (monster.name))
+    print("You have encountered %s! Let's begin combat..." %
+          (monster.get_name()))
 
-    # Allow the player to choose their move
+    combat_continues = True
 
-    # Randomize the damage based on the move and equipment
+    while combat_continues:
+        # Allow the player to choose their move
+        print("Please select which move you would like to use: ")
+        # Output player combat options
 
-    # Adjust the player's remaining ability count and
-    # stats like magic power or health
+        # Randomize the damage based on the move and applicable equipment
 
-    # Deal the damage to the enemy
+        # Adjust the player's remaining ability count and
+        # stats like magic power or health
 
-    # Check if the enemy is dead
+        # Deal the damage to the enemy
 
-    # Randomly choose what ability the enemy will use
+        # Check if the enemy is dead, if so, exit combat and gain experience
+        if monster.get_health() <= 0:
+            print("You have slain %s" % (monster.name))
 
-    # Calculate the damage
+            experience_gained = randint(1, 5)
+            print("You have gained %d experience points!" %
+                  (experience_gained))
 
-    # Check if the player is dead
-    # How should we handle player deaths? end combat? reset monster health?
-    # should we stay in combat and reset the player's stats and remove 1 life?
+            new_experience_total = experience_gained + player.get_experience()
 
-    # Check if the game is over or do that in the main game loop?
+            # Level up the player if they have enough experience
+            if new_experience_total >= 10:  # we will need to do balancing!!!
+                print("%s has leveled up! " % player.get_name())
+                player.level_up()
 
-    pass
+                # Carry over the excess experience into the new level
+                new_experience_total = new_experience_total - 10
+
+            player.set_experience(new_experience_total)
+
+            combat_continues = False
+
+        else:
+            # Randomly choose what ability the enemy will use
+
+            # Calculate the damage
+
+            # Check if the player is dead
+            # How should we handle player deaths? end combat? reset
+            # monster health?
+            # should we stay in combat and reset the player's stats and remove
+            # 1 life?
+
+            # Check if the game is over or do that in the main game loop?
+            pass
 
 
 def start_game(player_name):
