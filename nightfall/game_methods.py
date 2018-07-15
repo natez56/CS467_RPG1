@@ -119,6 +119,10 @@ def travel(current_room, direction):
         print('Not possible.')
 
 
+def combat():
+    pass
+
+
 def start_game():
     """Create game files, load initial room, and load player."""
     init_game_files()
