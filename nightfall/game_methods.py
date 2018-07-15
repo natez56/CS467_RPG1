@@ -16,11 +16,10 @@ def starting_menu():
         print("Please select an option by entering:")
         print("Start, Load, or Quit")
 
-        # should we use input() or raw_input()?
-        menu_choice = raw_input().lower().strip()
+        menu_choice = input().lower().strip()
 
-        if menu_choice != "load" and menu_choice != "start" and
-        menu_choice != "quit":
+        if menu_choice != "load" and menu_choice != "start" and \
+           menu_choice != "quit":
             print("You entered an invalid option!")
 
         else:
@@ -33,11 +32,11 @@ def choose_character():
     invalid_selection = True
 
     print("Before embarking on this tumultuous adventure, "
-          "would you like to play as a fearless Ranger "
+          "would you like to play as a fearless Ranger \n"
           "or a brilliant Wizard? ")
 
     while invalid_selection:
-        character_choice = raw_input().lower().strip()
+        character_choice = input().lower().strip()
 
         if character_choice != "ranger" and character_choice != "wizard":
             print("You entered an invalid selection, please choose "
@@ -51,11 +50,11 @@ def choose_character():
 
 
 def choose_name(character_choice):
-    print("Excellent choice! I am sure your %s will make a fine adventurer. "
+    print("Excellent choice! I am sure your %s will make a fine adventurer. \n"
           "What would you like to name your %s? " % (character_choice,
                                                      character_choice))
 
-    player_name = raw_input().strip()
+    player_name = input().strip()
 
     print("Salutations %s! It is now time to embark on the adventure... "
           % (player_name))
@@ -74,11 +73,10 @@ def game_menu():  # we need to add a command that brings up the game menu
         print("Please select an option by entering: ")
         print("Save, Return, or Quit ")
 
-        # should we use input() or raw_input()?
-        menu_choice = raw_input().lower().strip()
+        menu_choice = input().lower().strip()
 
-        if menu_choice != "save" and menu_choice != "return" and
-        menu_choice != "quit":
+        if menu_choice != "save" and menu_choice != "return" and \
+           menu_choice != "quit":
             print("You entered an invalid option! ")
 
         else:
@@ -86,7 +84,7 @@ def game_menu():  # we need to add a command that brings up the game menu
 
         if menu_choice == "save":
             print("Saving the current game... ")
-            # save the game
+            # add save game functionality
             print("Game state successfully saved! ")
 
         elif menu_choice == "quit":

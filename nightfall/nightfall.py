@@ -21,7 +21,7 @@ def main():
 
     elif starting_selection == "load":
         print("Please select which game file to load:")
-
+        # add load game functionality
     else:
         print("Thank you for playing Nightfall. "
               "Have a fortuitous evening. ")
