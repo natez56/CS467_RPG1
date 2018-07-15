@@ -10,10 +10,11 @@ def main():
         # need to add Ranger and Wizard class to intialize
         character_choice = choose_character()
 
-        # need to add ability for the player name to be stored in the object
         player_name = choose_name(character_choice)
 
-        current_room = start_game()
+        # set up the game and use the name chosen by the player for
+        # their character
+        current_room = start_game(player_name)
 
         player = current_room.get_player()
 

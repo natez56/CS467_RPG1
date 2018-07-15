@@ -88,8 +88,9 @@ def init_room_objects():
     return room_list
 
 
-def init_player_object():
+def init_player_object(player_name):
     """Instantiates the inital Player object."""
+    name = player_name
     health = 100
     magic = 100
     level = 1
@@ -103,14 +104,14 @@ def init_player_object():
     backpack = []
     equipped_item = None
 
-    player = Player(health, magic, level, magic_defense, magic_power, defense,
-                    attack_power, num_lives, experience, memory, backpack,
-                    equipped_item)
+    player = Player(name, health, magic, level, magic_defense, magic_power,
+                    defense, attack_power, num_lives, experience, memory,
+                    backpack, equipped_item)
 
     return player
 
 
-def init_game_files():
+def init_game_files(player_name):
     """Serializes starting game state into game files."""
     room_list = []
 
@@ -119,7 +120,7 @@ def init_game_files():
     for room in room_list:
         save_object_state(room)
 
-    player = init_player_object()
+    player = init_player_object(player_name)
     save_object_state(player)
 
 

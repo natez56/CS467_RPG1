@@ -119,13 +119,37 @@ def travel(current_room, direction):
         print('Not possible.')
 
 
-def combat():
+def combat(player, monster):
+    # Begin combat dialogue
+    print("You have encountered %s" % (monster.name))
+
+    # Allow the player to choose their move
+
+    # Randomize the damage based on the move and equipment
+
+    # Adjust the player's remaining ability count and
+    # stats like magic power or health
+
+    # Deal the damage to the enemy
+
+    # Check if the enemy is dead
+
+    # Randomly choose what ability the enemy will use
+
+    # Calculate the damage
+
+    # Check if the player is dead
+    # How should we handle player deaths? end combat? reset monster health?
+    # should we stay in combat and reset the player's stats and remove 1 life?
+
+    # Check if the game is over or do that in the main game loop?
+
     pass
 
 
-def start_game():
+def start_game(player_name):
     """Create game files, load initial room, and load player."""
-    init_game_files()
+    init_game_files(player_name)
 
     current_room = load_object("dungeon_entrance")
 

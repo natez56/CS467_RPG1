@@ -90,8 +90,9 @@ class Character:
         defense (int): Reduces physical damage.
         attack_power (int): Increases physical damage.
     """
-    def __init__(self, health, magic, level, magic_defense, magic_power,
+    def __init__(self, name, health, magic, level, magic_defense, magic_power,
                  defense, attack_power):
+        self.name = name
         self.health = health
         self.magic = magic
         self.level = level
