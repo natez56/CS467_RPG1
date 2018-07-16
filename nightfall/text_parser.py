@@ -43,7 +43,7 @@ new_command2 = remove_ignored_words(command)
 assigned_tokens = {
     'verb': None,
     'item': None,
-    'feature': None,
+    'feature': None  # add , here when you add direction
     # 'direction': None
 }
 
@@ -66,7 +66,7 @@ invalid = False
 # check if the command indicates a direction to move in
 for dest in direction:
     if new_command2 == dest or new_command2 == "go " + dest:
-        print("Moving to the", dest)
+        print("Moving to the ", dest)
         done = True
 
 # check if the command is for one of the standard actions
@@ -115,18 +115,19 @@ if done is False:
                     else:
                         verb_match = False
 
-    # if the verb/phrase matches and no verb is assigned, mark it as
-    # the verb of the sentence
-    if verb_match is True:
-        if assigned_tokens['verb'] is None:
-            assigned_tokens['verb'] = verb_phrase
+        # if the verb/phrase matches and no verb is assigned, mark it as
+        # the verb of the sentence
+        if verb_match is True:
+            if assigned_tokens['verb'] is None:
+                assigned_tokens['verb'] = verb_phrase
 
-        # if there was already a verb, then this sentence has too many verbs
-        # to process
-        else:
-            print("Too many verbs!")
-            invalid = True
-            # assigned_tokens['verb'] = None
+            # if there was already a verb, then this sentence has too
+            # many verbs
+            # to process
+            else:
+                print("Too many verbs!")
+                invalid = True
+                # assigned_tokens['verb'] = None
 
 # WE NEED TO HAVE A FAILURE HERE -- commands must have verbs unless they are
 # a direction or standard action!
@@ -145,41 +146,42 @@ if done is False and invalid is False:
         item_length = len(item_split)  # get the length of that item
 
         # iterate through each word in the user input string
-    for index, token in enumerate(clean_text):
+        for index, token in enumerate(clean_text):
 
-        # if the item is one word and matches a word in user input,
-        # we have a item match
-        if token == item_split[0] and item_length == 1:
-            item_match = True
+            # if the item is one word and matches a word in user input,
+            # we have a item match
+            if token == item_split[0] and item_length == 1:
+                item_match = True
 
-        # if the item is multi-words, keep seeing if there is a full match
-        elif token == item_split[0] and item_length > 1:
+            # if the item is multi-words, keep seeing if there is a full match
+            elif token == item_split[0] and item_length > 1:
 
-            # mark the index where it matched
-            start_count = index
-            i = 0
+                # mark the index where it matched
+                start_count = index
+                i = 0
 
-            # from where the first word matched, iterate through the user
-            # input to see if it matches the full item/phrase
-            item_match = True
-            for user_word in range(start_count, start_count+item_length-1, 1):
-                # next word in verb phrase matches
-                if clean_text[user_word] == item_split[i]:
-                    i = i+1
-                else:
-                    item_match = False
-    # if the item/phrase matches and no item is assigned, mark
-    # it as the item of the sentence
-    if item_match is True:
-        if assigned_tokens['item'] is None:
-            assigned_tokens['item'] = item_phrase
+                # from where the first word matched, iterate through the user
+                # input to see if it matches the full item/phrase
+                item_match = True
+                for user_word in range(start_count, start_count+item_length-1,
+                                       1):
+                    # next word in verb phrase matches
+                    if clean_text[user_word] == item_split[i]:
+                        i = i+1
+                    else:
+                        item_match = False
+        # if the item/phrase matches and no item is assigned, mark
+        # it as the item of the sentence
+        if item_match is True:
+            if assigned_tokens['item'] is None:
+                assigned_tokens['item'] = item_phrase
 
-        # if there was already an item, then this sentence has too many
-        # items to process
-        else:
-            print("Too many items!")
-            invalid = True
-            # assigned_tokens['item'] = None
+            # if there was already an item, then this sentence has too many
+            # items to process
+            else:
+                print("Too many items!")
+                invalid = True
+                # assigned_tokens['item'] = None
 
 # CHECK FOR FEATURES
 if done is False and invalid is False:
@@ -209,24 +211,24 @@ if done is False and invalid is False:
                 # user input to see if it matches the full feature/phrase
                 feature_match = True
 
-                for user_word in range(start_count, start_count+item_length-1,
-                                       1):
+                for user_word in range(start_count,
+                                       start_count+feature_length-1, 1):
                     # next word in feature phrase matches
                     if clean_text[user_word] == feature_split[i]:
                         i = i+1
                     else:
                         feature_match = False
-    # if the feature/phrase matches and no feature is assigned, mark it as
-    # the feature of the sentence
-    if feature_match is True:
-        if assigned_tokens['feature'] is None:
-            assigned_tokens['feature'] = feature_phrase
+        # if the feature/phrase matches and no feature is assigned, mark it as
+        # the feature of the sentence
+        if feature_match is True:
+            if assigned_tokens['feature'] is None:
+                assigned_tokens['feature'] = feature_phrase
 
-        # if there was already a feature, then this sentence has too
-        # many features to process
-        else:
-            print("Too many features!")
-            invalid = True
-            # assigned_tokens['feature'] = None
+            # if there was already a feature, then this sentence has too
+            # many features to process
+            else:
+                print("Too many features!")
+                invalid = True
+                # assigned_tokens['feature'] = None
 
 print("Here are the parts of a command we have:", assigned_tokens.items())
