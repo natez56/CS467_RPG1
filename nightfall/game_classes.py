@@ -1,21 +1,21 @@
 class Room:
-    """
-    Room class representing primary game map that player navigates.
+    """Room class representing primary game map that player navigates.
 
     Attributes:
-        description (string): Message printed to player.
-        item_list (list(Item)): List of all Item objects in the room.
-        monster_list (list(Monster)): List of all Monster objects in room.
-        player (Player): Player object used to access player in the room. Is
-            None if no player is present.
-        adjacent_rooms (dictionary(string, string)): Contains map of directions
+        description (str): Message printed to player.
+        item_list (list(:obj:Item)): List of all Item objects in the room.
+        monster_list (list(:obj:Monster)): List of all Monster objects in room.
+        player (:obj:Player): Player object used to access player in the room.
+            Is None if no player is present.
+        adjacent_rooms (dictionary(str, str)): Contains map of directions
             connected to room names that are accessible from current room. For
-            example: <'south', 'dungeon_entrance'>
-        door_map (dictionary(string, bool)): Map of doors in room. Takes a
+            example: {'south': 'dungeon_entrance'}.
+        door_map (dictionary(str, bool)): Map of doors in room. Takes a
             string ('north', 'east', 'south', 'west') and returns a bool
-            representing if the door is locked (True if locked)
-        feature_list(list(string)): List contains all the text descriptions
-            of the rooms features.
+            representing if the door is locked (True if locked).
+        feature_list(list(str)): List contains all the text descriptions of
+            the rooms features.
+
     """
     def __init__(self, name, description, item_list, monster_list,
                  player, adjacent_rooms, door_map, feature_list):
@@ -77,8 +77,7 @@ class Room:
 
 
 class Character:
-    """
-    Character class parent to Monster and Player classes.
+    """Character class parent to Monster and Player classes.
 
     Attributes:
         health (int): Character dies when this reaches zero.
@@ -89,6 +88,7 @@ class Character:
         magic_power (int): Increases magic damage.
         defense (int): Reduces physical damage.
         attack_power (int): Increases physical damage.
+
     """
     def __init__(self, name, health, magic, level, magic_defense, magic_power,
                  defense, attack_power):
@@ -148,15 +148,16 @@ class Character:
 
 
 class Player(Character):
-    """
-    Player class tracks the state of the user conrolled Character.
+    """Player class tracks the state of the user conrolled Character.
 
     Attributes:
         experience (int): Tracks points until next level.
-        memory (list(string)): Tracks both features and items that a character
+        memory (list(str)): Tracks both features and items that a character
             has inspected.
-        backpack (list(item)): Tracks items that the character is carrying.
-        equipped_item (item): Tracks item that the character is using.
+        backpack (list(:obj:Item)): Tracks items that the character is
+            carrying.
+        equipped_item (:obj:Item): Tracks item that the character is using.
+
     """
     def __init__(self, name, health, magic, level, magic_defense, magic_power,
                  defense, attack_power, num_lives, experience, memory,
@@ -222,3 +223,22 @@ class Player(Character):
         self.magic_power += 1
         self.defense += 1
         self.attack_power += 1
+
+
+class Item():
+    """Item class tracks the state of items used by the player.
+
+    Attributes:
+        name (str): Name that the item is called.
+        description (str): Description of the characteristics of the item.
+
+    """
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+
+    def get_name():
+        return self.name
+
+    def get_description():
+        return self.description

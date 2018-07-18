@@ -22,7 +22,8 @@ def starting_menu():
         if menu_choice != "load" and menu_choice != "start" and \
            menu_choice != "quit":
             print("You entered an invalid option!")
-
+        elif menu_choice == 'load' and get_num_saved_games() < 1:
+            print("\nNo saved games to load. Select another option.\n")
         else:
             invalid_selection = False
 
@@ -63,12 +64,13 @@ def choose_name(character_choice):
     return player_name
 
 
-def game_menu():  # we need to add a command that brings up the game menu
+def game_menu(current_room):  # command needed to bring up this menu.
     invalid_selection = True
 
     while invalid_selection:
-        print("Game Menu: ")
+        print("\nGame Menu: ")
         print("    Save Game File ")
+        print("    Load Game File ")
         print("    Return to Game ")
         print("    Quit Game ")
         print("Please select an option by entering: ")
@@ -77,24 +79,29 @@ def game_menu():  # we need to add a command that brings up the game menu
         menu_choice = input().lower().strip()
 
         if menu_choice != "save" and menu_choice != "return" and \
-           menu_choice != "quit":
+           menu_choice != "quit" and menu_choice != "load":
             print("You entered an invalid option! ")
-
+        elif menu_choice == "load" and get_num_saved_games() < 1:
+            print("\nNo saved games to load. Select another option.")
         else:
             invalid_selection = False
 
-        if menu_choice == "save":
-            print("Saving the current game... ")
-            # add save game functionality
-            print("Game state successfully saved! ")
+    if menu_choice == "save":
+        save_game(current_room)
 
-        elif menu_choice == "quit":
-            print("Thank you for playing Nightfall. "
-                  "Have a fortuitous evening... ")
-            exit()
+    elif menu_choice == "load":
+        current_room = load_game(current_room)
 
-        else:
-            print("Returning to the game!")
+        return current_room
+    elif menu_choice == "quit":
+        print("Thank you for playing Nightfall. "
+              "Have a fortuitous evening... ")
+        exit()
+
+    else:
+        print("Returning to the game!")
+
+    return current_room
 
 
 def travel(current_room, direction):
@@ -182,10 +189,6 @@ def start_game(player_name):
 
     current_room = load_object("dungeon_entrance")
 
-    player = load_object("player")
-
-    current_room.set_player(player)
-
     return current_room
 
 
@@ -197,6 +200,8 @@ def take_action(current_room, action):
         player = current_room.get_player()
 
         player.inspect(action[1])
+    elif action[0] == 'menu':
+        return game_menu(current_room)
 
 
 def is_game_over(player):

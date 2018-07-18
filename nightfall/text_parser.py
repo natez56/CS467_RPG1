@@ -9,7 +9,7 @@ def parse_input(user_input):
     """Extract action and thing from user_input."""
     action = []
 
-    action.append('travel')
+    action.append('menu')
 
     action.append('north')
 
