@@ -1,8 +1,11 @@
 [
-  "save_game_test.py::TestSaveGame::()::test_room_saved",
-  "save_game_test.py::TestSaveGame::()::test_player_saved",
-  "save_game_test.py::TestSaveGame::()::test_new_save",
-  "save_game_test.py::TestSaveGame::()::test_load_save",
-  "save_game_test.py::TestSaveGame::()::test_overwrite_save",
-  "save_game_test.py::TestSaveGame::()::test_get_num_saved_games"
+  "game_test.py::TestGameClasses::()::test_room_class",
+  "game_test.py::TestGameClasses::()::test_player_class",
+  "game_test.py::TestGameClasses::()::test_item_class",
+  "game_test.py::TestSaveGame::()::test_room_saved",
+  "game_test.py::TestSaveGame::()::test_player_saved",
+  "game_test.py::TestSaveGame::()::test_new_save",
+  "game_test.py::TestSaveGame::()::test_load_save",
+  "game_test.py::TestSaveGame::()::test_overwrite_save",
+  "game_test.py::TestSaveGame::()::test_get_num_saved_games"
 ]
