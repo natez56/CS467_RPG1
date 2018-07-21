@@ -12,7 +12,7 @@ def init_room_1():
         :obj:Room: Room object.
 
     """
-    name = "dungeon_entrance"
+    name = "dungeon entrance"
     description = ("At the end of the path in a clearing there is a large "
                    "stone fortress. Nothing grows near the fortress walls. "
                    "There is a large double door of dark oak. Just outside "
@@ -84,7 +84,7 @@ def init_room_2():
         :obj:Room: Room object.
 
     """
-    name = "entrance_hall"
+    name = "entrance hall"
     description = ("Inside the fortress it is dark. A hole in the far left "
                    "corner of the fortress wall casts some moonlight on the "
                    "far side of the room. On the far wall where the moonlight "
@@ -100,7 +100,7 @@ def init_room_2():
 
     # Tracks which rooms connect to this room. Pairs direction with room name.
     # Example: {'north': 'entrance_hall'}
-    adjacent_rooms = {'north': None, 'east': None, 'south': None, 'west': None}
+    adjacent_rooms = {'north': None, 'east': None, 'south': 'dungeon entrance', 'west': None}
 
     # Tracks which doors are locked.  False means unlocked.
     door_map = {'east': False, 'south': False}
@@ -205,6 +205,8 @@ def load_object(object_name):
         :obj:: Returns the object type that the file stores.
 
     """
+    object_name = object_name.replace(" ", "_")
+
     file_path = Path("game_files/current_game/")
 
     file_name = object_name + '.bin'
@@ -226,9 +228,15 @@ def save_object_state(game_object):
             must have a get_name() method for this function to work.
 
     """
+    object_name = game_object.get_name()
+
+    object_name = object_name.replace(" ", "_")
+
+    print(object_name)
+
     file_path = Path("game_files/current_game/")
 
-    file_name = game_object.get_name() + '.bin'
+    file_name = object_name + '.bin'
 
     file = file_path / file_name
 

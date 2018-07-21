@@ -41,7 +41,6 @@ def main():
         print(action)  # DELETE THIS LINE AFTER TESTING 6879076890768968907689
         current_room = get_current_room()
         print("Current room " + current_room.get_name())  # DELETE THIS LATER
-
         # Handle any error output
         if action["error"] is not None:
             print(action["error"])
@@ -67,10 +66,10 @@ def main():
                         if adjacent_rooms[key] == desired_room:
                             direction = key
 
-                    resulting_room = travel(current_room, direction)
+                    current_room = travel(current_room, direction)
 
             else:
-                resulting_room = travel(current_room, action["direction"])
+                current_room = travel(current_room, action["direction"])
                 # PROBLEM: THE PLAYER IS NOT CURRENTLY MOVING TO THE NEW ROOM
 
         # current_room = take_action(current_room, action)
