@@ -37,10 +37,11 @@ def main():
 
         action = parse_input(user_input)
 
-        # handle the user command
-        print(action)
+        # Handle the user command
+        print(action)  # DELETE THIS LINE AFTER TESTING 6879076890768968907689
         current_room = get_current_room()
 
+        # Handle the standard actions
         if action["standard_action"] is not None:
             if action["standard_action"] == "gamemenu" or\
                action["standard_action"] == "game menu":
@@ -55,6 +56,10 @@ def main():
                 else:
                     print("\nYour backpack has: ")
                     print("\n".join(player.get_inventory()))
+
+        # Handle the directions
+        elif action["direction"] is not None:
+            pass
 
         # current_room = take_action(current_room, action)
 
