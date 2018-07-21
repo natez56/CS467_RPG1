@@ -40,43 +40,16 @@ def main():
         # Handle the user command
         print(action)  # DELETE THIS LINE AFTER TESTING 6879076890768968907689
         current_room = get_current_room()
+        print("Current room " + current_room.get_name())  # DELETE THIS LATER
 
         # Handle the standard actions
         if action["standard_action"] is not None:
-            if action["standard_action"] == "gamemenu" or\
-               action["standard_action"] == "game menu":
-                game_menu(current_room)
-            elif action["standard_action"] == "help":
-                help_menu()
-            elif action["standard_action"] == "look":
-                print(current_room.get_description())
-            elif action["standard_action"] == "inventory":
-                if not player.get_inventory():
-                    print("\nYour backpack is empty!")
-                else:
-                    print("\nYour backpack has: ")
-                    print("\n".join(player.get_inventory()))
+            handle_standard_action(current_room, player, action)
 
         # Handle the directions
         elif action["direction"] is not None:
-            if current_room.get_adjacent_room(action["direction"]) is not None:
-                print("\nMoving " + action["direction"] + " to the " +
-                      current_room.get_adjacent_room(action["direction"]))
-
-                # Check if the door is locked
-                current_door_map = current_room.get_door_map()
-
-                if current_door_map[action["direction"]] is False:
-                    print("The door is unlocked!")
-
-                    # Move the character into the new room
-
-                else:
-                    print("The door is locked!")
-                    print("You can use a key to unlock the door.")
-
-            else:
-                print("\nThere is no room in that direction!")
+            resulting_room = travel(current_room, action["direction"])
+            # PROBLEM: THE PLAYER IS NOT CURRENTLY MOVING TO THE NEW ROOM
 
         # Handle room names
 

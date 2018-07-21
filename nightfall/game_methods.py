@@ -109,17 +109,38 @@ def help_menu():
     print("    ")  # ADD A LIST OF VERBS THAT CAN BE USED FOR COMMANDS IN GAME
 
 
-def travel(current_room, direction):
-    """Move player from one room to another."""
-    player = current_room.get_player()
-
-    if direction in current_room.get_door_map():
-        if current_room.is_locked(direction):
-            print("That door is locked")
+def handle_standard_action(current_room, player, action):
+    if action["standard_action"] == "gamemenu" or\
+       action["standard_action"] == "game menu":
+        game_menu(current_room)
+    elif action["standard_action"] == "help":
+        help_menu()
+    elif action["standard_action"] == "look":
+        print(current_room.get_description())
+    elif action["standard_action"] == "inventory":
+        if not player.get_inventory():
+            print("\nYour backpack is empty!")
         else:
-            print("OK")
+            print("\nYour backpack has: ")
+            print("\n".join(player.get_inventory()))
 
-            current_room.set_player(None)
+
+def travel(current_room, direction):  # This will also need to handle room name
+    """Move player from one room to another."""
+    if current_room.get_adjacent_room(direction) is not None:
+        print("\nMoving " + direction + " to the " +
+              current_room.get_adjacent_room(direction))
+
+        # Check if the door is locked
+        current_door_map = current_room.get_door_map()
+
+        if current_door_map[direction] is False:
+            print("The door is unlocked!")
+
+            # Move the character into the new room
+            player = current_room.get_player()
+
+            current_room.set_player(None)  # save the room here instead of none
 
             new_room_name = current_room.get_adjacent_room(direction)
 
@@ -128,8 +149,15 @@ def travel(current_room, direction):
             new_room.set_player(player)
 
             return new_room
+
+        else:
+            print("The door is locked!")
+            print("You can use a key to unlock the door.")
+
     else:
-        print('Not possible.')
+        print("\nThere is no room in that direction!")
+
+    return current_room
 
 
 def combat(player, monster):
