@@ -45,7 +45,8 @@ def init_room_1():
     player = None
 
     # Set room navigation traits.
-    adjacent_rooms = {'north': 'entrance_hall'}
+    adjacent_rooms = {'north': 'entrance_hall', 'east': None, 'south': None,
+                      'west': None}
     door_map = {'north': False}
 
     # Set features in room.
@@ -99,7 +100,7 @@ def init_room_2():
 
     # Tracks which rooms connect to this room. Pairs direction with room name.
     # Example: {'north': 'entrance_hall'}
-    adjacent_rooms = {}
+    adjacent_rooms = {'north': None, 'east': None, 'south': None, 'west': None}
 
     # Tracks which doors are locked.  False means unlocked.
     door_map = {'east': False, 'south': False}

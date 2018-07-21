@@ -59,7 +59,26 @@ def main():
 
         # Handle the directions
         elif action["direction"] is not None:
-            pass
+            if current_room.get_adjacent_room(action["direction"]) is not None:
+                print("\nMoving " + action["direction"] + " to the " +
+                      current_room.get_adjacent_room(action["direction"]))
+
+                # Check if the door is locked
+                current_door_map = current_room.get_door_map()
+
+                if current_door_map[action["direction"]] is False:
+                    print("The door is unlocked!")
+
+                    # Move the character into the new room
+
+                else:
+                    print("The door is locked!")
+                    print("You can use a key to unlock the door.")
+
+            else:
+                print("\nThere is no room in that direction!")
+
+        # Handle room names
 
         # current_room = take_action(current_room, action)
 
