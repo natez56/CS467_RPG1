@@ -60,6 +60,7 @@ def main():
                 desired_room = action["direction"]
 
                 adjacent_rooms = current_room.get_adjacent_rooms()
+                direction = ""
 
                 if desired_room in adjacent_rooms.values():
                     # Get the key to get the direction
@@ -67,10 +68,14 @@ def main():
                         if adjacent_rooms[key] == desired_room:
                             direction = key
 
-                    resulting_room = travel(current_room, direction)
+                    if direction != "":
+                        current_room = travel(current_room, direction)
+                    else:
+                        print("That room is not connected to the "
+                              "current room!")
 
             else:
-                resulting_room = travel(current_room, action["direction"])
+                current_room = travel(current_room, action["direction"])
                 # PROBLEM: THE PLAYER IS NOT CURRENTLY MOVING TO THE NEW ROOM
 
         # current_room = take_action(current_room, action)

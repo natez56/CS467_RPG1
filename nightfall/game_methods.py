@@ -140,7 +140,7 @@ def travel(current_room, direction):  # This will also need to handle room name
             # Move the character into the new room
             player = current_room.get_player()
 
-            current_room.set_player(None)  # save the room here instead of none
+            current_room.set_player(None)
 
             new_room_name = current_room.get_adjacent_room(direction)
 
