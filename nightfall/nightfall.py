@@ -22,7 +22,7 @@ def main():
 
     elif starting_selection == "load":
         current_room = initial_load_game()
-        
+
         player = current_room.get_player()
     else:
         print("Thank you for playing Nightfall. "
