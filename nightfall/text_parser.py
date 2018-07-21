@@ -21,7 +21,8 @@ def parse_input(input):
     # arrays with parts of speech
     direction_array = ['north', 'east', 'south', 'west', 'room 1', 'room 2']
 
-    standard_action_array = ['help', 'look', 'gamemenu', 'game menu']
+    standard_action_array = ['help', 'look', 'gamemenu', 'game menu',
+                             'inventory']
 
     verb_array = ['take', 'use', 'drop', 'look at', 'drink']
 
@@ -145,10 +146,10 @@ def parse_input(input):
     # WE NEED TO HAVE A FAILURE HERE -- commands must have verbs unless
     # they are a direction or standard action!
     if done is False and assigned_tokens['verb'] is None:
-        print("You may want to enter a verb, or at least a destination or\
-              standard game action, like 'help'!")
+        print("You may want to enter a verb, or at least a destination or "
+              "standard game action, like 'help'!\n")
         assigned_tokens['error'] = "Need verb, or least a destination or\
-                                    standard action"
+                                   standard action. "
         invalid = True
 
     # CHECK FOR ITEMS
@@ -249,10 +250,6 @@ def parse_input(input):
                     invalid = True
                     # assigned_tokens['feature'] = None
 
-    print("Here are the parts of a command we have:", assigned_tokens.items())
+    print(assigned_tokens.items())
 
     return assigned_tokens
-
-
-input = get_input()
-parse_input(input)

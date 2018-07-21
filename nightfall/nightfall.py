@@ -25,21 +25,40 @@ def main():
 
         player = current_room.get_player()
     else:
-        print("Thank you for playing Nightfall. "
-              "Have a fortuitous evening. ")
+        print("\nThank you for playing Nightfall. "
+              "Have a fortuitous evening. \n")
         exit()
 
     while not is_game_over(player):
-        print("What would you like to do? ")
+        print("\nWhat would you like to do? ")
 
+        # Grab the command from the user and execute the action if valid
         user_input = get_input()
 
         action = parse_input(user_input)
-        # add functionality to run game menu
 
-        current_room = take_action(current_room, action)
+        # handle the user command
+        print(action)
+        current_room = get_current_room()
 
-        print("Current room is now: {}".format(current_room.get_name()))
+        if action["standard_action"] is not None:
+            if action["standard_action"] == "gamemenu" or\
+               action["standard_action"] == "game menu":
+                game_menu(current_room)
+            elif action["standard_action"] == "help":
+                help_menu()
+            elif action["standard_action"] == "look":
+                print(current_room.get_description())
+            elif action["standard_action"] == "inventory":
+                if not player.get_inventory():
+                    print("\nYour backpack is empty!")
+                else:
+                    print("\nYour backpack has: ")
+                    print("\n".join(player.get_inventory()))
+
+        # current_room = take_action(current_room, action)
+
+        # print("Current room is now: {}".format(current_room.get_name()))
 
 
 if __name__ == "__main__":

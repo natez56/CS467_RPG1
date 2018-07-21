@@ -4,13 +4,13 @@ from random import *
 
 
 def starting_menu():
-    print("Welcome to Nightfall... The path that lies ahead is dark "
+    print("\nWelcome to Nightfall... The path that lies ahead is dark "
           "and full of terrors.")
 
     invalid_selection = True
 
     while invalid_selection:
-        print("Starting Menu:")
+        print("\nStarting Menu:")
         print("    Start New Game")
         print("    Load Game File")
         print("    Quit Game")
@@ -33,7 +33,7 @@ def starting_menu():
 def choose_character():
     invalid_selection = True
 
-    print("Before embarking on this tumultuous adventure, "
+    print("\nBefore embarking on this tumultuous adventure, "
           "would you like to play as a fearless Ranger \n"
           "or a brilliant Wizard? ")
 
@@ -41,7 +41,7 @@ def choose_character():
         character_choice = input().lower().strip()
 
         if character_choice != "ranger" and character_choice != "wizard":
-            print("You entered an invalid selection, please choose "
+            print("\nYou entered an invalid selection, please choose "
                   "between Ranger and Wizard: ")
         else:
             invalid_selection = False
@@ -52,13 +52,13 @@ def choose_character():
 
 
 def choose_name(character_choice):
-    print("Excellent choice! I am sure your %s will make a fine adventurer. \n"
-          "What would you like to name your %s? " % (character_choice,
-                                                     character_choice))
+    print("\nExcellent choice! I am sure your %s will make a fine adventurer."
+          "\nWhat would you like to name your %s? " % (character_choice,
+                                                       character_choice))
 
     player_name = input().strip()
 
-    print("Salutations %s! It is now time to embark on the adventure... "
+    print("\nSalutations %s! It is now time to embark on the adventure... "
           % (player_name))
 
     return player_name
@@ -94,14 +94,19 @@ def game_menu(current_room):  # command needed to bring up this menu.
 
         return current_room
     elif menu_choice == "quit":
-        print("Thank you for playing Nightfall. "
-              "Have a fortuitous evening... ")
+        print("\nThank you for playing Nightfall. "
+              "Have a fortuitous evening... \n")
         exit()
 
     else:
         print("Returning to the game!")
 
     return current_room
+
+
+def help_menu():
+    print("\nHere is a list of available commands: ")
+    print("    ")  # ADD A LIST OF VERBS THAT CAN BE USED FOR COMMANDS IN GAME
 
 
 def travel(current_room, direction):

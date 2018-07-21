@@ -261,7 +261,7 @@ def save_game(current_room):
         user_input = input("Please enter the char Y or N: ")
         user_input = user_input.lower()
 
-    if user_input == 'y':  
+    if user_input == 'y':
         file_name = ""
 
         # Get title from user of new saved file.
