@@ -19,7 +19,8 @@ def parse_input(input):
     }
 
     # arrays with parts of speech
-    direction_array = ['north', 'east', 'south', 'west', 'room 1', 'room 2']
+    direction_array = ['north', 'east', 'south', 'west', 'entrance hall',
+                       'dungeon entrance']
 
     standard_action_array = ['help', 'look', 'gamemenu', 'game menu',
                              'inventory']

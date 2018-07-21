@@ -38,6 +38,9 @@ class Room:
     def get_adjacent_room(self, direction):
         return self.adjacent_rooms[direction]
 
+    def get_adjacent_rooms(self):
+        return self.adjacent_rooms
+
     def get_door_map(self):
         return self.door_map
 

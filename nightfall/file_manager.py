@@ -45,7 +45,7 @@ def init_room_1():
     player = None
 
     # Set room navigation traits.
-    adjacent_rooms = {'north': 'entrance_hall', 'east': None, 'south': None,
+    adjacent_rooms = {'north': 'entrance hall', 'east': None, 'south': None,
                       'west': None}
     door_map = {'north': False}
 

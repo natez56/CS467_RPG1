@@ -42,16 +42,36 @@ def main():
         current_room = get_current_room()
         print("Current room " + current_room.get_name())  # DELETE THIS LATER
 
+        # Handle any error output
+        if action["error"] is not None:
+            print(action["error"])
+
         # Handle the standard actions
-        if action["standard_action"] is not None:
+        elif action["standard_action"] is not None:
             handle_standard_action(current_room, player, action)
 
         # Handle the directions
         elif action["direction"] is not None:
-            resulting_room = travel(current_room, action["direction"])
-            # PROBLEM: THE PLAYER IS NOT CURRENTLY MOVING TO THE NEW ROOM
+            # Handle room names
+            if action["direction"] != "north" and \
+               action["direction"] != "east" and \
+               action["direction"] != "south" and \
+               action["direction"] != "west":
+                desired_room = action["direction"]
 
-        # Handle room names
+                adjacent_rooms = current_room.get_adjacent_rooms()
+
+                if desired_room in adjacent_rooms.values():
+                    # Get the key to get the direction
+                    for key in adjacent_rooms.keys():
+                        if adjacent_rooms[key] == desired_room:
+                            direction = key
+
+                    resulting_room = travel(current_room, direction)
+
+            else:
+                resulting_room = travel(current_room, action["direction"])
+                # PROBLEM: THE PLAYER IS NOT CURRENTLY MOVING TO THE NEW ROOM
 
         # current_room = take_action(current_room, action)
 
