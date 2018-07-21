@@ -17,15 +17,38 @@ def init_room_1():
                    "stone fortress. Nothing grows near the fortress walls. "
                    "There is a large double door of dark oak. Just outside "
                    "the entrance is a huddled mass on the ground. Could it be "
-                   "Evelyn?"
+                   "Evelyn?",
+                   "I'm at the fortress entrance, the large oak double doors "
+                   "are slightly ajar."
                    )
 
+    # Init items
+    # Item 1 - rusty_sword
+    sword_name = "Rusty Sword"
+    sword_description = ("A rusty sword. It's long since lost its edge. "
+                         "Who knows, you might be able to bludgeon monsters "
+                         "with it.")
+    sword_durability = None
+    sword_stats = {"attack_power": 1}
+
+    rusty_sword = Item(sword_name, sword_description, sword_durability,
+                       sword_stats)
+
+    # Set item list
     item_list = []
+    item_list.append(rusty_sword)
+
+    # Set monster list
     monster_list = []
+
+    # Set player to None
     player = None
+
+    # Set room navigation traits.
     adjacent_rooms = {'north': 'entrance_hall'}
     door_map = {'north': False}
 
+    # Set features in room.
     door_feature = ("The doors are thick and sturdy. One door appears to be "
                     "slightly ajar."
                     )
@@ -43,10 +66,12 @@ def init_room_1():
                    "remain."
                    )
 
-    feature_list = [door_feature, body_feature, cloak_feature, bag_feature]
+    feature_dict = {"door": door_feature, "body": body_feature,
+                    "cloak": cloak_feature, "bag": bag_feature}
 
+    # Instantiate room object.
     dungeon_entrance = Room(name, description, item_list, monster_list, player,
-                            adjacent_rooms, door_map, feature_list)
+                            adjacent_rooms, door_map, feature_dict)
 
     return dungeon_entrance
 
@@ -59,10 +84,13 @@ def init_room_2():
 
     """
     name = "entrance_hall"
-    description = ("Inside it is dark. A hole in the far left corner of the "
-                   "fortress wall casts some moonlight on the far side of the "
-                   "room. On the far wall where the moonlight shines there "
-                   "appears to be some writing."
+    description = ("Inside the fortress it is dark. A hole in the far left "
+                   "corner of the fortress wall casts some moonlight on the "
+                   "far side of the room. On the far wall where the moonlight "
+                   "shines there appears to be some writing. Near the writing "
+                   "is a door leading farther in the fortress.",
+                   "I'm in the entrance hall, there's goblin writing on the "
+                   "wall and a door leading father into the fortress."
                    )
 
     item_list = []
@@ -76,19 +104,20 @@ def init_room_2():
     # Tracks which doors are locked.  False means unlocked.
     door_map = {'east': False, 'south': False}
 
-    goblin_graffitii_feature = ("You've seen this type of writing before at "
-                                "the entrance to the high mountains near the "
-                                "edge of your homeland. This is goblin "
-                                "graffiti, used to mark a particular goblin "
-                                "clans home."
-                                )
+    goblin_graffiti_feature = ("You've seen this type of writing before at "
+                               "the entrance to the high mountains near the "
+                               "edge of your homeland. This is goblin "
+                               "graffiti, used to mark a particular goblin "
+                               "clans home."
+                               )
 
     east_door_feature = ("An oak door with a large iron handle.")
 
-    feature_list = [goblin_graffitii_feature, east_door_feature]
+    feature_dict = {"graffiti": goblin_graffiti_feature,
+                    "door": east_door_feature}
 
     entrance_hall = Room(name, description, item_list, monster_list, player,
-                         adjacent_rooms, door_map, feature_list)
+                         adjacent_rooms, door_map, feature_dict)
 
     return entrance_hall
 
