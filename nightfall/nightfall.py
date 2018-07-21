@@ -21,8 +21,9 @@ def main():
         print("Initial location: {}".format(current_room.get_name()))
 
     elif starting_selection == "load":
-        print("Please select which game file to load:")
-        # add load game functionality
+        current_room = initial_load_game()
+        
+        player = current_room.get_player()
     else:
         print("Thank you for playing Nightfall. "
               "Have a fortuitous evening. ")

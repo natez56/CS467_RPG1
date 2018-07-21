@@ -39,17 +39,303 @@
 <div class="section" id="module-nightfall.game_classes">
 <span id="nightfall-game-classes-module"></span><h2>nightfall.game_classes module<a class="headerlink" href="#module-nightfall.game_classes" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="nightfall.game_classes.Room">
-<em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Room</code><a class="headerlink" href="#nightfall.game_classes.Room" title="Permalink to this definition">¶</a></dt>
+<dt id="nightfall.game_classes.Character">
+<em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Character</code><span class="sig-paren">(</span><em>name</em>, <em>health</em>, <em>magic</em>, <em>level</em>, <em>magic_defense</em>, <em>magic_power</em>, <em>defense</em>, <em>attack_power</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Character class parent to Monster and Player classes.</p>
+<dl class="attribute">
+<dt id="nightfall.game_classes.Character.health">
+<code class="descname">health</code><a class="headerlink" href="#nightfall.game_classes.Character.health" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – Character dies when this reaches zero.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Character.magic">
+<code class="descname">magic</code><a class="headerlink" href="#nightfall.game_classes.Character.magic" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – Using spells drains this attribute.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Character.level">
+<code class="descname">level</code><a class="headerlink" href="#nightfall.game_classes.Character.level" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – Relative measure of toughness (the combination of all
+offensive and defensive stats and abilities).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Character.magic_defense">
+<code class="descname">magic_defense</code><a class="headerlink" href="#nightfall.game_classes.Character.magic_defense" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – Reduces magic damage.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Character.magic_power">
+<code class="descname">magic_power</code><a class="headerlink" href="#nightfall.game_classes.Character.magic_power" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – Increases magic damage.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Character.defense">
+<code class="descname">defense</code><a class="headerlink" href="#nightfall.game_classes.Character.defense" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – Reduces physical damage.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Character.attack_power">
+<code class="descname">attack_power</code><a class="headerlink" href="#nightfall.game_classes.Character.attack_power" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – Increases physical damage.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.get_attack_power">
+<code class="descname">get_attack_power</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.get_attack_power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.get_defense">
+<code class="descname">get_defense</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.get_defense" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.get_health">
+<code class="descname">get_health</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.get_health" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.get_level">
+<code class="descname">get_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.get_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.get_magic">
+<code class="descname">get_magic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.get_magic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.get_magic_defense">
+<code class="descname">get_magic_defense</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.get_magic_defense" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.get_magic_power">
+<code class="descname">get_magic_power</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.get_magic_power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.get_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.set_attack_power">
+<code class="descname">set_attack_power</code><span class="sig-paren">(</span><em>attack_power</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.set_attack_power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.set_defense">
+<code class="descname">set_defense</code><span class="sig-paren">(</span><em>defense</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.set_defense" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.set_health">
+<code class="descname">set_health</code><span class="sig-paren">(</span><em>health</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.set_health" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.set_level">
+<code class="descname">set_level</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.set_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.set_magic">
+<code class="descname">set_magic</code><span class="sig-paren">(</span><em>magic</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.set_magic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.set_magic_defense">
+<code class="descname">set_magic_defense</code><span class="sig-paren">(</span><em>magic_defense</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.set_magic_defense" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.set_magic_power">
+<code class="descname">set_magic_power</code><span class="sig-paren">(</span><em>magic_power</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.set_magic_power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nightfall.game_classes.Player">
+<em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Player</code><span class="sig-paren">(</span><em>name</em>, <em>health</em>, <em>magic</em>, <em>level</em>, <em>magic_defense</em>, <em>magic_power</em>, <em>defense</em>, <em>attack_power</em>, <em>num_lives</em>, <em>experience</em>, <em>memory</em>, <em>backpack</em>, <em>equipped_item</em>, <em>rescue_evelyn=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nightfall.game_classes.Character" title="nightfall.game_classes.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">nightfall.game_classes.Character</span></code></a></p>
+<p>Player class tracks the state of the user conrolled Character.</p>
+<dl class="attribute">
+<dt id="nightfall.game_classes.Player.experience">
+<code class="descname">experience</code><a class="headerlink" href="#nightfall.game_classes.Player.experience" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – Tracks points until next level.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Player.memory">
+<code class="descname">memory</code><a class="headerlink" href="#nightfall.game_classes.Player.memory" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list(string)</em> – Tracks both features and items that a character
+has inspected.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Player.backpack">
+<code class="descname">backpack</code><a class="headerlink" href="#nightfall.game_classes.Player.backpack" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list(item)</em> – Tracks items that the character is carrying.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Player.equipped_item">
+<code class="descname">equipped_item</code><a class="headerlink" href="#nightfall.game_classes.Player.equipped_item" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>item</em> – Tracks item that the character is using.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.add_item">
+<code class="descname">add_item</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.add_item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.add_memory">
+<code class="descname">add_memory</code><span class="sig-paren">(</span><em>thing</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.add_memory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.drop_item">
+<code class="descname">drop_item</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.drop_item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.equip_item">
+<code class="descname">equip_item</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.equip_item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.get_equipped_item">
+<code class="descname">get_equipped_item</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.get_equipped_item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.get_experience">
+<code class="descname">get_experience</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.get_experience" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.get_lives">
+<code class="descname">get_lives</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.get_lives" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.has_memory">
+<code class="descname">has_memory</code><span class="sig-paren">(</span><em>thing</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.has_memory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.inspect">
+<code class="descname">inspect</code><span class="sig-paren">(</span><em>thing</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.inspect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.level_up">
+<code class="descname">level_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.level_up" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.lose_life">
+<code class="descname">lose_life</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.lose_life" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.set_experience">
+<code class="descname">set_experience</code><span class="sig-paren">(</span><em>experience</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.set_experience" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.use_door">
+<code class="descname">use_door</code><span class="sig-paren">(</span><em>door</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.use_door" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nightfall.game_classes.Room">
+<em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Room</code><span class="sig-paren">(</span><em>name</em>, <em>description</em>, <em>item_list</em>, <em>monster_list</em>, <em>player</em>, <em>adjacent_rooms</em>, <em>door_map</em>, <em>feature_list</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Room class representing primary game map that player navigates.</p>
+<dl class="attribute">
+<dt id="nightfall.game_classes.Room.description">
+<code class="descname">description</code><a class="headerlink" href="#nightfall.game_classes.Room.description" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>string</em> – Message printed to player.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Room.item_list">
+<code class="descname">item_list</code><a class="headerlink" href="#nightfall.game_classes.Room.item_list" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list(Item)</em> – List of all Item objects in the room.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Room.monster_list">
+<code class="descname">monster_list</code><a class="headerlink" href="#nightfall.game_classes.Room.monster_list" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list(Monster)</em> – List of all Monster objects in room.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Room.player">
+<code class="descname">player</code><a class="headerlink" href="#nightfall.game_classes.Room.player" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Player</em> – Player object used to access player in the room. Is
+None if no player is present.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Room.adjacent_rooms">
+<code class="descname">adjacent_rooms</code><a class="headerlink" href="#nightfall.game_classes.Room.adjacent_rooms" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dictionary(string, string)</em> – Contains map of directions
+connected to room names that are accessible from current room. For
+example: &lt;’south’, ‘dungeon_entrance’&gt;</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Room.door_map">
+<code class="descname">door_map</code><a class="headerlink" href="#nightfall.game_classes.Room.door_map" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dictionary(string, bool)</em> – Map of doors in room. Takes a
+string (‘north’, ‘east’, ‘south’, ‘west’) and returns a bool
+representing if the door is locked (True if locked)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Room.feature_list">
+<code class="descname">feature_list</code><a class="headerlink" href="#nightfall.game_classes.Room.feature_list" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list(string)</em> – List contains all the text descriptions of
+the rooms features.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="nightfall.game_classes.Room.add_item">
 <code class="descname">add_item</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.add_item" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="nightfall.game_classes.Room.add_monster">
+<code class="descname">add_monster</code><span class="sig-paren">(</span><em>monster</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.add_monster" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.get_adjacent_room">
+<code class="descname">get_adjacent_room</code><span class="sig-paren">(</span><em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_adjacent_room" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="nightfall.game_classes.Room.get_description">
 <code class="descname">get_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.get_door_map">
+<code class="descname">get_door_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_door_map" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -68,6 +354,21 @@
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="nightfall.game_classes.Room.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.get_player">
+<code class="descname">get_player</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_player" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.is_locked">
+<code class="descname">is_locked</code><span class="sig-paren">(</span><em>door</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.is_locked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="nightfall.game_classes.Room.remove_item">
 <code class="descname">remove_item</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.remove_item" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -75,6 +376,16 @@
 <dl class="method">
 <dt id="nightfall.game_classes.Room.remove_monster">
 <code class="descname">remove_monster</code><span class="sig-paren">(</span><em>monster</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.remove_monster" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.set_player">
+<code class="descname">set_player</code><span class="sig-paren">(</span><em>player</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.set_player" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.unlock">
+<code class="descname">unlock</code><span class="sig-paren">(</span><em>door</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.unlock" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
