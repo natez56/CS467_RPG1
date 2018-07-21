@@ -59,6 +59,7 @@ def main():
                 desired_room = action["direction"]
 
                 adjacent_rooms = current_room.get_adjacent_rooms()
+                direction = ""
 
                 if desired_room in adjacent_rooms.values():
                     # Get the key to get the direction
@@ -67,6 +68,12 @@ def main():
                             direction = key
 
                     current_room = travel(current_room, direction)
+
+                    if direction != "":
+                        current_room = travel(current_room, direction)
+                    else:
+                        print("That room is not connected to the "
+                              "current room!")
 
             else:
                 current_room = travel(current_room, action["direction"])
