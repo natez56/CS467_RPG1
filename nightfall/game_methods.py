@@ -13,7 +13,10 @@ def starting_menu():
 
     print("Zlor is holding your brother hostage here. All you have is the "
           "knapsack on your back and a fearless spirit, but you must carry "
-          "on and save your brother. ")
+          "on and save your brother.\n ")
+
+    print("Welcome to Nightfall. The path that lies ahead is dark and full of "
+          "terrors.\n")
 
     invalid_selection = True
 
