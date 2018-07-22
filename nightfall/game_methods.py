@@ -7,7 +7,7 @@ def starting_menu():
     print("\nOh no! While wandering the woods of Tardatheon, your younger "
           "brother Evelyn was snatched by the evil warlock, Zlor. Following "
           "your brother’s screams, you race through the thick brambles and "
-          "branches of the forest as they whip and slash against your skin."
+          "branches of the forest as they whip and slash against your skin. "
           "All of a sudden, you find yourself in front of the warlock’s "
           "looming tower. \n")
 
