@@ -4,8 +4,16 @@ from random import *
 
 
 def starting_menu():
-    print("\nWelcome to Nightfall... The path that lies ahead is dark "
-          "and full of terrors.")
+    print("\nOh no! While wandering the woods of Tardatheon, your younger "
+          "brother Evelyn was snatched by the evil warlock, Zlor. Following "
+          "your brother’s screams, you race through the thick brambles and "
+          "branches of the forest as they whip and slash against your skin."
+          "All of a sudden, you find yourself in front of the warlock’s "
+          "looming tower. \n")
+
+    print("Zlor is holding your brother hostage here. All you have is the "
+          "knapsack on your back and a fearless spirit, but you must carry "
+          "on and save your brother. ")
 
     invalid_selection = True
 
