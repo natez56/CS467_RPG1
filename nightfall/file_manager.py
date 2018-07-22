@@ -24,7 +24,7 @@ def init_room_1():
 
     # Init items
     # Item 1 - rusty_sword
-    sword_name = "Rusty Sword"
+    sword_name = "sword"
     sword_description = ("A rusty sword. It's long since lost its edge. "
                          "Who knows, you might be able to bludgeon monsters "
                          "with it.")
@@ -70,9 +70,12 @@ def init_room_1():
     feature_dict = {"door": door_feature, "body": body_feature,
                     "cloak": cloak_feature, "bag": bag_feature}
 
+    puzzle_dict = None
+
     # Instantiate room object.
     dungeon_entrance = Room(name, description, item_list, monster_list, player,
-                            adjacent_rooms, door_map, feature_dict)
+                            adjacent_rooms, door_map, feature_dict,
+                            puzzle_dict)
 
     return dungeon_entrance
 
@@ -85,11 +88,12 @@ def init_room_2():
 
     """
     name = "entrance hall"
-    description = ("Inside the fortress it is dark. A hole in the far left "
-                   "corner of the fortress wall casts some moonlight on the "
-                   "far side of the room. On the far wall where the moonlight "
-                   "shines there appears to be some writing. Near the writing "
-                   "is a door leading farther in the fortress.",
+    description = ("Inside the fortress it is dark. There is rubble on the "
+                   "floor from a partially collapsed left wall. Moonlight "
+                   "shines through a gap in part of the collapsed wall, "
+                   "revealing what looks to be a door on the far side of the "
+                   "room. Above the door You can barely make out some "
+                   "writing...",
                    "I'm in the entrance hall, there's goblin writing on the "
                    "wall and a door leading father into the fortress."
                    )
@@ -100,7 +104,8 @@ def init_room_2():
 
     # Tracks which rooms connect to this room. Pairs direction with room name.
     # Example: {'north': 'entrance_hall'}
-    adjacent_rooms = {'north': None, 'east': None, 'south': 'dungeon entrance', 'west': None}
+    adjacent_rooms = {'north': None, 'east': None, 'south': 'dungeon entrance',
+                      'west': None}
 
     # Tracks which doors are locked.  False means unlocked.
     door_map = {'east': False, 'south': False}
@@ -114,11 +119,18 @@ def init_room_2():
 
     east_door_feature = ("An oak door with a large iron handle.")
 
-    feature_dict = {"graffiti": goblin_graffiti_feature,
-                    "door": east_door_feature}
+    rubble_feature = ("Mostly stone from the wall strewn across the floor. "
+                      "As you look at the rubble on the ground you also "
+                      "noticea a thin rope secured across the path from here "
+                      "to the door.")
+
+    feature_dict = {"writing": goblin_graffiti_feature,
+                    "rubble": rubble_feature, "door": east_door_feature}
+
+    puzzle_dict = {"rope": True}
 
     entrance_hall = Room(name, description, item_list, monster_list, player,
-                         adjacent_rooms, door_map, feature_dict)
+                         adjacent_rooms, door_map, feature_dict, puzzle_dict)
 
     return entrance_hall
 
@@ -231,8 +243,6 @@ def save_object_state(game_object):
     object_name = game_object.get_name()
 
     object_name = object_name.replace(" ", "_")
-
-    print(object_name)
 
     file_path = Path("game_files/current_game/")
 
@@ -410,7 +420,7 @@ def save_game_state(current_room, destination_path):
             shutil.copy(file_name, destination_path)
 
 
-def load_game(current_room):
+def load_game():
     """Enables user to load prior saved game.
 
     Returns:
@@ -441,7 +451,7 @@ def load_game(current_room):
     # Verify user input is 'e' or a number within the range of number of files.
     valid_input = False
     while not valid_input:
-        if user_input.isalpha() and user_input != 'e':
+        if (user_input.isalpha() and user_input != 'e') or " " in user_input:
             valid_input = False
         elif (user_input.isdigit() and
               (int(user_input) < 1 or int(user_input) > num - 1)):
@@ -494,11 +504,6 @@ def load_game(current_room):
 
             print("\nGame {} loaded.\n".format(file_name))
 
-            # Return the room object of the room the player is in.
-            return get_current_room()
-
-    return current_room
-
     print("\nLoad Menu Exited\n")
 
 
@@ -526,13 +531,13 @@ def initial_load_game():
 
     # Get user selection for the file they want to load.
     user_input = input("")
-    user_input = user_input.lower()
+    user_input = user_input.lower().strip()
 
     # Verify that user has entered a valid integer within the range of 1
     # to the total number of files.
     valid_input = False
     while not valid_input:
-        if user_input.isalpha():
+        if user_input.isalpha() or " " in user_input:
             valid_input = False
         elif (user_input.isdigit() and
               (int(user_input) < 1 or int(user_input) > num - 1)):

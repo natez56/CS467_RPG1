@@ -90,9 +90,8 @@ def game_menu(current_room):  # command needed to bring up this menu.
         save_game(current_room)
 
     elif menu_choice == "load":
-        current_room = load_game(current_room)
+        load_game()
 
-        return current_room
     elif menu_choice == "quit":
         print("\nThank you for playing Nightfall. "
               "Have a fortuitous evening... \n")
@@ -101,12 +100,254 @@ def game_menu(current_room):  # command needed to bring up this menu.
     else:
         print("Returning to the game!")
 
-    return current_room
-
 
 def help_menu():
     print("\nHere is a list of available commands: ")
     print("    ")  # ADD A LIST OF VERBS THAT CAN BE USED FOR COMMANDS IN GAME
+
+
+def room_1_feature_handler(current_room, verb, feature):
+    feature_dict = current_room.get_features()
+
+    if verb == "take":
+        if feature == "body":
+            print("This body is too heavy to carry.")
+        if feature == "cloak":
+            print("The cloak is in tatters, better to leave it I think.")
+        if feature == "bag":
+            print("This bag has holes in it. Better to leave it I think.")
+        if feature == "door":
+            print("Hmm let's see, if I unbolt the doors and go get about "
+                  "10 other villagers to help me carry them...on second "
+                  "thought maybe I should leave the doors where they are.")
+    if verb == "use":
+        print("I can't use that. Better move on or find something I can "
+              "use.")
+    if verb == "drop":
+        print("Drop what? I'm not carrying that.")
+    if verb == "look at":
+        print("You take a close look at the {}".format(feature))
+        print(feature_dict[feature])
+    if verb == "eat":
+        if feature == "body":
+            print("Eat this? I don't think so. I'm not a zombie.")
+        if feature == "door":
+            print("You naw on the oak doors a bit. Yup that's oak all "
+                  "right...")
+        if feature == "cloak":
+            print("You chew on the old cloak a bit and think to yourself "
+                  "I better start coming up with some reasonable things "
+                  "to do or I'll never rescue Evelyn.")
+        if feature == "bag":
+            print("You chew on the old bag a bit and think to yourself "
+                  "I better start coming up with some reasonable things "
+                  "to do or I'll never rescue Evelyn.")
+    if verb == "drink":
+        print("I can't drink that.")
+    if verb == "smell":
+        if feature == "door":
+            print("Smells like oak.")
+        else:
+            print("The smell is foul. This has been here a while.")
+    if verb == "listen to":
+        print("You hear the sounds of the wind rustling the leaves of the "
+              "nearby trees.")
+    if verb == "climb":
+        print("There's nothing to climb.")
+    if verb == "duck":
+        print("You duck quickly and then stand back up.")
+
+    save_object_state(current_room)
+
+
+def room_1_item_handler(current_room, verb, item):
+    player = current_room.get_player()
+
+    if verb == "take":
+        if item == "sword":
+            player.add_item(current_room.get_item("sword"))
+    if verb == "use":
+        if item == "sword":
+            print("You start swinging your sword around like a lunatic. If "
+                  "anyone was around to see you I'm sure they'd be terrified.")
+
+    save_object_state(current_room)
+
+
+def room_2_feature_handler(current_room, verb, feature):
+    feature_dict = current_room.get_features()
+
+    if verb == "take":
+        if feature == "rubble":
+            print("The pieces of rubble are to heavy to carry.")
+        if feature == "door":
+            print("Hmm let's see, if I unbolt the doors and go get about "
+                  "10 other villagers to help me carry them...on second "
+                  "thought maybe I should leave the doors where they are.")
+        else:
+            print("I can't take that.")
+    if verb == "use":
+        print("I can't use that. Better move on or find something I can "
+              "use.")
+    if verb == "drop":
+        print("Drop what? I'm not carrying that.")
+    if verb == "look at":
+        if feature == "rubble":
+            print("You take a close look at the {}".format(feature))
+            print(feature_dict[feature])
+            if current_room.get_puzzle_status("rope"):
+                rope_feature = ("The rope is taut, and looks as though it is "
+                                "meant to trip someone walking toward the "
+                                "inner door.")
+                current_room.add_feature("rope", rope_feature)
+                current_room.set_puzzle_status("rope", False)
+        if feature == "rope":
+            print("You take a close look at the {}".format(feature))
+            print(feature_dict[feature])
+        if feature == "writing":
+            if (current_room.get_puzzle_status("rope") or
+               "rope" in current_room.get_features()):
+                print("You walk toward the door to inspect the writing.")
+                rope_trap(current_room)
+            else:
+                print("You take a close look at the {}".format(feature))
+                print(feature_dict[feature])
+    if verb == "eat":
+        if feature == "rubble":
+            print("You take a bite of some rubble and break a tooth. Ouch!")
+        if feature == "door":
+            print("You naw on the oak doors a bit. Yup that's oak all "
+                  "right...")
+        if feature == "writing":
+            print("You can't eat writing, that's silly.")
+    if verb == "drink":
+        print("I can't drink that.")
+    if verb == "smell":
+        if feature == "door":
+            print("Smells like oak.")
+        if feature == "writing":
+            print("The writing smells foul.")
+        if feature == "rubble":
+            print("Ahh nothing like the smell of some good rubble.")
+    if verb == "listen to":
+        print("All quite...too quite.")
+    if verb == "climb":
+        if feature == "rubble":
+            print("You climb on top of a pile of rubble. Congrats you're king "
+                  "of rubble mountain.")
+    if verb == "duck":
+        print("You duck quickly and then stand back up.")
+
+    save_object_state(current_room)
+
+
+def room_2_item_handler(current_room, verb, item):
+    player = current_room.get_player()
+
+    if verb == "take":
+        if item == "sword":
+            player.add_item(current_room.get_item("sword"))
+    if verb == "use":
+        if item == "sword":
+            if "rope" in current_room.get_features():
+                print("You kneel down and cut the rope. As soon as the rope "
+                      "is cut you here a click and a crossbow bolt zooms over "
+                      "your head. Good thing I saw this trap ahead of time.")
+                current_room.remove_feature("rope")
+
+    save_object_state(current_room)
+
+
+def rope_trap(current_room):
+    print("As you walk toward the door, between the scattered rubble, "
+          "your foot trips on a small hard to see rope. You here a "
+          "click...")
+
+    response = input("Type some text: ")
+    response.lower().strip()
+
+    if response == "duck":
+        print("You duck just as a crossbow bolt passes over head. "
+              "A narrow miss. I should probably inspect rooms more "
+              "closely in the future.")
+    else:
+        print("Before you can do anything a crossbow bolt flies "
+              "across the room from a hidden opening and strikes "
+              "you in the shoulder. Ouch should have ducked.")
+
+    current_room.set_puzzle_status("rope", False)
+    current_room.remove_feature("rope")
+
+    save_object_state(current_room)
+
+
+def take_action(current_room, action):
+    """From action list call the right function."""
+    player = current_room.get_player()
+
+    # Handle any error output
+    if action["error"] is not None:
+        print(action["error"])
+
+    # Handle the standard actions
+    elif action["standard_action"] is not None:
+        return handle_standard_action(current_room, player, action)
+
+    # Handle the directions
+    elif action["direction"] is not None:
+        # Handle room names
+        if (current_room.get_name() == "entrance_hall" and
+            (action["direction"] == 'east' or
+             action["direction"] == "mess hall") and
+           (current_room.get_puzzle_status("rope") or
+           "rope" in current_room.get_features())):
+            rope_trap()
+
+        elif action["direction"] != "north" and \
+                action["direction"] != "east" and \
+                action["direction"] != "south" and \
+                action["direction"] != "west":
+            desired_room = action["direction"]
+
+            adjacent_rooms = current_room.get_adjacent_rooms()
+            direction = ""
+
+            if desired_room in adjacent_rooms.values():
+                # Get the key to get the direction
+                for key in adjacent_rooms.keys():
+                    if adjacent_rooms[key] == desired_room:
+                        direction = key
+
+                if direction != "":
+                    travel(current_room, direction)
+                else:
+                    print("That room is not connected to the "
+                          "current room!")
+
+        else:
+            travel(current_room, action["direction"])
+
+    elif (action["verb"] is not None and
+          action["feature"] is not None and
+          action["feature"] in current_room.get_features()):
+        if current_room.get_name() == "dungeon entrance":
+            room_1_feature_handler(current_room, action["verb"],
+                                   action["feature"])
+        elif current_room.get_name() == "entrance hall":
+            room_2_feature_handler(current_room, action["verb"],
+                                   action["feature"])
+
+    elif (action["verb"] is not None and
+          action["item"] is not None and
+          action["item"] in player.get_item_names()):
+        if current_room.get_name() == "dungeon entrance":
+            room_1_item_handler(current_room, action["verb"],
+                                action["item"])
+        elif current_room.get_name() == "entrance hall":
+            room_2_item_handler(current_room, action["verb"],
+                                action["item"])
+
+    save_object_state(current_room)
 
 
 def handle_standard_action(current_room, player, action):
@@ -122,7 +363,19 @@ def handle_standard_action(current_room, player, action):
             print("\nYour backpack is empty!")
         else:
             print("\nYour backpack has: ")
-            print("\n".join(player.get_inventory()))
+
+            for item in player.get_inventory():
+                print(item.get_name())
+
+            # equipped_item = player.get_equipped_item()
+            # # if equipped_item is not None:
+            # #     print("Equipped item: {}".format(equipped_item.get_name()))
+            # # else:
+            # #     print("Equipped item: None")
+    elif action["standard_action"] == "savegame":
+        save_game(current_room)
+    elif action["standard_action"] == "loadgame":
+        load_game()
 
 
 def travel(current_room, direction):  # This will also need to handle room name
@@ -152,7 +405,13 @@ def travel(current_room, direction):  # This will also need to handle room name
 
             save_object_state(new_room)
 
-            return new_room
+            # Print out room description.
+            if player.has_memory(new_room_name):
+                print(new_room.get_short_description())
+            else:
+                player.add_memory(new_room_name)
+
+                print(new_room.get_description())
 
         else:
             print("The door is locked!")
@@ -160,8 +419,6 @@ def travel(current_room, direction):  # This will also need to handle room name
 
     else:
         print("\nThere is no room in that direction!")
-
-    return current_room
 
 
 def combat(player, monster):
@@ -227,18 +484,6 @@ def start_game(player_name):
     current_room = load_object("dungeon_entrance")
 
     return current_room
-
-
-def take_action(current_room, action):
-    """From action list call the right function."""
-    if action[0] == 'travel':
-        return travel(current_room, action[1])
-    elif action[0] == 'inspect':
-        player = current_room.get_player()
-
-        player.inspect(action[1])
-    elif action[0] == 'menu':
-        return game_menu(current_room)
 
 
 def is_game_over(player):

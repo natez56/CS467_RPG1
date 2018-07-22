@@ -23,13 +23,15 @@ def parse_input(input):
                        'dungeon entrance']
 
     standard_action_array = ['help', 'look', 'gamemenu', 'game menu',
-                             'inventory']
+                             'inventory', 'savegame', 'loadgame']
 
-    verb_array = ['take', 'use', 'drop', 'look at', 'drink']
+    verb_array = ['take', 'use', 'drop', 'look at', 'eat', 'drink', 'smell',
+                  'listen to', 'climb', 'duck']
 
-    item_array = ['dagger', 'healing potion', 'key']
+    item_array = ['sword', 'potion', 'key']
 
-    feature_array = ['dead body', 'pile of papers', 'dirty sink']
+    feature_array = ['body', 'door', 'cloak', 'bag', 'writing', 'rope',
+                     'rubble']
 
     go_array = ['go', 'go to', 'move', 'move to', 'walk', 'walk to', 'run',
                 'run to']
@@ -251,6 +253,6 @@ def parse_input(input):
                     invalid = True
                     # assigned_tokens['feature'] = None
 
-    print(assigned_tokens.items())
+    print("\n{}".format(assigned_tokens.items()))
 
     return assigned_tokens
