@@ -183,16 +183,14 @@ def init_room_3():
     door_map = {'north': True, 'east': False, 'west': False}
 
     # Set features in room.
-    bread_feature = ("As you walk through the hall you see a torn piece of "
-                     "French bread. It looks like it might still be fresh "
-                     "enough to eat. ")
+    chicken_feature = ("As you walk through the hall you see a torn piece of "
+                       "chicken. It looks like it might still be fresh "
+                       "enough to eat. ")
 
-    skeleton_feature = ("Suddenly you hear bones rattle together... They "
-                        "assemble into a tall skeleton. The skeleton "
-                        "unsheaths a chipped, long sword. A battle is "
-                        "imminent! ")
+    armor_feature = ("Suddenly you hear armor rattle... A large suit "
+                     "of armor crashes to the ground near you. ")
 
-    feature_dict = {"bread": bread_feature, "skeleton": skeleton_feature}
+    feature_dict = {"chicken": chicken_feature, "armor": armor_feature}
 
     # Instantiate room object.
     mess_hall = Room(name, description, item_list, monster_list, player,
@@ -209,30 +207,37 @@ def init_room_4():
 
     """
     name = "store_room"
-    description = ("At the end of the path in a clearing there is a large "
-                   "stone fortress. Nothing grows near the fortress walls. "
-                   "There is a large double door of dark oak. Just outside "
-                   "the entrance is a huddled mass on the ground. Could it be "
-                   "Evelyn?",
-                   "I'm at the fortress entrance, the large oak double doors "
-                   "are slightly ajar."
+    description = ("The room has large shelves that go from the floor "
+                   "all the way to the very high ceilings. There is a "
+                   "stone area for refrigeration and hanging animal "
+                   "carcasses from the ceiling. "
                    )
 
     # Init items
-    # Item 1 - rusty_sword
-    sword_name = "Rusty Sword"
-    sword_description = ("A rusty sword. It's long since lost its edge. "
-                         "Who knows, you might be able to bludgeon monsters "
-                         "with it.")
-    sword_durability = None
-    sword_stats = {"attack_power": 1}
+    # Item 1 - empty_jar
+    empty_jar_name = "Empty Jar"
+    sword_description = ("A clear, empty jar. It has some green slimy "
+                         "residue in it. ")
+    empty_jar_durability = None
+    empty_jar_stats = None
 
-    rusty_sword = Item(sword_name, sword_description, sword_durability,
-                       sword_stats)
+    empty_jar = Item(empty_jar_name, empty_jar_description,
+                     empty_jar_durability, empty_jar_stats)
+
+    # Item 2 - letter
+    letter_name = "Letter"
+    letter_description = ("The letter has a scrawled ink lettering "
+                          "that is hard to make out. It looks like "
+                          "it might be written in distress... ")
+    letter_durability = None
+    letter_stats = None
+
+    letter = Item(letter_name, letter_description, letter_durability,
+                  letter_stats)
 
     # Set item list
     item_list = []
-    item_list.append(rusty_sword)
+    item_list.append(empty_jar, letter)
 
     # Set monster list
     monster_list = []
@@ -246,25 +251,16 @@ def init_room_4():
     door_map = {'north': True, 'west': False}
 
     # Set features in room.
-    door_feature = ("The doors are thick and sturdy. One door appears to be "
-                    "slightly ajar."
+    broom_feature = ("A broom in the corner of the room looks like it "
+                     "is moving. Suddenly, the boom shoots up and flies "
+                     "around the room before retuning to the corner. "
+                     )
+
+    rice_feature = ("A bag of rice fell over on the top shelf and dumps "
+                    "rice down onto the floor. "
                     )
 
-    body_feature = ("The dark mass comes into view. You see that it is formed "
-                    "of a heavy traveling cloak and bag. Bones peak out from "
-                    "underneath. You recognize the clothes as the kind worn "
-                    "by traveling traders in the mountains. This body has "
-                    "been here a while. Nearby on the ground is a rusty sword."
-                    )
-
-    cloak_feature = "The cloak is old an torn. It will not be of use."
-
-    bag_feature = ("The bag is empty and torn. Nothing of the traders goods "
-                   "remain."
-                   )
-
-    feature_dict = {"door": door_feature, "body": body_feature,
-                    "cloak": cloak_feature, "bag": bag_feature}
+    feature_dict = {"broom": broom_feature, "rice": rice_feature}
 
     # Instantiate room object.
     store_room = Room(name, description, item_list, monster_list, player,
@@ -281,24 +277,26 @@ def init_room_5():
 
     """
     name = "kitchen"
-    description = (""
+    description = ("The room before you is clearly the kitchen of the "
+                   "mansion. There are fish still on cutting boards. "
+                   "The smell is rancid. It appears as though no one has "
+                   "cleaned the kitchen for a very long time."
                    )
 
     # Init items
-    # Item 1 - rusty_sword
-    sword_name = "Rusty Sword"
-    sword_description = ("A rusty sword. It's long since lost its edge. "
-                         "Who knows, you might be able to bludgeon monsters "
-                         "with it.")
-    sword_durability = None
-    sword_stats = {"attack_power": 1}
+    # Item 1 - magic_resistant_oven_mitt
+    oven_mitt_name = "Magic Resistant Oven Mitt"
+    oven_mitt_description = ("The oven mitt glows with an orange hue. "
+                             "The outside is warm to the touch. ")
+    oven_mitt_durability = None
+    oven_mitt_stats = {"magic_defense": 3}
 
-    rusty_sword = Item(sword_name, sword_description, sword_durability,
-                       sword_stats)
+    oven_mitt = Item(oven_mitt_name, oven_mitt_description,
+                     oven_mitt_durability, oven_mitt_stats)
 
     # Set item list
     item_list = []
-    item_list.append(rusty_sword)
+    item_list.append(oven_mitt)
 
     # Set monster list
     # ADD A CORROSIVE SLUDGE TO THIS ROOM &^T*Y(&^&%*()&^&*()^%&()^%&(^&))
@@ -313,25 +311,14 @@ def init_room_5():
     door_map = {'south': False}
 
     # Set features in room.
-    door_feature = ("The doors are thick and sturdy. One door appears to be "
-                    "slightly ajar."
-                    )
+    rat_feature = ("A dark mass can be seen in the corner of the room. "
+                   "As you walk towards it, it scatters across the floor "
+                   "into a nearby drain. ")
 
-    body_feature = ("The dark mass comes into view. You see that it is formed "
-                    "of a heavy traveling cloak and bag. Bones peak out from "
-                    "underneath. You recognize the clothes as the kind worn "
-                    "by traveling traders in the mountains. This body has "
-                    "been here a while. Nearby on the ground is a rusty sword."
-                    )
+    sink_feature = ("The massive double basin sink is filled to the brim "
+                    "with dishes covered in sludge. ")
 
-    cloak_feature = "The cloak is old an torn. It will not be of use."
-
-    bag_feature = ("The bag is empty and torn. Nothing of the traders goods "
-                   "remain."
-                   )
-
-    feature_dict = {"door": door_feature, "body": body_feature,
-                    "cloak": cloak_feature, "bag": bag_feature}
+    feature_dict = {"rat": rat_feature, "sink": sink_feature}
 
     # Instantiate room object.
     kitchen = Room(name, description, item_list, monster_list, player,
