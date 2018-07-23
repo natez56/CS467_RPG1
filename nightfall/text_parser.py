@@ -22,6 +22,7 @@ def parse_input(input):
             feature that the command is acting on.
 
     """
+    # citation: https://www.nltk.org/ helped with the idea of tokens
     # categories for command words
     assigned_tokens = {
         'verb': None,
