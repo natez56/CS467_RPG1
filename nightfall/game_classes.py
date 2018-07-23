@@ -19,7 +19,7 @@ class Room:
 
     """
     def __init__(self, name, description, item_list, monster_list,
-                 player, adjacent_rooms, door_map, features):
+                 player, adjacent_rooms, door_map, features, puzzle_dict):
         self.name = name
         self.description = description
         self.item_list = item_list
@@ -28,6 +28,7 @@ class Room:
         self.adjacent_rooms = adjacent_rooms
         self.door_map = door_map
         self.features = features
+        self.puzzle_dict = puzzle_dict
 
     def get_description(self):  # need a short and long description based on if
         return self.description[0]  # a player has been in the room before
@@ -47,8 +48,26 @@ class Room:
     def get_monsters(self):
         return self.monster_list
 
-    def get_items(self):
+    def get_item_list(self):
         return self.item_list
+
+    def get_item_names(self):
+        name_list = []
+
+        for item in self.item_list:
+            name_list.append(item.get_name())
+
+        return name_list
+
+    def get_item(self, item_name):
+        for item in self.item_list:
+            if item.get_name() == item_name:
+                return item
+
+        return None
+
+    def add_feature(self, feature, feature_description):
+        self.features[feature] = feature_description
 
     def get_features(self):
         return self.features
@@ -76,6 +95,15 @@ class Room:
 
     def set_player(self, player):
         self.player = player
+
+    def get_puzzle_dict(self):
+        return self.puzzle_dict
+
+    def get_puzzle_status(self, puzzle_name):
+        return self.puzzle_dict[puzzle_name]
+
+    def set_puzzle_status(self, puzzle_name, status):
+        self.puzzle_dict[puzzle_name] = status
 
     def is_locked(self, door):
         return self.door_map[door]
@@ -206,6 +234,8 @@ class Player(Character):
             self.backpack.remove(item)
 
     def add_item(self, item):
+        print("Added {} to your inventory.".format(item.get_name()))
+
         self.backpack.append(item)
 
     def unequip_item(self):
@@ -292,6 +322,14 @@ class Player(Character):
 
     def get_inventory(self):
         return self.backpack
+
+    def get_item_names(self):
+        name_list = []
+
+        for item in self.backpack:
+            name_list.append(item.get_name())
+
+        return name_list
 
     def level_up(self):
         self.level += 1

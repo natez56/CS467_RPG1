@@ -284,7 +284,8 @@ class TestSaveGame():
 
         fm.save_object_state(room)
 
-        loaded_room = fm.load_game(room)
+        fm.load_game()
+        loaded_room = fm.get_current_room()
 
         assert loaded_room.get_player() is not None
 
