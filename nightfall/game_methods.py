@@ -92,6 +92,20 @@ def game_menu(current_room):  # command needed to bring up this menu.
     elif menu_choice == "load":
         load_game()
 
+        room = get_current_room()
+        player = room.get_player()
+
+        # Print out room description.
+        if player.has_memory(room.get_name()):
+            print(room.get_short_description())
+
+        else:
+            player.add_memory(room.get_name())
+
+            print(room.get_description())
+
+        print_item_descriptions(room)
+
     elif menu_choice == "quit":
         print("\nThank you for playing Nightfall. "
               "Have a fortuitous evening... \n")
@@ -160,16 +174,47 @@ def room_1_feature_handler(current_room, verb, feature):
     save_object_state(current_room)
 
 
-def room_1_item_handler(current_room, verb, item):
+def general_item_handler(current_room, verb, item_name):
     player = current_room.get_player()
 
     if verb == "take":
-        if item == "sword":
-            player.add_item(current_room.get_item("sword"))
-    if verb == "use":
-        if item == "sword":
+        if item_name not in player.get_item_names():
+            item = current_room.get_item(item_name)
+
+            player.add_item(item)
+
+            current_room.remove_item(item)
+        else:
+            print("That item is already in your inventory.")
+    elif verb == "look at":
+        if item_name in current_room.get_item_names():
+            print(current_room.get_item(item_name).get_description())
+        else:
+            print(player.get_item(item_name).get_description())
+    elif verb == "drop":
+        if item_name in player.get_item_names():
+            item = player.drop_item(item_name)
+
+            current_room.add_item(item)
+        else:
+            print("You're not carrying that item currently.")
+
+    save_object_state(current_room)
+
+
+def room_1_item_handler(current_room, verb, item_name):
+    player = current_room.get_player()
+
+    if verb == "take" or verb == "look at" or verb == "drop":
+        general_item_handler(current_room, verb, item_name)
+
+    elif verb == "use":
+        # Make these custom per room.
+        if item_name == "sword" and "sword" in player.get_item_names():
             print("You start swinging your sword around like a lunatic. If "
                   "anyone was around to see you I'm sure they'd be terrified.")
+        elif item_name not in player.get_item_names():
+            print("You're not carrying that item currently.")
 
     save_object_state(current_room)
 
@@ -241,19 +286,23 @@ def room_2_feature_handler(current_room, verb, feature):
     save_object_state(current_room)
 
 
-def room_2_item_handler(current_room, verb, item):
+def room_2_item_handler(current_room, verb, item_name):
     player = current_room.get_player()
 
-    if verb == "take":
-        if item == "sword":
-            player.add_item(current_room.get_item("sword"))
-    if verb == "use":
-        if item == "sword":
+    if verb == "take" or verb == "look at" or verb == "drop":
+        general_item_handler(current_room, verb, item_name)
+
+    elif verb == "use":
+        if item_name == "sword" and "sword" in player.get_item_names():
             if "rope" in current_room.get_features():
                 print("You kneel down and cut the rope. As soon as the rope "
                       "is cut you here a click and a crossbow bolt zooms over "
                       "your head. Good thing I saw this trap ahead of time.")
+
                 current_room.remove_feature("rope")
+
+        elif item_name not in player.get_item_names():
+            print("You are not carrying that item currently.")
 
     save_object_state(current_room)
 
@@ -337,9 +386,7 @@ def take_action(current_room, action):
             room_2_feature_handler(current_room, action["verb"],
                                    action["feature"])
 
-    elif (action["verb"] is not None and
-          action["item"] is not None and
-          action["item"] in player.get_item_names()):
+    elif action["verb"] is not None and action["item"] is not None:
         if current_room.get_name() == "dungeon entrance":
             room_1_item_handler(current_room, action["verb"],
                                 action["item"])
@@ -347,7 +394,33 @@ def take_action(current_room, action):
             room_2_item_handler(current_room, action["verb"],
                                 action["item"])
 
+    else:
+        print("I can't do that.")
+
     save_object_state(current_room)
+
+
+def print_item_descriptions(current_room):
+    if len(current_room.get_item_names()) == 1:
+        item_list = current_room.get_item_names()
+
+        print("\nAs you enter the area you also notice a {} on the "
+              "ground.".format(item_list[0]))
+
+    if len(current_room.get_item_names()) == 2:
+        item_list = current_room.get_item_names()
+
+        print("\nAs you enter the area you also notice a {} and a {} on "
+              "the ground.".format(item_list[0], item_list[1]))
+
+    elif len(current_room.get_item_names()) > 2:
+        print("\nAs you enter the area you also notice ")
+
+        for i, item_name in enumerate(current_room.get_item_names()):
+            if i == len(current_room.get_item_names()) - 1:
+                print("and a {} on the ground.".format(item_name))
+            else:
+                print("a {},".format(item_name))
 
 
 def handle_standard_action(current_room, player, action):
@@ -358,6 +431,9 @@ def handle_standard_action(current_room, player, action):
         help_menu()
     elif action["standard_action"] == "look":
         print(current_room.get_description())
+
+        print_item_descriptions(current_room)
+
     elif action["standard_action"] == "inventory":
         if not player.get_inventory():
             print("\nYour backpack is empty!")
@@ -376,6 +452,22 @@ def handle_standard_action(current_room, player, action):
         save_game(current_room)
     elif action["standard_action"] == "loadgame":
         load_game()
+
+        room = get_current_room()
+        player = room.get_player()
+
+        # Print out room description.
+        if player.has_memory(room.get_name()):
+            print(room.get_short_description())
+
+        else:
+            player.add_memory(room.get_name())
+
+            print(room.get_description())
+
+        print_item_descriptions(room)
+
+    save_object_state(current_room)
 
 
 def travel(current_room, direction):  # This will also need to handle room name
@@ -403,15 +495,18 @@ def travel(current_room, direction):  # This will also need to handle room name
 
             new_room.set_player(player)
 
-            save_object_state(new_room)
-
             # Print out room description.
             if player.has_memory(new_room_name):
                 print(new_room.get_short_description())
+
             else:
                 player.add_memory(new_room_name)
 
                 print(new_room.get_description())
+
+            print_item_descriptions(new_room)
+
+            save_object_state(new_room)
 
         else:
             print("The door is locked!")

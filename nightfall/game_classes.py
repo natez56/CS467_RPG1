@@ -16,6 +16,8 @@ class Room:
             representing if the door is locked (True if locked).
         features(dictionary(str, str)): Dictionary contains all of this rooms
             feature names mapped to the text description of that feature.
+        puzzle_dict(dictionary(str, bool)): Dictionary used to track the state
+            of puzzles in a room. True means the puzzle is not solved.
 
     """
     def __init__(self, name, description, item_list, monster_list,
@@ -226,12 +228,18 @@ class Player(Character):
         if thing not in self.memory:
             self.memory.append(thing)
 
-    def drop_item(self, item):
-        if self.equipped_item is not None and self.equipped_item == item:
+    def drop_item(self, item_name):
+        if (self.equipped_item is not None and
+           self.equipped_item.get_name() == item_name):
             self.unequip_item()
 
-        if item in self.backpack:
-            self.backpack.remove(item)
+        for item in self.backpack:
+            if item.get_name() == item_name:
+                print("Dropped item {}.".format(item_name))
+
+                self.backpack.remove(item)
+
+                return item
 
     def add_item(self, item):
         print("Added {} to your inventory.".format(item.get_name()))
@@ -322,6 +330,11 @@ class Player(Character):
 
     def get_inventory(self):
         return self.backpack
+
+    def get_item(self, item_name):
+        for item in self.backpack:
+            if item.get_name() == item_name:
+                return item
 
     def get_item_names(self):
         name_list = []

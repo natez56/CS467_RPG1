@@ -253,6 +253,6 @@ def parse_input(input):
                     invalid = True
                     # assigned_tokens['feature'] = None
 
-    print("\n{}".format(assigned_tokens.items()))
+    # print("\n{}".format(assigned_tokens.items()))
 
     return assigned_tokens

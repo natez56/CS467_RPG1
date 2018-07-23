@@ -16,7 +16,7 @@ def init_room_1():
     description = ("At the end of the path in a clearing there is a large "
                    "stone fortress. Nothing grows near the fortress walls. "
                    "There is a large double door of dark oak. Just outside "
-                   "the entrance is a huddled mass on the ground. Could it be "
+                   "the entrance is a body on the ground. Could it be "
                    "Evelyn?",
                    "I'm at the fortress entrance, the large oak double doors "
                    "are slightly ajar."
@@ -54,11 +54,11 @@ def init_room_1():
                     "slightly ajar."
                     )
 
-    body_feature = ("The dark mass comes into view. You see that it is formed "
+    body_feature = ("The body comes into view. You see that it is formed "
                     "of a heavy traveling cloak and bag. Bones peak out from "
                     "underneath. You recognize the clothes as the kind worn "
                     "by traveling traders in the mountains. This body has "
-                    "been here a while. Nearby on the ground is a rusty sword."
+                    "been here a while."
                     )
 
     cloak_feature = "The cloak is old an torn. It will not be of use."
