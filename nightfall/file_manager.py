@@ -6,7 +6,7 @@ import shutil
 
 
 def init_room_1():
-    """Instantiates fortress_entrance room.
+    """Instantiates dungeon_entrance room.
 
     Returns:
         :obj:Room: Room object.
@@ -98,14 +98,31 @@ def init_room_2():
                    "wall and a door leading father into the fortress."
                    )
 
+    # Init items
+    # Item 1 - chest_key
+    chest_key_name = "Chest Key"
+    chest_key_description = ("An elaborate golden key.")
+    chest_key_durability = None
+    chest_key_stats = None
+
+    chest_key = Item(chest_key_name, chest_key_description,
+                     chest_key_durability, chest_key_stats)
+
+    # Set item list
     item_list = []
+    item_list.append(chest_key)
+
+    # Set monster list
+    # ADD A GOBLIN TO THIS ROOM %^&*(^%&*(^%$*()^%$^&*(^&%^(^%^(^%)))))
     monster_list = []
+
+    # Set player to None
     player = None
 
     # Tracks which rooms connect to this room. Pairs direction with room name.
     # Example: {'north': 'entrance_hall'}
-    adjacent_rooms = {'north': None, 'east': None, 'south': 'dungeon entrance',
-                      'west': None}
+    adjacent_rooms = {'north': None, 'east': 'mess hall',
+                      'south': 'dungeon entrance', 'west': None}
 
     # Tracks which doors are locked.  False means unlocked.
     door_map = {'east': False, 'south': False}
@@ -133,6 +150,192 @@ def init_room_2():
                          adjacent_rooms, door_map, feature_dict, puzzle_dict)
 
     return entrance_hall
+
+
+def init_room_3():
+    """Instantiates mess_hall room.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "mess_hall"
+    description = ("A long dark room appears before you. It looks as though "
+                   "this is where the people of the mansion eat. There are "
+                   "two long tables that stretch the full length of the room "
+                   "and there are suits of armor lining both walls. The "
+                   "tables still have dirty plates scattered about ."
+                   )
+
+    # Init items
+    # Item 1 - bread
+    bread_name = "Bread"
+    bread_description = ("A fresh chunk of French bread.")
+    bread_durability = None
+    bread_stats = None
+
+    bread = Item(bread_name, bread_description, bread_durability,
+                 bread_stats)
+
+    # Set item list
+    item_list = []
+    item_list.append(bread)
+
+    # Set monster list
+    # ADD A SKELETON TO THIS ROOM %&^*()&^&%^()&(^*%&$&^&()&(^*%&^()^))
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': 'kitchen', 'east': 'store room', 'south': None,
+                      'west': 'entrance hall'}
+    door_map = {'north': True, 'east': False, 'west': False}
+
+    # Set features in room.
+    chicken_feature = ("As you walk through the hall you see a torn piece of "
+                       "chicken. It looks like it might still be fresh "
+                       "enough to eat. ")
+
+    armor_feature = ("Suddenly you hear armor rattle... A large suit "
+                     "of armor crashes to the ground near you. ")
+
+    feature_dict = {"chicken": chicken_feature, "armor": armor_feature}
+
+    # Instantiate room object.
+    mess_hall = Room(name, description, item_list, monster_list, player,
+                     adjacent_rooms, door_map, feature_dict)
+
+    return mess_hall
+
+
+def init_room_4():
+    """Instantiates store_room room.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "store_room"
+    description = ("The room has large shelves that go from the floor "
+                   "all the way to the very high ceilings. There is a "
+                   "stone area for refrigeration and hanging animal "
+                   "carcasses from the ceiling. "
+                   )
+
+    # Init items
+    # Item 1 - empty_jar
+    empty_jar_name = "Empty Jar"
+    sword_description = ("A clear, empty jar. It has some green slimy "
+                         "residue in it. ")
+    empty_jar_durability = None
+    empty_jar_stats = None
+
+    empty_jar = Item(empty_jar_name, empty_jar_description,
+                     empty_jar_durability, empty_jar_stats)
+
+    # Item 2 - letter
+    letter_name = "Letter"
+    letter_description = ("The letter has a scrawled ink lettering "
+                          "that is hard to make out. It looks like "
+                          "it might be written in distress... ")
+    letter_durability = None
+    letter_stats = None
+
+    letter = Item(letter_name, letter_description, letter_durability,
+                  letter_stats)
+
+    # Set item list
+    item_list = []
+    item_list.append(empty_jar, letter)
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': 'washroom', 'east': None, 'south': None,
+                      'west': 'mess hall'}
+    door_map = {'north': True, 'west': False}
+
+    # Set features in room.
+    broom_feature = ("A broom in the corner of the room looks like it "
+                     "is moving. Suddenly, the boom shoots up and flies "
+                     "around the room before retuning to the corner. "
+                     )
+
+    rice_feature = ("A bag of rice fell over on the top shelf and dumps "
+                    "rice down onto the floor. "
+                    )
+
+    feature_dict = {"broom": broom_feature, "rice": rice_feature}
+
+    # Instantiate room object.
+    store_room = Room(name, description, item_list, monster_list, player,
+                      adjacent_rooms, door_map, feature_dict)
+
+    return store_room
+
+
+def init_room_5():
+    """Instantiates kitchen room.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "kitchen"
+    description = ("The room before you is clearly the kitchen of the "
+                   "mansion. There are fish still on cutting boards. "
+                   "The smell is rancid. It appears as though no one has "
+                   "cleaned the kitchen for a very long time."
+                   )
+
+    # Init items
+    # Item 1 - magic_resistant_oven_mitt
+    oven_mitt_name = "Magic Resistant Oven Mitt"
+    oven_mitt_description = ("The oven mitt glows with an orange hue. "
+                             "The outside is warm to the touch. ")
+    oven_mitt_durability = None
+    oven_mitt_stats = {"magic_defense": 3}
+
+    oven_mitt = Item(oven_mitt_name, oven_mitt_description,
+                     oven_mitt_durability, oven_mitt_stats)
+
+    # Set item list
+    item_list = []
+    item_list.append(oven_mitt)
+
+    # Set monster list
+    # ADD A CORROSIVE SLUDGE TO THIS ROOM &^T*Y(&^&%*()&^&*()^%&()^%&(^&))
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': None, 'east': None, 'south': 'mess hall',
+                      'west': None}
+    door_map = {'south': False}
+
+    # Set features in room.
+    rat_feature = ("A dark mass can be seen in the corner of the room. "
+                   "As you walk towards it, it scatters across the floor "
+                   "into a nearby drain. ")
+
+    sink_feature = ("The massive double basin sink is filled to the brim "
+                    "with dishes covered in sludge. ")
+
+    feature_dict = {"rat": rat_feature, "sink": sink_feature}
+
+    # Instantiate room object.
+    kitchen = Room(name, description, item_list, monster_list, player,
+                   adjacent_rooms, door_map, feature_dict)
+
+    return kitchen
 
 
 def init_room_objects():
