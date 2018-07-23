@@ -18,7 +18,7 @@ def main():
 
         player = current_room.get_player()
 
-        print("Initial location: {}".format(current_room.get_name()))
+        # print("Initial location: {}".format(current_room.get_name()))
         # Print out room description.
         if player.has_memory(current_room.get_name()):
             print(current_room.get_short_description())

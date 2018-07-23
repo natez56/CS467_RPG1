@@ -32,8 +32,8 @@ class Room:
         self.features = features
         self.puzzle_dict = puzzle_dict
 
-    def get_description(self):  # need a short and long description based on if
-        return self.description[0]  # a player has been in the room before
+    def get_description(self):
+        return self.description[0]
 
     def get_short_description(self):
         return self.description[1]

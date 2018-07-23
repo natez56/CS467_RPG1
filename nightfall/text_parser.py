@@ -1,13 +1,27 @@
 def get_input():
-    """Get raw user input."""
+    """Get raw user input.
+
+    Returns:
+        str: Raw user input.
+
+    """
     user_input = input("Type some text: ")
+    print("")
 
     return user_input
 
 
 def parse_input(input):
-    """Divide input into recognizable components."""
+    """Divide input into recognizable components.
 
+    Args:
+        input (str): Raw user input.
+
+    Returns:
+        dictionary(str, str): Dictionary of command mapped to the item or
+            feature that the command is acting on.
+
+    """
     # categories for command words
     assigned_tokens = {
         'verb': None,
@@ -48,7 +62,8 @@ def parse_input(input):
 
     # this takes user input and puts it all into lowercase
     command = input.lower().strip()
-    print("You typed: ", command)
+    # ##### PRINT STATEMENT FOR TESTING #####
+    # print("You typed: ", command)
 
     # ignore certain words when parsing string
     ignored_words = ['a', 'an', 'the']
@@ -60,7 +75,9 @@ def parse_input(input):
             if word not in ignored_words:
                 new_string.append(word)
         new_command = ' '.join(new_string)
-        print("Here is the cleaned version: ", new_command)
+
+        # ##### PRINT STATEMENT FOR TESTING #####
+        # print("Here is the cleaned version: ", new_command)
         return new_command
 
     # run function to clean input string
@@ -87,7 +104,8 @@ def parse_input(input):
                == "walk " + dest or new_command2 == "walk to " + dest or\
                new_command2 == "run " + dest or new_command2 == "run to" +\
                dest:
-                print("Moving to the ", dest)
+                # ##### PRINT STATEMENT FOR TESTING #####
+                # print("Moving to the ", dest)
                 assigned_tokens['direction'] = dest
                 done = True
 
@@ -253,6 +271,7 @@ def parse_input(input):
                     invalid = True
                     # assigned_tokens['feature'] = None
 
+    # ##### PRINT STATEMENT FOR TESTING #####
     # print("\n{}".format(assigned_tokens.items()))
 
     return assigned_tokens

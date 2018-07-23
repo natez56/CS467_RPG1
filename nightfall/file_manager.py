@@ -17,7 +17,7 @@ def init_room_1():
                    "stone fortress. Nothing grows near the fortress walls. "
                    "There is a large double door of dark oak. Just outside "
                    "the entrance is a body on the ground. Could it be "
-                   "Evelyn?",
+                   "your brother Evelyn?",
                    "I'm at the fortress entrance, the large oak double doors "
                    "are slightly ajar."
                    )
@@ -624,12 +624,7 @@ def save_game_state(current_room, destination_path):
 
 
 def load_game():
-    """Enables user to load prior saved game.
-
-    Returns:
-        :obj:Room: Returns the loaded Room object.
-
-    """
+    """Enables user to load prior saved game."""
     print("\nLoad Menu")
     print("Please type the number of the file you would like to load or press "
           "E to exit load menu.")
