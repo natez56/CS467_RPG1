@@ -463,8 +463,28 @@ def room_2_item_handler(current_room, verb, item_name):
     """
     player = current_room.get_player()
 
+    # Triggers rope trap if trap hasn't already been triggered.
+    if (verb == "look at" and item_name == "key" and
+            (current_room.get_puzzle_status("rope") or
+             "rope" in current_room.get_features())):
+
+            print("The golden key glitters on the floor among the rubble. "
+                  "You walk forward to take a closer look.")
+
+            rope_trap(current_room)
+
+    # Triggers rope trap if trap hasn't already been triggered.
+    elif (verb == "take" and item_name == "key" and
+            (current_room.get_puzzle_status("rope") or
+             "rope" in current_room.get_features())):
+
+            print("The golden key glitters on the floor among the rubble. "
+                  "You walk forward to pick up the key.")
+
+            rope_trap(current_room)
+
     # These verbs do not get unique handlers for this room.
-    if verb == "take" or verb == "look at" or verb == "drop":
+    elif verb == "take" or verb == "look at" or verb == "drop":
         general_item_handler(current_room, verb, item_name)
 
     # Verb use uniquely interacts with this rooms features.
@@ -596,7 +616,10 @@ def take_action(current_room, action):
                                    action["feature"])
 
     # Handle player / item interaction for a given room.
-    elif action["verb"] is not None and action["item"] is not None:
+    elif (action["verb"] is not None and action["item"] is not None
+          and (action["item"] in player.get_item_names() or
+          action["item"] in current_room.get_item_names())):
+
         if current_room.get_name() == "dungeon entrance":
             room_1_item_handler(current_room, action["verb"],
                                 action["item"])

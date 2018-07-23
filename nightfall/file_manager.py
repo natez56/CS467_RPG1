@@ -100,7 +100,7 @@ def init_room_2():
 
     # Init items
     # Item 1 - chest_key
-    chest_key_name = "Chest Key"
+    chest_key_name = "key"
     chest_key_description = ("An elaborate golden key.")
     chest_key_durability = None
     chest_key_stats = None
