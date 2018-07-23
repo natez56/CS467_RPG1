@@ -713,23 +713,27 @@ def handle_standard_action(current_room, player, action):
         save_game(current_room)
 
     elif action["standard_action"] == "loadgame":
-        load_game()
-
-        # Get information to print description of current room the player is
-        # in.
-        room = get_current_room()
-        player = room.get_player()
-
-        # Print out room description.
-        if player.has_memory(room.get_name()):
-            print(room.get_short_description())
+        if get_num_saved_games() < 1:
+            print("\nNo saved games to load.\n")
 
         else:
-            player.add_memory(room.get_name())
+            load_game()
 
-            print(room.get_description())
+            # Get information to print description of current room the player
+            # is in.
+            room = get_current_room()
+            player = room.get_player()
 
-        print_item_descriptions(room)
+            # Print out room description.
+            if player.has_memory(room.get_name()):
+                print(room.get_short_description())
+
+            else:
+                player.add_memory(room.get_name())
+
+                print(room.get_description())
+
+            print_item_descriptions(room)
 
     save_object_state(current_room)
 

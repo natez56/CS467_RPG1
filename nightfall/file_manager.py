@@ -490,7 +490,7 @@ def save_game(current_room):
         input_is_valid = False
         while not input_is_valid:
             file_name = input("\nPlease enter a title for your new saved game "
-                              "(no special characters allowed)\n")
+                              "(no special characters or spaces allowed)\n")
 
             i = 0
             chars_valid = True
