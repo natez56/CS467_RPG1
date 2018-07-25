@@ -122,7 +122,7 @@ def move_alias_check(current_room_name, user_input):
     return user_input
 
 
-def verb_alias_check(word_list):
+def verb_alias_check(command):
     """Check for aliases of 10 core verbs.
 
     Args:
@@ -135,18 +135,14 @@ def verb_alias_check(word_list):
             word_list as taken from text_parser.py
 
     """
-    print("word_list: {}".format(word_list))
     alias_dictionary = {}
 
     # Filled out dictionary for each of the 10 core verbs
     alias_dictionary["take"] = ["grab", "pick up"]
     # alias_dictionary["smell"] = ....
 
-    for i, word in enumerate(word_list):
+    for key in alias_dictionary:
+        for word in alias_dictionary[key]:
+            command = command.replace(word, key)
 
-        for alias in alias_dictionary:
-
-            if word in alias_dictionary[alias]:
-                word_list[i] = alias
-
-    return word_list
+    return command

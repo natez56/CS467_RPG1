@@ -118,10 +118,10 @@ def parse_input(input, current_room):
                 assigned_tokens['direction'] = dest
                 done = True
 
+    new_command2 = verb_alias_check(new_command2)
+
     # split each word in the string to be an element in an array
     clean_text = new_command2.split()
-
-    clean_text = verb_alias_check(clean_text)
 
     # CHECK FOR VERBS -- need to pop off words from array?
     if done is False:
