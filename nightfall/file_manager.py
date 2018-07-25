@@ -179,7 +179,7 @@ def init_room_3():
 
     # Init items
     # Item 1 - bread
-    bread_name = "bread"
+    bread_name = "piece of bread"
     bread_description = ("A fresh chunk of French bread.")
     bread_durability = None
     bread_stats = None
@@ -213,9 +213,11 @@ def init_room_3():
 
     feature_dict = {"chicken": chicken_feature, "armor": armor_feature}
 
+    puzzle_dict = None
+
     # Instantiate room object.
     mess_hall = Room(name, description, item_list, monster_list, player,
-                     adjacent_rooms, door_map, feature_dict)
+                     adjacent_rooms, door_map, feature_dict, puzzle_dict)
 
     return mess_hall
 
@@ -231,17 +233,18 @@ def init_room_4():
     description = ("The room has large shelves that go from the floor "
                    "all the way to the very high ceilings. There is a "
                    "stone area for refrigeration and hanging animal "
-                   "carcasses from the ceiling. To the west is the mess hall "
-                   "and to the north a steel door.",
-                   "I'm in the store room. To the west the mess hall and "
-                   "to the north a steel door."
+                   "carcasses from the ceiling. To the west a large oak door "
+                   "leads to the mess hall.  To the north a steel door.",
+                   "I'm in the store room. To the west a large oak door leads "
+                   "to the mess hall and "
+                   "to the north a steel door leads to some stairs."
                    )
 
     # Init items
     # Item 1 - empty_jar
-    empty_jar_name = "empty jar"
-    sword_description = ("A clear, empty jar. It has some green slimy "
-                         "residue in it. ")
+    empty_jar_name = "jar"
+    empty_jar_description = ("A clear, empty jar. It has some green slimy "
+                             "residue in it. ")
     empty_jar_durability = None
     empty_jar_stats = None
 
@@ -261,7 +264,7 @@ def init_room_4():
 
     # Set item list
     item_list = []
-    item_list.append(empty_jar, letter)
+    item_list.extend((empty_jar, letter))
 
     # Set monster list
     monster_list = []
@@ -286,9 +289,11 @@ def init_room_4():
 
     feature_dict = {"broom": broom_feature, "rice": rice_feature}
 
+    puzzle_dict = None
+
     # Instantiate room object.
     store_room = Room(name, description, item_list, monster_list, player,
-                      adjacent_rooms, door_map, feature_dict)
+                      adjacent_rooms, door_map, feature_dict, puzzle_dict)
 
     return store_room
 
@@ -302,9 +307,12 @@ def init_room_5():
     """
     name = "kitchen"
     description = ("The room before you is clearly the kitchen of the "
-                   "mansion. There are fish still on cutting boards. "
+                   "fortress. There are fish still on cutting boards. "
                    "The smell is rancid. It appears as though no one has "
-                   "cleaned the kitchen for a very long time."
+                   "cleaned the kitchen for a very long time. To the south "
+                   "a steel door leads to the mess hall.",
+                   "I'm in the kitchen. To the south a steel door leads to "
+                   "the mess hall."
                    )
 
     # Init items
@@ -344,9 +352,11 @@ def init_room_5():
 
     feature_dict = {"rat": rat_feature, "sink": sink_feature}
 
+    puzzle_dict = None
+
     # Instantiate room object.
     kitchen = Room(name, description, item_list, monster_list, player,
-                   adjacent_rooms, door_map, feature_dict)
+                   adjacent_rooms, door_map, feature_dict, puzzle_dict)
 
     return kitchen
 
@@ -362,8 +372,12 @@ def init_room_objects():
 
     fortress_entrance = init_room_1()
     entrance_hall = init_room_2()
+    mess_hall = init_room_3()
+    store_room = init_room_4()
+    kitchen = init_room_5()
 
-    room_list.extend((fortress_entrance, entrance_hall))
+    room_list.extend((fortress_entrance, entrance_hall, mess_hall, store_room,
+                      kitchen))
 
     return room_list
 

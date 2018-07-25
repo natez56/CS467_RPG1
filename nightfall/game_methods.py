@@ -566,13 +566,13 @@ def take_action(current_room, action):
     # Handle the directions to pass correct arguments to travel function.
     elif action["direction"] is not None:
         # Check for room 2 rope trap trigger.
-        if (current_room.get_name() == "entrance_hall" and
+        if (current_room.get_name() == "entrance hall" and
             (action["direction"] == 'east' or
              action["direction"] == "mess hall") and
            (current_room.get_puzzle_status("rope") or
            "rope" in current_room.get_features())):
 
-            rope_trap()
+            rope_trap(current_room)
 
         # Handle input indicating character wants to move rooms.
         elif action["direction"] != "north" and \
