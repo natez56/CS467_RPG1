@@ -120,3 +120,33 @@ def move_alias_check(current_room_name, user_input):
                 return key
 
     return user_input
+
+
+def verb_alias_check(word_list):
+    """Check for aliases of 10 core verbs.
+
+    Args:
+        word_list (list(str)): Corresponds to clean_text in text_parser.py 
+            file. Contains user input as a list of words.
+
+    Returns:
+        str: If an alias matches it returns one of the 10 core verbs the
+            game uses. If an alias does not match it returns the unmodified
+            word_list as taken from text_parser.py
+
+    """
+    print("word_list: {}".format(word_list))
+    alias_dictionary = {}
+
+    # Filled out dictionary for each of the 10 core verbs
+    alias_dictionary["take"] = ["grab", "pick up"]
+    # alias_dictionary["smell"] = ....
+
+    for i, word in enumerate(word_list):
+
+        for alias in alias_dictionary:
+
+            if word in alias_dictionary[alias]:
+                word_list[i] = alias
+
+    return word_list

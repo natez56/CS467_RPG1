@@ -103,8 +103,9 @@ def parse_input(input, current_room):
     # check if the command indicates a direction to move in
     if done is False:
         room_name = current_room.get_name()
-        print("room name: {}".format(room_name))
+
         new_command2 = move_alias_check(room_name, new_command2)
+
         for dest in direction_array:
             if new_command2 == dest or new_command2 == "go " + dest or\
                new_command2 == "go to " + dest or new_command2 == "move "\
@@ -119,6 +120,8 @@ def parse_input(input, current_room):
 
     # split each word in the string to be an element in an array
     clean_text = new_command2.split()
+
+    clean_text = verb_alias_check(clean_text)
 
     # CHECK FOR VERBS -- need to pop off words from array?
     if done is False:
