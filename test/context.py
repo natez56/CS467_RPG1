@@ -8,3 +8,4 @@ import file_manager
 import game_classes
 import game_methods
 import text_parser
+import aliases

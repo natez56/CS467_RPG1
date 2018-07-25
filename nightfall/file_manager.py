@@ -6,20 +6,20 @@ import shutil
 
 
 def init_room_1():
-    """Instantiates dungeon_entrance room.
+    """Instantiates fortress_entrance room.
 
     Returns:
         :obj:Room: Room object.
 
     """
-    name = "dungeon entrance"
+    name = "fortress entrance"
     description = ("At the end of the path in a clearing there is a large "
                    "stone fortress. Nothing grows near the fortress walls. "
-                   "There is a large double door of dark oak. Just outside "
-                   "the entrance is a body on the ground. Could it be "
-                   "your brother Evelyn?",
-                   "I'm at the fortress entrance, the large oak double doors "
-                   "are slightly ajar."
+                   "To the north the fortress entrance, a pair of large oak "
+                   "double doors. Just outside the entrance is a body on the "
+                   "ground. Could it be your brother Evelyn?",
+                   "I'm at the fortress entrance. To the north large oak "
+                   "double doors lead to the entrance hall."
                    )
 
     # Init items
@@ -73,11 +73,11 @@ def init_room_1():
     puzzle_dict = None
 
     # Instantiate room object.
-    dungeon_entrance = Room(name, description, item_list, monster_list, player,
-                            adjacent_rooms, door_map, feature_dict,
-                            puzzle_dict)
+    fortress_entrance = Room(name, description, item_list, monster_list,
+                             player, adjacent_rooms, door_map, feature_dict,
+                             puzzle_dict)
 
-    return dungeon_entrance
+    return fortress_entrance
 
 
 def init_room_2():
@@ -91,11 +91,14 @@ def init_room_2():
     description = ("Inside the fortress it is dark. There is rubble on the "
                    "floor from a partially collapsed left wall. Moonlight "
                    "shines through a gap in part of the collapsed wall, "
-                   "revealing what looks to be a door on the far side of the "
-                   "room. Above the door You can barely make out some "
-                   "writing...",
+                   "revealing what looks to be a painted door on the east "
+                   "side of the room. Behind me to the south are the large "
+                   "oak double doors. Above the painted door to the east you "
+                   "can barely make out some writing...",
                    "I'm in the entrance hall, there's goblin writing on the "
-                   "wall and a door leading father into the fortress."
+                   "wall. A painted door to the east leads to the mess hall. "
+                   "To the south are large oak double doors leading to the "
+                   "fortress entrance."
                    )
 
     # Init items
@@ -122,7 +125,7 @@ def init_room_2():
     # Tracks which rooms connect to this room. Pairs direction with room name.
     # Example: {'north': 'entrance_hall'}
     adjacent_rooms = {'north': None, 'east': 'mess hall',
-                      'south': 'dungeon entrance', 'west': None}
+                      'south': 'fortress entrance', 'west': None}
 
     # Tracks which doors are locked.  False means unlocked.
     door_map = {'east': False, 'south': False}
@@ -159,17 +162,24 @@ def init_room_3():
         :obj:Room: Room object.
 
     """
-    name = "mess_hall"
+    name = "mess hall"
     description = ("A long dark room appears before you. It looks as though "
                    "this is where the people of the mansion eat. There are "
                    "two long tables that stretch the full length of the room "
                    "and there are suits of armor lining both walls. The "
-                   "tables still have dirty plates scattered about ."
+                   "tables still have dirty plates scattered about. On the "
+                   "north side of the room is a steel door. To the east a "
+                   "large oak one. To the west, the painted door "
+                   "leads back to the entrance hall.",
+                   "I'm in the mess hall. To the north a steel door goes to "
+                   "the kitchen. To the east a large oak door leads to the "
+                   "store room. To the west a painted door leads to the "
+                   "entrance hall."
                    )
 
     # Init items
     # Item 1 - bread
-    bread_name = "Bread"
+    bread_name = "bread"
     bread_description = ("A fresh chunk of French bread.")
     bread_durability = None
     bread_stats = None
@@ -217,16 +227,19 @@ def init_room_4():
         :obj:Room: Room object.
 
     """
-    name = "store_room"
+    name = "store room"
     description = ("The room has large shelves that go from the floor "
                    "all the way to the very high ceilings. There is a "
                    "stone area for refrigeration and hanging animal "
-                   "carcasses from the ceiling. "
+                   "carcasses from the ceiling. To the west is the mess hall "
+                   "and to the north a steel door.",
+                   "I'm in the store room. To the west the mess hall and "
+                   "to the north a steel door."
                    )
 
     # Init items
     # Item 1 - empty_jar
-    empty_jar_name = "Empty Jar"
+    empty_jar_name = "empty jar"
     sword_description = ("A clear, empty jar. It has some green slimy "
                          "residue in it. ")
     empty_jar_durability = None
@@ -236,7 +249,7 @@ def init_room_4():
                      empty_jar_durability, empty_jar_stats)
 
     # Item 2 - letter
-    letter_name = "Letter"
+    letter_name = "letter"
     letter_description = ("The letter has a scrawled ink lettering "
                           "that is hard to make out. It looks like "
                           "it might be written in distress... ")
@@ -347,10 +360,10 @@ def init_room_objects():
     """
     room_list = []
 
-    dungeon_entrance = init_room_1()
+    fortress_entrance = init_room_1()
     entrance_hall = init_room_2()
 
-    room_list.extend((dungeon_entrance, entrance_hall))
+    room_list.extend((fortress_entrance, entrance_hall))
 
     return room_list
 

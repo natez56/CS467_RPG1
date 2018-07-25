@@ -2,15 +2,15 @@ class Room:
     """Room class representing primary game map that player navigates.
 
     Attributes:
-        description (tuple(str)): Contains long and short description of room.
-            Long description at tuple[0], short description at tuple[1].
+        description (tuple(str, str)): Contains long and short description of
+            room. Long description at tuple[0], short description at tuple[1].
         item_list (list(:obj:Item)): List of all Item objects in the room.
         monster_list (list(:obj:Monster)): List of all Monster objects in room.
         player (:obj:Player): Player object used to access player in the room.
             Is None if no player is present.
         adjacent_rooms (dictionary(str, str)): Contains map of directions
             connected to room names that are accessible from current room. For
-            example: {'south': 'dungeon_entrance'}.
+            example: {'south': 'fortress entrance'}.
         door_map (dictionary(str, bool)): Map of doors in room. Takes a
             string ('north', 'east', 'south', 'west') and returns a bool
             representing if the door is locked (True if locked).

@@ -56,7 +56,7 @@ def main():
         # Grab the command from the user and execute the action if valid
         user_input = get_input()
 
-        action = parse_input(user_input)
+        action = parse_input(user_input, current_room)
 
         take_action(current_room, action)
 

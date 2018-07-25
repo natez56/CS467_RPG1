@@ -607,7 +607,7 @@ def take_action(current_room, action):
           action["feature"] is not None and
           action["feature"] in current_room.get_features()):
 
-        if current_room.get_name() == "dungeon entrance":
+        if current_room.get_name() == "fortress entrance":
             room_1_feature_handler(current_room, action["verb"],
                                    action["feature"])
 
@@ -620,7 +620,7 @@ def take_action(current_room, action):
           and (action["item"] in player.get_item_names() or
           action["item"] in current_room.get_item_names())):
 
-        if current_room.get_name() == "dungeon entrance":
+        if current_room.get_name() == "fortress entrance":
             room_1_item_handler(current_room, action["verb"],
                                 action["item"])
 
@@ -867,7 +867,7 @@ def start_game(player_name):
     """
     init_game_files(player_name)
 
-    current_room = load_object("dungeon_entrance")
+    current_room = load_object("fortress_entrance")
 
     return current_room
 

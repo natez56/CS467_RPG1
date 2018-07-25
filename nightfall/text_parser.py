@@ -1,3 +1,6 @@
+from aliases import *
+
+
 def get_input():
     """Get raw user input.
 
@@ -11,7 +14,7 @@ def get_input():
     return user_input
 
 
-def parse_input(input):
+def parse_input(input, current_room):
     """Divide input into recognizable components.
 
     Args:
@@ -35,7 +38,7 @@ def parse_input(input):
 
     # arrays with parts of speech
     direction_array = ['north', 'east', 'south', 'west', 'entrance hall',
-                       'dungeon entrance']
+                       'fortress entrance', 'mess hall']
 
     standard_action_array = ['help', 'look', 'gamemenu', 'game menu',
                              'inventory', 'savegame', 'loadgame']
@@ -83,6 +86,7 @@ def parse_input(input):
 
     # run function to clean input string
     new_command2 = remove_ignored_words(command)
+    print("new command: {}".format(new_command2))
 
     # variables to check if we already have a complete command and if we have
     # an invalid scenario
@@ -98,6 +102,9 @@ def parse_input(input):
 
     # check if the command indicates a direction to move in
     if done is False:
+        room_name = current_room.get_name()
+        print("room name: {}".format(room_name))
+        new_command2 = move_alias_check(room_name, new_command2)
         for dest in direction_array:
             if new_command2 == dest or new_command2 == "go " + dest or\
                new_command2 == "go to " + dest or new_command2 == "move "\
@@ -273,6 +280,6 @@ def parse_input(input):
                     # assigned_tokens['feature'] = None
 
     # ##### PRINT STATEMENT FOR TESTING #####
-    # print("\n{}".format(assigned_tokens.items()))
+    print("\n{}".format(assigned_tokens.items()))
 
     return assigned_tokens
