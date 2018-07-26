@@ -4,6 +4,56 @@ import os
 import shutil
 from .context import file_manager as fm
 from .context import game_classes as gc
+from .context import aliases as al
+
+
+class TestAliases():
+    """Tests all aliases."""
+    def test_room_1_travel_aliases(self):
+        valid_move = ["travel ", "go ", "move ", "travel to ", "go to ",
+                      "move to ", ""]
+
+        valid_dest_1 = ["entrance hall", "entrance",
+                        "large doors", "double doors", "oak doors",
+                        "large oak double doors"]
+
+        valid_dest_2 = ["fortress entrance", "entrance",
+                        "large doors", "double doors", "oak doors",
+                        "large oak double doors"]
+
+        valid_dest_3 = ["mess hall", "painted doors"]
+
+        invalid_dest_1 = ["mess hall", "door large", "door doors",
+                          "hall entrance", "door move", "double oak", "to go",
+                          "to", "door", "doors"]
+
+        invalid_dest_2 = ["entrance hall", "door large", "door doors",
+                          "hall entrance", "door move", "double oak", "to go",
+                          "to", "door", "doors"]
+
+        for word_1 in valid_move:
+            for word_2 in valid_dest_1:
+                command = word_1 + word_2
+                assert al.move_alias_check('fortress entrance', command) == 'entrance hall'
+
+        for command in invalid_dest_1:
+            assert al.move_alias_check('fortress entrance', command) == command
+
+        for word_1 in valid_move:
+            for word_2 in valid_dest_2:
+                command = word_1 + word_2
+                assert al.move_alias_check('entrance hall', command) == 'fortress entrance'
+
+        for command in invalid_dest_2:
+            assert al.move_alias_check('entrance hall', command) == command
+
+        for word_1 in valid_move:
+            for word_2 in valid_dest_3:
+                command = word_1 + word_2
+                assert al.move_alias_check('entrance hall', command) == 'mess hall'
+
+        for command in invalid_dest_2:
+            assert al.move_alias_check('entrance entrance', command) == command
 
 
 class TestGameClasses():

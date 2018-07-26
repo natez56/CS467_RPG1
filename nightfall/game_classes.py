@@ -2,20 +2,22 @@ class Room:
     """Room class representing primary game map that player navigates.
 
     Attributes:
-        description (tuple(str)): Contains long and short description of room.
-            Long description at tuple[0], short description at tuple[1].
+        description (tuple(str, str)): Contains long and short description of
+            room. Long description at tuple[0], short description at tuple[1].
         item_list (list(:obj:Item)): List of all Item objects in the room.
         monster_list (list(:obj:Monster)): List of all Monster objects in room.
         player (:obj:Player): Player object used to access player in the room.
             Is None if no player is present.
         adjacent_rooms (dictionary(str, str)): Contains map of directions
             connected to room names that are accessible from current room. For
-            example: {'south': 'dungeon_entrance'}.
+            example: {'south': 'fortress entrance'}.
         door_map (dictionary(str, bool)): Map of doors in room. Takes a
             string ('north', 'east', 'south', 'west') and returns a bool
             representing if the door is locked (True if locked).
         features(dictionary(str, str)): Dictionary contains all of this rooms
             feature names mapped to the text description of that feature.
+        puzzle_dict(dictionary(str, bool)): Dictionary used to track the state
+            of puzzles in a room. True means the puzzle is not solved.
 
     """
     def __init__(self, name, description, item_list, monster_list,
@@ -30,8 +32,8 @@ class Room:
         self.features = features
         self.puzzle_dict = puzzle_dict
 
-    def get_description(self):  # need a short and long description based on if
-        return self.description[0]  # a player has been in the room before
+    def get_description(self):
+        return self.description[0]
 
     def get_short_description(self):
         return self.description[1]
@@ -226,12 +228,18 @@ class Player(Character):
         if thing not in self.memory:
             self.memory.append(thing)
 
-    def drop_item(self, item):
-        if self.equipped_item is not None and self.equipped_item == item:
+    def drop_item(self, item_name):
+        if (self.equipped_item is not None and
+           self.equipped_item.get_name() == item_name):
             self.unequip_item()
 
-        if item in self.backpack:
-            self.backpack.remove(item)
+        for item in self.backpack:
+            if item.get_name() == item_name:
+                print("Dropped item {}.".format(item_name))
+
+                self.backpack.remove(item)
+
+                return item
 
     def add_item(self, item):
         print("Added {} to your inventory.".format(item.get_name()))
@@ -322,6 +330,11 @@ class Player(Character):
 
     def get_inventory(self):
         return self.backpack
+
+    def get_item(self, item_name):
+        for item in self.backpack:
+            if item.get_name() == item_name:
+                return item
 
     def get_item_names(self):
         name_list = []

@@ -18,8 +18,19 @@ def main():
 
         player = current_room.get_player()
 
-        print("Initial location: {}".format(current_room.get_name()))
-        print(current_room.get_description())
+        # print("Initial location: {}".format(current_room.get_name()))
+        # Print out room description.
+        if player.has_memory(current_room.get_name()):
+            print(current_room.get_short_description())
+
+        else:
+            player.add_memory(current_room.get_name())
+
+            print(current_room.get_description())
+
+        print_item_descriptions(current_room)
+
+        save_object_state(current_room)
 
     elif starting_selection == "load":
         current_room = initial_load_game()
@@ -30,6 +41,8 @@ def main():
             print(current_room.get_short_description())
         else:
             print(current_room.get_description())
+
+        print_item_descriptions(current_room)
     else:
         print("\nThank you for playing Nightfall. "
               "Have a fortuitous evening. \n")
@@ -43,7 +56,7 @@ def main():
         # Grab the command from the user and execute the action if valid
         user_input = get_input()
 
-        action = parse_input(user_input)
+        action = parse_input(user_input, current_room)
 
         take_action(current_room, action)
 
