@@ -552,7 +552,12 @@ def init_room_9():
 
     """
     name = "supplies_closet"
-    description = (""
+    description = ("There is a piercing cold light that illuminates the "
+                   "room before you. The walls are lined with shelves "
+                   "and the room is much smaller than the other rooms "
+                   "you have been in. The shelves have a high stack of "
+                   "towels, as well as shampoo and soap. Even though the "
+                   "room should smell good, it wreaks of goblin. "
                    "I'm in the supplies closet. There is an mahogany "
                    "door to the east and a walnut door to the south, and "
                    "a birch door to the north. "
@@ -586,11 +591,17 @@ def init_room_9():
     door_map = {'north': True, 'east': False, 'south': False}
 
     # Set features in room.
-    towel_feature = (""
+    towel_feature = ("The towel at the top of the towels stacked on "
+                     "top of each other slowly rises up and starts "
+                     "to snap at you in your general direction. It "
+                     "would be wise to avoid getting closer to it. "
                      )
 
-    soap_feature = (""
-                    )
+    shampoo_feature = ("The container top flies off and a giant glob "
+                       "of shampoo gets in your hair and starts bubbling "
+                       "more and more. It then vanishes instantly and "
+                       "your hair looks and feels amazing. "
+                       )
 
     feature_dict = {"towel": towel_feature, "soap": soap_feature}
 
