@@ -454,8 +454,18 @@ def init_room_objects():
 
     dungeon_entrance = init_room_1()
     entrance_hall = init_room_2()
+    mess_hall = init_room_3()
+    store_room = init_room_4()
+    kitchen = init_room_5()
+    washroom = init_room_6()
+    smoking_room = init_room_7()
+    sleeping_chambers = init_room_8()
+    supplies_closet = init_room_9()
+    pool_room = init_room_10()
 
-    room_list.extend((dungeon_entrance, entrance_hall))
+    room_list.extend((dungeon_entrance, entrance_hall, mess_hall, store_room,
+                      kitchen, washroom, smoking_room, sleeping_chambers,
+                      supplies_closet, pool_room))
 
     return room_list
 
