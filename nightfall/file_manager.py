@@ -95,7 +95,7 @@ def init_room_2():
                    "room. Above the door You can barely make out some "
                    "writing...",
                    "I'm in the entrance hall, there's goblin writing on the "
-                   "wall and a door leading father into the fortress."
+                   "wall and a door leading further into the fortress."
                    )
 
     # Init items
@@ -336,6 +336,111 @@ def init_room_5():
                    adjacent_rooms, door_map, feature_dict)
 
     return kitchen
+
+
+def init_room_6():
+    """Instantiates washroom.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "washroom"
+    description = ("The room before you is a pristine washroom "
+                   "there is a massive tub in the middle of the "
+                   "room with a large window behind it. It is too "
+                   "dark to see what is likely a gorgeous view of the "
+                   "forest. You also see a fountain in the corner. "
+                   "I'm in the washroom. There is a swinging door "
+                   "leading to stairs back to the store room, an ornate "
+                   "door to the west, and a maple door to the north. "
+                   )
+
+    # Init items
+
+    # Set item list
+    item_list = []
+
+    # Set monster list
+    # ADD A WRAITH TO THIS ROOM &^T*Y(&^&%*()&^&*()^%&()^%&(^&))
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': 'smoking room', 'east': None,
+                      'south': 'store room', 'west': 'sleeping chambers'}
+    door_map = {'north': False, 'south': False, 'west': False}
+
+    # Set features in room.
+    tub_feature = ("As you go near the tub you hear the sound of rushing "
+                   "water flowing far down the drain. You hear the sound "
+                   "of wood cracking down the drain too... Could it be "
+                   "beavers..? "
+                   )
+
+    fountain_feature = ("The fountain starts flowing translucent purple "
+                        "water. It looks like it could be poisonous. ")
+
+    feature_dict = {"tub": tub_feature, "fountain": fountain_feature}
+
+    # Instantiate room object.
+    washroom = Room(name, description, item_list, monster_list, player,
+                    adjacent_rooms, door_map, feature_dict)
+
+    return washroom
+
+
+def init_room_7():
+    """Instantiates smoking room.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "smoking room"
+    description = (""
+                   )
+
+    # Init items
+    # Item 1 - Key
+    key_name = "Key"
+    key_description = ("A golden key that has an embedded emerald in it. ")
+    key_durability = None
+    key_stats = None
+
+    key = Item(key_name, key_description, key_durability, key_stats)
+
+    # Set item list
+    item_list = []
+    item_list.append(key)
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': None, 'east': None, 'south': 'washroom',
+                      'west': 'supplies closet'}
+    door_map = {'south': False, 'west': False}
+
+    # Set features in room.
+    humidor_feature = (""
+                       )
+
+    ash_feature = (""
+                   )
+
+    feature_dict = {"humidor": rat_feature, "ash": sink_feature}
+
+    # Instantiate room object.
+    smoking_room = Room(name, description, item_list, monster_list, player,
+                        adjacent_rooms, door_map, feature_dict)
+
+    return smoking_room
 
 
 def init_room_objects():
