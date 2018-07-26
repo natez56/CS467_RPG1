@@ -478,7 +478,7 @@ def init_room_8():
     healing_potion_name = "Healing Potion"
     healing_potion_description = ("A glass vial of thick red liquid. ")
     healing_potion_durability = None
-    healing_potion_stats = None
+    healing_potion_stats = {"health": 5}
 
     healing_potion = Item(healing_potion_name, healing_potion_description,
                           healing_potion_durability, healing_potion_stats)
@@ -519,6 +519,63 @@ def init_room_8():
                              player, adjacent_rooms, door_map, feature_dict)
 
     return sleeping_chambers
+
+
+def init_room_9():
+    """Instantiates supplies closet.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "supplies_closet"
+    description = (""
+                   "I'm in the supplies closet. There is an mahogany "
+                   "door to the east and a walnut door to the south, and "
+                   "a birch door to the north. "
+                   )
+
+    # Init items
+    # Item 1 - Rapier
+    rapier_name = "Rapier"
+    rapier_description = ("A thin and nimble long sword. The blade "
+                          "glows blue and it is razor sharp. ")
+    rapier_durability = None
+    rapier_stats = {"attack_power": 5}
+
+    rapier = Item(rapier_name, rapier_description, rapier_durability,
+                  rapier_stats)
+
+    # Set item list
+    item_list = []
+    item_list.append(rapier)
+
+    # Set monster list
+    # ADD A GOBLIN HERE &^*(^%&*(^%$*()&%$*(%$^&*(*%$^&*%$&%*^%$%&*^%$^%^%))))
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': 'pool room', 'east': 'smoking room',
+                      'south': 'sleeping chambers', 'west': None}
+    door_map = {'north': True, 'east': False, 'south': False}
+
+    # Set features in room.
+    towel_feature = (""
+                     )
+
+    soap_feature = (""
+                    )
+
+    feature_dict = {"towel": towel_feature, "soap": soap_feature}
+
+    # Instantiate room object.
+    supplies_closet = Room(name, description, item_list, monster_list,
+                           player, adjacent_rooms, door_map, feature_dict)
+
+    return supplies_closet
 
 
 def init_room_objects():
