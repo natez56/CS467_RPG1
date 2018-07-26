@@ -464,8 +464,13 @@ def init_room_8():
 
     """
     name = "sleeping chambers"
-    description = ("The room in front of you "
-                   "I'm in the sleeping room "
+    description = ("The room in front of you is gigantic. There are "
+                   "vaulted ceilings and massive windows along the "
+                   "western wall. The bed has four large posts that "
+                   "have drapes around it. The room is dimly lit "
+                   "and it is immaculately clean. "
+                   "I'm in the sleeping chambers. There is an ornate "
+                   "door to the east and a walnut door to the north. "
                    )
 
     # Init items
@@ -494,10 +499,17 @@ def init_room_8():
     door_map = {'north': False, 'east': False}
 
     # Set features in room.
-    bed_feature = (""
+    bed_feature = ("The drapes of the bed begin to flutter and the covers "
+                   "sink into the middle of the floor, only to fly back up "
+                   "lifting the entire bed frame off the ground before it "
+                   "slams back down to the floor. "
                    )
 
-    window_feature = (""
+    window_feature = ("The large clear glass window panes begin to transform "
+                      "into small pieces of colored glass. A gorgeous mural "
+                      "appears before you. It depicts a fox being hunted in "
+                      "a lush forest. The scene disappears after a few "
+                      "seconds. "
                       )
 
     feature_dict = {"bed": bed_feature, "window": window_feature}
