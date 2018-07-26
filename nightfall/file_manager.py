@@ -400,7 +400,13 @@ def init_room_7():
 
     """
     name = "smoking room"
-    description = (""
+    description = ("The room before you has a lucious red carpet. There "
+                   "is a large chair with gold stitching. On one wall is "
+                   "a large humidor that stands out in the dimly lit room. "
+                   "There is a table in the middle of the room with a crystal "
+                   "ash tray. The room has a strong scent of smoke. "
+                   "I'm in the smoking room. To the south there is a "
+                   "maple door and to the west there is a mahogany door. "
                    )
 
     # Init items
@@ -428,19 +434,79 @@ def init_room_7():
     door_map = {'south': False, 'west': False}
 
     # Set features in room.
-    humidor_feature = (""
+    humidor_feature = ("The humidor on the wall has a warm glow to it. "
+                       "As you stare at the massive glass case, you feel "
+                       "the room start to heat up. As the temperature "
+                       "becomes concerningly hot, you turn away and feel "
+                       "the heat dissipate immediately. "
                        )
 
-    ash_feature = (""
+    ash_feature = ("You walk towards the ash tray and just when you are "
+                   "about to touch it, the ash from the ash tray spreads "
+                   "out towards the edges of the tray. It slowly regathers "
+                   "in the middle and spells out \"LEAVE NOW\""
                    )
 
-    feature_dict = {"humidor": rat_feature, "ash": sink_feature}
+    feature_dict = {"humidor": humidor_feature, "ash": ash_feature}
 
     # Instantiate room object.
     smoking_room = Room(name, description, item_list, monster_list, player,
                         adjacent_rooms, door_map, feature_dict)
 
     return smoking_room
+
+
+def init_room_8():
+    """Instantiates sleeping chambers.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "sleeping chambers"
+    description = ("The room in front of you "
+                   "I'm in the sleeping room "
+                   )
+
+    # Init items
+    # Item 1 - Healing Potion
+    healing_potion_name = "Healing Potion"
+    healing_potion_description = ("A glass vial of thick red liquid. ")
+    healing_potion_durability = None
+    healing_potion_stats = None
+
+    healing_potion = Item(healing_potion_name, healing_potion_description,
+                          healing_potion_durability, healing_potion_stats)
+
+    # Set item list
+    item_list = []
+    item_list.append(healing_potion)
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': 'supplies closet', 'east': 'washroom',
+                      'south': None, 'west': None}
+    door_map = {'north': False, 'east': False}
+
+    # Set features in room.
+    bed_feature = (""
+                   )
+
+    window_feature = (""
+                      )
+
+    feature_dict = {"bed": bed_feature, "window": window_feature}
+
+    # Instantiate room object.
+    sleeping_chambers = Room(name, description, item_list, monster_list,
+                             player, adjacent_rooms, door_map, feature_dict)
+
+    return sleeping_chambers
 
 
 def init_room_objects():
