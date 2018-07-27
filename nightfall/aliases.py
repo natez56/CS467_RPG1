@@ -138,8 +138,18 @@ def verb_alias_check(command):
     alias_dictionary = {}
 
     # Filled out dictionary for each of the 10 core verbs
-    alias_dictionary["take"] = ["grab", "pick up"]
-    # alias_dictionary["smell"] = ....
+    alias_dictionary["take"] = ["grab", "get", "obtain", "steal", "pick up"]
+    alias_dictionary["use"] = ["utilize"]
+    alias_dictionary["drop"] = ["leave", "leave behind", "get rid of", "lose"]
+    alias_dictionary["look at"] = ["inspect", "examine", "observe"]
+    alias_dictionary["eat"] = ["consume", "devour", "ingest"]
+    alias_dictionary["drink"] = ["swallow", "imbibe", "sip"]
+    alias_dictionary["smell"] = ["sniff"]
+    alias_dictionary["listen to"] = ["hear"]
+    alias_dictionary["climb"] = ["ascend", "go up", "scale"]
+    alias_dictionary["duck"] = ["crouch", "crouch down", "get down", "squat",
+                                "squat down", "hunch", "hunch down", "stoop",
+                                "stoop down"]
 
     for key in alias_dictionary:
         for word in alias_dictionary[key]:
