@@ -408,9 +408,11 @@ def init_room_6():
 
     feature_dict = {"tub": tub_feature, "fountain": fountain_feature}
 
+    puzzle_dict = None
+
     # Instantiate room object.
     washroom = Room(name, description, item_list, monster_list, player,
-                    adjacent_rooms, door_map, feature_dict)
+                    adjacent_rooms, door_map, feature_dict, puzzle_dict)
 
     return washroom
 
@@ -472,9 +474,11 @@ def init_room_7():
 
     feature_dict = {"humidor": humidor_feature, "ash": ash_feature}
 
+    puzzle_dict = None
+
     # Instantiate room object.
     smoking_room = Room(name, description, item_list, monster_list, player,
-                        adjacent_rooms, door_map, feature_dict)
+                        adjacent_rooms, door_map, feature_dict, puzzle_dict)
 
     return smoking_room
 
@@ -537,9 +541,12 @@ def init_room_8():
 
     feature_dict = {"bed": bed_feature, "window": window_feature}
 
+    puzzle_dict = None
+
     # Instantiate room object.
     sleeping_chambers = Room(name, description, item_list, monster_list,
-                             player, adjacent_rooms, door_map, feature_dict)
+                             player, adjacent_rooms, door_map, feature_dict,
+                             puzzle_dict)
 
     return sleeping_chambers
 
@@ -551,8 +558,13 @@ def init_room_9():
         :obj:Room: Room object.
 
     """
-    name = "supplies_closet"
-    description = (""
+    name = "supplies closet"
+    description = ("There is a piercing cold light that illuminates the "
+                   "room before you. The walls are lined with shelves "
+                   "and the room is much smaller than the other rooms "
+                   "you have been in. The shelves have a high stack of "
+                   "towels, as well as shampoo and soap. Even though the "
+                   "room should smell good, it wreaks of goblin. "
                    "I'm in the supplies closet. There is an mahogany "
                    "door to the east and a walnut door to the south, and "
                    "a birch door to the north. "
@@ -586,19 +598,76 @@ def init_room_9():
     door_map = {'north': True, 'east': False, 'south': False}
 
     # Set features in room.
-    towel_feature = (""
+    towel_feature = ("The towel at the top of the towels stacked on "
+                     "top of each other slowly rises up and starts "
+                     "to snap at you in your general direction. It "
+                     "would be wise to avoid getting closer to it. "
                      )
 
-    soap_feature = (""
-                    )
+    shampoo_feature = ("The container top flies off and a giant glob "
+                       "of shampoo gets in your hair and starts bubbling "
+                       "more and more. It then vanishes instantly and "
+                       "your hair looks and feels amazing. "
+                       )
 
-    feature_dict = {"towel": towel_feature, "soap": soap_feature}
+    feature_dict = {"towel": towel_feature, "shampoo": shampoo_feature}
+
+    puzzle_dict = None
 
     # Instantiate room object.
     supplies_closet = Room(name, description, item_list, monster_list,
-                           player, adjacent_rooms, door_map, feature_dict)
+                           player, adjacent_rooms, door_map, feature_dict,
+                           puzzle_dict)
 
     return supplies_closet
+
+
+def init_room_10():
+    """Instantiates pool room.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "pool room"
+    description = (""
+                   "I'm in the pool room. There is a birch door to the "
+                   "south and a marble staircase to the north. "
+                   )
+
+    # Init items
+
+    # Set item list
+    item_list = []
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': 'tower hall', 'east': None,
+                      'south': 'supplies closet', 'west': None}
+    door_map = {'north': False, 'south': False}
+
+    # Set features in room.
+    pool_feature = (""
+                    )
+
+    waterfall_feature = (""
+                         )
+
+    feature_dict = {"pool": pool_feature, "waterfall": waterfall_feature}
+
+    puzzle_dict = None
+
+    # Instantiate room object.
+    pool_room = Room(name, description, item_list, monster_list,
+                     player, adjacent_rooms, door_map, feature_dict,
+                     puzzle_dict)
+
+    return pool_room
 
 
 def init_room_objects():
@@ -620,8 +689,13 @@ def init_room_objects():
     sleeping_chambers = init_room_8()
     supplies_closet = init_room_9()
     pool_room = init_room_10()
+    # tower_hall = init_room_11()
+    # archives = init_room_12()
+    # reading_room = init_room_13()
+    # room_of_last_rights = init_room_14()
+    # lair = init_room_15()
 
-    room_list.extend((dungeon_entrance, entrance_hall, mess_hall, store_room,
+    room_list.extend((fortress_entrance, entrance_hall, mess_hall, store_room,
                       kitchen, washroom, smoking_room, sleeping_chambers,
                       supplies_closet, pool_room))
 
