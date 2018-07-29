@@ -52,6 +52,43 @@ def move_alias_check(current_room_name, user_input):
 
         possible_destinations['mess hall'] = dest_list_2
 
+    elif current_room_name == 'mess hall':
+        dest_list_1 = ([
+            ["painted", "door", "doors"],
+            ["entrance hall", "door", "doors"],
+            ])
+
+        possible_destinations['entrance hall'] = dest_list_1
+
+        dest_list_2 = ([
+            ["large", "oak", "door", "doors"],
+            ["store room", "door", "doors"],
+            ])
+
+        possible_destinations['store room'] = dest_list_2
+
+        dest_list_3 = ([
+            ["engraved", "old", "steel", "door"],
+            ["kitchen", "door", "doors"],
+            ])
+
+        possible_destinations['kitchen'] = dest_list_3
+
+    elif current_room_name == 'store room':
+        dest_list_1 = ([
+            ["large", "oak", "door", "doors"],
+            ["mess hall", "door", "doors"],
+            ])
+
+        possible_destinations['mess hall'] = dest_list_1
+
+        dest_list_2 = ([
+            ["vine", "covered", "steel", "door", "doors"],
+            ["washroom", "door", "doors"],
+            ])
+
+        possible_destinations['washroom'] = dest_list_2    
+
     # The list of possible move words.
     move_lists = ([
                   ["move", "to"],
@@ -60,8 +97,26 @@ def move_alias_check(current_room_name, user_input):
                   ["leave", "to"],
                   ])
 
+    door_list = ([
+                ["door", "doors"],
+                ])
+
+    # generate invalid combinations:
+    invalid_list = []
+    total_invalid_list = []
+    for list_obj_1 in move_lists:
+        for list_obj_2 in door_list:
+            invalid_list.append(list_obj_1 + list_obj_2)
+
+    for word_list in invalid_list:
+        _gen_invalid = (itertools.combinations(word_list, i + 1)
+                        for i in range(len(word_list)))
+        all_invalid = itertools.chain(*_gen_invalid)
+        list_all_invalid = list(all_invalid)
+        total_invalid_list += list_all_invalid
+
     for key in possible_destinations:
-        # List to hold the combinations of both movement commands and 
+        # List to hold the combinations of both movement commands and
         # destination variations.
         move_dest_list = []
 
@@ -114,9 +169,12 @@ def move_alias_check(current_room_name, user_input):
             # are checking against
             combination_lists.append(valid_combination)
 
+        invalid_combination = set(' '.join(i) for i in total_invalid_list)
+
         # Check for valid match
         for word_list in combination_lists:
-            if user_input in word_list:
+            if (user_input in word_list and
+               user_input not in invalid_combination):
                 return key
 
     return user_input
@@ -150,6 +208,7 @@ def verb_alias_check(command):
     alias_dictionary["duck"] = ["crouch", "crouch down", "get down", "squat",
                                 "squat down", "hunch", "hunch down", "stoop",
                                 "stoop down"]
+    alias_dictionary["rotate"] = ["turn", "pivot", "twist", "revolve", "spin"]
 
     for key in alias_dictionary:
         for word in alias_dictionary[key]:

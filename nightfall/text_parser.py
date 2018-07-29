@@ -44,12 +44,26 @@ def parse_input(input, current_room):
                              'inventory', 'savegame', 'loadgame']
 
     verb_array = ['take', 'use', 'drop', 'look at', 'eat', 'drink', 'smell',
-                  'listen to', 'climb', 'duck']
+                  'listen to', 'climb', 'duck', 'rotate']
 
-    item_array = ['sword', 'potion', 'key']
+    item_array = ['sword', 'potion', 'key', 'bread', 'letter']
 
-    feature_array = ['body', 'door', 'cloak', 'bag', 'writing', 'rope',
-                     'rubble']
+    feature_array = [
+                     # Room 1
+                     'body', 'door', 'cloak', 'bag',
+
+                     # Room 2
+                     'writing', 'rope', 'rubble',
+
+                     # Room 3
+                     'engraving', 'armor',
+
+                     # Room 4
+                     'lock box', 'broom', 'shelves', 'carcass', 'vines',
+
+                     # Room 5
+                     'fish', 'sink',
+                     ]
 
     go_array = ['go', 'go to', 'move', 'move to', 'walk', 'walk to', 'run',
                 'run to']
@@ -283,6 +297,6 @@ def parse_input(input, current_room):
                     # assigned_tokens['feature'] = None
 
     # ##### PRINT STATEMENT FOR TESTING #####
-    print("\n{}".format(assigned_tokens.items()))
+    # print("\n{}".format(assigned_tokens.items()))
 
     return assigned_tokens

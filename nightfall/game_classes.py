@@ -306,17 +306,13 @@ class Player(Character):
     def get_equipped_item(self):
         return self.equipped_item
 
-    def use_item(self, item):
-        if self.equipped_item is not None and self.equipped_item == item:
+    def use_item(self, item_name):
+        if item_name in self.get_item_names():
+            item = self.get_item(item_name)
+            item.decrement_durability()
 
-            if self.equipped_item.get_durability() is not None:
-                self.equipped_item.decrement_durability()
-                if self.equipped_item.get_durability() == 0:
-                    self.equipped_item = None
-
-            return self.equipped_item
-        else:
-            print("That item is not equipped.")
+            if item.get_durability() == 0:
+                self.backpack.remove(item)
 
     def get_lives(self):
         return self.num_lives

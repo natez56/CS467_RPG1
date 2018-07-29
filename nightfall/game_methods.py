@@ -1,5 +1,7 @@
 from game_classes import *
 from file_manager import *
+from feature_handler import *
+from item_handler import *
 from random import *
 
 
@@ -187,363 +189,6 @@ def help_menu():
     print("duck")
 
 
-def room_1_feature_handler(current_room, verb, feature):
-    """Handles verb commands related to room 1 features.
-
-    Args:
-        current_room (:obj:Room): The current room the player is in.
-        verb (str): The action the user would like to take.
-        feature (str): The feature in this room the user would like to act on.
-
-    """
-
-    # Dictionary of feature name mapped to a description of that feature.
-    feature_dict = current_room.get_features()
-
-    # Handle feature interaction for each of the 10 main verbs.
-    if verb == "take":
-        if feature == "body":
-            print("This body is too heavy to carry.")
-
-        if feature == "cloak":
-            print("The cloak is in tatters, better to leave it I think.")
-
-        if feature == "bag":
-            print("This bag has holes in it. Better to leave it I think.")
-
-        if feature == "door":
-            print("Hmm let's see, if I unbolt the doors and go get about "
-                  "10 other villagers to help me carry them...on second "
-                  "thought maybe I should leave the doors where they are.")
-
-    elif verb == "use":
-        print("I can't use that. Better move on or find something I can "
-              "use.")
-
-    elif verb == "drop":
-        print("Drop what? I'm not carrying that.")
-
-    elif verb == "look at":
-        print("You take a close look at the {}".format(feature))
-
-        print(feature_dict[feature])
-
-    elif verb == "eat":
-        if feature == "body":
-            print("Eat this? I don't think so. I'm not a zombie.")
-
-        if feature == "door":
-            print("You naw on the oak doors a bit. Yup that's oak all "
-                  "right...")
-
-        if feature == "cloak":
-            print("You chew on the old cloak a bit and think to yourself "
-                  "I better start coming up with some reasonable things "
-                  "to do or I'll never rescue Evelyn.")
-
-        if feature == "bag":
-            print("You chew on the old bag a bit and think to yourself "
-                  "I better start coming up with some reasonable things "
-                  "to do or I'll never rescue Evelyn.")
-
-    elif verb == "drink":
-        print("I can't drink that.")
-
-    elif verb == "smell":
-        if feature == "door":
-            print("Smells like oak.")
-
-        else:
-            print("The smell is foul. This has been here a while.")
-
-    elif verb == "listen to":
-        print("You hear the sounds of the wind rustling the leaves of the "
-              "nearby trees.")
-
-    elif verb == "climb":
-        print("There's nothing to climb.")
-
-    elif verb == "duck":
-        print("You duck quickly and then stand back up.")
-
-    save_object_state(current_room)
-
-
-def general_item_handler(current_room, verb, item_name):
-    """Handle any non-unique verb and item interactions.
-
-    Args:
-        current_room (:obj:Room): The current room that the player is in.
-        verb (str): The action a user would like to take.
-        item_name (str): The name of the item the user would like to use.
-
-    """
-    player = current_room.get_player()
-
-    # For each verb handler player and item or room and item interaction.
-    if verb == "take":
-        if item_name not in player.get_item_names():
-            item = current_room.get_item(item_name)
-
-            player.add_item(item)
-
-            # When item is added to player it must be removed from the room.
-            current_room.remove_item(item)
-        else:
-            print("That item is already in your inventory.")
-
-    # Player can look at an item whether it is in inventory on in the room.
-    elif verb == "look at":
-        if item_name in current_room.get_item_names():
-            print(current_room.get_item(item_name).get_description())
-        else:
-            print(player.get_item(item_name).get_description())
-
-    elif verb == "drop":
-        if item_name in player.get_item_names():
-            item = player.drop_item(item_name)
-
-            # When an item is dropped by the player it must be added to the
-            # current room.
-            current_room.add_item(item)
-        else:
-            print("You're not carrying that item currently.")
-
-    save_object_state(current_room)
-
-
-def room_1_item_handler(current_room, verb, item_name):
-    """Handle room 1 player and item and room and item interactions.
-
-    Args:
-        current_room (:obj:Room): The current room the player is in.
-        verb (str): The action the user would like to take.
-        item_name: The name of the item the user would like to use.
-
-    """
-    player = current_room.get_player()
-
-    # These verbs do not need unique room interactions.
-    if verb == "take" or verb == "look at" or verb == "drop":
-        general_item_handler(current_room, verb, item_name)
-
-    # The verb use has custom interactions for each room.
-    elif verb == "use":
-        if item_name == "sword" and "sword" in player.get_item_names():
-            print("You start swinging your sword around like a lunatic. If "
-                  "anyone was around to see you I'm sure they'd be terrified.")
-
-        elif item_name not in player.get_item_names():
-            print("You're not carrying that item currently.")
-
-    save_object_state(current_room)
-
-
-def room_2_feature_handler(current_room, verb, feature):
-    """Handle room 2 player and feature interaction.
-
-    Args:
-        current_room (:obj:Room): The current room the player is in.
-        verb (str): The action the user would like to take.
-        feature (str): The feature in this room the user would like to act on.
-
-    """
-    # A dictionary that maps feature name to a description of that feature.
-    feature_dict = current_room.get_features()
-
-    # Handle custom feature interaction for each of the 10 core verbs.
-    if verb == "take":
-        if feature == "rubble":
-            print("The pieces of rubble are to heavy to carry.")
-
-        if feature == "door":
-            print("Hmm let's see, if I unbolt the doors and go get about "
-                  "10 other villagers to help me carry them...on second "
-                  "thought maybe I should leave the doors where they are.")
-
-        else:
-            print("I can't take that.")
-
-    if verb == "use":
-        print("I can't use that. Better move on or find something I can "
-              "use.")
-
-    if verb == "drop":
-        print("Drop what? I'm not carrying that.")
-
-    if verb == "look at":
-        # Trigger to add rope to feature list. The command use sword will
-        # eliminate the rope trap after the feature is discovered.
-        if feature == "rubble":
-            print("You take a close look at the {}".format(feature))
-
-            print(feature_dict[feature])
-
-            # Add the rope feature so that it can be acted upon by the user.
-            if current_room.get_puzzle_status("rope"):
-                rope_feature = ("The rope is taut, and looks as though it is "
-                                "meant to trip someone walking toward the "
-                                "inner door.")
-
-                current_room.add_feature("rope", rope_feature)
-
-                # The rope puzzle has been triggered and should now be set to
-                # false. This tracks puzzle status.
-                current_room.set_puzzle_status("rope", False)
-
-        if feature == "rope":
-            print("You take a close look at the {}".format(feature))
-
-            print(feature_dict[feature])
-
-        # If the user has not entered: use sword after the rope feature has
-        # been added to the room, then going to inspect the writing triggers
-        # a trap that will damage them.
-        if feature == "writing":
-            if (current_room.get_puzzle_status("rope") or
-               "rope" in current_room.get_features()):
-
-                print("You walk toward the door to inspect the writing.")
-
-                rope_trap(current_room)
-
-            # If the trap has already been triggered then the player can
-            # inspect the writing as normal.
-            else:
-                print("You take a close look at the {}".format(feature))
-
-                print(feature_dict[feature])
-
-    if verb == "eat":
-        if feature == "rubble":
-            print("You take a bite of some rubble and break a tooth. Ouch!")
-
-        if feature == "door":
-            print("You naw on the oak doors a bit. Yup that's oak all "
-                  "right...")
-
-        if feature == "writing":
-            print("You can't eat writing, that's silly.")
-
-    if verb == "drink":
-        print("I can't drink that.")
-
-    if verb == "smell":
-        if feature == "door":
-            print("Smells like oak.")
-
-        if feature == "writing":
-            print("The writing smells foul.")
-
-        if feature == "rubble":
-            print("Ahh nothing like the smell of some good rubble.")
-
-    if verb == "listen to":
-        print("All quite...too quite.")
-
-    if verb == "climb":
-        if feature == "rubble":
-            print("You climb on top of a pile of rubble. Congrats you're king "
-                  "of rubble mountain.")
-
-    if verb == "duck":
-        print("You duck quickly and then stand back up.")
-
-    save_object_state(current_room)
-
-
-def room_2_item_handler(current_room, verb, item_name):
-    """Handles room 2 player item or room item interactions.
-
-    Args:
-    current_room (:obj:Room): The current room that the player is in.
-    verb (str): The action a user would like to take.
-    item_name (str): The name of the item the user would like to use.
-
-    """
-    player = current_room.get_player()
-
-    # Triggers rope trap if trap hasn't already been triggered.
-    if (verb == "look at" and item_name == "key" and
-            (current_room.get_puzzle_status("rope") or
-             "rope" in current_room.get_features())):
-
-            print("The golden key glitters on the floor among the rubble. "
-                  "You walk forward to take a closer look.")
-
-            rope_trap(current_room)
-
-    # Triggers rope trap if trap hasn't already been triggered.
-    elif (verb == "take" and item_name == "key" and
-            (current_room.get_puzzle_status("rope") or
-             "rope" in current_room.get_features())):
-
-            print("The golden key glitters on the floor among the rubble. "
-                  "You walk forward to pick up the key.")
-
-            rope_trap(current_room)
-
-    # These verbs do not get unique handlers for this room.
-    elif verb == "take" or verb == "look at" or verb == "drop":
-        general_item_handler(current_room, verb, item_name)
-
-    # Verb use uniquely interacts with this rooms features.
-    elif verb == "use":
-        # After a user inspects the rubble in the room, the rope feature is
-        # added.  Then, if a player uses the sword, it will disable the rope
-        # trap and remove it as a feature from the room.
-        if item_name == "sword" and "sword" in player.get_item_names():
-            if "rope" in current_room.get_features():
-                print("You kneel down and cut the rope. As soon as the rope "
-                      "is cut you here a click and a crossbow bolt zooms over "
-                      "your head. Good thing I saw this trap ahead of time.")
-
-                current_room.remove_feature("rope")
-
-        elif item_name not in player.get_item_names():
-            print("You are not carrying that item currently.")
-
-    save_object_state(current_room)
-
-
-def rope_trap(current_room):
-    """Handles rope trap event for room 2.
-
-    Args:
-        current_room (:obj:Room): The room the player is currently in.
-
-    """
-    print("As you walk toward the door, between the scattered rubble, "
-          "your foot trips on a small hard to see rope. You here a "
-          "click...\n")
-
-    # Get user response for this mini event.
-    print("What would you like to do?")
-
-    response = input("Type some text: ")
-    response.lower().strip()
-    print("")
-
-    # The only valid response to avoid damage is to duck.
-    if "duck" in response:
-        print("You duck just as a crossbow bolt passes over head. "
-              "A narrow miss. I should probably inspect rooms more "
-              "closely in the future.")
-    else:
-        print("Before you can do anything a crossbow bolt flies "
-              "across the room from a hidden opening and strikes "
-              "you in the shoulder. Ouch should have ducked.")
-
-    # Set the puzzle status to false to indicate that the rope trap event is
-    # complete.
-    current_room.set_puzzle_status("rope", False)
-
-    # The feature is removed from the room so that the event does not repeat.
-    current_room.remove_feature("rope")
-
-    save_object_state(current_room)
-
-
 def take_action(current_room, action):
     """Handles parsed input to perform actions in game.
 
@@ -615,6 +260,18 @@ def take_action(current_room, action):
             room_2_feature_handler(current_room, action["verb"],
                                    action["feature"])
 
+        elif current_room.get_name() == "mess hall":
+            room_3_feature_handler(current_room, action["verb"],
+                                   action["feature"])
+
+        elif current_room.get_name() == "store room":
+            room_4_feature_handler(current_room, action["verb"],
+                                   action["feature"])
+
+        elif current_room.get_name() == "kitchen":
+            room_5_feature_handler(current_room, action["verb"],
+                                   action["feature"])
+
     # Handle player / item interaction for a given room.
     elif (action["verb"] is not None and action["item"] is not None
           and (action["item"] in player.get_item_names() or
@@ -626,6 +283,18 @@ def take_action(current_room, action):
 
         elif current_room.get_name() == "entrance hall":
             room_2_item_handler(current_room, action["verb"],
+                                action["item"])
+
+        elif current_room.get_name() == "mess hall":
+            room_3_item_handler(current_room, action["verb"],
+                                action["item"])
+
+        elif current_room.get_name() == "store room":
+            room_4_item_handler(current_room, action["verb"],
+                                action["item"])
+
+        elif current_room.get_name() == "kitchen":
+            room_5_item_handler(current_room, action["verb"],
                                 action["item"])
 
     elif action["verb"] == "duck":
@@ -769,6 +438,24 @@ def travel(current_room, direction):
             new_room = load_object(new_room_name)
 
             new_room.set_player(player)
+
+            # Warlock voice interaction number 1.
+            if (new_room.get_name() == "store room" and
+               new_room.get_puzzle_status("voice")):
+                print("As you walk through the door your vision suddenly goes "
+                      "black. A voice enters your mind. It speaks in a low "
+                      "raspy growl: \"Ahh it appears I have an intruder. "
+                      "Although you cannot see me, I assure you I can see "
+                      "you. I am Zlor and this is my fortress. Your brother "
+                      "will not be returned. You cannot save him, I will "
+                      "make sure of that...\" The voice fades and your vision "
+                      "returns. Just as it does, there is a flash of light "
+                      "and the sound of the stone floor shifting. "
+                      "Dark black vines suddenly shoot up out of the cracks "
+                      "in the floor. The vines quickly grow to cover the door "
+                      "leading north...Things quite down and you take a look "
+                      "around\n")
+                new_room.set_puzzle_status("voice", False)
 
             # Print out room description.
             if player.has_memory(new_room_name):

@@ -168,8 +168,9 @@ def init_room_3():
                    "two long tables that stretch the full length of the room "
                    "and there are suits of armor lining both walls. The "
                    "tables still have dirty plates scattered about. On the "
-                   "north side of the room is a steel door. To the east a "
-                   "large oak one. To the west, the painted door "
+                   "north side of the room is an old steel door with a "
+                   "strange engraving at its center. To the east "
+                   "there is a large oak door. To the west, the painted door "
                    "leads back to the entrance hall.",
                    "I'm in the mess hall. To the north a steel door goes to "
                    "the kitchen. To the east a large oak door leads to the "
@@ -179,9 +180,9 @@ def init_room_3():
 
     # Init items
     # Item 1 - bread
-    bread_name = "piece of bread"
+    bread_name = "bread"
     bread_description = ("A fresh chunk of French bread.")
-    bread_durability = None
+    bread_durability = 1
     bread_stats = None
 
     bread = Item(bread_name, bread_description, bread_durability,
@@ -204,16 +205,36 @@ def init_room_3():
     door_map = {'north': True, 'east': False, 'west': False}
 
     # Set features in room.
-    chicken_feature = ("As you walk through the hall you see a torn piece of "
-                       "chicken. It looks like it might still be fresh "
-                       "enough to eat. ")
 
-    armor_feature = ("Suddenly you hear armor rattle... A large suit "
-                     "of armor crashes to the ground near you. ")
+    armor_feature = ("The suits of armor are old and dusty.")
 
-    feature_dict = {"chicken": chicken_feature, "armor": armor_feature}
+    engraving_feature = ("A closer inspection reveals that the engraving is "
+                         "on a disc of silver that is attached to, but not "
+                         "quite flush with, the surface of the door. Strange "
+                         "markings cover the surface of the engraving and are "
+                         "pictured below. \n\n"
+                         "              / _______ \\              \n"
+                         "             /           \\             \n"
+                         "            |   /IIIII\\   |            \n"
+                         "            |  |IIIIIII|  |            \n"
+                         "            | *\\___!___*  |            \n"
+                         "            .///       \\\\\\.            \n"
+                         "          /__   ./| |\\ .   _\\          \n"
+                         "         /       \\. ./       \\         \n"
+                         "         |  /__  \\   / ___\\   |        \n"
+                         "        /| |     /   \\    |  |\\        \n"
+                         "       / |. -----\"   \"-----  | \\       \n"
+                         "       / / ______     ______ \\ \\       \n"
+                         "      | |     -         -     | |      \n"
+                         "      |.|                     |.|      \n"
+                         "       |                       |       \n"
+                         "        \\-                    -/       \n"
+                         "          \\-                -/         \n"
+                         "            ________________           \n")
 
-    puzzle_dict = None
+    feature_dict = {"armor": armor_feature, "engraving": engraving_feature}
+
+    puzzle_dict = {"engraving": True, "armor": True}
 
     # Instantiate room object.
     mess_hall = Room(name, description, item_list, monster_list, player,
@@ -230,41 +251,32 @@ def init_room_4():
 
     """
     name = "store room"
-    description = ("The room has large shelves that go from the floor "
-                   "all the way to the very high ceilings. There is a "
-                   "stone area for refrigeration and hanging animal "
-                   "carcasses from the ceiling. To the west a large oak door "
-                   "leads to the mess hall.  To the north a steel door.",
+    description = ("The room you are in has large shelves that go from floor "
+                   "ceiling. There is a stone area for refrigeration where "
+                   "animal carcasses hang from the ceiling. Nearby a broom "
+                   "leans against the wall. "
+                   "To the west a large oak door leads to the mess hall. To "
+                   "the north dark black vines have entirely covered a "
+                   "steel door.",
                    "I'm in the store room. To the west a large oak door leads "
-                   "to the mess hall and "
-                   "to the north a steel door leads to some stairs."
+                   "to the mess hall and to the north a vine covered steel "
+                   "door."
                    )
 
     # Init items
     # Item 1 - empty_jar
     empty_jar_name = "jar"
-    empty_jar_description = ("A clear, empty jar. It has some green slimy "
-                             "residue in it. ")
+    empty_jar_description = ("A clear, empty jar. This might come in handy "
+                             "later.")
     empty_jar_durability = None
     empty_jar_stats = None
 
     empty_jar = Item(empty_jar_name, empty_jar_description,
                      empty_jar_durability, empty_jar_stats)
 
-    # Item 2 - letter
-    letter_name = "letter"
-    letter_description = ("The letter has a scrawled ink lettering "
-                          "that is hard to make out. It looks like "
-                          "it might be written in distress... ")
-    letter_durability = None
-    letter_stats = None
-
-    letter = Item(letter_name, letter_description, letter_durability,
-                  letter_stats)
-
     # Set item list
     item_list = []
-    item_list.extend((empty_jar, letter))
+    item_list.append(empty_jar)
 
     # Set monster list
     monster_list = []
@@ -283,13 +295,24 @@ def init_room_4():
                      "around the room before retuning to the corner. "
                      )
 
-    rice_feature = ("A bag of rice fell over on the top shelf and dumps "
-                    "rice down onto the floor. "
-                    )
+    vines_feature = ("You've never seen a plant like this. The vines are "
+                     "unnaturally dark and thick.")
 
-    feature_dict = {"broom": broom_feature, "rice": rice_feature}
+    shelves_feature = ("The shelves are mostly empty. Looks like they haven't "
+                       "stocked in a while. You do notice a small lock box on "
+                       "one of the shelves though.")
 
-    puzzle_dict = None
+    animal_carcass = ("Looks like a deer carcass.")
+
+    lock_box_feature = ("The lock box is small but elaborate. It is made "
+                        "of wood but has gold trim on its edges.")
+
+    feature_dict = {"lock box": lock_box_feature, "broom": broom_feature,
+                    "shelves": shelves_feature, "carcass": animal_carcass,
+                    "vines": vines_feature}
+
+    puzzle_dict = {"lock box": False, "vines": True, "voice": True,
+                   "shelves": True}
 
     # Instantiate room object.
     store_room = Room(name, description, item_list, monster_list, player,
@@ -343,14 +366,12 @@ def init_room_5():
     door_map = {'south': False}
 
     # Set features in room.
-    rat_feature = ("A dark mass can be seen in the corner of the room. "
-                   "As you walk towards it, it scatters across the floor "
-                   "into a nearby drain. ")
+    fish_feature = ("Sushi anyone? On second thought maybe not...")
 
     sink_feature = ("The massive double basin sink is filled to the brim "
                     "with dishes covered in sludge. ")
 
-    feature_dict = {"rat": rat_feature, "sink": sink_feature}
+    feature_dict = {"fish": fish_feature, "sink": sink_feature}
 
     puzzle_dict = None
 
