@@ -866,6 +866,123 @@ def init_room_13():
     return reading_room
 
 
+def init_room_14():
+    """Instantiates Room of Last Rites.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "room of last rites"
+    description = ("I feel like I'm close to Evelyn. Bones are scattered in "
+                   "this room. A very daunting sight indeed! There is also a "
+                   "bloody handprint on the north wall of the room. I'm in "
+                   "the room of last rites. There is a tungsten door to the "
+                   "north and a pine door to the east."
+                   )
+
+    # Init items
+    # Item 1 - Key
+    key_name = "Skull key"
+    key_description = ("The key has a skull on it. ")
+    key_durability = None
+    key_stats = None
+
+    skull_key = Item(key_name, key_description, key_durability, key_stats)
+
+    # Set item list
+    item_list = []
+    item_list.append(skull_key)
+
+    # ADD CHEST/FAIRY??
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': 'final lair', 'east': 'archives', 'south': None,
+                      'west': None}
+    door_map = {'north': True, 'east': False}
+
+    # Set features in room.
+    bones_feature = ("The bones look like they belong to animals, "
+                     "perhaps some unlucky birds and squirrels. Phew, "
+                     "thankfully none of them look like human remains."
+                     )
+
+    handprint_feature = ("Wait a second, that handprint looks very "
+                         "familiar. Could it be...? Yes, it looks like "
+                         "Evelyn's handprint! "
+                         )
+
+    feature_dict = {"bones": bones_feature, "handprint": handprint_feature}
+
+    puzzle_dict = None
+
+    # Instantiate room object.
+    room_of_last_rites = Room(name, description, item_list, monster_list,
+                              player, adjacent_rooms, door_map, feature_dict,
+                              puzzle_dict)
+
+    return room_of_last_rites
+
+
+def init_room_15():
+    """Instantiates Final Lair.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "final lair"
+    description = ("Evelyn is curled up in the corner of this room. "
+                   "There is also a mirror in the back of the "
+                   "room. I'm in the final lair. There is a tungsten "
+                   "door to the south."
+                   )
+
+    # Set item list
+    item_list = []
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': None, 'east': None,
+                      'south': 'room of last rites', 'west': None}
+    door_map = {'south': False}
+
+    # Set features in room.
+    evelyn_feature = ("Other than a cut on his hand, Evelyn looks to "
+                      "be in fairly good shape even though he's pretty "
+                      "shaken up. 'Thanks for saving me', he says. 'I "
+                      "think it's time we go home.'"
+                      )
+
+    mirror_feature = ("I see myself in the mirror's reflection. My face "
+                      "is covered with cuts and bruises. My eyes, too, "
+                      "look different. Wiser and tougher, perhaps. My hair "
+                      "is matted with a mixture of blood and sweat."
+                      )
+
+    feature_dict = {"evelyn": evelyn_feature, "mirror": mirror_feature}
+
+    puzzle_dict = None
+
+    # Instantiate room object.
+    final_lair = Room(name, description, item_list, monster_list,
+                      player, adjacent_rooms, door_map, feature_dict,
+                      puzzle_dict)
+
+    return final_lair
+
+
 def init_room_objects():
     """Creates the starting game objects.
 
@@ -888,13 +1005,13 @@ def init_room_objects():
     tower_hall = init_room_11()
     archives = init_room_12()
     reading_room = init_room_13()
-    # room_of_last_rites = init_room_14()
-    # final_lair = init_room_15()
+    room_of_last_rites = init_room_14()
+    final_lair = init_room_15()
 
     room_list.extend((fortress_entrance, entrance_hall, mess_hall, store_room,
                       kitchen, washroom, smoking_room, sleeping_chambers,
                       supplies_closet, pool_room, tower_hall, archives,
-                      reading_room))
+                      reading_room, room_of_last_rites, final_lair))
 
     return room_list
 

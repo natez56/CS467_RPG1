@@ -126,7 +126,8 @@ def parse_input(input, current_room):
                + dest or new_command2 == "move to " + dest or new_command2\
                == "walk " + dest or new_command2 == "walk to " + dest or\
                new_command2 == "run " + dest or new_command2 == "run to" +\
-               dest:
+               dest or new_command2 == "travel " + dest or\
+               new_command2 == "travel to " + dest:
                 # ##### PRINT STATEMENT FOR TESTING #####
                 # print("Moving to the ", dest)
                 assigned_tokens['direction'] = dest
