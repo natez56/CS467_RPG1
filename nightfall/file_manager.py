@@ -700,8 +700,8 @@ def init_room_11():
     """
     name = "tower hall"
     description = (""
-                   "I'm in the pool room. There is a birch door to the "
-                   "south and a marble staircase to the north. "
+                   "I'm in the tower hall. There is a marble staircase to the "
+                   "south and large walnut double doors to the north. "
                    )
 
     # Init items
@@ -721,13 +721,13 @@ def init_room_11():
     door_map = {'north': True, 'south': False}
 
     # Set features in room.
-    _feature = (""
-                )
+    ceiling_feature = (""
+                       )
 
-    _feature = (""
-                )
+    painting_feature = (""
+                        )
 
-    feature_dict = {"": _feature, "": _feature}
+    feature_dict = {"ceiling": ceiling_feature, "painting": painting_feature}
 
     puzzle_dict = None
 
@@ -748,16 +748,30 @@ def init_room_12():
     """
     name = "archives"
     description = (""
-                   "I'm in the pool room. There is a birch door to the "
-                   "south and a marble staircase to the north. "
+                   "I'm in the archives. There are large walnut doors to the "
+                   "south, an ash door to the east, and a pine door to the "
+                   "west. "
                    )
 
     # Init items
+    # Item 1 - Mythril Tongs
+    tongs_name = "Mythril Tongs"
+    tongs_description = ("Long pristine tongs with a lime green flame that "
+                         "flows from the tips. They appear to be made out of "
+                         "mythril. "
+                         )
+    tongs_durability = None
+    tongs_stats = {"magic_power": 8}
+
+    tongs = Item(tongs_name, tongs_description, tongs_durability,
+                 tongs_stats)
 
     # Set item list
     item_list = []
+    item_list.append(tongs)
 
     # Set monster list
+    # ADD A SKELETON TO THIS ROOM ^*&Y(U)*&^&*YUOI&*T^O&UBHIU*GT&UYHIUHYTYV
     monster_list = []
 
     # Set player to None
@@ -769,13 +783,14 @@ def init_room_12():
     door_map = {'east': False, 'south': False, 'west': True}
 
     # Set features in room.
-    _feature = (""
-                )
+    fireplace_feature = (""
+                         )
 
-    _feature = (""
-                )
+    chandelier_feature = (""
+                          )
 
-    feature_dict = {"": _feature, "": _feature}
+    feature_dict = {"fireplace": fireplace_feature,
+                    "chandelier": chandelier_feature}
 
     puzzle_dict = None
 
@@ -796,8 +811,8 @@ def init_room_13():
     """
     name = "reading room"
     description = (""
-                   "I'm in the pool room. There is a birch door to the "
-                   "south and a marble staircase to the north. "
+                   "I'm in the reading room. There is an ash door to the "
+                   "west. "
                    )
 
     # Init items
@@ -817,13 +832,13 @@ def init_room_13():
     door_map = {'north': False, 'south': False}
 
     # Set features in room.
-    _feature = (""
-                )
+    book_feature = (""
+                    )
 
-    _feature = (""
-                )
+    couch_feature = (""
+                     )
 
-    feature_dict = {"": _feature, "": _feature}
+    feature_dict = {"book": book_feature, "couch": couch_feature}
 
     puzzle_dict = None
 
