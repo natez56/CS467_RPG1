@@ -457,16 +457,16 @@ def init_room_7():
 
     # Init items
     # Item 1 - Key
-    key_name = "Key"
+    key_name = "Emerald Key"
     key_description = ("A golden key that has an embedded emerald in it. ")
     key_durability = None
     key_stats = None
 
-    key = Item(key_name, key_description, key_durability, key_stats)
+    emerald_key = Item(key_name, key_description, key_durability, key_stats)
 
     # Set item list
     item_list = []
-    item_list.append(key)
+    item_list.append(emerald_key)
 
     # Set monster list
     monster_list = []
@@ -585,8 +585,8 @@ def init_room_9():
                    "and the room is much smaller than the other rooms "
                    "you have been in. The shelves have a high stack of "
                    "towels, as well as shampoo and soap. Even though the "
-                   "room should smell good, it wreaks of goblin. "
-                   "I'm in the supplies closet. There is an mahogany "
+                   "room should smell good, it reeks of goblin. "
+                   "I'm in the supplies closet. There is a mahogany "
                    "door to the east and a walnut door to the south, and "
                    "a birch door to the north. "
                    )
@@ -651,7 +651,10 @@ def init_room_10():
 
     """
     name = "pool room"
-    description = (""
+    description = ("As you enter the room, you see a giant pool that spans "
+                   "the entire width of the room. The water in the pool "
+                   "is crystal clear and is moving about. Flowing into the "
+                   "pool from the corner of the room is a waterfall. "
                    "I'm in the pool room. There is a birch door to the "
                    "south and a marble staircase to the north. "
                    )
@@ -673,10 +676,16 @@ def init_room_10():
     door_map = {'north': False, 'south': False}
 
     # Set features in room.
-    pool_feature = (""
+    pool_feature = ("As you look at the pool you notice there are whirlpools "
+                    "in different areas of the pool. There must be drainage "
+                    "systems beneath the pool causing these effects. You "
+                    "are unsure of how deep and dangerous the water is, but "
+                    "you may have to swim to get to the other side. "
                     )
 
-    waterfall_feature = (""
+    waterfall_feature = ("The waterfall is extremely odd. It is unclear "
+                         "where the water is flowing from and how it is "
+                         "getting there. You wonder if it might be magic. "
                          )
 
     feature_dict = {"pool": pool_feature, "waterfall": waterfall_feature}
@@ -699,7 +708,9 @@ def init_room_11():
 
     """
     name = "tower hall"
-    description = (""
+    description = ("You enter a room that is gigantic with an ornate vaulted "
+                   "ceiling. There is also a massive painting on the wall "
+                   "that spans almost the entire length of the room. "
                    "I'm in the tower hall. There is a marble staircase to the "
                    "south and large walnut double doors to the north. "
                    )
@@ -721,10 +732,15 @@ def init_room_11():
     door_map = {'north': True, 'south': False}
 
     # Set features in room.
-    ceiling_feature = (""
+    ceiling_feature = ("Not only is the ceiling very high, you notice "
+                       "that it appears to look like a star filled night sky. "
+                       "It makes you wonder if a ceiling is truly there... "
                        )
 
-    painting_feature = (""
+    painting_feature = ("The painting on the wall depicts a large medieval "
+                        "battle. There are two distinct armies engaged in "
+                        "brutal combat. I wonder if the owner of this place "
+                        "was involved in the battle. "
                         )
 
     feature_dict = {"ceiling": ceiling_feature, "painting": painting_feature}
@@ -779,7 +795,7 @@ def init_room_12():
 
     # Set room navigation traits.
     adjacent_rooms = {'north': None, 'east': 'reading room',
-                      'south': 'tower hall', 'west': 'room of last rights'}
+                      'south': 'tower hall', 'west': 'room of last rites'}
     door_map = {'east': False, 'south': False, 'west': True}
 
     # Set features in room.
@@ -872,8 +888,8 @@ def init_room_objects():
     tower_hall = init_room_11()
     archives = init_room_12()
     reading_room = init_room_13()
-    # room_of_last_rights = init_room_14()
-    # lair = init_room_15()
+    # room_of_last_rites = init_room_14()
+    # final_lair = init_room_15()
 
     room_list.extend((fortress_entrance, entrance_hall, mess_hall, store_room,
                       kitchen, washroom, smoking_room, sleeping_chambers,
