@@ -436,16 +436,16 @@ def init_room_7():
 
     # Init items
     # Item 1 - Key
-    key_name = "Key"
+    key_name = "Emerald Key"
     key_description = ("A golden key that has an embedded emerald in it. ")
     key_durability = None
     key_stats = None
 
-    key = Item(key_name, key_description, key_durability, key_stats)
+    emerald_key = Item(key_name, key_description, key_durability, key_stats)
 
     # Set item list
     item_list = []
-    item_list.append(key)
+    item_list.append(emerald_key)
 
     # Set monster list
     monster_list = []
@@ -687,7 +687,9 @@ def init_room_11():
 
     """
     name = "tower hall"
-    description = (""
+    description = ("You enter a room that is gigantic with an ornate vaulted "
+                   "ceiling. There is also a massive painting on the wall "
+                   "that spans almost the entire length of the room. "
                    "I'm in the tower hall. There is a marble staircase to the "
                    "south and large walnut double doors to the north. "
                    )
@@ -709,10 +711,15 @@ def init_room_11():
     door_map = {'north': True, 'south': False}
 
     # Set features in room.
-    ceiling_feature = (""
+    ceiling_feature = ("Not only is the ceiling very high, you notice "
+                       "that it appears to look like a star filled night sky. "
+                       "It makes you wonder if a ceiling is truly there... "
                        )
 
-    painting_feature = (""
+    painting_feature = ("The painting on the wall depicts a large medieval "
+                        "battle. There are two distinct armies engaged in "
+                        "brutal combat. I wonder if the owner of this place "
+                        "was involved in the battle. "
                         )
 
     feature_dict = {"ceiling": ceiling_feature, "painting": painting_feature}
