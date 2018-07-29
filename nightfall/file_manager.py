@@ -763,7 +763,11 @@ def init_room_12():
 
     """
     name = "archives"
-    description = (""
+    description = ("The room before you is very dark. There are cobwebs "
+                   "scattered around the room and it is quite dusty. "
+                   "There is a fireplace roaring in the corner. Above you "
+                   "is a very large chandelier that is made out of hundreds "
+                   "of crystals. "
                    "I'm in the archives. There are large walnut doors to the "
                    "south, an ash door to the east, and a pine door to the "
                    "west. "
@@ -799,10 +803,18 @@ def init_room_12():
     door_map = {'east': False, 'south': False, 'west': True}
 
     # Set features in room.
-    fireplace_feature = (""
+    fireplace_feature = ("As you step toward the fireplace you hear it start "
+                         "to crackle loudly. A face then appears in the "
+                         "flames. It screams \"Run or you will face the same "
+                         "fate as those you wish to save!\" Evelyn must be "
+                         "near! "
                          )
 
-    chandelier_feature = (""
+    chandelier_feature = ("As you look at the chandelier it begins to rattle "
+                          "loudly. Rain then begins to fall from the "
+                          "and continues for about ten seconds before "
+                          "stopping. A loud boom of thunder blasts through "
+                          "the room and dust is kicked up into the air. "
                           )
 
     feature_dict = {"fireplace": fireplace_feature,
