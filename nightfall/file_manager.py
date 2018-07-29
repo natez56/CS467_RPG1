@@ -670,6 +670,150 @@ def init_room_10():
     return pool_room
 
 
+def init_room_11():
+    """Instantiates tower hall.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "tower hall"
+    description = (""
+                   "I'm in the pool room. There is a birch door to the "
+                   "south and a marble staircase to the north. "
+                   )
+
+    # Init items
+
+    # Set item list
+    item_list = []
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': 'archives', 'east': None,
+                      'south': 'pool room', 'west': None}
+    door_map = {'north': True, 'south': False}
+
+    # Set features in room.
+    _feature = (""
+                )
+
+    _feature = (""
+                )
+
+    feature_dict = {"": _feature, "": _feature}
+
+    puzzle_dict = None
+
+    # Instantiate room object.
+    tower_hall = Room(name, description, item_list, monster_list,
+                      player, adjacent_rooms, door_map, feature_dict,
+                      puzzle_dict)
+
+    return tower_hall
+
+
+def init_room_12():
+    """Instantiates archives.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "archives"
+    description = (""
+                   "I'm in the pool room. There is a birch door to the "
+                   "south and a marble staircase to the north. "
+                   )
+
+    # Init items
+
+    # Set item list
+    item_list = []
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': None, 'east': 'reading room',
+                      'south': 'tower hall', 'west': 'room of last rights'}
+    door_map = {'east': False, 'south': False, 'west': True}
+
+    # Set features in room.
+    _feature = (""
+                )
+
+    _feature = (""
+                )
+
+    feature_dict = {"": _feature, "": _feature}
+
+    puzzle_dict = None
+
+    # Instantiate room object.
+    archives = Room(name, description, item_list, monster_list,
+                    player, adjacent_rooms, door_map, feature_dict,
+                    puzzle_dict)
+
+    return archives
+
+
+def init_room_13():
+    """Instantiates reading room.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "reading room"
+    description = (""
+                   "I'm in the pool room. There is a birch door to the "
+                   "south and a marble staircase to the north. "
+                   )
+
+    # Init items
+
+    # Set item list
+    item_list = []
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': None, 'east': None, 'south': None,
+                      'west': 'archives'}
+    door_map = {'north': False, 'south': False}
+
+    # Set features in room.
+    _feature = (""
+                )
+
+    _feature = (""
+                )
+
+    feature_dict = {"": _feature, "": _feature}
+
+    puzzle_dict = None
+
+    # Instantiate room object.
+    reading_room = Room(name, description, item_list, monster_list,
+                        player, adjacent_rooms, door_map, feature_dict,
+                        puzzle_dict)
+
+    return reading_room
+
+
 def init_room_objects():
     """Creates the starting game objects.
 
@@ -689,15 +833,16 @@ def init_room_objects():
     sleeping_chambers = init_room_8()
     supplies_closet = init_room_9()
     pool_room = init_room_10()
-    # tower_hall = init_room_11()
-    # archives = init_room_12()
-    # reading_room = init_room_13()
+    tower_hall = init_room_11()
+    archives = init_room_12()
+    reading_room = init_room_13()
     # room_of_last_rights = init_room_14()
     # lair = init_room_15()
 
     room_list.extend((fortress_entrance, entrance_hall, mess_hall, store_room,
                       kitchen, washroom, smoking_room, sleeping_chambers,
-                      supplies_closet, pool_room))
+                      supplies_closet, pool_room, tower_hall, archives,
+                      reading_room))
 
     return room_list
 
