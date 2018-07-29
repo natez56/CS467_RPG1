@@ -357,6 +357,30 @@ class Player(Character):
         return self.__dict__ == other.__dict__
 
 
+class Monster(Character):
+    """Monster class tracks the state of monster characters.
+
+    Attributes:
+        name (str): The name of the monster.
+        description (str): The description of the monster.
+        loot (item): The item that the monster drops.
+
+    """
+    def __init__(self, name, description, loot):
+        self.name = name
+        self.description = description
+        self.loot = loot
+
+    def get_name(self):
+        return self.name
+
+    def get_description(self):
+        return self.get_description
+
+    def get_loot(self):
+        return self.loot
+
+
 class Item():
     """Item class tracks the state of items used by the player.
 
