@@ -817,7 +817,12 @@ def init_room_13():
 
     """
     name = "reading room"
-    description = (""
+    description = ("In the room before you, there is a long couch and "
+                   "books all around the room, stacked to the ceiling. "
+                   "In the middle of the room there is a table with a "
+                   "large, old open book on it. The pages are tattered "
+                   "and it seems like it could be thousands of years "
+                   "old. "
                    "I'm in the reading room. There is an ash door to the "
                    "west. "
                    )
@@ -839,10 +844,18 @@ def init_room_13():
     door_map = {'north': False, 'south': False}
 
     # Set features in room.
-    book_feature = (""
+    book_feature = ("As you approach the book, the pages start flapping "
+                    "quickly, going further along in the book. All of a "
+                    "sudden, it stops on a page. As you look at the page, "
+                    "it is completely blank until text begins to appear. "
+                    "It says, \"This book holds spells only for the worthy.\" "
+                    "The book then returns to its original page. "
                     )
 
-    couch_feature = (""
+    couch_feature = ("As you step towards the couch, it begins to sink into "
+                     "the ground. The closer you step to it, the further it "
+                     "sinks, as you back away, it returns to its normal "
+                     "position. "
                      )
 
     feature_dict = {"book": book_feature, "couch": couch_feature}
