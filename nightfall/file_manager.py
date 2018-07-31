@@ -105,7 +105,7 @@ def init_room_2():
     # Item 1 - chest_key
     chest_key_name = "key"
     chest_key_description = ("An elaborate golden key.")
-    chest_key_durability = None
+    chest_key_durability = 1
     chest_key_stats = None
 
     chest_key = Item(chest_key_name, chest_key_description,
@@ -266,9 +266,9 @@ def init_room_4():
     # Init items
     # Item 1 - empty_jar
     empty_jar_name = "jar"
-    empty_jar_description = ("A clear, empty jar. This might come in handy "
-                             "later.")
-    empty_jar_durability = None
+    empty_jar_description = ("A clear, empty jar. Possibly used to hold "
+                             "potions or other dangerous substances.")
+    empty_jar_durability = 1
     empty_jar_stats = None
 
     empty_jar = Item(empty_jar_name, empty_jar_description,
@@ -340,7 +340,7 @@ def init_room_5():
 
     # Init items
     # Item 1 - magic_resistant_oven_mitt
-    oven_mitt_name = "Magic Resistant Oven Mitt"
+    oven_mitt_name = "magic resistant oven mitt"
     oven_mitt_description = ("The oven mitt glows with an orange hue. "
                              "The outside is warm to the touch. ")
     oven_mitt_durability = None
@@ -349,9 +349,16 @@ def init_room_5():
     oven_mitt = Item(oven_mitt_name, oven_mitt_description,
                      oven_mitt_durability, oven_mitt_stats)
 
+    ooze_name = "acidic ooze"
+    ooze_description = ("This green ooze eats through anything it touches. "
+                        "I'll need a special kind of container to hold this.")
+    ooze_durability = 1
+    ooze_stats = None
+
+    ooze = Item(ooze_name, ooze_description, ooze_durability, ooze_stats)
     # Set item list
     item_list = []
-    item_list.append(oven_mitt)
+    item_list.extend((oven_mitt, ooze))
 
     # Set monster list
     # ADD A CORROSIVE SLUDGE TO THIS ROOM &^T*Y(&^&%*()&^&*()^%&()^%&(^&))
@@ -394,7 +401,10 @@ def init_room_6():
                    "there is a massive tub in the middle of the "
                    "room with a large window behind it. It is too "
                    "dark to see what is likely a gorgeous view of the "
-                   "forest. You also see a fountain in the corner. "
+                   "forest. You also see a fountain in the corner. To the "
+                   "south there are swinging doors that open to stairs "
+                   "leading back down to the store room. To the west an "
+                   "ornate door. To the north a maple door.",
                    "I'm in the washroom. There is a swinging door "
                    "leading to stairs back to the store room, an ornate "
                    "door to the west, and a maple door to the north. "
@@ -418,10 +428,10 @@ def init_room_6():
     door_map = {'north': False, 'south': False, 'west': False}
 
     # Set features in room.
-    tub_feature = ("As you go near the tub you hear the sound of rushing "
+    tub_feature = ("As you go near you hear the sound of rushing "
                    "water flowing far down the drain. You hear the sound "
                    "of wood cracking down the drain too... Could it be "
-                   "beavers..? "
+                   "beavers..?"
                    )
 
     fountain_feature = ("The fountain starts flowing translucent purple "
@@ -429,7 +439,7 @@ def init_room_6():
 
     feature_dict = {"tub": tub_feature, "fountain": fountain_feature}
 
-    puzzle_dict = None
+    puzzle_dict = {"rubber duck": True}
 
     # Instantiate room object.
     washroom = Room(name, description, item_list, monster_list, player,
@@ -447,26 +457,21 @@ def init_room_7():
     """
     name = "smoking room"
     description = ("The room before you has a lucious red carpet. There "
-                   "is a large chair with gold stitching. On one wall is "
-                   "a large humidor that stands out in the dimly lit room. "
-                   "There is a table in the middle of the room with a crystal "
-                   "ash tray. The room has a strong scent of smoke. "
+                   "is a large chair with gold stitching. By the chair there "
+                   "is a table with a crystal ash tray on it. Little wisps of "
+                   "smoke drift up from the leftover embers in the tray. On "
+                   "one wall is a large humidor that stands out in the dimly "
+                   "lit room.  The room has a strong scent of smoke. To the "
+                   "south there is a maple door and to the west there is a "
+                   "mahogany door.",
                    "I'm in the smoking room. To the south there is a "
                    "maple door and to the west there is a mahogany door. "
                    )
 
     # Init items
-    # Item 1 - Key
-    key_name = "Key"
-    key_description = ("A golden key that has an embedded emerald in it. ")
-    key_durability = None
-    key_stats = None
-
-    key = Item(key_name, key_description, key_durability, key_stats)
 
     # Set item list
     item_list = []
-    item_list.append(key)
 
     # Set monster list
     monster_list = []
@@ -487,15 +492,16 @@ def init_room_7():
                        "the heat dissipate immediately. "
                        )
 
-    ash_feature = ("You walk towards the ash tray and just when you are "
-                   "about to touch it, the ash from the ash tray spreads "
-                   "out towards the edges of the tray. It slowly regathers "
-                   "in the middle and spells out \"LEAVE NOW\""
+    ash_feature = ("The ash embers have cooled. You walk towards the ash tray "
+                   "and just when you are about to touch it, the ash from the "
+                   "ash tray spreads out towards the edges of the tray. It "
+                   "slowly regathers in the middle and spells out "
+                   "\"LEAVE NOW\""
                    )
 
-    feature_dict = {"humidor": humidor_feature, "ash": ash_feature}
+    feature_dict = {"humidor": humidor_feature, "ash tray": ash_feature}
 
-    puzzle_dict = None
+    puzzle_dict = {"smoke": False}
 
     # Instantiate room object.
     smoking_room = Room(name, description, item_list, monster_list, player,
@@ -513,27 +519,21 @@ def init_room_8():
     """
     name = "sleeping chambers"
     description = ("The room in front of you is gigantic. There are "
-                   "vaulted ceilings and massive windows along the "
+                   "vaulted ceilings and a massive window along the "
                    "western wall. The bed has four large posts that "
                    "have drapes around it. The room is dimly lit "
-                   "and it is immaculately clean. "
+                   "and it is immaculately clean. Near the bed is a "
+                   "nightstand with a small emerald colored lock box on it. "
+                   "There is an ornate door to the east and a walnut door to "
+                   "the north.",
                    "I'm in the sleeping chambers. There is an ornate "
                    "door to the east and a walnut door to the north. "
                    )
 
     # Init items
-    # Item 1 - Healing Potion
-    healing_potion_name = "Healing Potion"
-    healing_potion_description = ("A glass vial of thick red liquid. ")
-    healing_potion_durability = None
-    healing_potion_stats = {"health": 5}
-
-    healing_potion = Item(healing_potion_name, healing_potion_description,
-                          healing_potion_durability, healing_potion_stats)
 
     # Set item list
     item_list = []
-    item_list.append(healing_potion)
 
     # Set monster list
     monster_list = []
@@ -547,6 +547,9 @@ def init_room_8():
     door_map = {'north': False, 'east': False}
 
     # Set features in room.
+    emerald_box_feature = ("The lock box is emerald green and ornate. You "
+                           "can see that to open this box requires a key.")
+
     bed_feature = ("The drapes of the bed begin to flutter and the covers "
                    "sink into the middle of the floor, only to fly back up "
                    "lifting the entire bed frame off the ground before it "
@@ -560,9 +563,10 @@ def init_room_8():
                       "seconds. "
                       )
 
-    feature_dict = {"bed": bed_feature, "window": window_feature}
+    feature_dict = {"bed": bed_feature, "window": window_feature,
+                    "box": emerald_box_feature}
 
-    puzzle_dict = None
+    puzzle_dict = {"nightstand": True}
 
     # Instantiate room object.
     sleeping_chambers = Room(name, description, item_list, monster_list,
@@ -585,26 +589,18 @@ def init_room_9():
                    "and the room is much smaller than the other rooms "
                    "you have been in. The shelves have a high stack of "
                    "towels, as well as shampoo and soap. Even though the "
-                   "room should smell good, it wreaks of goblin. "
-                   "I'm in the supplies closet. There is an mahogany "
+                   "room should smell good, it wreaks of goblin. There is "
+                   "a mahogany door to the east and a walnut door to the "
+                   "south. A birch door lies to the north.",
+                   "I'm in the supplies closet. There is a mahogany "
                    "door to the east and a walnut door to the south, and "
                    "a birch door to the north. "
                    )
 
     # Init items
-    # Item 1 - Rapier
-    rapier_name = "Rapier"
-    rapier_description = ("A thin and nimble long sword. The blade "
-                          "glows blue and it is razor sharp. ")
-    rapier_durability = None
-    rapier_stats = {"attack_power": 5}
-
-    rapier = Item(rapier_name, rapier_description, rapier_durability,
-                  rapier_stats)
 
     # Set item list
     item_list = []
-    item_list.append(rapier)
 
     # Set monster list
     # ADD A GOBLIN HERE &^*(^%&*(^%$*()&%$*(%$^&*(*%$^&*%$&%*^%$%&*^%$^%^%))))
@@ -631,9 +627,15 @@ def init_room_9():
                        "your hair looks and feels amazing. "
                        )
 
-    feature_dict = {"towel": towel_feature, "shampoo": shampoo_feature}
+    shelves_feature = ("The contain mostly towels. You do notice a blue "
+                       "light at the very top of one of the shelves. You "
+                       "can't quite make out what it is from your vantage "
+                       "point on the ground.")
 
-    puzzle_dict = None
+    feature_dict = {"towel": towel_feature, "shampoo": shampoo_feature,
+                    "shelves": shelves_feature}
+
+    puzzle_dict = {"shelves": True}
 
     # Instantiate room object.
     supplies_closet = Room(name, description, item_list, monster_list,

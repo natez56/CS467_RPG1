@@ -272,6 +272,26 @@ def take_action(current_room, action):
             room_5_feature_handler(current_room, action["verb"],
                                    action["feature"])
 
+        elif current_room.get_name() == "washroom":
+            room_6_feature_handler(current_room, action["verb"],
+                                   action["feature"])
+
+        elif current_room.get_name() == "smoking room":
+            room_7_feature_handler(current_room, action["verb"],
+                                   action["feature"])
+
+        elif current_room.get_name() == "sleeping chambers":
+            room_8_feature_handler(current_room, action["verb"],
+                                   action["feature"])
+
+        elif current_room.get_name() == "supplies closet":
+            room_9_feature_handler(current_room, action["verb"],
+                                   action["feature"])
+
+        elif current_room.get_name() == "pool room":
+            room_10_feature_handler(current_room, action["verb"],
+                                    action["feature"])
+
     # Handle player / item interaction for a given room.
     elif (action["verb"] is not None and action["item"] is not None
           and (action["item"] in player.get_item_names() or
@@ -296,6 +316,26 @@ def take_action(current_room, action):
         elif current_room.get_name() == "kitchen":
             room_5_item_handler(current_room, action["verb"],
                                 action["item"])
+
+        elif current_room.get_name() == "washroom":
+            room_6_item_handler(current_room, action["verb"],
+                                action["item"])
+
+        elif current_room.get_name() == "smoking room":
+            room_7_item_handler(current_room, action["verb"],
+                                action["item"])
+
+        elif current_room.get_name() == "sleeping chambers":
+            room_8_item_handler(current_room, action["verb"],
+                                action["item"])
+
+        elif current_room.get_name() == "supplies closet":
+            room_9_item_handler(current_room, action["verb"],
+                                action["item"])
+
+        elif current_room.get_name() == "pool room":
+            room_10_item_handler(current_room, action["verb"],
+                                 action["item"])
 
     elif action["verb"] == "duck":
         print("You duck quickly and then stand back up.")

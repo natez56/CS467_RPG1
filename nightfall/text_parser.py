@@ -38,7 +38,9 @@ def parse_input(input, current_room):
 
     # arrays with parts of speech
     direction_array = ['north', 'east', 'south', 'west', 'entrance hall',
-                       'fortress entrance', 'mess hall']
+                       'fortress entrance', 'mess hall', 'store room',
+                       'kitchen', 'washroom', 'smoking room',
+                       'sleeping chambers', 'supplies closet', 'pool room']
 
     standard_action_array = ['help', 'look', 'gamemenu', 'game menu',
                              'inventory', 'savegame', 'loadgame']
@@ -46,7 +48,34 @@ def parse_input(input, current_room):
     verb_array = ['take', 'use', 'drop', 'look at', 'eat', 'drink', 'smell',
                   'listen to', 'climb', 'duck', 'rotate']
 
-    item_array = ['sword', 'potion', 'key', 'bread', 'letter']
+    item_array = [
+                  # Room 1
+                  'sword',
+
+                  # Room 2
+                  'key',
+
+                  # Room 3
+                  'bread',
+
+                  # Room 4
+                  'letter', 'jar', 'ooze',
+
+                  # Room 5
+                  'magic resistant oven mitt',
+
+                  # Room 6
+                  'Quackers',
+
+                  # Room 7
+                  'emerald key',
+
+                  # Room 8
+                  'healing potion',
+
+                  # Room 9
+                  'rapier',
+                    ]
 
     feature_array = [
                      # Room 1
@@ -63,6 +92,15 @@ def parse_input(input, current_room):
 
                      # Room 5
                      'fish', 'sink',
+
+                     # Room 6
+                     'tub', 'fountain',
+
+                     # Room 7
+                     'humidor', 'ash tray', 'smoke',
+
+                     # Room 8
+                     'bed', 'box', 'window',
                      ]
 
     go_array = ['go', 'go to', 'move', 'move to', 'walk', 'walk to', 'run',
@@ -100,7 +138,9 @@ def parse_input(input, current_room):
 
     # run function to clean input string
     new_command2 = remove_ignored_words(command)
-    print("new command: {}".format(new_command2))
+
+    # ##### PRINT STATEMENT FOR TESTING #####
+    # print("new command: {}".format(new_command2))
 
     # variables to check if we already have a complete command and if we have
     # an invalid scenario
@@ -133,6 +173,7 @@ def parse_input(input, current_room):
                 done = True
 
     new_command2 = verb_alias_check(new_command2)
+    new_command2 = item_alias_check(new_command2)
 
     # split each word in the string to be an element in an array
     clean_text = new_command2.split()
@@ -297,6 +338,6 @@ def parse_input(input, current_room):
                     # assigned_tokens['feature'] = None
 
     # ##### PRINT STATEMENT FOR TESTING #####
-    # print("\n{}".format(assigned_tokens.items()))
+    print("\n{}".format(assigned_tokens.items()))
 
     return assigned_tokens

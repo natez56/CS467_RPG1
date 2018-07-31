@@ -38,6 +38,9 @@ class Room:
     def get_short_description(self):
         return self.description[1]
 
+    def set_description(self, description):
+        self.description = description
+
     def get_adjacent_room(self, direction):
         return self.adjacent_rooms[direction]
 
@@ -235,7 +238,7 @@ class Player(Character):
 
         for item in self.backpack:
             if item.get_name() == item_name:
-                print("Dropped item {}.".format(item_name))
+                print("Removed item {} from inventory.".format(item_name))
 
                 self.backpack.remove(item)
 
@@ -309,9 +312,13 @@ class Player(Character):
     def use_item(self, item_name):
         if item_name in self.get_item_names():
             item = self.get_item(item_name)
+
             item.decrement_durability()
 
             if item.get_durability() == 0:
+                print("Item {} used and removed from inventory."
+                      .format(item_name))
+
                 self.backpack.remove(item)
 
     def get_lives(self):

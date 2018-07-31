@@ -24,6 +24,8 @@ def move_alias_check(current_room_name, user_input):
 
     # Find out what room the player is in currently so that the correct word
     # list can be generated for the rooms connected to that room.
+
+    # Room 1
     if current_room_name == 'fortress entrance':
         # Contains both the words in the descriptions of doors and contains
         # variations of the names of rooms.
@@ -35,6 +37,7 @@ def move_alias_check(current_room_name, user_input):
         # Match the room name to the description words matching that room.
         possible_destinations['entrance hall'] = dest_list
 
+    # Room 2
     elif current_room_name == 'entrance hall':
         # Two destination lists are created because two rooms are connected to
         # this room.
@@ -52,6 +55,7 @@ def move_alias_check(current_room_name, user_input):
 
         possible_destinations['mess hall'] = dest_list_2
 
+    # Room 3
     elif current_room_name == 'mess hall':
         dest_list_1 = ([
             ["painted", "door", "doors"],
@@ -74,6 +78,7 @@ def move_alias_check(current_room_name, user_input):
 
         possible_destinations['kitchen'] = dest_list_3
 
+    # Room 4
     elif current_room_name == 'store room':
         dest_list_1 = ([
             ["large", "oak", "door", "doors"],
@@ -87,7 +92,112 @@ def move_alias_check(current_room_name, user_input):
             ["washroom", "door", "doors"],
             ])
 
-        possible_destinations['washroom'] = dest_list_2    
+        possible_destinations['washroom'] = dest_list_2
+
+    # Room 5
+    elif current_room_name == 'kitchen':
+        dest_list_1 = ([
+            ["steel", "door", "doors"],
+            ["mess hall", "door", "doors"],
+            ])
+
+        possible_destinations['mess hall'] = dest_list_1
+
+    # Room 6
+    elif current_room_name == 'washroom':
+        dest_list_1 = ([
+            ["swinging", "door", "doors"],
+            ["store room", "door", "doors"],
+            ])
+
+        possible_destinations['store room'] = dest_list_1
+
+        dest_list_2 = ([
+            ["ornate", "door", "doors"],
+            ["sleeping chambers", "door", "doors"],
+            ])
+
+        possible_destinations['sleeping chambers'] = dest_list_2
+
+        dest_list_3 = ([
+            ["maple", "door", "doors"],
+            ["smoking room", "door", "doors"],
+            ])
+
+        possible_destinations['smoking room'] = dest_list_3
+
+    # Room 7
+    elif current_room_name == 'smoking room':
+        dest_list_1 = ([
+            ["maple", "door", "doors"],
+            ["washroom", "door", "doors"],
+            ])
+
+        possible_destinations['washroom'] = dest_list_1
+
+        dest_list_2 = ([
+            ["mahogany", "door", "doors"],
+            ["supplies closet", "door", "doors"],
+            ])
+
+        possible_destinations['supplies closet'] = dest_list_2
+
+    # Room 8
+    elif current_room_name == 'sleeping chambers':
+        dest_list_1 = ([
+            ["ornate", "door", "doors"],
+            ["washroom", "door", "doors"],
+            ])
+
+        possible_destinations['washroom'] = dest_list_1
+
+        dest_list_2 = ([
+            ["walnut", "door", "doors"],
+            ["supplies closet", "door", "doors"],
+            ])
+
+        possible_destinations['supplies closet'] = dest_list_2
+
+    # Room 9
+    elif current_room_name == 'supplies closet':
+        dest_list_1 = ([
+            ["mahogany", "door", "doors"],
+            ["smoking room", "door", "doors"],
+            ])
+
+        possible_destinations['smoking room'] = dest_list_1
+
+        dest_list_2 = ([
+            ["walnut", "door", "doors"],
+            ["sleeping chambers", "door", "doors"],
+            ])
+
+        possible_destinations['sleeping chambers'] = dest_list_2
+
+        dest_list_3 = ([
+            ["birch", "door", "doors"],
+            ["pool room", "door", "doors"],
+            ])
+
+        possible_destinations['pool room'] = dest_list_3
+
+    # Room 10
+    elif current_room_name == 'pool room':
+        dest_list_1 = ([
+            ["birch", "door", "doors"],
+            ["supplies closet", "door", "doors"],
+            ])
+
+        possible_destinations['supplies closet'] = dest_list_1
+
+        dest_list_2 = ([
+            [],
+            ["marble", "staircase"],
+            [],
+            ["tower hall", "door", "doors"],
+            ])
+
+        possible_destinations['tower hall'] = dest_list_2
 
     # The list of possible move words.
     move_lists = ([
@@ -184,7 +294,7 @@ def verb_alias_check(command):
     """Check for aliases of 10 core verbs.
 
     Args:
-        word_list (list(str)): Corresponds to clean_text in text_parser.py 
+        word_list (list(str)): Corresponds to clean_text in text_parser.py
             file. Contains user input as a list of words.
 
     Returns:
@@ -213,5 +323,13 @@ def verb_alias_check(command):
     for key in alias_dictionary:
         for word in alias_dictionary[key]:
             command = command.replace(word, key)
+
+    return command
+
+
+def item_alias_check(command):
+    word = 'rubber duck'
+    if word in command:
+        command = command.replace(word, 'Quackers')
 
     return command
