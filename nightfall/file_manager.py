@@ -653,7 +653,10 @@ def init_room_10():
 
     """
     name = "pool room"
-    description = (""
+    description = ("As you enter the room, you see a giant pool that spans "
+                   "the entire width of the room. The water in the pool "
+                   "is crystal clear and is moving about. Flowing into the "
+                   "pool from the corner of the room is a waterfall. "
                    "I'm in the pool room. There is a birch door to the "
                    "south and a marble staircase to the north. "
                    )
@@ -675,10 +678,16 @@ def init_room_10():
     door_map = {'north': False, 'south': False}
 
     # Set features in room.
-    pool_feature = (""
+    pool_feature = ("As you look at the pool you notice there are whirlpools "
+                    "in different areas of the pool. There must be drainage "
+                    "systems beneath the pool causing these effects. You "
+                    "are unsure of how deep and dangerous the water is, but "
+                    "you may have to swim to get to the other side. "
                     )
 
-    waterfall_feature = (""
+    waterfall_feature = ("The waterfall is extremely odd. It is unclear "
+                         "where the water is flowing from and how it is "
+                         "getting there. You wonder if it might be magic. "
                          )
 
     feature_dict = {"pool": pool_feature, "waterfall": waterfall_feature}
@@ -701,9 +710,11 @@ def init_room_11():
 
     """
     name = "tower hall"
-    description = (""
-                   "I'm in the pool room. There is a birch door to the "
-                   "south and a marble staircase to the north. "
+    description = ("You enter a room that is gigantic with an ornate vaulted "
+                   "ceiling. There is also a massive painting on the wall "
+                   "that spans almost the entire length of the room. "
+                   "I'm in the tower hall. There is a marble staircase to the "
+                   "south and large walnut double doors to the north. "
                    )
 
     # Init items
@@ -723,13 +734,18 @@ def init_room_11():
     door_map = {'north': True, 'south': False}
 
     # Set features in room.
-    _feature = (""
-                )
+    ceiling_feature = ("Not only is the ceiling very high, you notice "
+                       "that it appears to look like a star filled night sky. "
+                       "It makes you wonder if a ceiling is truly there... "
+                       )
 
-    _feature = (""
-                )
+    painting_feature = ("The painting on the wall depicts a large medieval "
+                        "battle. There are two distinct armies engaged in "
+                        "brutal combat. I wonder if the owner of this place "
+                        "was involved in the battle. "
+                        )
 
-    feature_dict = {"": _feature, "": _feature}
+    feature_dict = {"ceiling": ceiling_feature, "painting": painting_feature}
 
     puzzle_dict = None
 
@@ -749,17 +765,35 @@ def init_room_12():
 
     """
     name = "archives"
-    description = (""
-                   "I'm in the pool room. There is a birch door to the "
-                   "south and a marble staircase to the north. "
+    description = ("The room before you is very dark. There are cobwebs "
+                   "scattered around the room and it is quite dusty. "
+                   "There is a fireplace roaring in the corner. Above you "
+                   "is a very large chandelier that is made out of hundreds "
+                   "of crystals. "
+                   "I'm in the archives. There are large walnut doors to the "
+                   "south, an ash door to the east, and a pine door to the "
+                   "west. "
                    )
 
     # Init items
+    # Item 1 - Mythril Tongs
+    tongs_name = "Mythril Tongs"
+    tongs_description = ("Long pristine tongs with a lime green flame that "
+                         "flows from the tips. They appear to be made out of "
+                         "mythril. "
+                         )
+    tongs_durability = None
+    tongs_stats = {"magic_power": 8}
+
+    tongs = Item(tongs_name, tongs_description, tongs_durability,
+                 tongs_stats)
 
     # Set item list
     item_list = []
+    item_list.append(tongs)
 
     # Set monster list
+    # ADD A SKELETON TO THIS ROOM ^*&Y(U)*&^&*YUOI&*T^O&UBHIU*GT&UYHIUHYTYV
     monster_list = []
 
     # Set player to None
@@ -767,17 +801,26 @@ def init_room_12():
 
     # Set room navigation traits.
     adjacent_rooms = {'north': None, 'east': 'reading room',
-                      'south': 'tower hall', 'west': 'room of last rights'}
+                      'south': 'tower hall', 'west': 'room of last rites'}
     door_map = {'east': False, 'south': False, 'west': True}
 
     # Set features in room.
-    _feature = (""
-                )
+    fireplace_feature = ("As you step toward the fireplace you hear it start "
+                         "to crackle loudly. A face then appears in the "
+                         "flames. It screams \"Run or you will face the same "
+                         "fate as those you wish to save!\" Evelyn must be "
+                         "near! "
+                         )
 
-    _feature = (""
-                )
+    chandelier_feature = ("As you look at the chandelier it begins to rattle "
+                          "loudly. Rain then begins to fall from the "
+                          "and continues for about ten seconds before "
+                          "stopping. A loud boom of thunder blasts through "
+                          "the room and dust is kicked up into the air. "
+                          )
 
-    feature_dict = {"": _feature, "": _feature}
+    feature_dict = {"fireplace": fireplace_feature,
+                    "chandelier": chandelier_feature}
 
     puzzle_dict = None
 
@@ -797,9 +840,14 @@ def init_room_13():
 
     """
     name = "reading room"
-    description = (""
-                   "I'm in the pool room. There is a birch door to the "
-                   "south and a marble staircase to the north. "
+    description = ("In the room before you, there is a long couch and "
+                   "books all around the room, stacked to the ceiling. "
+                   "In the middle of the room there is a table with a "
+                   "large, old open book on it. The pages are tattered "
+                   "and it seems like it could be thousands of years "
+                   "old. "
+                   "I'm in the reading room. There is an ash door to the "
+                   "west. "
                    )
 
     # Init items
@@ -819,13 +867,21 @@ def init_room_13():
     door_map = {'north': False, 'south': False}
 
     # Set features in room.
-    _feature = (""
-                )
+    book_feature = ("As you approach the book, the pages start flapping "
+                    "quickly, going further along in the book. All of a "
+                    "sudden, it stops on a page. As you look at the page, "
+                    "it is completely blank until text begins to appear. "
+                    "It says, \"This book holds spells only for the worthy.\" "
+                    "The book then returns to its original page. "
+                    )
 
-    _feature = (""
-                )
+    couch_feature = ("As you step towards the couch, it begins to sink into "
+                     "the ground. The closer you step to it, the further it "
+                     "sinks, as you back away, it returns to its normal "
+                     "position. "
+                     )
 
-    feature_dict = {"": _feature, "": _feature}
+    feature_dict = {"book": book_feature, "couch": couch_feature}
 
     puzzle_dict = None
 
@@ -835,6 +891,123 @@ def init_room_13():
                         puzzle_dict)
 
     return reading_room
+
+
+def init_room_14():
+    """Instantiates Room of Last Rites.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "room of last rites"
+    description = ("I feel like I'm close to Evelyn. Bones are scattered in "
+                   "this room. A very daunting sight indeed! There is also a "
+                   "bloody handprint on the north wall of the room. I'm in "
+                   "the room of last rites. There is a tungsten door to the "
+                   "north and a pine door to the east."
+                   )
+
+    # Init items
+    # Item 1 - Key
+    key_name = "Skull key"
+    key_description = ("The key has a skull on it. ")
+    key_durability = None
+    key_stats = None
+
+    skull_key = Item(key_name, key_description, key_durability, key_stats)
+
+    # Set item list
+    item_list = []
+    item_list.append(skull_key)
+
+    # ADD CHEST/FAIRY??
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': 'final lair', 'east': 'archives', 'south': None,
+                      'west': None}
+    door_map = {'north': True, 'east': False}
+
+    # Set features in room.
+    bones_feature = ("The bones look like they belong to animals, "
+                     "perhaps some unlucky birds and squirrels. Phew, "
+                     "thankfully none of them look like human remains."
+                     )
+
+    handprint_feature = ("Wait a second, that handprint looks very "
+                         "familiar. Could it be...? Yes, it looks like "
+                         "Evelyn's handprint! "
+                         )
+
+    feature_dict = {"bones": bones_feature, "handprint": handprint_feature}
+
+    puzzle_dict = None
+
+    # Instantiate room object.
+    room_of_last_rites = Room(name, description, item_list, monster_list,
+                              player, adjacent_rooms, door_map, feature_dict,
+                              puzzle_dict)
+
+    return room_of_last_rites
+
+
+def init_room_15():
+    """Instantiates Final Lair.
+
+    Returns:
+        :obj:Room: Room object.
+
+    """
+    name = "final lair"
+    description = ("Evelyn is curled up in the corner of this room. "
+                   "There is also a mirror in the back of the "
+                   "room. I'm in the final lair. There is a tungsten "
+                   "door to the south."
+                   )
+
+    # Set item list
+    item_list = []
+
+    # Set monster list
+    monster_list = []
+
+    # Set player to None
+    player = None
+
+    # Set room navigation traits.
+    adjacent_rooms = {'north': None, 'east': None,
+                      'south': 'room of last rites', 'west': None}
+    door_map = {'south': False}
+
+    # Set features in room.
+    evelyn_feature = ("Other than a cut on his hand, Evelyn looks to "
+                      "be in fairly good shape even though he's pretty "
+                      "shaken up. 'Thanks for saving me', he says. 'I "
+                      "think it's time we go home.'"
+                      )
+
+    mirror_feature = ("I see myself in the mirror's reflection. My face "
+                      "is covered with cuts and bruises. My eyes, too, "
+                      "look different. Wiser and tougher, perhaps. My hair "
+                      "is matted with a mixture of blood and sweat."
+                      )
+
+    feature_dict = {"evelyn": evelyn_feature, "mirror": mirror_feature}
+
+    puzzle_dict = None
+
+    # Instantiate room object.
+    final_lair = Room(name, description, item_list, monster_list,
+                      player, adjacent_rooms, door_map, feature_dict,
+                      puzzle_dict)
+
+    return final_lair
 
 
 def init_room_objects():
@@ -859,13 +1032,13 @@ def init_room_objects():
     tower_hall = init_room_11()
     archives = init_room_12()
     reading_room = init_room_13()
-    # room_of_last_rights = init_room_14()
-    # lair = init_room_15()
+    room_of_last_rites = init_room_14()
+    final_lair = init_room_15()
 
     room_list.extend((fortress_entrance, entrance_hall, mess_hall, store_room,
                       kitchen, washroom, smoking_room, sleeping_chambers,
                       supplies_closet, pool_room, tower_hall, archives,
-                      reading_room))
+                      reading_room, room_of_last_rites, final_lair))
 
     return room_list
 
