@@ -40,7 +40,7 @@ def parse_input(input, current_room):
     direction_array = ['north', 'east', 'south', 'west', 'entrance hall',
                        'fortress entrance', 'mess hall', 'store room',
                        'kitchen', 'washroom', 'smoking room',
-                       'sleeping chambers', 'supplies closet', 'pool room']
+                       'sleeping chambers', 'supplies closet', 'sauna room']
 
     standard_action_array = ['help', 'look', 'gamemenu', 'game menu',
                              'inventory', 'savegame', 'loadgame']
@@ -59,10 +59,10 @@ def parse_input(input, current_room):
                   'bread',
 
                   # Room 4
-                  'letter', 'jar', 'ooze',
+                  'letter', 'jar',
 
                   # Room 5
-                  'magic resistant oven mitt',
+                  'magic resistant oven mitt', 'acidic ooze',
 
                   # Room 6
                   'Quackers',
@@ -88,7 +88,7 @@ def parse_input(input, current_room):
                      'engraving', 'armor',
 
                      # Room 4
-                     'lock box', 'broom', 'shelves', 'carcass', 'vines',
+                     'box', 'broom', 'shelves', 'carcass', 'vines',
 
                      # Room 5
                      'fish', 'sink',
@@ -100,7 +100,7 @@ def parse_input(input, current_room):
                      'humidor', 'ash tray', 'smoke',
 
                      # Room 8
-                     'bed', 'box', 'window',
+                     'bed', 'window',
                      ]
 
     go_array = ['go', 'go to', 'move', 'move to', 'walk', 'walk to', 'run',
@@ -279,6 +279,7 @@ def parse_input(input, current_room):
             # it as the item of the sentence
             if item_match is True:
                 if assigned_tokens['item'] is None:
+                    item_phrase = item_repeat_check(item_phrase)
                     assigned_tokens['item'] = item_phrase
 
                 # if there was already an item, then this sentence has too many

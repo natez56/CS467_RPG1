@@ -288,7 +288,7 @@ def take_action(current_room, action):
             room_9_feature_handler(current_room, action["verb"],
                                    action["feature"])
 
-        elif current_room.get_name() == "pool room":
+        elif current_room.get_name() == "sauna room":
             room_10_feature_handler(current_room, action["verb"],
                                     action["feature"])
 
@@ -333,7 +333,7 @@ def take_action(current_room, action):
             room_9_item_handler(current_room, action["verb"],
                                 action["item"])
 
-        elif current_room.get_name() == "pool room":
+        elif current_room.get_name() == "sauna room":
             room_10_item_handler(current_room, action["verb"],
                                  action["item"])
 
@@ -496,6 +496,19 @@ def travel(current_room, direction):
                       "leading north...Things quite down and you take a look "
                       "around\n")
                 new_room.set_puzzle_status("voice", False)
+
+            elif (new_room.get_name() == "sauna room" and
+                  new_room.get_puzzle_status("sauna voice")):
+                print("As you walk through the door your vision goes black. "
+                      "A voice enters your mind. It is the same voice as "
+                      "the one you encountered in the store room. It says, "
+                      "\"So you've made it this far...I am tired of these "
+                      "games. You will go no farther. I have prepared a "
+                      "special potion that has been added to the sauna you "
+                      "are now in. Do whatever you like, but while the steam "
+                      "remains you will not find the way forward.\". The "
+                      "voice fades and your vision returns.")
+                new_room.set_puzzle_status("sauna voice", False)
 
             # Print out room description.
             if player.has_memory(new_room_name):

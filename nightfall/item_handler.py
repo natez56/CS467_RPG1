@@ -215,13 +215,13 @@ def room_4_item_handler(current_room, verb, item_name):
         player.add_item(letter)
         current_room.set_puzzle_status("lock box", False)
 
-    elif (verb == "use" and item_name == "ooze" and
-          "ooze" in player.get_item_names() and
+    elif (verb == "use" and item_name == "acidic ooze" and
+          "acidic ooze" in player.get_item_names() and
           current_room.get_puzzle_status("vines")):
 
         current_room.set_puzzle_status("vines", False)
 
-        player.use_item("ooze")
+        player.use_item("acidic ooze")
 
         print("You poor the jar of acidic ooze onto the vines covering the "
               "door. The vines emit a shrieking sound and quickly shrink "
@@ -265,8 +265,11 @@ def room_5_item_handler(current_room, verb, item_name):
        "acidic ooze" in current_room.get_item_names()):
         print("You use the jar to grab some of the ooze.")
         player.use_item("jar")
+        ooze = current_room.get_item("acidic ooze")
+        current_room.remove_item(ooze)
+        current_room.set_puzzle_status("ooze", False)
 
-        jar_name = "ooze"
+        jar_name = "acidic ooze"
         jar_description = ("The jar is doing a good job of holding the "
                            "ooze.")
         jar_durability = 1
@@ -275,6 +278,13 @@ def room_5_item_handler(current_room, verb, item_name):
         jar = Item(jar_name, jar_description, jar_durability, jar_stats)
 
         player.add_item(jar)
+
+    elif (verb == "take" and item_name == "acidic ooze" and
+          current_room.get_puzzle_status("ooze")):
+        print("You reach out to grab some of the ooze. When you touch it you "
+              "feel a sharp burning sensation. Ouch! You quickly run to the "
+              "sink to wash your hand off. I better find a better way to "
+              "carry this ooze.")
 
     # These verbs do not need unique room interactions.
     else:
@@ -349,7 +359,8 @@ def room_7_item_handler(current_room, verb, item_name):
         current_room.add_item(duck)
 
     # These verbs do not need unique room interactions.
-    general_item_handler(current_room, verb, item_name)
+    else:
+        general_item_handler(current_room, verb, item_name)
 
     save_object_state(current_room)
 
@@ -386,7 +397,8 @@ def room_8_item_handler(current_room, verb, item_name):
         player.add_item(healing_potion)
 
     # These verbs do not need unique room interactions.
-    general_item_handler(current_room, verb, item_name)
+    else:
+        general_item_handler(current_room, verb, item_name)
 
     save_object_state(current_room)
 

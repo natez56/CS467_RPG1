@@ -328,8 +328,29 @@ def verb_alias_check(command):
 
 
 def item_alias_check(command):
-    word = 'rubber duck'
-    if word in command:
-        command = command.replace(word, 'Quackers')
+    alias_dictionary = {}
+
+    alias_dictionary['Quackers'] = ['rubber duck', 'quackers']
+    alias_dictionary['box'] = ['lock box', 'emerald box']
+    alias_dictionary['key'] = ['golden key']
+    alias_dictionary['magic resistant oven mitt'] = ['mitt', 'oven mitt']
+    alias_dictionary['acidic ooze'] = ['ooze']
+    alias_dictionary['jarofooze'] = ['jar of ooze', 'jar of acidic ooze']
+
+    for key in alias_dictionary:
+        for word in alias_dictionary[key]:
+            command = command.replace(word, key)
+
+    return command
+
+
+def item_repeat_check(command):
+    alias_dictionary = {}
+
+    alias_dictionary['jar of ooze'] = ['jarofooze']
+
+    for key in alias_dictionary:
+        for word in alias_dictionary[key]:
+            command = command.replace(word, key)
 
     return command

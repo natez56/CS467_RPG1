@@ -363,7 +363,7 @@ def room_4_feature_handler(current_room, verb, feature):
         elif feature == "carcass":
             print("I don't think so, this carcass is way to heavy.")
 
-        elif feature == "lock box":
+        elif feature == "box":
             print("I'm not sure that I need a box. I already have a bag.")
 
         else:
@@ -828,6 +828,7 @@ def room_9_feature_handler(current_room, verb, feature):
             rapier = Item(rapier_name, rapier_description, rapier_durability,
                           rapier_stats)
 
+            player = current_room.get_player()
             player.add_item(rapier)
 
             shelves_feature = ("They contain mostly towels. Nothing of note.")

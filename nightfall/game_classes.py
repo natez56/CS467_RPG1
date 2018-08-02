@@ -370,6 +370,8 @@ class Monster(Character):
 
     """
     def __init__(self, name, description, loot):
+        super().__init__(name, health, magic, level, magic_defense,
+                         magic_power, defense, attack_power)
         self.name = name
         self.description = description
         self.loot = loot

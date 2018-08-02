@@ -307,7 +307,7 @@ def init_room_4():
     lock_box_feature = ("The lock box is small but elaborate. It is made "
                         "of wood but has gold trim on its edges.")
 
-    feature_dict = {"lock box": lock_box_feature, "broom": broom_feature,
+    feature_dict = {"box": lock_box_feature, "broom": broom_feature,
                     "shelves": shelves_feature, "carcass": animal_carcass,
                     "vines": vines_feature}
 
@@ -380,7 +380,7 @@ def init_room_5():
 
     feature_dict = {"fish": fish_feature, "sink": sink_feature}
 
-    puzzle_dict = None
+    puzzle_dict = {"ooze": True}
 
     # Instantiate room object.
     kitchen = Room(name, description, item_list, monster_list, player,
@@ -610,7 +610,7 @@ def init_room_9():
     player = None
 
     # Set room navigation traits.
-    adjacent_rooms = {'north': 'pool room', 'east': 'smoking room',
+    adjacent_rooms = {'north': 'sauna room', 'east': 'smoking room',
                       'south': 'sleeping chambers', 'west': None}
     door_map = {'north': True, 'east': False, 'south': False}
 
@@ -646,19 +646,19 @@ def init_room_9():
 
 
 def init_room_10():
-    """Instantiates pool room.
+    """Instantiates sauna room.
 
     Returns:
         :obj:Room: Room object.
 
     """
-    name = "pool room"
-    description = ("As you enter the room, you see a giant pool that spans "
-                   "the entire width of the room. The water in the pool "
-                   "is crystal clear and is moving about. Flowing into the "
-                   "pool from the corner of the room is a waterfall. "
-                   "I'm in the pool room. There is a birch door to the "
-                   "south and a marble staircase to the north. "
+    name = "sauna room"
+    description = ("A wave of steam and heat hits you. The steam is so thick "
+                   "you can't see anything. You here the faint sound of "
+                   "machinery. There is a birch door to the south, but the "
+                   "way forward is not clear.",
+                   "I'm in the sauna room. There is a birch door to the "
+                   "south. The way forward is not clear. "
                    )
 
     # Init items
@@ -678,28 +678,18 @@ def init_room_10():
     door_map = {'north': False, 'south': False}
 
     # Set features in room.
-    pool_feature = ("As you look at the pool you notice there are whirlpools "
-                    "in different areas of the pool. There must be drainage "
-                    "systems beneath the pool causing these effects. You "
-                    "are unsure of how deep and dangerous the water is, but "
-                    "you may have to swim to get to the other side. "
-                    )
+    machine_sound_feature = {"You listen closer to the "}
 
-    waterfall_feature = ("The waterfall is extremely odd. It is unclear "
-                         "where the water is flowing from and how it is "
-                         "getting there. You wonder if it might be magic. "
-                         )
+    feature_dict = {}
 
-    feature_dict = {"pool": pool_feature, "waterfall": waterfall_feature}
-
-    puzzle_dict = None
+    puzzle_dict = {"steam": True, "sauna voice": True}
 
     # Instantiate room object.
-    pool_room = Room(name, description, item_list, monster_list,
-                     player, adjacent_rooms, door_map, feature_dict,
-                     puzzle_dict)
+    sauna_room = Room(name, description, item_list, monster_list,
+                      player, adjacent_rooms, door_map, feature_dict,
+                      puzzle_dict)
 
-    return pool_room
+    return sauna_room
 
 
 def init_room_11():
@@ -730,7 +720,7 @@ def init_room_11():
 
     # Set room navigation traits.
     adjacent_rooms = {'north': 'archives', 'east': None,
-                      'south': 'pool room', 'west': None}
+                      'south': 'sauna room', 'west': None}
     door_map = {'north': True, 'south': False}
 
     # Set features in room.
@@ -1028,7 +1018,7 @@ def init_room_objects():
     smoking_room = init_room_7()
     sleeping_chambers = init_room_8()
     supplies_closet = init_room_9()
-    pool_room = init_room_10()
+    sauna_room = init_room_10()
     tower_hall = init_room_11()
     archives = init_room_12()
     reading_room = init_room_13()
@@ -1037,7 +1027,7 @@ def init_room_objects():
 
     room_list.extend((fortress_entrance, entrance_hall, mess_hall, store_room,
                       kitchen, washroom, smoking_room, sleeping_chambers,
-                      supplies_closet, pool_room, tower_hall, archives,
+                      supplies_closet, sauna_room, tower_hall, archives,
                       reading_room, room_of_last_rites, final_lair))
 
     return room_list
