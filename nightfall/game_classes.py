@@ -356,6 +356,24 @@ class Player(Character):
         self.defense += 1
         self.attack_power += 1
 
+    def get_attack_1_description(self):
+        print("Slash: Make a large slash with your primary weapon. ")
+
+    def get_attack_2_description(self):
+        print("Thunder: Conjur the force of thunder and launch it "
+              "at the enemy. ")
+
+    def get_attack_3_description(self):
+        print("Singe: Strike your opponent with a burning aura on "
+              "your primary weapon. ")
+
+    def execute_attack(self, option):
+        if option == 'slash':
+
+        elif option == 'thunder':
+
+        elif option == 'singe':
+
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
 

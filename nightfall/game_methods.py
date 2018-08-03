@@ -548,8 +548,28 @@ def combat(player, monster):
     return False
     while combat_continues:
         # Allow the player to choose their move
-        print("Please select which move you would like to use: ")
         # Output player combat options
+        print("Please select which move you want: ")
+        player.get_attack_1_description()
+        player.get_attack_2_description()
+        player.get_attack_3_description()
+
+        # Get the player's choice
+        attack_choice = input().lower().strip()
+
+        invalid_choice = True
+
+        while(invalid_choice):
+            if attack_choice != 'slash' and attack_choice != 'thunder' or
+            attack_choice != 'singe':
+                print("You entered an invalid choice! ")
+                print("Please enter: slash, thunder, or sear: ")
+
+                attack_choice = input().lower().strip()
+            else:
+                invalid_choice = False
+
+
 
         # Randomize the damage based on the move and applicable equipment
 
