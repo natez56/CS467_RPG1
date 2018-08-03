@@ -121,8 +121,8 @@ def init_room_2():
                           "He is missing an eye and carries a chipped "
                           "machete. ")
     goblin_loot = 5
-    goblin_health = 12
-    goblin_magic = 10
+    goblin_health = 8
+    goblin_magic = 9
     goblin_level = 1
     goblin_magic_defense = 5
     goblin_magic_power = 2

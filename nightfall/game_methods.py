@@ -3,6 +3,7 @@ from file_manager import *
 from feature_handler import *
 from item_handler import *
 from random import *
+import time
 
 
 def starting_menu():
@@ -541,8 +542,10 @@ def combat(player, monster):
 
     """
     # Begin combat dialogue
+    time.sleep(1)
     print("\nYou have encountered %s! Let's begin combat..." %
           (monster.get_name()))
+    time.sleep(1)
 
     combat_continues = True
 
@@ -563,7 +566,7 @@ def combat(player, monster):
             if attack_choice != 'slash' and attack_choice != 'thunder' and \
                attack_choice != 'singe':
                 print("\nYou entered an invalid choice! ")
-                print("Please enter: slash, thunder, or sear: ")
+                print("Please enter: Slash, Thunder, or Singe: ")
 
                 attack_choice = input().lower().strip()
             else:
@@ -573,7 +576,7 @@ def combat(player, monster):
         total_damage = player.execute_attack(attack_choice)
 
         if total_damage == 0:
-            print("You missed! ")
+            print("\nYou missed! ")
         else:
             # Deal the damage to the enemy
             print("\nYou did %d damage! " % (total_damage))
@@ -582,6 +585,7 @@ def combat(player, monster):
 
         # Check if the enemy is dead, if so, exit combat and gain experience
         if monster.get_health() <= 0:
+            time.sleep(1)
             print("\nYou have slain %s" % (monster.get_name()))
 
             experience_gained = monster.get_loot()
@@ -592,6 +596,7 @@ def combat(player, monster):
 
             # Level up the player if they have enough experience
             if new_experience_total >= 10:  # we will need to do balancing!!!
+                time.sleep(1)
                 print("\n%s has leveled up! " % player.get_name())
                 player.level_up()
 
@@ -604,15 +609,19 @@ def combat(player, monster):
 
         else:
             # Randomly choose what ability the enemy will use
+            time.sleep(1)
             total_damage = monster.npc_attack()
+            time.sleep(1)
 
             # Calculate the damage
             if total_damage == 0:
                 print("%s missed! " % (monster.get_name()))
+                time.sleep(1)
             else:
                 # Deal the damage to the enemy
                 print("\n%s did %d damage! " % (monster.get_name(),
                       total_damage))
+                time.sleep(1)
                 current_player_health = player.get_health()
                 player.set_health(current_player_health-total_damage)
 
@@ -626,6 +635,7 @@ def combat(player, monster):
                     return False
 
                 else:
+                    time.sleep(1)
                     print("\nA small pink fairy flies around your body... ")
                     print("You woke up! Your health has restored to 50 HP. ")
                     player.set_health(50)
