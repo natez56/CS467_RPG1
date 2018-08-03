@@ -541,7 +541,7 @@ def combat(player, monster):
 
     """
     # Begin combat dialogue
-    print("You have encountered %s! Let's begin combat..." %
+    print("\nYou have encountered %s! Let's begin combat..." %
           (monster.get_name()))
 
     combat_continues = True
@@ -592,7 +592,7 @@ def combat(player, monster):
 
             # Level up the player if they have enough experience
             if new_experience_total >= 10:  # we will need to do balancing!!!
-                print("%s has leveled up! " % player.get_name())
+                print("\n%s has leveled up! " % player.get_name())
                 player.level_up()
 
                 # Carry over the excess experience into the new level
@@ -604,18 +604,31 @@ def combat(player, monster):
 
         else:
             # Randomly choose what ability the enemy will use
+            total_damage = monster.npc_attack()
 
             # Calculate the damage
+            if total_damage == 0:
+                print("%s missed! " % (monster.get_name()))
+            else:
+                # Deal the damage to the enemy
+                print("\n%s did %d damage! " % (monster.get_name(),
+                      total_damage))
+                current_player_health = player.get_health()
+                player.set_health(current_player_health-total_damage)
 
             # Check if the player is dead
-            # How should we handle player deaths? end combat? reset
-            # monster health?
-            # should we stay in combat and reset the player's stats and remove
-            # 1 life?
+            if player.get_health() <= 0:
+                player.lose_life()
+                print("\nYou blacked out! ")
 
-            # Check if the game is over or do that in the main game loop?
-            pass
-            # return False
+                # Check if the player has any lives left
+                if player.get_lives() <= 0:
+                    return False
+
+                else:
+                    print("\nA small pink fairy flies around your body... ")
+                    print("You woke up! Your health has restored to 50 HP. ")
+                    player.set_health(50)
 
     return True
 
@@ -647,11 +660,11 @@ def is_game_over(player):
         bool: False if the character is dead or the game is complete.
 
     """
-    if player.get_lives() > 0:
-        return False
+    if player.get_lives() <= 0:
+        return True
 
-    if player.rescue_evelyn is False:
-        return False
+    if player.rescue_evelyn is True:
+        return True
 
     else:
-        return True
+        return False

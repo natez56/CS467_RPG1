@@ -355,7 +355,7 @@ class Player(Character):
     def level_up(self):
         self.level += 1
         self.health += 10
-        self.magic += 10
+        self.magic += 5
         self.magic_defense += 1
         self.magic_power += 1
         self.defense += 1
@@ -375,9 +375,6 @@ class Player(Character):
         if option == 'slash':
             # Randomize the damage based on the move and applicable equipment
             attack_damage = randint(0, self.attack_power)
-
-            # Adjust the player's stats
-            self.magic -= 0
 
             return attack_damage
 
@@ -405,7 +402,7 @@ class Player(Character):
                 # Randomize the damage based on the move and
                 # applicable equipment
                 attack_damage = randint(0, (self.magic_power +
-                                        self.attack_power)) # NOTE I DONT THINK THE DAMAGE IS BEING ADDED
+                                        self.attack_power))
 
                 # Adjust the player's stats
                 self.magic -= 5
@@ -441,6 +438,35 @@ class Monster(Character):
 
     def get_loot(self):
         return self.loot
+
+    def npc_attack(self):
+        # Randomly select a melee or magic attack
+        attack_type = randint(0, 1)
+
+        if attack_type == 0:
+            print("\n%s swung their weapon at you! " % (self.name))
+
+            # Randomize the damage based on the move and applicable equipment
+            attack_damage = randint(0, self.attack_power)
+
+            return attack_damage
+
+        elif attack_type == 1:
+            print("\n%s is casting a spell! " % (self.name))
+
+            if self.magic < 3:
+                print("%s doesn't have enough magic! " % (self.name))
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, self.magic_power)
+
+                # Adjust the player's stats
+                self.magic -= 3
+
+            return attack_damage
 
 
 class Item():
