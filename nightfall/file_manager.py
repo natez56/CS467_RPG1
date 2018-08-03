@@ -116,8 +116,26 @@ def init_room_2():
     item_list.append(chest_key)
 
     # Set monster list
-    # ADD A GOBLIN TO THIS ROOM %^&*(^%&*(^%$*()^%$^&*(^&%^(^%^(^%)))))
+    goblin_name = "Skrag"
+    goblin_description = ("The goblin has green skin and pointy ears. "
+                          "He is missing an eye and carries a chipped "
+                          "machete. ")
+    goblin_loot = 5
+    goblin_health = 8
+    goblin_magic = 9
+    goblin_level = 1
+    goblin_magic_defense = 5
+    goblin_magic_power = 2
+    goblin_defense = 3
+    goblin_attack_power = 3
+
+    goblin = Monster(goblin_name, goblin_description, goblin_loot,
+                     goblin_health, goblin_magic, goblin_level,
+                     goblin_magic_defense, goblin_magic_power, goblin_defense,
+                     goblin_attack_power)
+
     monster_list = []
+    monster_list.append(goblin)
 
     # Set player to None
     player = None
@@ -1041,13 +1059,13 @@ def init_player_object(player_name):
 
     """
     name = player_name
-    health = 100
-    magic = 100
+    health = 50
+    magic = 20
     level = 1
     magic_defense = 0
-    magic_power = 1
+    magic_power = 3
     defense = 0
-    attack_power = 1
+    attack_power = 3
     num_lives = 3
     experience = 0
     memory = []

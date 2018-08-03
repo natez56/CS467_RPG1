@@ -3,6 +3,7 @@ from file_manager import *
 from feature_handler import *
 from item_handler import *
 from random import *
+import time
 
 
 def starting_menu():
@@ -541,28 +542,53 @@ def combat(player, monster):
 
     """
     # Begin combat dialogue
-    print("You have encountered %s! Let's begin combat..." %
+    time.sleep(1)
+    print("\nYou have encountered %s! Let's begin combat..." %
           (monster.get_name()))
+    time.sleep(1)
 
     combat_continues = True
 
     while combat_continues:
         # Allow the player to choose their move
-        print("Please select which move you would like to use: ")
         # Output player combat options
+        print("\nPlease select which move you want: ")
+        player.get_attack_description(0)
+        player.get_attack_description(1)
+        player.get_attack_description(2)
 
-        # Randomize the damage based on the move and applicable equipment
+        # Get the player's choice
+        attack_choice = input().lower().strip()
 
-        # Adjust the player's remaining ability count and
-        # stats like magic power or health
+        invalid_choice = True
 
-        # Deal the damage to the enemy
+        while(invalid_choice):
+            if attack_choice != 'slash' and attack_choice != 'thunder' and \
+               attack_choice != 'singe':
+                print("\nYou entered an invalid choice! ")
+                print("Please enter: Slash, Thunder, or Singe: ")
+
+                attack_choice = input().lower().strip()
+            else:
+                invalid_choice = False
+
+        # Execute the player's attack
+        total_damage = player.execute_attack(attack_choice)
+
+        if total_damage == 0:
+            print("\nYou missed! ")
+        else:
+            # Deal the damage to the enemy
+            print("\nYou did %d damage! " % (total_damage))
+            current_monster_health = monster.get_health()
+            monster.set_health(current_monster_health-total_damage)
 
         # Check if the enemy is dead, if so, exit combat and gain experience
         if monster.get_health() <= 0:
-            print("You have slain %s" % (monster.name))
+            time.sleep(1)
+            print("\nYou have slain %s" % (monster.get_name()))
 
-            experience_gained = randint(1, 5)
+            experience_gained = monster.get_loot()
             print("You have gained %d experience points!" %
                   (experience_gained))
 
@@ -570,7 +596,8 @@ def combat(player, monster):
 
             # Level up the player if they have enough experience
             if new_experience_total >= 10:  # we will need to do balancing!!!
-                print("%s has leveled up! " % player.get_name())
+                time.sleep(1)
+                print("\n%s has leveled up! " % player.get_name())
                 player.level_up()
 
                 # Carry over the excess experience into the new level
@@ -582,17 +609,38 @@ def combat(player, monster):
 
         else:
             # Randomly choose what ability the enemy will use
+            time.sleep(1)
+            total_damage = monster.npc_attack()
+            time.sleep(1)
 
             # Calculate the damage
+            if total_damage == 0:
+                print("%s missed! " % (monster.get_name()))
+                time.sleep(1)
+            else:
+                # Deal the damage to the enemy
+                print("\n%s did %d damage! " % (monster.get_name(),
+                      total_damage))
+                time.sleep(1)
+                current_player_health = player.get_health()
+                player.set_health(current_player_health-total_damage)
 
             # Check if the player is dead
-            # How should we handle player deaths? end combat? reset
-            # monster health?
-            # should we stay in combat and reset the player's stats and remove
-            # 1 life?
+            if player.get_health() <= 0:
+                player.lose_life()
+                print("\nYou blacked out! ")
 
-            # Check if the game is over or do that in the main game loop?
-            pass
+                # Check if the player has any lives left
+                if player.get_lives() <= 0:
+                    return False
+
+                else:
+                    time.sleep(1)
+                    print("\nA small pink fairy flies around your body... ")
+                    print("You woke up! Your health has restored to 50 HP. ")
+                    player.set_health(50)
+
+    return True
 
 
 def start_game(player_name):
@@ -622,11 +670,11 @@ def is_game_over(player):
         bool: False if the character is dead or the game is complete.
 
     """
-    if player.get_lives() > 0:
-        return False
+    if player.get_lives() <= 0:
+        return True
 
-    if player.rescue_evelyn is False:
-        return False
+    if player.rescue_evelyn is True:
+        return True
 
     else:
-        return True
+        return False

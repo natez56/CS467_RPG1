@@ -1,3 +1,5 @@
+from random import randint
+
 class Room:
     """Room class representing primary game map that player navigates.
 
@@ -118,6 +120,9 @@ class Room:
 
     def get_name(self):
         return self.name
+
+    def monster_killed(self):
+        self.monster_list = []
 
 
 class Character:
@@ -350,11 +355,59 @@ class Player(Character):
     def level_up(self):
         self.level += 1
         self.health += 10
-        self.magic += 10
+        self.magic += 5
         self.magic_defense += 1
         self.magic_power += 1
         self.defense += 1
         self.attack_power += 1
+
+    def get_attack_description(self, option):
+        if option == 0:
+            print("   Slash: Make a large slash with your primary weapon. ")
+        elif option == 1:
+            print("   Thunder: Conjur the force of thunder and launch it "
+                  "at the enemy. ")
+        elif option == 2:
+            print("   Singe: Strike your opponent with a burning aura on "
+                  "your primary weapon. ")
+
+    def execute_attack(self, option):
+        if option == 'slash':
+            # Randomize the damage based on the move and applicable equipment
+            attack_damage = randint(0, self.attack_power)
+
+            return attack_damage
+
+        elif option == 'thunder':
+            if self.magic < 3:
+                print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, self.magic_power)
+
+                # Adjust the player's stats
+                self.magic -= 3
+
+            return attack_damage
+
+        elif option == 'singe':
+            if self.magic < 5:
+                print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power +
+                                        self.attack_power))
+
+                # Adjust the player's stats
+                self.magic -= 5
+
+            return attack_damage
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
@@ -369,7 +422,8 @@ class Monster(Character):
         loot (item): The item that the monster drops.
 
     """
-    def __init__(self, name, description, loot):
+    def __init__(self, name, description, loot, health, magic, level,
+                 magic_defense, magic_power, defense, attack_power):
         super().__init__(name, health, magic, level, magic_defense,
                          magic_power, defense, attack_power)
         self.name = name
@@ -384,6 +438,35 @@ class Monster(Character):
 
     def get_loot(self):
         return self.loot
+
+    def npc_attack(self):
+        # Randomly select a melee or magic attack
+        attack_type = randint(0, 1)
+
+        if attack_type == 0:
+            print("\n%s swung their weapon at you! " % (self.name))
+
+            # Randomize the damage based on the move and applicable equipment
+            attack_damage = randint(0, self.attack_power)
+
+            return attack_damage
+
+        elif attack_type == 1:
+            print("\n%s is casting a spell! " % (self.name))
+
+            if self.magic < 3:
+                print("%s doesn't have enough magic! " % (self.name))
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, self.magic_power)
+
+                # Adjust the player's stats
+                self.magic -= 3
+
+            return attack_damage
 
 
 class Item():
