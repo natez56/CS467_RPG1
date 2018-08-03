@@ -545,14 +545,14 @@ def combat(player, monster):
           (monster.get_name()))
 
     combat_continues = True
-    return False
+
     while combat_continues:
         # Allow the player to choose their move
         # Output player combat options
-        print("Please select which move you want: ")
-        player.get_attack_1_description()
-        player.get_attack_2_description()
-        player.get_attack_3_description()
+        print("\nPlease select which move you want: ")
+        player.get_attack_description(0)
+        player.get_attack_description(1)
+        player.get_attack_description(2)
 
         # Get the player's choice
         attack_choice = input().lower().strip()
@@ -560,29 +560,31 @@ def combat(player, monster):
         invalid_choice = True
 
         while(invalid_choice):
-            if attack_choice != 'slash' and attack_choice != 'thunder' or
-            attack_choice != 'singe':
-                print("You entered an invalid choice! ")
+            if attack_choice != 'slash' and attack_choice != 'thunder' and \
+               attack_choice != 'singe':
+                print("\nYou entered an invalid choice! ")
                 print("Please enter: slash, thunder, or sear: ")
 
                 attack_choice = input().lower().strip()
             else:
                 invalid_choice = False
 
+        # Execute the player's attack
+        total_damage = player.execute_attack(attack_choice)
 
-
-        # Randomize the damage based on the move and applicable equipment
-
-        # Adjust the player's remaining ability count and
-        # stats like magic power or health
-
-        # Deal the damage to the enemy
+        if total_damage == 0:
+            print("You missed! ")
+        else:
+            # Deal the damage to the enemy
+            print("\nYou did %d damage! " % (total_damage))
+            current_monster_health = monster.get_health()
+            monster.set_health(current_monster_health-total_damage)
 
         # Check if the enemy is dead, if so, exit combat and gain experience
         if monster.get_health() <= 0:
-            print("You have slain %s" % (monster.name))
+            print("\nYou have slain %s" % (monster.get_name()))
 
-            experience_gained = randint(1, 5)
+            experience_gained = monster.get_loot()
             print("You have gained %d experience points!" %
                   (experience_gained))
 
@@ -613,6 +615,9 @@ def combat(player, monster):
 
             # Check if the game is over or do that in the main game loop?
             pass
+            # return False
+
+    return True
 
 
 def start_game(player_name):

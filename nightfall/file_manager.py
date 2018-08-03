@@ -120,8 +120,8 @@ def init_room_2():
     goblin_description = ("The goblin has green skin and pointy ears. "
                           "He is missing an eye and carries a chipped "
                           "machete. ")
-    goblin_loot = 10
-    goblin_health = 15
+    goblin_loot = 3
+    goblin_health = 7
     goblin_magic = 0
     goblin_level = 1
     goblin_magic_defense = 5
@@ -1063,9 +1063,9 @@ def init_player_object(player_name):
     magic = 100
     level = 1
     magic_defense = 0
-    magic_power = 1
+    magic_power = 3
     defense = 0
-    attack_power = 1
+    attack_power = 3
     num_lives = 3
     experience = 0
     memory = []
