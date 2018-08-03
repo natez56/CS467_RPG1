@@ -369,7 +369,8 @@ class Monster(Character):
         loot (item): The item that the monster drops.
 
     """
-    def __init__(self, name, description, loot):
+    def __init__(self, name, description, loot, health, magic, level,
+                 magic_defense, magic_power, defense, attack_power):
         super().__init__(name, health, magic, level, magic_defense,
                          magic_power, defense, attack_power)
         self.name = name

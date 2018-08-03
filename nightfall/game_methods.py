@@ -545,7 +545,7 @@ def combat(player, monster):
           (monster.get_name()))
 
     combat_continues = True
-
+    return False
     while combat_continues:
         # Allow the player to choose their move
         print("Please select which move you would like to use: ")

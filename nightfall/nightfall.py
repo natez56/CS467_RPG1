@@ -51,6 +51,9 @@ def main():
     while not is_game_over(player):
         current_room = get_current_room()
 
+        if len(current_room.get_monsters()) != 0:
+            combat(player, current_room.get_monsters()[0])
+
         print("\nWhat would you like to do? ")
 
         # Grab the command from the user and execute the action if valid
