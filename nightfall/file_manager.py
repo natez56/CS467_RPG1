@@ -401,8 +401,24 @@ def init_room_5():
     item_list.extend((oven_mitt, ooze))
 
     # Set monster list
-    # ADD A CORROSIVE SLUDGE TO THIS ROOM &^T*Y(&^&%*()&^&*()^%&()^%&(^&))
+    sludge_name = "Grugg"
+    sludge_description = ("")
+    sludge_loot = 10
+    sludge_health = 25
+    sludge_magic = 40
+    sludge_level = 3
+    sludge_magic_defense = 10
+    sludge_magic_power = 12
+    sludge_defense = 7
+    sludge_attack_power = 10
+
+    sludge = Monster(sludge_name, sludge_description, sludge_loot,
+                     sludge_health, sludge_magic, sludge_level,
+                     sludge_magic_defense, sludge_magic_power,
+                     sludge_defense, sludge_attack_power)
+
     monster_list = []
+    monster_list.append(sludge)
 
     # Set player to None
     player = None
@@ -456,8 +472,24 @@ def init_room_6():
     item_list = []
 
     # Set monster list
-    # ADD A WRAITH TO THIS ROOM &^T*Y(&^&%*()&^&*()^%&()^%&(^&))
+    wraith_name = "Karthos"
+    wraith_description = ("")
+    wraith_loot = 10
+    wraith_health = 25
+    wraith_magic = 40
+    wraith_level = 3
+    wraith_magic_defense = 10
+    wraith_magic_power = 12
+    wraith_defense = 7
+    wraith_attack_power = 10
+
+    wraith = Monster(wraith_name, wraith_description, wraith_loot,
+                     wraith_health, wraith_magic, wraith_level,
+                     wraith_magic_defense, wraith_magic_power,
+                     wraith_defense, wraith_attack_power)
+
     monster_list = []
+    monster_list.append(wraith)
 
     # Set player to None
     player = None
@@ -1043,7 +1075,25 @@ def init_room_15():
     item_list = []
 
     # Set monster list
+    final_boss_name = "Zlor"
+    final_boss_description = ("")
+    final_boss_loot = 30
+    final_boss_health = 43
+    final_boss_magic = 100
+    final_boss_level = 5
+    final_boss_magic_defense = 12
+    final_boss_magic_power = 19
+    final_boss_defense = 15
+    final_boss_attack_power = 17
+
+    final_boss = Monster(final_boss_name, final_boss_description,
+                         final_boss_loot, final_boss_health, final_boss_magic,
+                         final_boss_level, final_boss_magic_defense,
+                         final_boss_magic_power, final_boss_defense,
+                         final_boss_attack_power)
+
     monster_list = []
+    monster_list.append(final_boss)
 
     # Set player to None
     player = None
