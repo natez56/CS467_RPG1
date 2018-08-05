@@ -402,7 +402,11 @@ def init_room_5():
 
     # Set monster list
     sludge_name = "Grugg"
-    sludge_description = ("")
+    sludge_description = ("You hear the sink start to make an odd gurgling "
+                          "noise. A large slimy green sludge bursts from "
+                          "the sink drain into the air. It settles on the "
+                          "ground and forms into a giant blob over 7 feet "
+                          "tall. ")
     sludge_loot = 10
     sludge_health = 25
     sludge_magic = 40
@@ -473,7 +477,11 @@ def init_room_6():
 
     # Set monster list
     wraith_name = "Karthos"
-    wraith_description = ("")
+    wraith_description = ("A screaming howling sound echos through the "
+                          "room. You see faint black whisps fly smoothly "
+                          "through the air. The black smoke gathers and "
+                          "a wraith with a silver dagger appears before "
+                          "you! ")
     wraith_loot = 10
     wraith_health = 25
     wraith_magic = 40
@@ -878,7 +886,9 @@ def init_room_12():
 
     # Set monster list
     skeleton_name = "Exelior"
-    skeleton_description = ("")
+    skeleton_description = ("A skeleton walks out of the blazing fireplace. "
+                            "It's bones are still engulfed in flames as it "
+                            "lunges at you. ")
     skeleton_loot = 5
     skeleton_health = 20
     skeleton_magic = 20
@@ -1076,7 +1086,9 @@ def init_room_15():
 
     # Set monster list
     final_boss_name = "Zlor"
-    final_boss_description = ("")
+    final_boss_description = ("It is I, Zlor! I am afraid your journey "
+                              "has come to an end! You are destined "
+                              "to join the same fate as your brother! ")
     final_boss_loot = 30
     final_boss_health = 43
     final_boss_magic = 100
