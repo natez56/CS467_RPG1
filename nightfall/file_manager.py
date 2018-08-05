@@ -117,9 +117,11 @@ def init_room_2():
 
     # Set monster list
     goblin_name = "Skrag"
-    goblin_description = ("The goblin has green skin and pointy ears. "
-                          "He is missing an eye and carries a chipped "
-                          "machete. ")
+    goblin_description = ("There is a goblin with green skin and pointy ears "
+                          "in the corner of the room. He is missing an eye "
+                          "and carries a chipped machete. He notices you "
+                          "when you enter the room. He screams and runs "
+                          "towards you with his machete raised! ")
     goblin_loot = 5
     goblin_health = 8
     goblin_magic = 9
@@ -211,8 +213,28 @@ def init_room_3():
     item_list.append(bread)
 
     # Set monster list
-    # ADD A SKELETON TO THIS ROOM %&^*()&^&%^()&(^*%&$&^&()&(^*%&^()^))
+    skeleton_name = "Renethe"
+    skeleton_description = ("There is a pile of bones on the ground "
+                            "near an elaborate suit of armor. As you walk "
+                            "further into the hall, the bones begin to  "
+                            "reassemble into the armor. The armored "
+                            "skeleton unsheaths its broadsword. ")
+    skeleton_loot = 5
+    skeleton_health = 15
+    skeleton_magic = 15
+    skeleton_level = 2
+    skeleton_magic_defense = 5
+    skeleton_magic_power = 6
+    skeleton_defense = 4
+    skeleton_attack_power = 7
+
+    skeleton = Monster(skeleton_name, skeleton_description, skeleton_loot,
+                       skeleton_health, skeleton_magic, skeleton_level,
+                       skeleton_magic_defense, skeleton_magic_power,
+                       skeleton_defense, skeleton_attack_power)
+
     monster_list = []
+    monster_list.append(skeleton)
 
     # Set player to None
     player = None
@@ -621,8 +643,30 @@ def init_room_9():
     item_list = []
 
     # Set monster list
-    # ADD A GOBLIN HERE &^*(^%&*(^%$*()&%$*(%$^&*(*%$^&*%$&%*^%$%&*^%$^%^%))))
+    goblin_name = "Ulthu"
+    goblin_description = ("There is what looks like a goblin foot sticking "
+                          "out from under a towel. You hear snoring beneath "
+                          "it. As you step into the room, the floor creaks "
+                          "loudly. The goblin wakes up immediately and sits "
+                          "up. The goblin has lots of dried dirt all over his "
+                          "skin. He is carries a sickle and a sling for "
+                          "throwing small rocks. ")
+    goblin_loot = 8
+    goblin_health = 13
+    goblin_magic = 15
+    goblin_level = 2
+    goblin_magic_defense = 5
+    goblin_magic_power = 5
+    goblin_defense = 5
+    goblin_attack_power = 6
+
+    goblin = Monster(goblin_name, goblin_description, goblin_loot,
+                     goblin_health, goblin_magic, goblin_level,
+                     goblin_magic_defense, goblin_magic_power, goblin_defense,
+                     goblin_attack_power)
+
     monster_list = []
+    monster_list.append(goblin)
 
     # Set player to None
     player = None
@@ -801,8 +845,24 @@ def init_room_12():
     item_list.append(tongs)
 
     # Set monster list
-    # ADD A SKELETON TO THIS ROOM ^*&Y(U)*&^&*YUOI&*T^O&UBHIU*GT&UYHIUHYTYV
+    skeleton_name = "Exelior"
+    skeleton_description = ("")
+    skeleton_loot = 5
+    skeleton_health = 20
+    skeleton_magic = 20
+    skeleton_level = 3
+    skeleton_magic_defense = 8
+    skeleton_magic_power = 10
+    skeleton_defense = 7
+    skeleton_attack_power = 8
+
+    skeleton = Monster(skeleton_name, skeleton_description, skeleton_loot,
+                       skeleton_health, skeleton_magic, skeleton_level,
+                       skeleton_magic_defense, skeleton_magic_power,
+                       skeleton_defense, skeleton_attack_power)
+
     monster_list = []
+    monster_list.append(skeleton)
 
     # Set player to None
     player = None

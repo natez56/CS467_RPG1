@@ -434,7 +434,7 @@ class Monster(Character):
         return self.name
 
     def get_description(self):
-        return self.get_description
+        return self.description
 
     def get_loot(self):
         return self.loot

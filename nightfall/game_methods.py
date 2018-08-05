@@ -543,6 +543,8 @@ def combat(player, monster):
     """
     # Begin combat dialogue
     time.sleep(1)
+    print()
+    print(monster.get_description())
     print("\nYou have encountered %s! Let's begin combat..." %
           (monster.get_name()))
     time.sleep(1)
