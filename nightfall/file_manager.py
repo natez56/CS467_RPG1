@@ -13,12 +13,13 @@ def init_room_1():
 
     """
     name = "fortress entrance"
-    description = ("At the end of the path in a clearing there is a large "
+    description = ("At the end of the path in a clearing, there is a large "
                    "stone fortress. Nothing grows near the fortress walls. "
-                   "To the north the fortress entrance, a pair of large oak "
-                   "double doors. Just outside the entrance is a body on the "
-                   "ground. Could it be your brother Evelyn?",
-                   "I'm at the fortress entrance. To the north large oak "
+                   "North of the fortress entrance, there's a pair of large "
+                   "oak double doors leading to the entrance hall. Just "
+                   "outside the entrance is a body on the ground. Could it "
+                   "be your brother Evelyn?",
+                   "You're at the fortress entrance. To the north, large oak "
                    "double doors lead to the entrance hall."
                    )
 
@@ -54,16 +55,16 @@ def init_room_1():
                     "slightly ajar."
                     )
 
-    body_feature = ("The body comes into view. You see that it is formed "
+    body_feature = ("The body comes into view. you see that it is formed "
                     "of a heavy traveling cloak and bag. Bones peak out from "
                     "underneath. You recognize the clothes as the kind worn "
                     "by traveling traders in the mountains. This body has "
                     "been here a while."
                     )
 
-    cloak_feature = "The cloak is old an torn. It will not be of use."
+    cloak_feature = "The cloak is old and torn. It will not be of use."
 
-    bag_feature = ("The bag is empty and torn. Nothing of the traders goods "
+    bag_feature = ("The bag is empty and torn. Nothing of the trader's goods "
                    "remain."
                    )
 
@@ -92,13 +93,14 @@ def init_room_2():
                    "floor from a partially collapsed left wall. Moonlight "
                    "shines through a gap in part of the collapsed wall, "
                    "revealing what looks to be a painted door on the east "
-                   "side of the room. Behind me to the south are the large "
-                   "oak double doors. Above the painted door to the east you "
-                   "can barely make out some writing...",
-                   "I'm in the entrance hall, there's goblin writing on the "
-                   "wall. A painted door to the east leads to the mess hall. "
-                   "To the south are large oak double doors leading to the "
-                   "fortress entrance."
+                   "side of the room, leading to the mess hall. Behind you "
+                   "to the south are the large oak double doors leading back "
+                   "to the fortress entrance. Above the painted door to the "
+                   "east you can barely make out some writing....",
+                   "You're in the entrance hall. There's goblin writing on "
+                   "the wall. To the east, there is a painted door leading to "
+                   "the mess hall. To the south, there are large oak double "
+                   "doors leading to the fortress entrance."
                    )
 
     # Init items
@@ -134,14 +136,14 @@ def init_room_2():
                                "the entrance to the high mountains near the "
                                "edge of your homeland. This is goblin "
                                "graffiti, used to mark a particular goblin "
-                               "clans home."
+                               "clan's home."
                                )
 
     east_door_feature = ("An oak door with a large iron handle.")
 
     rubble_feature = ("Mostly stone from the wall strewn across the floor. "
-                      "As you look at the rubble on the ground you also "
-                      "noticea a thin rope secured across the path from here "
+                      "As you look at the rubble on the ground, you also "
+                      "notice a a thin rope secured across the path from here "
                       "to the door.")
 
     feature_dict = {"writing": goblin_graffiti_feature,
@@ -163,19 +165,20 @@ def init_room_3():
 
     """
     name = "mess hall"
-    description = ("A long dark room appears before you. It looks as though "
+    description = ("A long, dark room appears before you. It looks as though "
                    "this is where the people of the mansion eat. There are "
                    "two long tables that stretch the full length of the room "
                    "and there are suits of armor lining both walls. The "
                    "tables still have dirty plates scattered about. On the "
                    "north side of the room is an old steel door with a "
-                   "strange engraving at its center. To the east "
-                   "there is a large oak door. To the west, the painted door "
+                   "strange engraving at its center. This door goes to the "
+                   "kitchen. To the east, there is a large oak door. This door"
+                   "goes to the store room. To the west, the painted door "
                    "leads back to the entrance hall.",
-                   "I'm in the mess hall. To the north a steel door goes to "
-                   "the kitchen. To the east a large oak door leads to the "
-                   "store room. To the west a painted door leads to the "
-                   "entrance hall."
+                   "You're in the mess hall. To the north, there is an old "
+                   "steel door leading to the kitchen. To the east, a large "
+                   "oak door leads to the store room. To the west, a painted "
+                   "door leads back to the entrance hall."
                    )
 
     # Init items
@@ -252,15 +255,15 @@ def init_room_4():
     """
     name = "store room"
     description = ("The room you are in has large shelves that go from floor "
-                   "ceiling. There is a stone area for refrigeration where "
-                   "animal carcasses hang from the ceiling. Nearby a broom "
-                   "leans against the wall. "
-                   "To the west a large oak door leads to the mess hall. To "
-                   "the north dark black vines have entirely covered a "
-                   "steel door.",
-                   "I'm in the store room. To the west a large oak door leads "
-                   "to the mess hall and to the north a vine covered steel "
-                   "door."
+                   "to ceiling. There is a stone area for refrigeration where "
+                   "animal carcasses hang from the ceiling. Nearby, a broom "
+                   "leans against the wall. You appear to be in the store "
+                   "room. To the west, a large oak door leads to the mess "
+                   "hall. To the north, dark black vines have entirely "
+                   "covered a steel door, which leads to the washroom.",
+                   "You're in the store room. To the west, a large oak door "
+                   "leads to the mess hall. To the north, there is a vine "
+                   "covered steel door that leads to the washroom."
                    )
 
     # Init items
@@ -332,10 +335,10 @@ def init_room_5():
     description = ("The room before you is clearly the kitchen of the "
                    "fortress. There are fish still on cutting boards. "
                    "The smell is rancid. It appears as though no one has "
-                   "cleaned the kitchen for a very long time. To the south "
+                   "cleaned the kitchen for a very long time. To the south, "
                    "a steel door leads to the mess hall.",
-                   "I'm in the kitchen. To the south a steel door leads to "
-                   "the mess hall."
+                   "You're in the kitchen. To the south, a steel door leads "
+                   "to the mess hall."
                    )
 
     # Init items
@@ -351,7 +354,8 @@ def init_room_5():
 
     ooze_name = "acidic ooze"
     ooze_description = ("This green ooze eats through anything it touches. "
-                        "I'll need a special kind of container to hold this.")
+                        "You'll need a special kind of container to hold "
+                        "this.")
     ooze_durability = 1
     ooze_stats = None
 
@@ -397,17 +401,19 @@ def init_room_6():
 
     """
     name = "washroom"
-    description = ("The room before you is a pristine washroom "
-                   "there is a massive tub in the middle of the "
+    description = ("The room before you is a pristine washroom. "
+                   "There is a massive tub in the middle of the "
                    "room with a large window behind it. It is too "
                    "dark to see what is likely a gorgeous view of the "
                    "forest. You also see a fountain in the corner. To the "
-                   "south there are swinging doors that open to stairs "
-                   "leading back down to the store room. To the west an "
-                   "ornate door. To the north a maple door.",
-                   "I'm in the washroom. There is a swinging door "
-                   "leading to stairs back to the store room, an ornate "
-                   "door to the west, and a maple door to the north. "
+                   "south, there are swinging doors that lead back down "
+                   "to the store room. To the west, an ornate door leads "
+                   "to the sleeping chambers. To the north, a maple door "
+                   "takes you to the smoking room.",
+                   "You're in the washroom. To the south, swinging doors "
+                   "lead back down to the store room. To the west, an ornate "
+                   "door leads to the sleeping chambers. To the north, a "
+                   "maple door leads to the smoking room."
                    )
 
     # Init items
@@ -456,16 +462,18 @@ def init_room_7():
 
     """
     name = "smoking room"
-    description = ("The room before you has a lucious red carpet. There "
+    description = ("The room before you has a luscious red carpet. There "
                    "is a large chair with gold stitching. By the chair there "
                    "is a table with a crystal ash tray on it. Little wisps of "
                    "smoke drift up from the leftover embers in the tray. On "
                    "one wall is a large humidor that stands out in the dimly "
-                   "lit room.  The room has a strong scent of smoke. To the "
-                   "south there is a maple door and to the west there is a "
-                   "mahogany door.",
-                   "I'm in the smoking room. To the south there is a "
-                   "maple door and to the west there is a mahogany door. "
+                   "lit room. The room has a strong scent of smoke. To the "
+                   "south, there is a maple door leading to the washroom. To "
+                   "the west, there is a mahogany door to the supplies "
+                   "closet.",
+                   "You're in the smoking room. To the south, there is a "
+                   "maple door to the washroom. To the west, there is a "
+                   "mahogany door to the supplies closet."
                    )
 
     # Init items
@@ -492,7 +500,7 @@ def init_room_7():
                        "the heat dissipate immediately. "
                        )
 
-    ash_feature = ("The ash embers have cooled. You walk towards the ash tray "
+    ash_feature = ("The ash embers have cooled. you walk towards the ash tray "
                    "and just when you are about to touch it, the ash from the "
                    "ash tray spreads out towards the edges of the tray. It "
                    "slowly regathers in the middle and spells out "
@@ -524,10 +532,12 @@ def init_room_8():
                    "have drapes around it. The room is dimly lit "
                    "and it is immaculately clean. Near the bed is a "
                    "nightstand with a small emerald colored lock box on it. "
-                   "There is an ornate door to the east and a walnut door to "
-                   "the north.",
-                   "I'm in the sleeping chambers. There is an ornate "
-                   "door to the east and a walnut door to the north. "
+                   "There is an ornate door to the east that leads to a "
+                   "washroom and a walnut door to the north that leads to "
+                   "the supplies closet.",
+                   "You're in the sleeping chambers. To the east, there is an "
+                   "ornate door leading to the washroom. To the north, there "
+                   "is a walnut door leading to the supplies closet. "
                    )
 
     # Init items
@@ -548,7 +558,7 @@ def init_room_8():
 
     # Set features in room.
     emerald_box_feature = ("The lock box is emerald green and ornate. You "
-                           "can see that to open this box requires a key.")
+                           "can see that you need a key to open the box.")
 
     bed_feature = ("The drapes of the bed begin to flutter and the covers "
                    "sink into the middle of the floor, only to fly back up "
@@ -589,12 +599,16 @@ def init_room_9():
                    "and the room is much smaller than the other rooms "
                    "you have been in. The shelves have a high stack of "
                    "towels, as well as shampoo and soap. Even though the "
-                   "room should smell good, it wreaks of goblin. There is "
-                   "a mahogany door to the east and a walnut door to the "
-                   "south. A birch door lies to the north.",
-                   "I'm in the supplies closet. There is a mahogany "
-                   "door to the east and a walnut door to the south, and "
-                   "a birch door to the north. "
+                   "room should smell good, it reeks of goblin. There is "
+                   "a mahogany door to the east that leads to the smoking "
+                   "room and a walnut door to the south that leads to the "
+                   "sleeping chambers. A birch door to the north leads to "
+                   "the sauna room.",
+                   "You're in the supplies closet. To the east, there is a "
+                   "mahogany door that leads to the smoking room. To the "
+                   "south, there is a walnut door that leads to the sleeping "
+                   "chambers. To the north, there is a birch door that leads "
+                   "to the sauna room."
                    )
 
     # Init items
@@ -657,7 +671,7 @@ def init_room_10():
                    "you can't see anything. You here the faint sound of "
                    "machinery. There is a birch door to the south, but the "
                    "way forward is not clear.",
-                   "I'm in the sauna room. There is a birch door to the "
+                   "You're in the sauna room. There is a birch door to the "
                    "south. The way forward is not clear. "
                    )
 
@@ -703,8 +717,13 @@ def init_room_11():
     description = ("You enter a room that is gigantic with an ornate vaulted "
                    "ceiling. There is also a massive painting on the wall "
                    "that spans almost the entire length of the room. "
-                   "I'm in the tower hall. There is a marble staircase to the "
-                   "south and large walnut double doors to the north. "
+                   "You're in the tower hall. There is a marble staircase to "
+                   "the south leading back to the sauna room and large walnut "
+                   "double doors to the north leading to the archives.",
+                   "You're in the tower hall. To the south, there is a marble "
+                   "staircase leading back to the sauna room. To the north, "
+                   "there are large walnut double doors leading to the "
+                   "archives."
                    )
 
     # Init items
@@ -731,7 +750,7 @@ def init_room_11():
 
     painting_feature = ("The painting on the wall depicts a large medieval "
                         "battle. There are two distinct armies engaged in "
-                        "brutal combat. I wonder if the owner of this place "
+                        "brutal combat. You wonder if the owner of this place "
                         "was involved in the battle. "
                         )
 
@@ -759,10 +778,14 @@ def init_room_12():
                    "scattered around the room and it is quite dusty. "
                    "There is a fireplace roaring in the corner. Above you "
                    "is a very large chandelier that is made out of hundreds "
-                   "of crystals. "
-                   "I'm in the archives. There are large walnut doors to the "
-                   "south, an ash door to the east, and a pine door to the "
-                   "west. "
+                   "of crystals. This appears to be the archives. Large "
+                   "walnut doors to the south lead back to the tower hall."
+                   "An ash door to the east leads to the reading room, and a "
+                   "pine door to the west leads to the room of last rites.",
+                   "You're in the archives. To the south, large walnut doors"
+                   "lead back to the tower hall. To the east, an ash door "
+                   "leads to the reading room. To the west, a pine door leads "
+                   "to the room of last rites."
                    )
 
     # Init items
@@ -835,9 +858,10 @@ def init_room_13():
                    "In the middle of the room there is a table with a "
                    "large, old open book on it. The pages are tattered "
                    "and it seems like it could be thousands of years "
-                   "old. "
-                   "I'm in the reading room. There is an ash door to the "
-                   "west. "
+                   "old. It looks like the reading room. To your west, "
+                   "an ash door leads you back to the archives.",
+                   "You're in the reading room. To the west, an ash door "
+                   "leads back to the archives."
                    )
 
     # Init items
@@ -891,17 +915,21 @@ def init_room_14():
 
     """
     name = "room of last rites"
-    description = ("I feel like I'm close to Evelyn. Bones are scattered in "
-                   "this room. A very daunting sight indeed! There is also a "
-                   "bloody handprint on the north wall of the room. I'm in "
-                   "the room of last rites. There is a tungsten door to the "
-                   "north and a pine door to the east."
+    description = ("You feel like you're close to Evelyn. Bones are scattered "
+                   "in this room. A very daunting sight indeed! There is also "
+                   "a bloody handprint on the north wall of the room. You're "
+                   "in the room of last rites. There is a tungsten door to "
+                   "the north leading to the final lair and a pine door to "
+                   "the east, which leads back to the archives.",
+                   "You're in the room of last rites. To the north, a "
+                   "tungsten door leads to the final lair. To the east, a "
+                   "pine door leads to the archives."
                    )
 
     # Init items
     # Item 1 - Key
     key_name = "Skull key"
-    key_description = ("The key has a skull on it. ")
+    key_description = ("The key has a skull on it.")
     key_durability = None
     key_stats = None
 
@@ -957,8 +985,11 @@ def init_room_15():
     name = "final lair"
     description = ("Evelyn is curled up in the corner of this room. "
                    "There is also a mirror in the back of the "
-                   "room. I'm in the final lair. There is a tungsten "
-                   "door to the south."
+                   "room. You're in the final lair. There is a tungsten "
+                   "door to the south that leads to the room of last "
+                   "rites.",
+                   "You're in the final lair. There is a tungsten door "
+                   "to the south that leads to the room of last rites."
                    )
 
     # Set item list
@@ -982,9 +1013,9 @@ def init_room_15():
                       "think it's time we go home.'"
                       )
 
-    mirror_feature = ("I see myself in the mirror's reflection. My face "
-                      "is covered with cuts and bruises. My eyes, too, "
-                      "look different. Wiser and tougher, perhaps. My hair "
+    mirror_feature = ("You see yourself in the mirror's reflection. Your face "
+                      "is covered with cuts and bruises. Your eyes, too, "
+                      "look different. Wiser and tougher, perhaps. Your hair "
                       "is matted with a mixture of blood and sweat."
                       )
 
