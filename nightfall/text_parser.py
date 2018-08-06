@@ -354,6 +354,7 @@ def parse_input(input, current_room):
         # length of the user input, there are extra words
         if numTokens != command_length:
             assigned_tokens['error'] = "Extra, unrecognized words"
+            invalid = True
 
     # ##### PRINT STATEMENT FOR TESTING #####
     print("\n{}".format(assigned_tokens.items()))
