@@ -383,13 +383,17 @@ def verb_alias_check(command):
     alias_dictionary["look at"] = ["inspect", "examine", "observe"]
     alias_dictionary["eat"] = ["consume", "devour", "ingest"]
     alias_dictionary["drink"] = ["swallow", "imbibe", "sip"]
-    alias_dictionary["smell"] = ["sniff"]
+    alias_dictionary["smell"] = ["sniff", "sniff at"]
     alias_dictionary["listen to"] = ["hear"]
-    alias_dictionary["climb"] = ["ascend", "go up", "scale"]
+    alias_dictionary["climb"] = ["climb up", "ascend", "ascend up" "go up",
+                                 "scale", "scale up"]
     alias_dictionary["duck"] = ["crouch", "crouch down", "get down", "squat",
                                 "squat down", "hunch", "hunch down", "stoop",
-                                "stoop down"]
-    alias_dictionary["rotate"] = ["turn", "pivot", "twist", "revolve", "spin"]
+                                "stoop down", "duck down"]
+    alias_dictionary["rotate"] = ["turn", "turn around", "pivot",
+                                  "pivot around", "twist", "twist around",
+                                  "revolve", "revolve around", "spin",
+                                  "spin around"]
 
     for key in alias_dictionary:
         for word in alias_dictionary[key]:

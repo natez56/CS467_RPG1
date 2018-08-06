@@ -51,6 +51,17 @@ def main():
     while not is_game_over(player):
         current_room = get_current_room()
 
+        if len(current_room.get_monsters()) != 0:
+            survival_check = combat(player, current_room.get_monsters()[0])
+
+            if survival_check is True:
+                current_room.monster_killed()
+
+            else:
+                print("Oh no! You ran out of lives! ")
+                print("GAME OVER ")
+                continue
+
         print("\nWhat would you like to do? ")
 
         # Grab the command from the user and execute the action if valid
@@ -59,11 +70,6 @@ def main():
         action = parse_input(user_input, current_room)
 
         take_action(current_room, action)
-
-        # Handle the user command
-        # print(action)  # DELETE THIS LINE AFTER TESTING 6879076890768968907689
-
-        # print("Current room " + current_room.get_name())  # DELETE THIS LATER
 
 
 if __name__ == "__main__":

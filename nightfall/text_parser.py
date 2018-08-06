@@ -30,7 +30,7 @@ def parse_input(input, current_room):
     assigned_tokens = {
         'verb': None,
         'item': None,
-        'feature': None,  # add , here when you add direction
+        'feature': None,
         'direction': None,
         'standard_action': None,
         'error': None
@@ -226,6 +226,7 @@ def parse_input(input, current_room):
 
     # split each word in the string to be an element in an array
     clean_text = new_command2.split()
+    command_length = len(clean_text)
 
     # CHECK FOR VERBS -- need to pop off words from array?
     if done is False:
@@ -284,8 +285,8 @@ def parse_input(input, current_room):
     if done is False and assigned_tokens['verb'] is None:
         print("You may want to enter a verb, or at least a destination or "
               "standard game action, like 'help'!\n")
-        assigned_tokens['error'] = "Need verb, or least a destination or\
-                                   standard action. "
+        assigned_tokens['error'] = ("Need verb, or least a destination or "
+                                    "standard action. ")
         invalid = True
 
     # CHECK FOR ITEMS
@@ -386,6 +387,22 @@ def parse_input(input, current_room):
                     assigned_tokens['error'] = "Too many features"
                     invalid = True
                     # assigned_tokens['feature'] = None
+
+    # Check for extra, unrecognized words in input
+    numTokens = 0
+
+    # if there is not already an error with the input
+    if done is False and assigned_tokens['error'] is None:
+        # count how many assigned tokens in input
+        for key, value in assigned_tokens.items():
+            if value is not None:
+                # count the number of words in the token
+                numTokens = numTokens + len(value.split())
+        # if the number of recognized words is not equal to
+        # length of the user input, there are extra words
+        if numTokens != command_length:
+            assigned_tokens['error'] = "Extra, unrecognized words"
+            invalid = True
 
     # ##### PRINT STATEMENT FOR TESTING #####
     print("\n{}".format(assigned_tokens.items()))
