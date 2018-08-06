@@ -37,10 +37,22 @@ def parse_input(input, current_room):
     }
 
     # arrays with parts of speech
-    direction_array = ['north', 'east', 'south', 'west', 'entrance hall',
-                       'fortress entrance', 'mess hall', 'store room',
-                       'kitchen', 'washroom', 'smoking room',
-                       'sleeping chambers', 'supplies closet', 'sauna room']
+    direction_array = [
+                       # General Directions
+                       'north', 'east', 'south', 'west',
+
+                       # Floor 1
+                       'fortress entrance', 'entrance hall', 'mess hall',
+                       'store room', 'kitchen',
+
+                       # Floor 2
+                       'washroom', 'smoking room', 'sleeping chambers',
+                       'supplies closet', 'sauna room',
+
+                       # Floor 3
+                       'tower hall', 'archives', 'reading room',
+                       'room of last rites', 'final lair'
+                       ]
 
     standard_action_array = ['help', 'look', 'gamemenu', 'game menu',
                              'inventory', 'savegame', 'loadgame']
@@ -71,10 +83,25 @@ def parse_input(input, current_room):
                   'emerald key',
 
                   # Room 8
-                  'healing potion',
+                  'healing potion', 'book',
 
                   # Room 9
                   'rapier',
+
+                  # Room 10
+
+                  # Room 11
+                  'charcoal',
+
+                  # Room 12
+                  'painting scrap'
+
+                  # Room 13
+                  'cage key'
+
+                  # Room 14
+
+                  # Room 15
                     ]
 
     feature_array = [
@@ -101,6 +128,27 @@ def parse_input(input, current_room):
 
                      # Room 8
                      'bed', 'window',
+
+                     # Room 9
+                     'towel', 'shampoo',
+
+                     # Room 10
+                     'machinery', 'mirror',
+
+                     # Room 11
+                     'ceiling', 'painting', 'table', 'ruby', 'charcoal',
+                     'dagger',
+
+                     # Room 12
+                     'fireplace', 'chandelier',
+
+                     # Room 13
+                     'tome', 'couch', 'raven',
+
+                     # Room 14
+                     'bones', 'handprint', 'cage',
+
+                     # Room 15
                      ]
 
     go_array = ['go', 'go to', 'move', 'move to', 'walk', 'walk to', 'run',

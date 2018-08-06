@@ -435,3 +435,140 @@ def room_10_item_handler(current_room, verb, item_name):
     general_item_handler(current_room, verb, item_name)
 
     save_object_state(current_room)
+
+
+def room_11_item_handler(current_room, verb, item_name):
+    """Handle room 10 player and item and room and item interactions.
+
+    Args:
+        current_room (:obj:Room): The current room the player is in.
+        verb (str): The action the user would like to take.
+        item_name: The name of the item the user would like to use.
+
+    """
+    player = current_room.get_player()
+
+    if (verb == "use" and item_name == "painting scrap" and
+       "painting scrap" in player.get_item_names()):
+
+        print("You place the painting scrap on the area of the painting "
+              "that was torn away. The scrap magically stitches to the "
+              "painting. You hear a ghostly voice say, \"Thank you for "
+              "restoring me to my rightful place, in doing so you have "
+              "freed the portion of my soul that the warlock Zlor had trapped "
+              "here many years ago. As thanks take my blessing, it will aid "
+              "you in your fight.\" As the voice fades you feel your strength "
+              "increase. +1 has been added to you attack power.")
+
+        attack_power = player.get_attack_power()
+
+        player.set_attack_power(attack_power + 1)
+
+    # These verbs do not need unique room interactions.
+    else:
+        general_item_handler(current_room, verb, item_name)
+
+    save_object_state(current_room)
+
+
+def room_12_item_handler(current_room, verb, item_name):
+    """Handle room 10 player and item and room and item interactions.
+
+    Args:
+        current_room (:obj:Room): The current room the player is in.
+        verb (str): The action the user would like to take.
+        item_name: The name of the item the user would like to use.
+
+    """
+    player = current_room.get_player()
+
+    if (verb == "use" and item_name == "charcoal" and
+       "charcoal" in player.get_item_names()):
+        player.use_item("charcoal")
+
+        print("You throw the charcoal into the fire. There is a green flash "
+              "of light. Ash floats up from the fire and forms into a small "
+              "scrap of paper. You see that it is a torn piece of a painting."
+              "A face is on the paper.")
+
+        scrap_name = "painting scrap"
+        scrap_description = ("A torn piece of a painting. You can make out a "
+                             "face on the canvas scrap.")
+        scrap_durability = 1
+        scrap_stats = None
+
+        scrap = Item(scrap_name, scrap_description, scrap_durability,
+                     scrap_stats)
+        player.add_item(scrap)
+
+    # These verbs do not need unique room interactions.
+    else:
+        general_item_handler(current_room, verb, item_name)
+
+    save_object_state(current_room)
+
+
+def room_13_item_handler(current_room, verb, item_name):
+    """Handle room 10 player and item and room and item interactions.
+
+    Args:
+        current_room (:obj:Room): The current room the player is in.
+        verb (str): The action the user would like to take.
+        item_name: The name of the item the user would like to use.
+
+    """
+    player = current_room.get_player()
+
+    # These verbs do not need unique room interactions.
+    general_item_handler(current_room, verb, item_name)
+
+    save_object_state(current_room)
+
+
+def room_14_item_handler(current_room, verb, item_name):
+    """Handle room 10 player and item and room and item interactions.
+
+    Args:
+        current_room (:obj:Room): The current room the player is in.
+        verb (str): The action the user would like to take.
+        item_name: The name of the item the user would like to use.
+
+    """
+    player = current_room.get_player()
+
+    if (verb == "use" and item_name == "cage key" and
+       item_name in player.get_item_names() and
+       current_room.get_puzzle_status("cage")):
+        player.use_item("cage key")
+
+        print("The cage door opens and the fairy flies out. \"Oh thank you, "
+              "thank you!!! Let me give you my blessing before I leave. It "
+              "will aid you on your quest.\" The fairy glows brighter for a "
+              "second and then disappears. You feel a warm glow about you. "
+              "Your health returns to full.")
+
+        current_room.set_puzzle_status("cage", False)
+        current_room.remove_feature("fairy")
+
+    # These verbs do not need unique room interactions.
+    else:
+        general_item_handler(current_room, verb, item_name)
+
+    save_object_state(current_room)
+
+
+def room_15_item_handler(current_room, verb, item_name):
+    """Handle room 10 player and item and room and item interactions.
+
+    Args:
+        current_room (:obj:Room): The current room the player is in.
+        verb (str): The action the user would like to take.
+        item_name: The name of the item the user would like to use.
+
+    """
+    player = current_room.get_player()
+
+    # These verbs do not need unique room interactions.
+    general_item_handler(current_room, verb, item_name)
+
+    save_object_state(current_room)

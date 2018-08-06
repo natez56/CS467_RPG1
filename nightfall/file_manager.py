@@ -531,9 +531,26 @@ def init_room_8():
                    )
 
     # Init items
+    book_name = ("book")
+    book_description = ("The title reads: \"Magic Encryption for Dummies. Now "
+                        "You Too Can Keep Your Magic Secret!\" There is a "
+                        "bookmark midway through the book. You open the it "
+                        "and read a passage. It says: \"Here we have an "
+                        "example of a magical cypher. Simply set your magic "
+                        "mirror to display the coded text of your choosing. "
+                        "Then simply speak the decoded phrase allowed to "
+                        "cast the automatic spell. Cipher: \n a b c d e f g h "
+                        "i j k l m n o p q r s t u v w x y z \n D E F G H I J "
+                        "K L M N O P Q R S T U V W X Y Z A B C D E F G H I J")
+    book_durability = None
+    book_stats = None
+
+    book = Item(book_name, book_description, book_durability, book_stats)
 
     # Set item list
     item_list = []
+
+    item_list.append(book)
 
     # Set monster list
     monster_list = []
@@ -612,7 +629,7 @@ def init_room_9():
     # Set room navigation traits.
     adjacent_rooms = {'north': 'sauna room', 'east': 'smoking room',
                       'south': 'sleeping chambers', 'west': None}
-    door_map = {'north': True, 'east': False, 'south': False}
+    door_map = {'north': False, 'east': False, 'south': False}
 
     # Set features in room.
     towel_feature = ("The towel at the top of the towels stacked on "
@@ -673,14 +690,22 @@ def init_room_10():
     player = None
 
     # Set room navigation traits.
-    adjacent_rooms = {'north': 'tower hall', 'east': None,
+    adjacent_rooms = {'north': None, 'east': None,
                       'south': 'supplies closet', 'west': None}
-    door_map = {'north': False, 'south': False}
+    door_map = {'south': False}
 
     # Set features in room.
-    machine_sound_feature = {"You listen closer to the "}
+    machine_sound_feature = ("You follow the sound of the machinery through "
+                             "the haze of steam. It leads you to a marbel "
+                             "wall. There is a mirror on the wall. Higher "
+                             "up there is a vent which is exuding steam.")
 
-    feature_dict = {}
+    mirror_feature = ("Strangely it does not reflect "
+                      "your image. Instead letters appear. On the mirror's "
+                      "surface it reads: \"Speak the password: SDVVZRUG\"")
+
+    feature_dict = {"machinery": machine_sound_feature,
+                    "mirror": mirror_feature}
 
     puzzle_dict = {"steam": True, "sauna voice": True}
 
@@ -702,7 +727,10 @@ def init_room_11():
     name = "tower hall"
     description = ("You enter a room that is gigantic with an ornate vaulted "
                    "ceiling. There is also a massive painting on the wall "
-                   "that spans almost the entire length of the room. "
+                   "that spans almost the entire length of the room. At the "
+                   "center of the room there is a small table with looks to "
+                   "be some items on it. A marble staircase is to the south "
+                   "and large walnut double doors are to the north.",
                    "I'm in the tower hall. There is a marble staircase to the "
                    "south and large walnut double doors to the north. "
                    )
@@ -721,7 +749,7 @@ def init_room_11():
     # Set room navigation traits.
     adjacent_rooms = {'north': 'archives', 'east': None,
                       'south': 'sauna room', 'west': None}
-    door_map = {'north': True, 'south': False}
+    door_map = {'north': False, 'south': False}
 
     # Set features in room.
     ceiling_feature = ("Not only is the ceiling very high, you notice "
@@ -731,13 +759,35 @@ def init_room_11():
 
     painting_feature = ("The painting on the wall depicts a large medieval "
                         "battle. There are two distinct armies engaged in "
-                        "brutal combat. I wonder if the owner of this place "
-                        "was involved in the battle. "
+                        "brutal combat. You notice that a piece of the "
+                        "painting has been torn away. Right where the face of "
+                        "one of the commanders should have been, there is a "
+                        "rend. It's as if someone delierately tore this part "
+                        "of the painting away. I wonder if the owner of this "
+                        "place was involved in the battle."
                         )
 
-    feature_dict = {"ceiling": ceiling_feature, "painting": painting_feature}
+    table_feature = ("You approach the table. On it are three items lined up "
+                     "in a perfect row. The items are a piece of charcoal, a "
+                     "ruby, and a small dagger with a jet black onyx blade. "
+                     "Engraved on the table, just in front of the items, is "
+                     "the sentence: \"What is black when you buy it, red "
+                     "when you use it, and gray when you throw it away?\"")
 
-    puzzle_dict = None
+    ruby_feature = ("The ruby is a deep crimson. It is large and must be "
+                    "worth a fortune.")
+
+    charcoal_feature = ("This is charcoal like the type your village smithy "
+                        "would use to fuel his furnace.")
+
+    dagger_feature = ("The quality of the dagger is astounding. It is like "
+                      "no weapon you have seen before.")
+
+    feature_dict = {"ceiling": ceiling_feature, "painting": painting_feature,
+                    "table": table_feature, "ruby": ruby_feature,
+                    "charcoal": charcoal_feature, "dagger": dagger_feature}
+
+    puzzle_dict = {"riddle": True}
 
     # Instantiate room object.
     tower_hall = Room(name, description, item_list, monster_list,
@@ -759,7 +809,8 @@ def init_room_12():
                    "scattered around the room and it is quite dusty. "
                    "There is a fireplace roaring in the corner. Above you "
                    "is a very large chandelier that is made out of hundreds "
-                   "of crystals. "
+                   "of crystals. There are large walnut doors to the south, "
+                   "an ash door to the east, and a pine door to the west.",
                    "I'm in the archives. There are large walnut doors to the "
                    "south, an ash door to the east, and a pine door to the "
                    "west. "
@@ -833,9 +884,10 @@ def init_room_13():
     description = ("In the room before you, there is a long couch and "
                    "books all around the room, stacked to the ceiling. "
                    "In the middle of the room there is a table with a "
-                   "large, old open book on it. The pages are tattered "
+                   "large, old open tome on it. The pages are tattered "
                    "and it seems like it could be thousands of years "
-                   "old. "
+                   "old. High on a perch and out of reach you notice a raven "
+                   "looking down at you. There is an ash door to the west.",
                    "I'm in the reading room. There is an ash door to the "
                    "west. "
                    )
@@ -857,12 +909,12 @@ def init_room_13():
     door_map = {'north': False, 'south': False}
 
     # Set features in room.
-    book_feature = ("As you approach the book, the pages start flapping "
-                    "quickly, going further along in the book. All of a "
+    tome_feature = ("As you approach the tome, the pages start flapping "
+                    "quickly, going further along in the tome. All of a "
                     "sudden, it stops on a page. As you look at the page, "
                     "it is completely blank until text begins to appear. "
-                    "It says, \"This book holds spells only for the worthy.\" "
-                    "The book then returns to its original page. "
+                    "It says, \"This tome holds spells only for the worthy.\" "
+                    "The tome then returns to its original page. "
                     )
 
     couch_feature = ("As you step towards the couch, it begins to sink into "
@@ -871,9 +923,15 @@ def init_room_13():
                      "position. "
                      )
 
-    feature_dict = {"book": book_feature, "couch": couch_feature}
+    raven_feature = ("He has dark black feathers. Engraved at the base "
+                     "of its perch is the name Artemis. The raven is carrying "
+                     "a key in its beak currently. He is looking at "
+                     "you with great interest.")
 
-    puzzle_dict = None
+    feature_dict = {"tome": tome_feature, "couch": couch_feature, 
+                    "raven": raven_feature}
+
+    puzzle_dict = {"raven": True}
 
     # Instantiate room object.
     reading_room = Room(name, description, item_list, monster_list,
@@ -893,14 +951,17 @@ def init_room_14():
     name = "room of last rites"
     description = ("I feel like I'm close to Evelyn. Bones are scattered in "
                    "this room. A very daunting sight indeed! There is also a "
-                   "bloody handprint on the north wall of the room. I'm in "
-                   "the room of last rites. There is a tungsten door to the "
-                   "north and a pine door to the east."
+                   "bloody handprint on the north wall of the room. Near the "
+                   "center of the room a cage is hanging from a long chain "
+                   "connected to the ceiling. There is a tungsten door "
+                   "to the north and a pine door to the east.",
+                   "I'm in the room of last rites. There is a tungsten door "
+                   "to the north and a pine door to the east."
                    )
 
     # Init items
     # Item 1 - Key
-    key_name = "Skull key"
+    key_name = "skull key"
     key_description = ("The key has a skull on it. ")
     key_durability = None
     key_stats = None
@@ -935,9 +996,12 @@ def init_room_14():
                          "Evelyn's handprint! "
                          )
 
-    feature_dict = {"bones": bones_feature, "handprint": handprint_feature}
+    cage_feature = ("It is small and made of iron.")
 
-    puzzle_dict = None
+    feature_dict = {"bones": bones_feature, "handprint": handprint_feature,
+                    "cage": cage_feature}
+
+    puzzle_dict = {"cage": True}
 
     # Instantiate room object.
     room_of_last_rites = Room(name, description, item_list, monster_list,

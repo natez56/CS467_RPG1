@@ -292,6 +292,26 @@ def take_action(current_room, action):
             room_10_feature_handler(current_room, action["verb"],
                                     action["feature"])
 
+        elif current_room.get_name() == "tower hall":
+            room_11_feature_handler(current_room, action["verb"],
+                                    action["feature"])
+
+        elif current_room.get_name() == "archives":
+            room_12_feature_handler(current_room, action["verb"],
+                                    action["feature"])
+
+        elif current_room.get_name() == "reading room":
+            room_13_feature_handler(current_room, action["verb"],
+                                    action["feature"])
+
+        elif current_room.get_name() == "room of last rites":
+            room_14_feature_handler(current_room, action["verb"],
+                                    action["feature"])
+
+        elif current_room.get_name() == "final lair":
+            room_15_feature_handler(current_room, action["verb"],
+                                    action["feature"])
+
     # Handle player / item interaction for a given room.
     elif (action["verb"] is not None and action["item"] is not None
           and (action["item"] in player.get_item_names() or
@@ -335,6 +355,26 @@ def take_action(current_room, action):
 
         elif current_room.get_name() == "sauna room":
             room_10_item_handler(current_room, action["verb"],
+                                 action["item"])
+
+        elif current_room.get_name() == "tower hall":
+            room_11_item_handler(current_room, action["verb"],
+                                 action["item"])
+
+        elif current_room.get_name() == "archives":
+            room_12_item_handler(current_room, action["verb"],
+                                 action["item"])
+
+        elif current_room.get_name() == "reading room":
+            room_13_item_handler(current_room, action["verb"],
+                                 action["item"])
+
+        elif current_room.get_name() == "room of last rites":
+            room_14_item_handler(current_room, action["verb"],
+                                 action["item"])
+
+        elif current_room.get_name() == "final lair":
+            room_15_item_handler(current_room, action["verb"],
                                  action["item"])
 
     elif action["verb"] == "duck":

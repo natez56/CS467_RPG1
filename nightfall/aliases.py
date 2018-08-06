@@ -176,13 +176,13 @@ def move_alias_check(current_room_name, user_input):
 
         dest_list_3 = ([
             ["birch", "door", "doors"],
-            ["pool room", "door", "doors"],
+            ["sauna room", "door", "doors"],
             ])
 
-        possible_destinations['pool room'] = dest_list_3
+        possible_destinations['sauna room'] = dest_list_3
 
     # Room 10
-    elif current_room_name == 'pool room':
+    elif current_room_name == 'sauna room':
         dest_list_1 = ([
             ["birch", "door", "doors"],
             ["supplies closet", "door", "doors"],
@@ -191,13 +191,84 @@ def move_alias_check(current_room_name, user_input):
         possible_destinations['supplies closet'] = dest_list_1
 
         dest_list_2 = ([
-            [],
             ["marble", "staircase"],
-            [],
-            ["tower hall", "door", "doors"],
+            ["tower hall", "stairs", "staircase"],
             ])
 
         possible_destinations['tower hall'] = dest_list_2
+
+    # Room 11
+    elif current_room_name == 'tower hall':
+        dest_list_1 = ([
+            ["marble", "staircase"],
+            ["sauna room", "stairs", "staircase"],
+            ])
+
+        possible_destinations['sauna room'] = dest_list_1
+
+        dest_list_2 = ([
+            ["large", "walnut", "double", "door", "doors"],
+            ["archives", "door", "doors"],
+            ])
+
+        possible_destinations['archives'] = dest_list_2
+
+    # Room 12
+    elif current_room_name == 'archives':
+        dest_list_1 = ([
+            ["large", "walnut", "door", "doors"],
+            ["tower hall", "door", "doors"],
+            ])
+
+        possible_destinations['tower hall'] = dest_list_1
+
+        dest_list_2 = ([
+            ["ash", "door", "doors"],
+            ["reading room", "door", "doors"],
+            ])
+
+        possible_destinations['reading room'] = dest_list_2
+
+        dest_list_3 = ([
+            ["pine", "door", "doors"],
+            ["room of last rites", "door", "doors"],
+            ])
+
+        possible_destinations['room of last rites'] = dest_list_3
+
+    # Room 13
+    elif current_room_name == 'reading room':
+        dest_list_1 = ([
+            ["ash", "door", "doors"],
+            ["archives", "door", "doors"],
+            ])
+
+        possible_destinations['archives'] = dest_list_1
+
+    # Room 14
+    elif current_room_name == 'room of last rites':
+        dest_list_1 = ([
+            ["tungsten", "door", "doors"],
+            ["final lair", "door", "doors"],
+            ])
+
+        possible_destinations['final lair'] = dest_list_1
+
+        dest_list_2 = ([
+            ["pine", "door", "doors"],
+            ["archives", "door", "doors"],
+            ])
+
+        possible_destinations['archives'] = dest_list_2
+
+    # Room 15
+    elif current_room_name == 'final lair':
+        dest_list_1 = ([
+            ["tungsten", "door", "doors"],
+            ["room of last rites", "door", "doors"],
+            ])
+
+        possible_destinations['room of last rites'] = dest_list_1
 
     # The list of possible move words.
     move_lists = ([
@@ -257,11 +328,11 @@ def move_alias_check(current_room_name, user_input):
             if i % 2 == 0:
                 # Must have word + door or word + doors
                 _gen_valid = (word_tuple for word_tuple in combinations
-                              if ((("door" in word_tuple and
+                              if (("door" in word_tuple and
                                    "doors" not in word_tuple) or
                                   ("doors" in word_tuple and
-                                   "door" not in word_tuple)) and
-                                  len(word_tuple) > 1))
+                                   "door" not in word_tuple) or
+                                  ("staircase" in word_tuple)))
 
             # Room name descriptions must have at least part of the room name
             # in the command. They do not need door to be in the command

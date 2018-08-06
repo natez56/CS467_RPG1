@@ -32,6 +32,12 @@ class Room:
         self.features = features
         self.puzzle_dict = puzzle_dict
 
+    def set_door_map(self, door_map):
+        self.door_map = door_map
+
+    def set_adjacent_rooms(self, adjacent_rooms):
+        self.adjacent_rooms = adjacent_rooms
+
     def get_description(self):
         return self.description[0]
 
