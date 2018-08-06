@@ -409,8 +409,6 @@ def item_alias_check(command):
     alias_dictionary['box'] = ['lock box', 'emerald box']
     alias_dictionary['key'] = ['golden key']
     alias_dictionary['magic resistant oven mitt'] = ['mitt', 'oven mitt']
-    alias_dictionary['acidic ooze'] = ['ooze']
-    alias_dictionary['jarofooze'] = ['jar of ooze', 'jar of acidic ooze']
 
     for key in alias_dictionary:
         for word in alias_dictionary[key]:

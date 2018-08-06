@@ -1432,6 +1432,7 @@ def room_14_feature_handler(current_room, verb, feature):
     save_object_state(current_room)
 
 
+# TODO finish last room.
 def room_15_feature_handler(current_room, verb, feature):
     """Handle room 15 player and feature interaction.
 

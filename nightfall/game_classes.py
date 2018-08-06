@@ -1,5 +1,6 @@
 from random import randint
 
+
 class Room:
     """Room class representing primary game map that player navigates.
 

@@ -146,7 +146,7 @@ def parse_input(input, current_room):
                      'tome', 'couch', 'raven',
 
                      # Room 14
-                     'bones', 'handprint', 'cage',
+                     'bones', 'handprint', 'cage', 'fairy'
 
                      # Room 15
                      ]
