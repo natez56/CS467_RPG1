@@ -687,7 +687,10 @@ def combat(player, monster):
                     time.sleep(1)
                     print("\nA small pink fairy flies around your body... ")
                     print("You woke up! Your health has restored to 50 HP. ")
-                    player.set_health(50)
+                    # Reset the player's health and magic
+                    # based on their level
+                    player.set_health(player.get_level())
+                    player.set_magic(player.get_level())
 
     return True
 

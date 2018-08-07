@@ -436,6 +436,27 @@ class Player(Character):
 
             return attack_damage
 
+    def revive(self, level):
+        if level == 1:
+            self.health = 50
+            self.magic = 20
+
+        elif level == 2:
+            self.health = 60
+            self.magic = 25
+
+        elif level == 3:
+            self.health = 70
+            self.magic = 30
+
+        elif level == 4:
+            self.health = 80
+            self.magic = 35
+
+        else:
+            self.health = 90
+            self.magic = 40
+
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
 
