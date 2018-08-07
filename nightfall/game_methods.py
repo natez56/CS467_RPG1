@@ -624,7 +624,23 @@ def combat(player, monster):
         # Execute the player's attack
         total_damage = player.execute_attack(attack_choice)
 
-        if total_damage == 0:
+        # Idenfity the player's attack type
+        attack_type = player.get_attack_type(attack_choice)
+
+        # Get monster's defensive result, which is a random
+        # number in the range of 0 and the monster's defense
+        # or magic defense depending on the type of the attack
+        if attack_type == 0:
+            total_defense = randint(0, monster.get_defense())
+        elif attack_type == 1:
+            total_defense = randint(0, monster.get_magic_defense())
+        else:
+            total_defense = randint(0, (monster.get_defense() +
+                                        monster.get_magic_defense()))
+
+        total_damage -= total_defense
+
+        if total_damage < 1:
             print("\nYou missed! ")
         else:
             # Deal the damage to the enemy
@@ -659,11 +675,23 @@ def combat(player, monster):
         else:
             # Randomly choose what ability the enemy will use
             time.sleep(1)
-            total_damage = monster.npc_attack()
+            attack_type = randint(0, 1)
+            total_damage = monster.npc_attack(attack_type)
+
+            # Get player's defensive result, which is a random
+            # number in the range of 0 and the player's defense
+            # or magic defense depending on the type of the attack
+            if attack_type == 0:
+                total_defense = randint(0, player.get_defense())
+            else:
+                total_defense = randint(0, player.get_magic_defense())
+
+            total_damage -= total_defense
+
             time.sleep(1)
 
             # Calculate the damage
-            if total_damage == 0:
+            if total_damage < 1:
                 print("%s missed! " % (monster.get_name()))
                 time.sleep(1)
             else:
@@ -689,8 +717,7 @@ def combat(player, monster):
                     print("You woke up! Your health has restored to 50 HP. ")
                     # Reset the player's health and magic
                     # based on their level
-                    player.set_health(player.get_level())
-                    player.set_magic(player.get_level())
+                    player.revive(player.get_level())
 
     return True
 

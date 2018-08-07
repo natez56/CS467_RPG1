@@ -202,6 +202,14 @@ class Character:
     def set_attack_power(self, attack_power):
         self.attack_power = attack_power
 
+    def get_attack_type(self, attack_choice):
+        if attack_choice == 'slash':
+            return 0
+        elif attack_choice == 'thunder':
+            return 1
+        else:
+            return 2
+
 
 class Player(Character):
     """Player class tracks the state of the user conrolled Character.
@@ -406,7 +414,7 @@ class Player(Character):
             return attack_damage
 
         elif option == 'thunder':
-            if self.magic < 3:
+            if self.magic < 2:
                 print("You don't have enough magic! ")
                 attack_damage = 0
 
@@ -416,12 +424,12 @@ class Player(Character):
                 attack_damage = randint(0, self.magic_power)
 
                 # Adjust the player's stats
-                self.magic -= 3
+                self.magic -= 2
 
             return attack_damage
 
         elif option == 'singe':
-            if self.magic < 5:
+            if self.magic < 3:
                 print("You don't have enough magic! ")
                 attack_damage = 0
 
@@ -432,7 +440,7 @@ class Player(Character):
                                         self.attack_power))
 
                 # Adjust the player's stats
-                self.magic -= 5
+                self.magic -= 3
 
             return attack_damage
 
@@ -487,10 +495,8 @@ class Monster(Character):
     def get_loot(self):
         return self.loot
 
-    def npc_attack(self):
+    def npc_attack(self, attack_type):
         # Randomly select a melee or magic attack
-        attack_type = randint(0, 1)
-
         if attack_type == 0:
             print("\n%s swung their weapon at you! " % (self.name))
 
