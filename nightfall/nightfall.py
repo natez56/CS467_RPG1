@@ -71,6 +71,9 @@ def main():
 
         take_action(current_room, action)
 
+        current_room = get_current_room()
+        player = current_room.get_player()
+
 
 if __name__ == "__main__":
     main()

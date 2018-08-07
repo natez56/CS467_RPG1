@@ -58,14 +58,14 @@ def parse_input(input, current_room):
                              'inventory', 'savegame', 'loadgame']
 
     verb_array = ['take', 'use', 'drop', 'look at', 'eat', 'drink', 'smell',
-                  'listen to', 'climb', 'duck', 'rotate']
+                  'listen to', 'climb', 'duck', 'rotate', 'equip']
 
     item_array = [
                   # Room 1
                   'sword',
 
                   # Room 2
-                  'key',
+                  'golden key',
 
                   # Room 3
                   'bread',
@@ -74,7 +74,7 @@ def parse_input(input, current_room):
                   'letter', 'jar',
 
                   # Room 5
-                  'magic resistant oven mitt', 'acidic ooze',
+                  'oven mitt', 'acidic ooze',
 
                   # Room 6
                   'Quackers',
@@ -94,12 +94,13 @@ def parse_input(input, current_room):
                   'charcoal',
 
                   # Room 12
-                  'painting scrap'
+                  'scrap', 'mythril tongs',
 
                   # Room 13
-                  'cage key'
+                  'iron key',
 
                   # Room 14
+                  'skull key'
 
                   # Room 15
                     ]
@@ -146,9 +147,10 @@ def parse_input(input, current_room):
                      'tome', 'couch', 'raven',
 
                      # Room 14
-                     'bones', 'handprint', 'cage', 'fairy'
+                     'bones', 'handprint', 'cage', 'fairy',
 
                      # Room 15
+                     'evelyn', 'mirror'
                      ]
 
     go_array = ['go', 'go to', 'move', 'move to', 'walk', 'walk to', 'run',
@@ -198,7 +200,7 @@ def parse_input(input, current_room):
     # check if the command is for a standard game action
     for action in standard_action_array:
         if new_command2 == action:
-            print("Doing the action of:", action)
+            # print("Doing the action of:", action)
             assigned_tokens['standard_action'] = action
             done = True
 
@@ -390,14 +392,19 @@ def parse_input(input, current_room):
 
     # Check for extra, unrecognized words in input
     numTokens = 0
+    prevValue = ""
 
     # if there is not already an error with the input
     if done is False and assigned_tokens['error'] is None:
         # count how many assigned tokens in input
         for key, value in assigned_tokens.items():
-            if value is not None:
+            if value is not None and value != prevValue:
                 # count the number of words in the token
                 numTokens = numTokens + len(value.split())
+
+                if key == 'item' or key == 'feature':
+                    prevValue = value
+
         # if the number of recognized words is not equal to
         # length of the user input, there are extra words
         if numTokens != command_length:

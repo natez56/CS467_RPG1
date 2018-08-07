@@ -73,6 +73,11 @@ def general_item_handler(current_room, verb, item_name):
         else:
             print("You can't use that here")
 
+    elif verb == "equip":
+        item = player.get_item(item_name)
+
+        player.equip_item(item)
+
     save_object_state(current_room)
 
 
@@ -112,7 +117,7 @@ def room_2_item_handler(current_room, verb, item_name):
     player = current_room.get_player()
 
     # Triggers rope trap if trap hasn't already been triggered.
-    if (verb == "look at" and item_name == "key" and
+    if (verb == "look at" and item_name == "golden key" and
             (current_room.get_puzzle_status("rope") or
              "rope" in current_room.get_features())):
 
@@ -122,7 +127,7 @@ def room_2_item_handler(current_room, verb, item_name):
             rope_trap(current_room)
 
     # Triggers rope trap if trap hasn't already been triggered.
-    elif (verb == "take" and item_name == "key" and
+    elif (verb == "take" and item_name == "golden key" and
             (current_room.get_puzzle_status("rope") or
              "rope" in current_room.get_features())):
 
@@ -188,14 +193,14 @@ def room_4_item_handler(current_room, verb, item_name):
                   "vine you hack off another grows in its place. Better "
                   "find another way to remove them...")
 
-    elif (verb == "use" and item_name == "key" and
-          "key" in player.get_item_names() and
+    elif (verb == "use" and item_name == "golden key" and
+          "golden key" in player.get_item_names() and
           current_room.get_puzzle_status("lock box")):
 
         print("You use the golden key on the small lock box on the shelf. "
               "Inside you find a letter.")
 
-        player.use_item("key")
+        player.use_item("golden key")
 
         letter_name = "letter"
         letter_description = ("The letter is neat and well written, it "
@@ -448,8 +453,8 @@ def room_11_item_handler(current_room, verb, item_name):
     """
     player = current_room.get_player()
 
-    if (verb == "use" and item_name == "painting scrap" and
-       "painting scrap" in player.get_item_names()):
+    if (verb == "use" and item_name == "scrap" and
+       "scrap" in player.get_item_names()):
 
         print("You place the painting scrap on the area of the painting "
               "that was torn away. The scrap magically stitches to the "
@@ -488,10 +493,10 @@ def room_12_item_handler(current_room, verb, item_name):
 
         print("You throw the charcoal into the fire. There is a green flash "
               "of light. Ash floats up from the fire and forms into a small "
-              "scrap of paper. You see that it is a torn piece of a painting."
+              "scrap of paper. You see that it is a torn piece of a painting. "
               "A face is on the paper.")
 
-        scrap_name = "painting scrap"
+        scrap_name = "scrap"
         scrap_description = ("A torn piece of a painting. You can make out a "
                              "face on the canvas scrap.")
         scrap_durability = 1
@@ -536,17 +541,40 @@ def room_14_item_handler(current_room, verb, item_name):
     """
     player = current_room.get_player()
 
-    if (verb == "use" and item_name == "cage key" and
-       item_name in player.get_item_names() and
-       current_room.get_puzzle_status("cage")):
-        player.use_item("cage key")
+    if (verb == "use" and item_name == "skull key" and
+       item_name in player.get_item_names()):
+
+        player.use_item("skull key")
+        print("The door to the final lair is now open")
+
+        current_room.unlock("north")
+
+    elif (verb == "use" and item_name == "iron key" and
+          item_name in player.get_item_names() and
+          current_room.get_puzzle_status("cage")):
+        player.use_item("iron key")
 
         print("The cage door opens and the fairy flies out. \"Oh thank you, "
-              "thank you!!! Let me give you my blessing before I leave. It "
-              "will aid you on your quest.\" The fairy glows brighter for a "
-              "second and then disappears. You feel a warm glow about you. "
+              "thank you, thank you!!! You've saved me! Oh how can I ever "
+              "repay you. Oh yah! Almost forgot, let me see if I can get "
+              "the key to the final lair for you.\"")
+        print("There is a flash of light and the fairy disappears. A couple "
+              "of seconds pass and there is another blinding flash. The fairy "
+              "has reappeared. \"Phew, that was close. I was able to flash "
+              "into the warlock's room and take this without him noticing! "
+              "Here take it, it is the key to the final lair. Oh and one more "
+              "thing before I go, let me give you my blessing. It will aid "
+              "in your final fight.\" The fairy glows brighter for a second "
+              "and then disappears. You feel a warm glow about you. "
               "Your health returns to full.")
 
+        key_name = "skull key"
+        key_description = ("The key has a skull on it. ")
+        key_durability = 1
+        key_stats = None
+
+        skull_key = Item(key_name, key_description, key_durability, key_stats)
+        player.add_item(skull_key)
         current_room.set_puzzle_status("cage", False)
         current_room.remove_feature("fairy")
 

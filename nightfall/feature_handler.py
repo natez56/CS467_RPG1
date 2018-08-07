@@ -821,7 +821,8 @@ def room_9_feature_handler(current_room, verb, feature):
 
             rapier_name = "rapier"
             rapier_description = ("A thin and nimble long sword. The blade "
-                                  "glows blue and it is razor sharp. ")
+                                  "glows blue and it is razor sharp. "
+                                  "(Equip this item to gain stats)")
             rapier_durability = None
             rapier_stats = {"attack_power": 5}
 
@@ -1169,17 +1170,18 @@ def room_13_feature_handler(current_room, verb, feature):
             if raven_joke():
                 print("The raven emits several hearty squawkes that almost "
                       "sound like laughter. It drops the key which clatters "
-                      "the floor. For some reason you get the feeling the "
-                      "raven doesn't speak english very well...")
+                      "the floor. You pick it up. For some reason you get the "
+                      "feeling the raven doesn't speak english very well...")
 
-                key_name = "cage key"
+                key_name = "iron key"
                 key_description = ("A plain iron key.")
                 key_durability = 1
                 key_stats = None
                 key = Item(key_name, key_description, key_durability,
                            key_stats)
 
-                current_room.add_item(key)
+                player = current_room.get_player()
+                player.add_item(key)
                 current_room.set_puzzle_status("raven", False)
 
                 new_raven = ("He has dark black feathers. Engraved at the "
@@ -1282,7 +1284,8 @@ def raven_joke():
 
         user_input = input("Next words to the raven: ")
 
-        print("You hear a voice in you mind say \"{} who?\"")
+        print("You hear a voice in you mind say \"{} who?\""
+              .format(user_input))
 
         user_input = input("Next words to the raven: ")
 
@@ -1340,14 +1343,16 @@ def room_14_feature_handler(current_room, verb, feature):
             fairy_feature = ("She is small and emits a light so bright that "
                              "you can't make out what she looks like.")
 
-            current_room.add_feature("fairy")
+            current_room.add_feature("fairy", fairy_feature)
 
             print("As you near you notice a small light glowing near the "
                   "cages' center. You hear a small voice. It says, \"Hey "
                   "you! You're not a Goblin! I can tell by your magic aura. "
                   "Oh thank goodness, please you must help me! I'm a fairy "
                   "from the forest. I was captured and put on display here. "
-                  "Please you must get the keys to open this cage. The "
+                  "Normally I would use my magic to escape, but this cage "
+                  "seems to be preventing me from casting any spells. "
+                  "Please you must get the keys to unlock the cage. The"
                   "warlock's pet raven has them in the reading room. His name "
                   "is Artemis. To get the keys you must look directly at him. "
                   "After he notices you, you must make him laugh. That is the "
@@ -1447,12 +1452,17 @@ def room_15_feature_handler(current_room, verb, feature):
 
     # Handle custom feature interaction for each of the 10 core verbs.
     if verb == "take":
-        if feature == "box":
-            print("As you reach out to take the emerald box a small flash "
-                  "of green lightning arcs from it and shocks you. I better "
-                  "leave this box where it is.")
+        if feature == "evelyn":
+            print(feature_dict[feature])
+
+            player = current_room.get_player()
+
+            player.rescue_evelyn = True
+
         else:
-            print("I can't take that.")
+            print("You've come so far. You're to tired to think about taking. "
+                  "the mirror. All you can think about is taking Evelyn and "
+                  "going home.")
 
     elif verb == "use":
         print("I can't use that. Better move on or find something I can "
@@ -1462,33 +1472,37 @@ def room_15_feature_handler(current_room, verb, feature):
         print("Drop what? I'm not carrying that.")
 
     elif verb == "look at":
-        print("You take a close look at the {}".format(feature))
+        if feature == "evelyn":
+            print(feature_dict[feature])
 
-        print(feature_dict[feature])
+            player = current_room.get_player()
+
+            player.rescue_evelyn = True
+
+        elif feature == "mirror":
+            print(feature_dict[feature])
 
     elif verb == "eat":
-        print("I can't eat that.")
+        print("I'm sure you meant to type something else. It's been a long "
+              "journey...")
 
     elif verb == "drink":
-        print("I can't drink that.")
+        print("I'm sure you meant to type something else. It's been a long "
+              "journey...")
 
     elif verb == "smell":
-        if feature == "bed":
-            print("Smell the bed? No thanks, this is getting a little too "
-                  "weird.")
-        else:
-            print("Doesn't smell like much.")
+        print("The slight smell of goblin still lingers in the air. You "
+              "do not notice any other smells.")
 
     elif verb == "listen to":
-        print("I don't hear much.")
+        if feature == 'evelyn':
+            print("Evelyn's breathing has started to calm down.")
+        else:
+            print("You don't hear anything. The room is quite except for "
+                  "Evelyn's breathing.")
 
     elif verb == "climb":
-        if feature == "bed":
-            print("You climb on the bed and start jumping up and down. Wooo "
-                  "what fun.")
-
-        else:
-            print("I can't climb that.")
+        print("I can't climb that.")
 
     elif verb == "duck":
         print("You duck quickly and then stand back up.")

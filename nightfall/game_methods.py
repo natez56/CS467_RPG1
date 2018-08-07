@@ -452,12 +452,12 @@ def handle_standard_action(current_room, player, action):
             for item in player.get_inventory():
                 print(item.get_name())
 
-            # == Additional feature to be implemented ==
-            # equipped_item = player.get_equipped_item()
-            # # if equipped_item is not None:
-            # #     print("Equipped item: {}".format(equipped_item.get_name()))
-            # # else:
-            # #     print("Equipped item: None")
+            equipped_item = player.get_equipped_item()
+
+            if equipped_item is not None:
+                print("Equipped item: {}".format(equipped_item.get_name()))
+            else:
+                print("Equipped item: None")
 
     elif action["standard_action"] == "savegame":
         save_game(current_room)
@@ -566,8 +566,14 @@ def travel(current_room, direction):
             save_object_state(new_room)
 
         else:
-            print("The door is locked!")
-            print("You can use a key to unlock the door.")
+            if (current_room.get_name() == "room of last rites" and
+               current_room.get_puzzle_status("cage")):
+                print("You try and open the door but it is locked. The fairy "
+                      "calls to you from the cage. \"Hey if you let me "
+                      "out of here I might be able to help you get the key "
+                      "to that door.\"")
+            else:
+                print("The door is locked!")
 
     else:
         print("There is no room in that direction!")
@@ -717,6 +723,7 @@ def is_game_over(player):
         return True
 
     if player.rescue_evelyn is True:
+        print("\n The End \n")
         return True
 
     else:

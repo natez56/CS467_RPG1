@@ -28,7 +28,7 @@ def init_room_1():
     sword_name = "sword"
     sword_description = ("A rusty sword. It's long since lost its edge. "
                          "Who knows, you might be able to bludgeon monsters "
-                         "with it.")
+                         "with it. (Equip this item to gain stats)")
     sword_durability = None
     sword_stats = {"attack_power": 1}
 
@@ -105,7 +105,7 @@ def init_room_2():
 
     # Init items
     # Item 1 - chest_key
-    chest_key_name = "key"
+    chest_key_name = "golden key"
     chest_key_description = ("An elaborate golden key.")
     chest_key_durability = 1
     chest_key_stats = None
@@ -192,9 +192,9 @@ def init_room_3():
                    "tables still have dirty plates scattered about. On the "
                    "north side of the room is an old steel door with a "
                    "strange engraving at its center. This door goes to the "
-                   "kitchen. To the east, there is a large oak door. This door"
-                   "goes to the store room. To the west, the painted door "
-                   "leads back to the entrance hall.",
+                   "kitchen. To the east, there is a large oak door. This "
+                   "door goes to the store room. To the west, the painted "
+                   "door leads back to the entrance hall.",
                    "You're in the mess hall. To the north, there is an old "
                    "steel door leading to the kitchen. To the east, a large "
                    "oak door leads to the store room. To the west, a painted "
@@ -383,9 +383,10 @@ def init_room_5():
 
     # Init items
     # Item 1 - magic_resistant_oven_mitt
-    oven_mitt_name = "magic resistant oven mitt"
-    oven_mitt_description = ("The oven mitt glows with an orange hue. "
-                             "The outside is warm to the touch. ")
+    oven_mitt_name = "oven mitt"
+    oven_mitt_description = ("The oven mitt glows with an orange magical hue. "
+                             "The outside is warm to the touch. (Equip this "
+                             "item to gain stats)")
     oven_mitt_durability = None
     oven_mitt_stats = {"magic_defense": 3}
 
@@ -631,7 +632,7 @@ def init_room_8():
                         "Then simply speak the decoded phrase allowed to "
                         "cast the automatic spell. Cipher: \n a b c d e f g h "
                         "i j k l m n o p q r s t u v w x y z \n D E F G H I J "
-                        "K L M N O P Q R S T U V W X Y Z A B C D E F G H I J")
+                        "K L M N O P Q R S T U V W X Y Z A B C ")
     book_durability = None
     book_stats = None
 
@@ -929,7 +930,7 @@ def init_room_12():
                    "There is a fireplace roaring in the corner. Above you "
                    "is a very large chandelier that is made out of hundreds "
                    "of crystals. This appears to be the archives. Large "
-                   "walnut doors to the south lead back to the tower hall."
+                   "walnut doors to the south lead back to the tower hall. "
                    "An ash door to the east leads to the reading room, and a "
                    "pine door to the west leads to the room of last rites.",
                    "You're in the archives. To the south, large walnut doors"
@@ -940,10 +941,10 @@ def init_room_12():
 
     # Init items
     # Item 1 - Mythril Tongs
-    tongs_name = "Mythril Tongs"
+    tongs_name = "mythril tongs"
     tongs_description = ("Long pristine tongs with a lime green flame that "
                          "flows from the tips. They appear to be made out of "
-                         "mythril. "
+                         "mythril. (Equip this item to gain stats)"
                          )
     tongs_durability = None
     tongs_stats = {"magic_power": 8}
@@ -983,7 +984,7 @@ def init_room_12():
     # Set room navigation traits.
     adjacent_rooms = {'north': None, 'east': 'reading room',
                       'south': 'tower hall', 'west': 'room of last rites'}
-    door_map = {'east': False, 'south': False, 'west': True}
+    door_map = {'east': False, 'south': False, 'west': False}
 
     # Set features in room.
     fireplace_feature = ("As you step toward the fireplace you hear it start "
@@ -1048,7 +1049,7 @@ def init_room_13():
     # Set room navigation traits.
     adjacent_rooms = {'north': None, 'east': None, 'south': None,
                       'west': 'archives'}
-    door_map = {'north': False, 'south': False}
+    door_map = {'west': False}
 
     # Set features in room.
     tome_feature = ("As you approach the tome, the pages start flapping "
@@ -1105,17 +1106,9 @@ def init_room_14():
                    )
 
     # Init items
-    # Item 1 - Key
-    key_name = "skull key"
-    key_description = ("The key has a skull on it. ")
-    key_durability = 1
-    key_stats = None
-
-    skull_key = Item(key_name, key_description, key_durability, key_stats)
 
     # Set item list
     item_list = []
-    item_list.append(skull_key)
 
     # ADD CHEST/FAIRY??
 

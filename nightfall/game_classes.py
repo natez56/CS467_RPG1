@@ -267,6 +267,8 @@ class Player(Character):
         if item is not None:
             stat_list = item.get_stats()
 
+            print("Unequipped {}".format(item.get_name()))
+
             for stat in stat_list:
                 if stat == 'health':
                     self.set_health(self.get_health() - stat_list['health'])
@@ -286,37 +288,55 @@ class Player(Character):
                     self.set_attack_power(self.get_attack_power() -
                                           stat_list['attack_power'])
 
-            self.add_item(item)
             self.equipped_item = None
 
     def equip_item(self, item):
-        if item in self.backpack:
+        if item in self.backpack and item.get_stats() is not None:
             if self.equipped_item is not None:
                 self.unequip_item()
 
             stat_list = item.get_stats()
+            print("You equipped the {}.".format(item.get_name()))
+            print("Stats gained:")
 
             for stat in stat_list:
                 if stat == 'health':
+                    print("+{} health".format(stat_list['health']))
+
                     self.set_health(self.get_health() + stat_list['health'])
                 if stat == 'magic':
+                    print("+{} magic".format(stat_list['magic']))
+
                     self.set_magic(self.get_magic() + stat_list['magic'])
                 if stat == 'level':
+                    print("+{} level".format(stat_list['level']))
+
                     self.set_level(self.get_level() + stat_list['level'])
                 if stat == 'magic_defense':
+                    print("+{} magic defense"
+                          .format(stat_list['magic_defense']))
+
                     self.set_magic_defense(self.get_magic_defense() +
                                            stat_list['magic_defense'])
                 if stat == 'magic_power':
+                    print("+{} magic power".format(stat_list['magic_power']))
+
                     self.set_magic_power(self.get_magic_power() +
                                          stat_list['magic_power'])
                 if stat == 'defense':
+                    print("+{} defense".format(stat_list['defense']))
+
                     self.set_defense(self.get_defense() + stat_list['defense'])
                 if stat == 'attack_power':
+                    print("+{} attack power".format(stat_list['attack_power']))
+
                     self.set_attack_power(self.get_attack_power() +
                                           stat_list['attack_power'])
 
             self.equipped_item = item
-            self.backpack.remove(item)
+
+        else:
+            print("You cannot equip that item.")
 
     def get_equipped_item(self):
         return self.equipped_item

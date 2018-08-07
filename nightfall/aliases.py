@@ -407,8 +407,18 @@ def item_alias_check(command):
 
     alias_dictionary['Quackers'] = ['rubber duck', 'quackers']
     alias_dictionary['box'] = ['lock box', 'emerald box']
-    alias_dictionary['key'] = ['golden key']
-    alias_dictionary['magic resistant oven mitt'] = ['mitt', 'oven mitt']
+    alias_dictionary['scrap'] = ['painting scrap']
+
+    if ('key' in command and 'emerald' not in command and
+        'golden' not in command and 'iron' not in command and
+       'skull' not in command):
+        user_input = input("Please enter the type of key (for example type "
+                           "golden or emerald): ")
+
+        user_input.lower().strip()
+        new_input = user_input + ' ' + 'key'
+
+        command = command.replace('key', new_input)
 
     for key in alias_dictionary:
         for word in alias_dictionary[key]:
@@ -419,8 +429,6 @@ def item_alias_check(command):
 
 def item_repeat_check(command):
     alias_dictionary = {}
-
-    alias_dictionary['jar of ooze'] = ['jarofooze']
 
     for key in alias_dictionary:
         for word in alias_dictionary[key]:
