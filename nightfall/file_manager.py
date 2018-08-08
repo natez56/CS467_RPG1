@@ -127,12 +127,12 @@ def init_room_2():
                           "towards you with his machete raised! ")
     goblin_loot = 5
     goblin_health = 8
-    goblin_magic = 9
+    goblin_magic = 12
     goblin_level = 1
-    goblin_magic_defense = 5
+    goblin_magic_defense = 1
     goblin_magic_power = 2
-    goblin_defense = 3
-    goblin_attack_power = 3
+    goblin_defense = 0
+    goblin_attack_power = 2
 
     goblin = Monster(goblin_name, goblin_description, goblin_loot,
                      goblin_health, goblin_magic, goblin_level,
@@ -224,13 +224,13 @@ def init_room_3():
                             "reassemble and fill the armor. The armored "
                             "skeleton unsheathes its broadsword. ")
     skeleton_loot = 5
-    skeleton_health = 15
+    skeleton_health = 13
     skeleton_magic = 15
     skeleton_level = 2
-    skeleton_magic_defense = 5
-    skeleton_magic_power = 6
-    skeleton_defense = 4
-    skeleton_attack_power = 7
+    skeleton_magic_defense = 2
+    skeleton_magic_power = 3
+    skeleton_defense = 1
+    skeleton_attack_power = 2
 
     skeleton = Monster(skeleton_name, skeleton_description, skeleton_loot,
                        skeleton_health, skeleton_magic, skeleton_level,
@@ -411,14 +411,14 @@ def init_room_5():
                           "the sink drain into the air. It settles on the "
                           "ground and forms into a giant blob over 7 feet "
                           "tall. ")
-    sludge_loot = 10
-    sludge_health = 25
-    sludge_magic = 40
+    sludge_loot = 5
+    sludge_health = 15
+    sludge_magic = 21
     sludge_level = 3
-    sludge_magic_defense = 10
-    sludge_magic_power = 12
-    sludge_defense = 7
-    sludge_attack_power = 10
+    sludge_magic_defense = 3
+    sludge_magic_power = 5
+    sludge_defense = 2
+    sludge_attack_power = 4
 
     sludge = Monster(sludge_name, sludge_description, sludge_loot,
                      sludge_health, sludge_magic, sludge_level,
