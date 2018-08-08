@@ -175,6 +175,11 @@ def help_menu():
     """scroll_print a list of available commands for the user."""
     scroll_print("\nHere is a list of available commands: ")
 
+    scroll_print("game menu")
+    scroll_print("save game")
+    scroll_print("load game")
+    scroll_print("inventory")
+    scroll_print("stats")
     scroll_print("take <item>")
     scroll_print("use <item>")
     scroll_print("drop <item>")
