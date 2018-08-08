@@ -28,8 +28,20 @@ def general_item_handler(current_room, verb, item_name, feature):
 
     # Player can look at an item whether it is in inventory on in the room.
     elif verb == "look at":
-        if item_name in current_room.get_item_names():
+        if item_name == "book":
+            if item_name in current_room.get_item_names():
+                scroll_print(current_room.get_item(item_name)
+                             .get_description())
+
+            else:
+                scroll_print(player.get_item(item_name).get_description())
+
+            scroll_print("a b c d e f g h i j k l m n o p q r s t u v w x y z")
+            scroll_print("D E F G H I J K L M N O P Q R S T U V W X Y Z A B C")
+
+        elif item_name in current_room.get_item_names():
             scroll_print(current_room.get_item(item_name).get_description())
+
         else:
             scroll_print(player.get_item(item_name).get_description())
 
@@ -151,7 +163,7 @@ def room_2_item_handler(current_room, verb, item_name, feature):
          "rope" in current_room.get_features())):
 
         scroll_print("The golden key glitters on the floor among the "
-                     "rubble. You walk forward to take a closer look.")
+                     "rubble. You walk forward to take a closer look.\n")
 
         rope_trap(current_room)
 
@@ -161,7 +173,7 @@ def room_2_item_handler(current_room, verb, item_name, feature):
             "rope" in current_room.get_features())):
 
         scroll_print("The golden key glitters on the floor among the "
-                     "rubble. You walk forward to pick up the key.")
+                     "rubble. You walk forward to pick up the key.\n")
 
         rope_trap(current_room)
 
@@ -227,7 +239,8 @@ def room_4_item_handler(current_room, verb, item_name, feature):
 
     elif (verb == "use" and item_name == "golden key" and
           "golden key" in player.get_item_names() and
-          current_room.get_puzzle_status("lock box")):
+          current_room.get_puzzle_status("lock box") and
+          (feature is None or feature == "box")):
 
         scroll_print("You use the golden key on the small lock box on the "
                      "shelf. Inside you find a letter.")
@@ -235,15 +248,15 @@ def room_4_item_handler(current_room, verb, item_name, feature):
         player.use_item("golden key")
 
         letter_name = "letter"
-        letter_description = ("The letter is neat and well written, it "
-                              "reads: \n"
-                              "This note is to remind you fool goblins to "
+        letter_description = ("The letter is neat and well written, it reads:"
+                              "                                    "
+                              "\"This note is to remind you fool goblins to "
                               "not turn the newly placed engraved lock on "
                               "the kitchen door in the mess hall. The "
                               "creature inside must remain in the kitchen "
                               "until I can find the time to deal with it "
                               "myself. I will have food shipped from "
-                              "elsewhere until the problem is resolved.")
+                              "elsewhere until the problem is resolved.\"")
         letter_durability = None
         letter_stats = None
 
@@ -254,7 +267,8 @@ def room_4_item_handler(current_room, verb, item_name, feature):
 
     elif (verb == "use" and item_name == "acidic ooze" and
           "acidic ooze" in player.get_item_names() and
-          current_room.get_puzzle_status("vines")):
+          current_room.get_puzzle_status("vines") and
+          (feature is None or feature == "vines")):
 
         current_room.set_puzzle_status("vines", False)
 
@@ -262,17 +276,18 @@ def room_4_item_handler(current_room, verb, item_name, feature):
 
         scroll_print("You poor the jar of acidic ooze onto the vines covering "
                      "the door. The vines emit a shrieking sound and quickly "
-                     "shrink away from the door. You should now be able to "
-                     "pass through to the steel door going north.")
+                     "shrink away from the door. You can reach the stairwell "
+                     "to the north.")
 
         description = ("The room you are in has large shelves that go from "
                        "floor ceiling. There is a stone area for "
                        "refrigeration where animal carcasses hang from the "
                        "ceiling. Nearby a broom leans against the wall. To "
                        "the west a large oak door leads to the mess hall. To "
-                       "the north a steel door.",
+                       "the north is a stairwell going up.",
                        "I'm in the store room. To the west a large oak door "
-                       "leads to the mess hall and to the north a steel door."
+                       "leads to the mess hall and to the north is a "
+                       "stairwell going up."
                        )
 
         current_room.set_description(description)
@@ -299,7 +314,9 @@ def room_5_item_handler(current_room, verb, item_name, feature):
 
     if (verb == "use" and item_name == "jar" and
         "jar" in player.get_item_names() and
-       "acidic ooze" in current_room.get_item_names()):
+       "acidic ooze" in current_room.get_item_names() and
+            (feature is None or feature == "acidic ooze")):
+
         scroll_print("You use the jar to grab some of the ooze.")
         player.use_item("jar")
         ooze = current_room.get_item("acidic ooze")
@@ -360,15 +377,17 @@ def room_7_item_handler(current_room, verb, item_name, feature):
 
     if (verb == "use" and item_name == "Quackers" and
         "Quackers" in player.get_item_names() and
-       current_room.get_puzzle_status("smoke")):
+       current_room.get_puzzle_status("smoke") and
+       (feature is None or feature == "smoke")):
+
         scroll_print("You place the rubber duck on the table next to the "
                      "smoke figure. It dances around the duck happily. After "
                      "a few moments of frolicking around, the smoke figure "
-                     "motions you to follow it toward the humador. The figure "
-                     "floats up and points to a small gap betwen the back of "
-                     "the humidor and the wall. You reach behind the humador "
+                     "motions you to follow it toward the humidor. The figure "
+                     "floats up and points to a small gap between the back of "
+                     "the humidor and the wall. You reach behind the humidor "
                      "and find an emerald key hanging from a small hook. The "
-                     "smoke figure waves and then promptly disappears.")
+                     "smoke figure waves and then promptly disappears.\n")
 
         ash_feature = ("The ash embers have cooled. You walk towards the ash "
                        "tray and just when you are about to touch it, the ash "
@@ -415,7 +434,8 @@ def room_8_item_handler(current_room, verb, item_name, feature):
 
     if (verb == "use" and item_name == "emerald key" and
         "emerald key" in player.get_item_names() and
-       current_room.get_puzzle_status("nightstand")):
+       current_room.get_puzzle_status("nightstand") and
+       (feature is None or feature == "box")):
 
         current_room.set_puzzle_status("nightstand", False)
 
@@ -486,7 +506,8 @@ def room_11_item_handler(current_room, verb, item_name, feature):
     player = current_room.get_player()
 
     if (verb == "use" and item_name == "scrap" and
-       "scrap" in player.get_item_names()):
+       "scrap" in player.get_item_names() and
+            (feature is None or feature == "painting")):
 
         scroll_print("You place the painting scrap on the area of the "
                      "painting that was torn away. The scrap magically "
@@ -509,7 +530,7 @@ def room_11_item_handler(current_room, verb, item_name, feature):
     save_object_state(current_room)
 
 
-def room_12_item_handler(current_room, verb, item_name, feture):
+def room_12_item_handler(current_room, verb, item_name, feature):
     """Handle room 10 player and item and room and item interactions.
 
     Args:
@@ -521,7 +542,9 @@ def room_12_item_handler(current_room, verb, item_name, feture):
     player = current_room.get_player()
 
     if (verb == "use" and item_name == "charcoal" and
-       "charcoal" in player.get_item_names()):
+       "charcoal" in player.get_item_names() and
+            (feature is "charcoal" or feature == "fireplace")):
+
         player.use_item("charcoal")
 
         scroll_print("You throw the charcoal into the fire. There is a green "
@@ -584,7 +607,9 @@ def room_14_item_handler(current_room, verb, item_name, feature):
 
     elif (verb == "use" and item_name == "iron key" and
           item_name in player.get_item_names() and
-          current_room.get_puzzle_status("cage")):
+          current_room.get_puzzle_status("cage") and
+          (feature is None or feature == "cage")):
+
         player.use_item("iron key")
 
         scroll_print("The cage door opens and the fairy flies out. \"Oh thank "

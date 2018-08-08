@@ -220,9 +220,9 @@ def init_room_3():
     skeleton_name = "Renethe"
     skeleton_description = ("There is a pile of bones on the ground "
                             "near an elaborate suit of armor. As you walk "
-                            "further into the hall, the bones begin to  "
-                            "reassemble into the armor. The armored "
-                            "skeleton unsheaths its broadsword. ")
+                            "further into the hall, the bones begin to "
+                            "reassemble and fill the armor. The armored "
+                            "skeleton unsheathes its broadsword. ")
     skeleton_loot = 5
     skeleton_health = 15
     skeleton_magic = 15
@@ -252,12 +252,8 @@ def init_room_3():
 
     armor_feature = ("The suits of armor are old and dusty.")
 
-    engraving_feature = ("A closer inspection reveals that the engraving is "
-                         "on a disc of silver that is attached to, but not "
-                         "quite flush with, the surface of the door. Strange "
-                         "markings cover the surface of the engraving and are "
-                         "pictured below. \n\n"
-                         "              / _______ \\              \n"
+    engraving_feature = ("                _______                 \n"
+                         "              /         \\              \n"
                          "             /           \\             \n"
                          "            |   /IIIII\\   |            \n"
                          "            |  |IIIIIII|  |            \n"
@@ -274,7 +270,8 @@ def init_room_3():
                          "       |                       |       \n"
                          "        \\-                    -/       \n"
                          "          \\-                -/         \n"
-                         "            ________________           \n")
+                         "            ________________           \n"
+                         )
 
     feature_dict = {"armor": armor_feature, "engraving": engraving_feature}
 
@@ -300,11 +297,12 @@ def init_room_4():
                    "animal carcasses hang from the ceiling. Nearby, a broom "
                    "leans against the wall. You appear to be in the store "
                    "room. To the west, a large oak door leads to the mess "
-                   "hall. To the north, dark black vines have entirely "
-                   "covered a steel door, which leads to the washroom.",
+                   "hall. To the north dark black vines have entirely "
+                   "blocked the entrance to a stairwell, which leads to the "
+                   "washroom.",
                    "You're in the store room. To the west, a large oak door "
-                   "leads to the mess hall. To the north, there is a vine "
-                   "covered steel door that leads to the washroom."
+                   "leads to the mess hall. To the north, dark black vines "
+                   "block a stairwell leading to the washroom."
                    )
 
     # Init items
@@ -468,12 +466,12 @@ def init_room_6():
                    "room with a large window behind it. It is too "
                    "dark to see what is likely a gorgeous view of the "
                    "forest. You also see a fountain in the corner. To the "
-                   "south, there are swinging doors that lead back down "
-                   "to the store room. To the west, an ornate door leads "
-                   "to the sleeping chambers. To the north, a maple door "
-                   "takes you to the smoking room.",
-                   "You're in the washroom. To the south, swinging doors "
-                   "lead back down to the store room. To the west, an ornate "
+                   "south, a stairwell leads back down to the store room. "
+                   "To the west, an ornate door leads to the sleeping "
+                   "chambers. To the north, a maple door takes you to the "
+                   "smoking room.",
+                   "You're in the washroom. To the south, a stairwell "
+                   "leads back down to the store room. To the west, an ornate "
                    "door leads to the sleeping chambers. To the north, a "
                    "maple door leads to the smoking room."
                    )
@@ -485,8 +483,8 @@ def init_room_6():
 
     # Set monster list
     wraith_name = "Karthos"
-    wraith_description = ("A screaming howling sound echos through the "
-                          "room. You see faint black whisps fly smoothly "
+    wraith_description = ("A screaming howling sound echoes through the "
+                          "room. You see faint black wisps fly smoothly "
                           "through the air. The black smoke gathers and "
                           "a wraith with a silver dagger appears before "
                           "you! ")
@@ -523,7 +521,7 @@ def init_room_6():
                    )
 
     fountain_feature = ("The fountain starts flowing translucent purple "
-                        "water. It looks like it could be poisonous. ")
+                        "water. It looks like it could be poisonous.")
 
     feature_dict = {"tub": tub_feature, "fountain": fountain_feature}
 
@@ -631,9 +629,7 @@ def init_room_8():
                         "example of a magical cypher. Simply set your magic "
                         "mirror to display the coded text of your choosing. "
                         "Then simply speak the decoded phrase allowed to "
-                        "cast the automatic spell. Cipher: \n a b c d e f g h "
-                        "i j k l m n o p q r s t u v w x y z \n D E F G H I J "
-                        "K L M N O P Q R S T U V W X Y Z A B C ")
+                        "cast the automatic spell. Cipher:")
     book_durability = None
     book_stats = None
 
@@ -814,7 +810,7 @@ def init_room_10():
 
     # Set features in room.
     machine_sound_feature = ("You follow the sound of the machinery through "
-                             "the haze of steam. It leads you to a marbel "
+                             "the haze of steam. It leads you to a marble "
                              "wall. There is a mirror on the wall. Higher "
                              "up there is a vent which is exuding steam.")
 
@@ -883,7 +879,7 @@ def init_room_11():
                         "brutal combat. You notice that a piece of the "
                         "painting has been torn away. Right where the face of "
                         "one of the commanders should have been, there is a "
-                        "rend. It's as if someone delierately tore this part "
+                        "rend. It's as if someone deliberately tore this part "
                         "of the painting away. I wonder if the owner of this "
                         "place was involved in the battle."
                         )
@@ -1272,9 +1268,9 @@ def init_player_object(player_name, character_choice):
     magic_defense = 0
     magic_power = 3
     defense = 0
-    attack_power = 3
+    # attack_power = 3
     # This AP for Testing Only ADLFKSLDFKSLDKFSLDKF#@$@$@#$@#$
-    # attack_power = 300
+    attack_power = 3000
     num_lives = 3
     experience = 0
     memory = []

@@ -23,6 +23,15 @@ def move_alias_check(current_room_name, user_input):
     # input is valid.
     possible_destinations = {}
 
+    # Alias check for staircases.
+    stairs_alias = {}
+    stairs_alias["staircase"] = ["stairs", "stairwell"]
+    stairs_alias["blocked"] = ["covered"]
+
+    for key in stairs_alias:
+        for word in stairs_alias[key]:
+            user_input = user_input.replace(word, key)
+
     # Find out what room the player is in currently so that the correct word
     # list can be generated for the rooms connected to that room.
 
@@ -81,6 +90,7 @@ def move_alias_check(current_room_name, user_input):
 
     # Room 4
     elif current_room_name == 'store room':
+
         dest_list_1 = ([
             ["large", "oak", "door", "doors"],
             ["mess hall", "door", "doors"],
@@ -89,8 +99,8 @@ def move_alias_check(current_room_name, user_input):
         possible_destinations['mess hall'] = dest_list_1
 
         dest_list_2 = ([
-            ["vine", "covered", "steel", "door", "doors"],
-            ["washroom", "door", "doors"],
+            ["vine", "blocked", "staircase"],
+            ["washroom", "staircase"],
             ])
 
         possible_destinations['washroom'] = dest_list_2
@@ -107,8 +117,8 @@ def move_alias_check(current_room_name, user_input):
     # Room 6
     elif current_room_name == 'washroom':
         dest_list_1 = ([
-            ["swinging", "door", "doors"],
-            ["store room", "door", "doors"],
+            ["staircase"],
+            ["store room", "staircase"],
             ])
 
         possible_destinations['store room'] = dest_list_1
@@ -416,21 +426,14 @@ def item_alias_check(command):
        'skull' not in command):
         user_input = input("Please enter the type of key (for example type "
                            "golden or emerald): ")
+        print("")
 
         user_input.lower().strip()
-        new_input = user_input + ' ' + 'key'
+
+        if "key" not in user_input:
+            new_input = user_input + ' ' + 'key'
 
         command = command.replace('key', new_input)
-
-    for key in alias_dictionary:
-        for word in alias_dictionary[key]:
-            command = command.replace(word, key)
-
-    return command
-
-
-def item_repeat_check(command):
-    alias_dictionary = {}
 
     for key in alias_dictionary:
         for word in alias_dictionary[key]:

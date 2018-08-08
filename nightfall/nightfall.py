@@ -8,7 +8,7 @@ def main():
     starting_selection = starting_menu()
 
     if starting_selection == "start":
-        # need to add Ranger and Wizard class to intialize
+        # need to add Ranger and Wizard class to initialize
         character_choice = choose_character()
 
         player_name = choose_name(character_choice)

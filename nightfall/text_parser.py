@@ -332,7 +332,6 @@ def parse_input(input, current_room):
             # it as the item of the sentence
             if item_match is True:
                 if assigned_tokens['item'] is None:
-                    item_phrase = item_repeat_check(item_phrase)
                     assigned_tokens['item'] = item_phrase
 
                 # if there was already an item, then this sentence has too many

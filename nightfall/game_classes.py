@@ -213,7 +213,7 @@ class Character:
 
 
 class Player(Character):
-    """Player class tracks the state of the user conrolled Character.
+    """Player class tracks the state of the user controlled Character.
 
     Attributes:
         experience (int): Tracks points until next level.
@@ -306,7 +306,7 @@ class Player(Character):
                 self.unequip_item()
 
             stat_list = item.get_stats()
-            scroll_print("You equipped the {}.".format(item.get_name()))
+            scroll_print("You equipped the {}.\n".format(item.get_name()))
             scroll_print("Stats gained:")
 
             for stat in stat_list:
@@ -360,7 +360,7 @@ class Player(Character):
             item.decrement_durability()
 
             if item.get_durability() == 0:
-                scroll_print("Item {} used and removed from inventory."
+                scroll_print("Item {} used and removed from inventory.\n"
                              .format(item_name))
 
                 self.backpack.remove(item)
@@ -405,7 +405,7 @@ class Player(Character):
             scroll_print("   Slash: Make a large slash with your primary "
                          "weapon. ")
         elif option == 1:
-            scroll_print("   Thunder: Conjur the force of thunder and launch "
+            scroll_print("   Thunder: Conjure the force of thunder and launch "
                          "it at the enemy. ")
         elif option == 2:
             scroll_print("   Singe: Strike your opponent with a burning aura "

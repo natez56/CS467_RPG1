@@ -450,10 +450,10 @@ def handle_standard_action(current_room, player, action):
 
     elif action["standard_action"] == "inventory":
         if not player.get_inventory():
-            scroll_print("\nYour backpack is empty!")
+            scroll_print("Your backpack is empty!")
 
         else:
-            scroll_print("\nYour backpack has: ")
+            scroll_print("Your backpack has: ")
 
             for item in player.get_inventory():
                 scroll_print(item.get_name())
@@ -461,10 +461,10 @@ def handle_standard_action(current_room, player, action):
             equipped_item = player.get_equipped_item()
 
             if equipped_item is not None:
-                scroll_print("Equipped item: {}"
+                scroll_print("\nEquipped item: {}"
                              .format(equipped_item.get_name()))
             else:
-                scroll_print("Equipped item: None")
+                scroll_print("\nEquipped item: None")
 
     elif action["standard_action"] == "savegame":
         save_game(current_room)
@@ -552,9 +552,9 @@ def travel(current_room, direction):
                              "flash of light and the sound of the stone floor "
                              "shifting. Dark black vines suddenly shoot up "
                              "out of the cracks in the floor. The vines "
-                             "quickly grow to cover the door leading "
-                             "north...Things quite down and you take a look "
-                             "around\n")
+                             "quickly grow to block the stairwell entrance to "
+                             "the north...Things quiet down and you take a "
+                             "look around\n")
                 new_room.set_puzzle_status("voice", False)
 
             elif (new_room.get_name() == "sauna room" and
@@ -568,7 +568,7 @@ def travel(current_room, direction):
                              "has been added to the sauna you are now in. Do "
                              "whatever you like, but while the steam remains "
                              "you will not find the way forward.\". The voice "
-                             "fades and your vision returns.")
+                             "fades and your vision returns.\n")
                 new_room.set_puzzle_status("sauna voice", False)
 
             # scroll_print out room description.
@@ -586,12 +586,19 @@ def travel(current_room, direction):
             save_object_state(new_room)
 
         else:
-            if (current_room.get_name() == "room of last rites" and
-               current_room.get_puzzle_status("cage")):
-                scroll_print("You try and open the door but it is locked. The "
-                             "fairy calls to you from the cage. \"Hey if you "
-                             "let me out of here I might be able to help you "
-                             "get the key to that door.\"")
+            if (current_room.get_name() == "store room" and
+               current_room.get_puzzle_status("vines")):
+                scroll_print("\nYou can't enter the stairwell. The black "
+                             "vines are blocking the way. You'll need to "
+                             "find a way to remove them.")
+
+            elif (current_room.get_name() == "room of last rites" and
+                  current_room.get_puzzle_status("cage")):
+                scroll_print("\nYou try and open the door but it is locked. "
+                             "The fairy calls to you from the cage. \"Hey "
+                             "if you let me out of here I might be able to "
+                             "help you get the key to that door.\"")
+
             else:
                 scroll_print("The door is locked!")
 
@@ -609,7 +616,7 @@ def combat(player, monster):
     """
     # Begin combat dialogue
     time.sleep(1)
-    scroll_print(monster.get_description())
+    scroll_print("\nOh no! {}".format(monster.get_description()))
     time.sleep(1)
     scroll_print("\nYou have encountered %s! Let's begin combat..." %
                  (monster.get_name()))

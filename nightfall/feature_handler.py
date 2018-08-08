@@ -51,7 +51,7 @@ def room_1_feature_handler(current_room, verb, feature):
             scroll_print("Eat this? I don't think so. I'm not a zombie.")
 
         if feature == "door":
-            scroll_print("You naw on the oak doors a bit. Yup that's oak all "
+            scroll_print("You gnaw on the oak doors a bit. Yup that's oak all "
                          "right...")
 
         if feature == "cloak":
@@ -80,7 +80,11 @@ def room_1_feature_handler(current_room, verb, feature):
                      "the nearby trees.")
 
     elif verb == "climb":
-        scroll_print("There's nothing to climb.")
+        if feature == "body":
+            scroll_print("Better to not disturb the dead.")
+
+        else:
+            scroll_print("There's nothing to climb.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -171,7 +175,7 @@ def room_2_feature_handler(current_room, verb, feature):
                          "Ouch!")
 
         elif feature == "door":
-            scroll_print("You naw on the oak doors a bit. Yup that's oak all "
+            scroll_print("You gnaw on the oak doors a bit. Yup that's oak all "
                          "right...")
 
         elif feature == "writing":
@@ -211,7 +215,7 @@ def rope_trap(current_room):
         current_room (:obj:Room): The room the player is currently in.
 
     """
-    scroll_print("As you walk toward the door, between the scattered rubble, "
+    scroll_print("As you walk forward, between the scattered rubble, "
                  "your foot trips on a small hard to see rope. You here a "
                  "click...\n")
 
@@ -279,9 +283,19 @@ def room_3_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? I'm not carrying that.")
 
     elif verb == "look at":
-        scroll_print("You take a close look at the {}.".format(feature))
+        if feature == "engraving":
+            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("A closer inspection reveals that the engraving is "
+                         "on a disc of silver that is attached to, but not "
+                         "quite flush with, the surface of the door. Strange "
+                         "markings cover the surface of the engraving and are "
+                         "pictured below. \n\n")
+            print(feature_dict[feature])
 
-        scroll_print(feature_dict[feature])
+        else:
+            scroll_print("You take a close look at the {}.".format(feature))
+
+            scroll_print(feature_dict[feature])
 
     elif verb == "eat":
         scroll_print("I can't eat that.")
@@ -291,7 +305,7 @@ def room_3_feature_handler(current_room, verb, feature):
 
     elif verb == "smell":
         if feature == "engraving":
-            scroll_print("The engaving doesn't smell like anything.")
+            scroll_print("The engraving doesn't smell like anything.")
 
         if feature == "armor":
             scroll_print("Smells dusty.")
@@ -321,10 +335,11 @@ def room_3_feature_handler(current_room, verb, feature):
         if (feature == "engraving" and
            current_room.get_puzzle_status("engraving")):
             scroll_print("You place both hands on the engraving edges and "
-                         "rotate with all your might. It slowy turns until "
+                         "rotate with all your might. It slowly turns until "
                          "the markings have been flipped. You hear a click "
-                         "and step back to take a look.")
-            new_desc = ("The rotated engraving...\n"
+                         "and step back to take a look. The rotated "
+                         "engraving...\n")
+            new_desc = (
                         "            ________________           \n"
                         "          /-                -\\         \n"
                         "        /-                    -\\       \n"
@@ -342,8 +357,9 @@ def room_3_feature_handler(current_room, verb, feature):
                         "            |  |IIIIIII|  |            \n"
                         "            |   \\IIIII/   |            \n"
                         "             \\           /             \n"
-                        "              \\ _______ /              \n")
-            scroll_print(new_desc)
+                        "              \\ _______ /              \n"
+                        )
+            print(new_desc)
             scroll_print("\nThe door is now open...")
             current_room.unlock("north")
             current_room.set_puzzle_status("engraving", False)
@@ -410,10 +426,10 @@ def room_4_feature_handler(current_room, verb, feature):
     elif verb == "eat":
         if feature == "broom":
             scroll_print("You try to take bite the broom. It flies behind you "
-                         "and wacks you on the back of the head. Ouch!")
+                         "and whacks you on the back of the head. Ouch!")
 
         elif feature == "vines":
-            scroll_print("You naw on the vines to no effect. They won't "
+            scroll_print("You gnaw on the vines to no effect. They won't "
                          "budge, and they taste disgusting!")
 
         elif feature == "shelves":
@@ -602,7 +618,7 @@ def room_6_feature_handler(current_room, verb, feature):
     elif verb == "listen to":
         if feature == "fountain":
             scroll_print("You listen to the tranquil sound of the fountain. "
-                         "How zen.")
+                         "How Zen.")
 
         if feature == "tub":
             scroll_print("Water gurgles a bit in the drain.")
@@ -648,7 +664,7 @@ def room_7_feature_handler(current_room, verb, feature):
                          "those or I might get burned.")
 
         elif feature == "smoke":
-            scroll_print("You tray and grab the smokey figure but your hand "
+            scroll_print("You tray and grab the smoky figure but your hand "
                          "passes through. The figure quickly reforms and "
                          "continues looking at you expectantly.")
 
@@ -695,7 +711,7 @@ def room_7_feature_handler(current_room, verb, feature):
         scroll_print("I can't drink that.")
 
     elif verb == "smell":
-        scroll_print("Smells smokey.")
+        scroll_print("Smells smoky.")
 
     elif verb == "listen to":
         scroll_print("All is quite.")
@@ -906,11 +922,11 @@ def room_10_feature_handler(current_room, verb, feature):
             puzzle_result = mirror_puzzle()
 
             if puzzle_result:
-                scroll_print("The text in the mirror swirls and changes. It "
+                scroll_print("\nThe text in the mirror swirls and changes. It "
                              "reconfigures to say \"Password accepted.\". All "
                              "the sudden you hear the machinery stop. The "
                              "magic steam stops exuding from the vent and the "
-                             "room slowly becomes visible.")
+                             "room slowly becomes visible.\n")
 
                 description = ("The room is made of marble. Benches of marble "
                                "line the walls. The magic mirror hangs from "
@@ -985,7 +1001,7 @@ def room_10_feature_handler(current_room, verb, feature):
 
 
 def mirror_puzzle():
-    user_input = input("The mirror wants you to say something. What do you "
+    user_input = input("\nThe mirror wants you to say something. What do you "
                        "say? Enter some text: ")
 
     user_input.lower().strip()
@@ -1025,16 +1041,12 @@ def room_11_feature_handler(current_room, verb, feature):
                          "have been poisonous.")
 
         elif feature == "charcoal":
-            scroll_print("You take the charcoal. When you do both the ruby "
-                         "and the dagger disappear from the table.")
 
-            current_room.remove_feature('ruby')
             current_room.remove_feature('charcoal')
-            current_room.remove_feature('dagger')
             current_room.remove_feature('table')
 
-            table_feature = ("The table is now bare. The ruby and dagger "
-                             "illusions have disappeared")
+            table_feature = ("The charcoal is gone. Only the ruby and dagger "
+                             "remain.")
 
             current_room.add_feature('table', table_feature)
 
@@ -1131,7 +1143,7 @@ def room_12_feature_handler(current_room, verb, feature):
             scroll_print("The air under the chandelier smells like rain.")
 
         elif feature == "fireplace":
-            scroll_print("A smokey smell emits from the fireplace.")
+            scroll_print("A smoky smell emits from the fireplace.")
         else:
             scroll_print("Doesn't smell like much.")
 
@@ -1195,7 +1207,7 @@ def room_13_feature_handler(current_room, verb, feature):
             scroll_print(feature_dict[feature])
 
             if raven_joke():
-                scroll_print("The raven emits several hearty squawkes that "
+                scroll_print("The raven emits several hearty squawks that "
                              "almost sound like laughter. It drops the key "
                              "which clatters the floor. You pick it up. For "
                              "some reason you get the feeling the raven "
