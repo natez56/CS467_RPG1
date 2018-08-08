@@ -488,14 +488,14 @@ def init_room_6():
                           "through the air. The black smoke gathers and "
                           "a wraith with a silver dagger appears before "
                           "you! ")
-    wraith_loot = 10
-    wraith_health = 25
-    wraith_magic = 40
+    wraith_loot = 5
+    wraith_health = 16
+    wraith_magic = 21
     wraith_level = 3
-    wraith_magic_defense = 10
-    wraith_magic_power = 12
-    wraith_defense = 7
-    wraith_attack_power = 10
+    wraith_magic_defense = 3
+    wraith_magic_power = 9
+    wraith_defense = 4
+    wraith_attack_power = 5
 
     wraith = Monster(wraith_name, wraith_description, wraith_loot,
                      wraith_health, wraith_magic, wraith_level,
@@ -720,14 +720,14 @@ def init_room_9():
                           "up. The goblin has lots of dried dirt all over his "
                           "skin. He is carries a sickle and a sling for "
                           "throwing small rocks. ")
-    goblin_loot = 8
-    goblin_health = 13
-    goblin_magic = 15
-    goblin_level = 2
-    goblin_magic_defense = 5
-    goblin_magic_power = 5
-    goblin_defense = 5
-    goblin_attack_power = 6
+    goblin_loot = 10
+    goblin_health = 20
+    goblin_magic = 30
+    goblin_level = 4
+    goblin_magic_defense = 4
+    goblin_magic_power = 6
+    goblin_defense = 4
+    goblin_attack_power = 10
 
     goblin = Monster(goblin_name, goblin_description, goblin_loot,
                      goblin_health, goblin_magic, goblin_level,
@@ -958,14 +958,14 @@ def init_room_12():
     skeleton_description = ("A skeleton walks out of the blazing fireplace. "
                             "It's bones are still engulfed in flames as it "
                             "lunges at you. ")
-    skeleton_loot = 5
-    skeleton_health = 20
-    skeleton_magic = 20
-    skeleton_level = 3
-    skeleton_magic_defense = 8
+    skeleton_loot = 10
+    skeleton_health = 21
+    skeleton_magic = 30
+    skeleton_level = 4
+    skeleton_magic_defense = 4
     skeleton_magic_power = 10
-    skeleton_defense = 7
-    skeleton_attack_power = 8
+    skeleton_defense = 3
+    skeleton_attack_power = 5
 
     skeleton = Monster(skeleton_name, skeleton_description, skeleton_loot,
                        skeleton_health, skeleton_magic, skeleton_level,
@@ -1170,14 +1170,14 @@ def init_room_15():
     final_boss_description = ("It is I, Zlor! I am afraid your journey "
                               "has come to an end! You are destined "
                               "to join the same fate as your brother! ")
-    final_boss_loot = 30
+    final_boss_loot = 0
     final_boss_health = 43
     final_boss_magic = 100
     final_boss_level = 5
-    final_boss_magic_defense = 12
-    final_boss_magic_power = 19
-    final_boss_defense = 15
-    final_boss_attack_power = 17
+    final_boss_magic_defense = 5
+    final_boss_magic_power = 13
+    final_boss_defense = 5
+    final_boss_attack_power = 12
 
     final_boss = Monster(final_boss_name, final_boss_description,
                          final_boss_loot, final_boss_health, final_boss_magic,
