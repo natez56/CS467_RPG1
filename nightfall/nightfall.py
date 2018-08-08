@@ -1,5 +1,6 @@
 from game_methods import *
 from text_parser import *
+from scroll_print import *
 
 
 def main():
@@ -14,19 +15,19 @@ def main():
 
         # set up the game and use the name chosen by the player for
         # their character
-        current_room = start_game(player_name)
+        current_room = start_game(player_name, character_choice)
 
         player = current_room.get_player()
 
-        # print("Initial location: {}".format(current_room.get_name()))
-        # Print out room description.
+        # scroll_print("Initial location: {}".format(current_room.get_name()))
+        # scroll_print out room description.
         if player.has_memory(current_room.get_name()):
-            print(current_room.get_short_description())
+            scroll_print(current_room.get_short_description())
 
         else:
             player.add_memory(current_room.get_name())
 
-            print(current_room.get_description())
+            scroll_print(current_room.get_description())
 
         print_item_descriptions(current_room)
 
@@ -38,14 +39,14 @@ def main():
         player = current_room.get_player()
 
         if player.has_memory(current_room.get_name()):
-            print(current_room.get_short_description())
+            scroll_print(current_room.get_short_description())
         else:
-            print(current_room.get_description())
+            scroll_print(current_room.get_description())
 
         print_item_descriptions(current_room)
     else:
-        print("\nThank you for playing Nightfall. "
-              "Have a fortuitous evening. \n")
+        scroll_print("\nThank you for playing Nightfall. "
+                     "Have a fortuitous evening. \n")
         exit()
 
     while not is_game_over(player):
@@ -58,11 +59,11 @@ def main():
                 current_room.monster_killed()
 
             else:
-                print("Oh no! You ran out of lives! ")
-                print("GAME OVER ")
+                scroll_print("Oh no! You ran out of lives! ")
+                scroll_print("GAME OVER ")
                 continue
 
-        print("\nWhat would you like to do? ")
+        scroll_print("\nWhat would you like to do? ")
 
         # Grab the command from the user and execute the action if valid
         user_input = get_input()

@@ -3,6 +3,7 @@ from file_manager import *
 from feature_handler import *
 from item_handler import *
 from random import *
+from scroll_print import *
 import time
 
 
@@ -14,41 +15,41 @@ def starting_menu():
 
     """
     # Intro message printed for user at start of game.
-    print("\nOh no! While wandering the woods of Tardatheon, your younger "
-          "brother Evelyn was snatched by the evil warlock, Zlor. Following "
-          "your brother’s screams, you race through the thick brambles and "
-          "branches of the forest as they whip and slash against your skin. "
-          "All of a sudden, you find yourself in front of the warlock’s "
-          "looming tower. \n")
+    scroll_print("\nOh no! While wandering the woods of Tardatheon, your "
+                 "younger brother Evelyn was snatched by the evil warlock, "
+                 "Zlor. Following your brother’s screams, you race through "
+                 "the thick brambles and branches of the forest as they whip "
+                 "and slash against your skin. All of a sudden, you find "
+                 "yourself in front of the warlock’s looming tower. \n")
 
-    print("Zlor is holding your brother hostage here. All you have is the "
-          "knapsack on your back and a fearless spirit, but you must carry "
-          "on and save your brother.\n ")
+    scroll_print("Zlor is holding your brother hostage here. All you have is "
+                 "the knapsack on your back and a fearless spirit, but you "
+                 "must carry on and save your brother.\n ")
 
-    print("Welcome to Nightfall. The path that lies ahead is dark and full of "
-          "terrors.\n")
+    scroll_print("Welcome to Nightfall. The path that lies ahead is dark and "
+                 "full of terrors.\n")
 
     # Check user input for valid menu option.
     invalid_selection = True
 
     while invalid_selection:
-        print("\nStarting Menu:")
-        print("    Start New Game")
-        print("    Load Game File")
-        print("    Quit Game")
-        print("Please select an option by entering:")
-        print("Start, Load, or Quit")
+        scroll_print("\nStarting Menu:")
+        scroll_print("    Start New Game")
+        scroll_print("    Load Game File")
+        scroll_print("    Quit Game")
+        scroll_print("Please select an option by entering:")
+        scroll_print("Start, Load, or Quit")
 
         menu_choice = input().lower().strip()
 
         if menu_choice != "load" and menu_choice != "start" and \
            menu_choice != "quit":
 
-            print("You entered an invalid option!")
+            scroll_print("You entered an invalid option!")
 
         elif menu_choice == 'load' and get_num_saved_games() < 1:
 
-            print("\nNo saved games to load. Select another option.\n")
+            scroll_print("\nNo saved games to load. Select another option.\n")
 
         else:
             invalid_selection = False
@@ -63,9 +64,9 @@ def choose_character():
         str: A string that is Wizard or Ranger.
 
     """
-    print("\nBefore embarking on this tumultuous adventure, "
-          "would you like to play as a fearless Ranger \n"
-          "or a brilliant Wizard? ")
+    scroll_print("\nBefore embarking on this tumultuous adventure, "
+                 "would you like to play as a fearless Ranger "
+                 "or a brilliant Wizard? ")
 
     invalid_selection = True
 
@@ -74,8 +75,8 @@ def choose_character():
         character_choice = input().lower().strip()
 
         if character_choice != "ranger" and character_choice != "wizard":
-            print("\nYou entered an invalid selection, please choose "
-                  "between Ranger and Wizard: ")
+            scroll_print("\nYou entered an invalid selection, please choose "
+                         "between Ranger and Wizard: ")
         else:
             invalid_selection = False
 
@@ -94,14 +95,14 @@ def choose_name(character_choice):
         str: The name the player entered for themselves.
 
     """
-    print("\nExcellent choice! I am sure your %s will make a fine adventurer."
-          "\nWhat would you like to name your %s? " % (character_choice,
-                                                       character_choice))
+    scroll_print("\nExcellent choice! I am sure your %s will make a fine "
+                 "adventurer. What would you like to name your %s? " %
+                 (character_choice, character_choice))
 
     player_name = input().strip()
 
-    print("\nSalutations %s! It is now time to embark on the adventure...\n"
-          % (player_name))
+    scroll_print("\nSalutations %s! It is now time to embark on the "
+                 "adventure...\n" % (player_name))
 
     return player_name
 
@@ -117,24 +118,24 @@ def game_menu(current_room):
 
     # Validate user menu selection.
     while invalid_selection:
-        print("\nGame Menu: ")
-        print("    Save Game File ")
-        print("    Load Game File ")
-        print("    Return to Game ")
-        print("    Quit Game ")
-        print("Please select an option by entering: ")
-        print("Save, Return, or Quit ")
+        scroll_print("\nGame Menu: ")
+        scroll_print("    Save Game File ")
+        scroll_print("    Load Game File ")
+        scroll_print("    Return to Game ")
+        scroll_print("    Quit Game ")
+        scroll_print("Please select an option by entering: ")
+        scroll_print("Save, Return, or Quit ")
 
         menu_choice = input().lower().strip()
 
         if menu_choice != "save" and menu_choice != "return" and \
            menu_choice != "quit" and menu_choice != "load":
 
-            print("You entered an invalid option! ")
+            scroll_print("You entered an invalid option! ")
 
         elif menu_choice == "load" and get_num_saved_games() < 1:
 
-            print("\nNo saved games to load. Select another option.")
+            scroll_print("\nNo saved games to load. Select another option.")
 
         else:
             invalid_selection = False
@@ -148,46 +149,46 @@ def game_menu(current_room):
         room = get_current_room()
         player = room.get_player()
 
-        # Print out room description.
+        # scroll_print out room description.
         if player.has_memory(room.get_name()):
-            print(room.get_short_description())
+            scroll_print(room.get_short_description())
 
         else:
             # If this is the players first time in a room, store the room name
             # so that the short form description can be used next time.
             player.add_memory(room.get_name())
 
-            print(room.get_description())
+            scroll_print(room.get_description())
 
         print_item_descriptions(room)
 
     elif menu_choice == "quit":
-        print("\nThank you for playing Nightfall. "
-              "Have a fortuitous evening... \n")
+        scroll_print("\nThank you for playing Nightfall. "
+                     "Have a fortuitous evening... \n")
         exit()
 
     else:
-        print("Returning to the game!")
+        scroll_print("Returning to the game!")
 
 
 def help_menu():
-    """Print a list of available commands for the user."""
-    print("\nHere is a list of available commands: ")
+    """scroll_print a list of available commands for the user."""
+    scroll_print("\nHere is a list of available commands: ")
 
-    print("take <item>")
-    print("use <item>")
-    print("drop <item>")
-    print("go <direction>")
-    print("look at <feature>")
-    print("look at <item>")
-    print("eat <feature>")
-    print("eat <item>")
-    print("drink <feature>")
-    print("drink <item>")
-    print("smell <feature>")
-    print("listen to <feature>")
-    print("climb <feature>")
-    print("duck")
+    scroll_print("take <item>")
+    scroll_print("use <item>")
+    scroll_print("drop <item>")
+    scroll_print("go <direction>")
+    scroll_print("look at <feature>")
+    scroll_print("look at <item>")
+    scroll_print("eat <feature>")
+    scroll_print("eat <item>")
+    scroll_print("drink <feature>")
+    scroll_print("drink <item>")
+    scroll_print("smell <feature>")
+    scroll_print("listen to <feature>")
+    scroll_print("climb <feature>")
+    scroll_print("duck")
 
 
 def take_action(current_room, action):
@@ -203,7 +204,7 @@ def take_action(current_room, action):
 
     # Handle any error output.
     if action["error"] is not None:
-        print(action["error"])
+        scroll_print(action["error"])
 
     # Handle the standard actions.
     elif action["standard_action"] is not None:
@@ -242,11 +243,81 @@ def take_action(current_room, action):
                 if direction != "":
                     travel(current_room, direction)
                 else:
-                    print("That room is not connected to the "
-                          "current room!")
+                    scroll_print("That room is not connected to the "
+                                 "current room!")
 
         else:
             travel(current_room, action["direction"])
+
+    # Handle player / item interaction for a given room.
+    elif (action["verb"] is not None and action["item"] is not None
+          and (action["item"] in player.get_item_names() or
+          action["item"] in current_room.get_item_names())):
+
+        if action["verb"] != "use" and action["feature"] is not None:
+            print("You can't {} {} on {}".format(action["verb"],
+                  action["item"],
+                  action["feature"]))
+
+        elif current_room.get_name() == "fortress entrance":
+            room_1_item_handler(current_room, action["verb"],
+                                action["item"], action["feature"])
+
+        elif current_room.get_name() == "entrance hall":
+            room_2_item_handler(current_room, action["verb"],
+                                action["item"], action["feature"])
+
+        elif current_room.get_name() == "mess hall":
+            room_3_item_handler(current_room, action["verb"],
+                                action["item"], action["feature"])
+
+        elif current_room.get_name() == "store room":
+            room_4_item_handler(current_room, action["verb"],
+                                action["item"], action["feature"])
+
+        elif current_room.get_name() == "kitchen":
+            room_5_item_handler(current_room, action["verb"],
+                                action["item"], action["feature"])
+
+        elif current_room.get_name() == "washroom":
+            room_6_item_handler(current_room, action["verb"],
+                                action["item"], action["feature"])
+
+        elif current_room.get_name() == "smoking room":
+            room_7_item_handler(current_room, action["verb"],
+                                action["item"], action["feature"])
+
+        elif current_room.get_name() == "sleeping chambers":
+            room_8_item_handler(current_room, action["verb"],
+                                action["item"], action["feature"])
+
+        elif current_room.get_name() == "supplies closet":
+            room_9_item_handler(current_room, action["verb"],
+                                action["item"], action["feature"])
+
+        elif current_room.get_name() == "sauna room":
+            room_10_item_handler(current_room, action["verb"],
+                                 action["item"], action["feature"])
+
+        elif current_room.get_name() == "tower hall":
+            room_11_item_handler(current_room, action["verb"],
+                                 action["item"], action["feature"])
+
+        elif current_room.get_name() == "archives":
+            room_12_item_handler(current_room, action["verb"],
+                                 action["item"], action["feature"])
+
+        elif current_room.get_name() == "reading room":
+            room_13_item_handler(current_room, action["verb"],
+                                 action["item"], action["feature"])
+
+        elif current_room.get_name() == "room of last rites":
+            room_14_item_handler(current_room, action["verb"],
+                                 action["item"], action["feature"])
+
+        elif current_room.get_name() == "final lair":
+            room_15_item_handler(current_room, action["verb"],
+                                 action["item"], action["feature"])
 
     # Handle player / feature interaction for a given room.
     elif (action["verb"] is not None and
@@ -313,76 +384,11 @@ def take_action(current_room, action):
             room_15_feature_handler(current_room, action["verb"],
                                     action["feature"])
 
-    # Handle player / item interaction for a given room.
-    elif (action["verb"] is not None and action["item"] is not None
-          and (action["item"] in player.get_item_names() or
-          action["item"] in current_room.get_item_names())):
-
-        if current_room.get_name() == "fortress entrance":
-            room_1_item_handler(current_room, action["verb"],
-                                action["item"])
-
-        elif current_room.get_name() == "entrance hall":
-            room_2_item_handler(current_room, action["verb"],
-                                action["item"])
-
-        elif current_room.get_name() == "mess hall":
-            room_3_item_handler(current_room, action["verb"],
-                                action["item"])
-
-        elif current_room.get_name() == "store room":
-            room_4_item_handler(current_room, action["verb"],
-                                action["item"])
-
-        elif current_room.get_name() == "kitchen":
-            room_5_item_handler(current_room, action["verb"],
-                                action["item"])
-
-        elif current_room.get_name() == "washroom":
-            room_6_item_handler(current_room, action["verb"],
-                                action["item"])
-
-        elif current_room.get_name() == "smoking room":
-            room_7_item_handler(current_room, action["verb"],
-                                action["item"])
-
-        elif current_room.get_name() == "sleeping chambers":
-            room_8_item_handler(current_room, action["verb"],
-                                action["item"])
-
-        elif current_room.get_name() == "supplies closet":
-            room_9_item_handler(current_room, action["verb"],
-                                action["item"])
-
-        elif current_room.get_name() == "sauna room":
-            room_10_item_handler(current_room, action["verb"],
-                                 action["item"])
-
-        elif current_room.get_name() == "tower hall":
-            room_11_item_handler(current_room, action["verb"],
-                                 action["item"])
-
-        elif current_room.get_name() == "archives":
-            room_12_item_handler(current_room, action["verb"],
-                                 action["item"])
-
-        elif current_room.get_name() == "reading room":
-            room_13_item_handler(current_room, action["verb"],
-                                 action["item"])
-
-        elif current_room.get_name() == "room of last rites":
-            room_14_item_handler(current_room, action["verb"],
-                                 action["item"])
-
-        elif current_room.get_name() == "final lair":
-            room_15_item_handler(current_room, action["verb"],
-                                 action["item"])
-
     elif action["verb"] == "duck":
-        print("You duck quickly and then stand back up.")
+        scroll_print("You duck quickly and then stand back up.")
 
     else:
-        print("I can't do that.")
+        scroll_print("I can't do that.")
 
     save_object_state(current_room)
 
@@ -398,26 +404,26 @@ def print_item_descriptions(current_room):
     if len(current_room.get_item_names()) == 1:
         item_list = current_room.get_item_names()
 
-        print("\nAs you enter the area you also notice a {} on the "
-              "ground.".format(item_list[0]))
+        scroll_print("\nAs you enter the area you also notice a {} on the "
+                     "ground.".format(item_list[0]))
 
     # Custom message if there is only two items in the room.
     if len(current_room.get_item_names()) == 2:
         item_list = current_room.get_item_names()
 
-        print("\nAs you enter the area you also notice a {} and a {} on "
-              "the ground.".format(item_list[0], item_list[1]))
+        scroll_print("\nAs you enter the area you also notice a {} and a {} "
+                     "on the ground.".format(item_list[0], item_list[1]))
 
     # Custom message if there is more than two items in the room.
     elif len(current_room.get_item_names()) > 2:
-        print("\nAs you enter the area you also notice ")
+        scroll_print("\nAs you enter the area you also notice ")
 
         for i, item_name in enumerate(current_room.get_item_names()):
             if i == len(current_room.get_item_names()) - 1:
-                print("and a {} on the ground.".format(item_name))
+                scroll_print("and a {} on the ground.".format(item_name))
 
             else:
-                print("a {},".format(item_name))
+                scroll_print("a {},".format(item_name))
 
 
 def handle_standard_action(current_room, player, action):
@@ -438,52 +444,63 @@ def handle_standard_action(current_room, player, action):
 
     # Look always prints the long form room description.
     elif action["standard_action"] == "look":
-        print(current_room.get_description())
+        scroll_print(current_room.get_description())
 
         print_item_descriptions(current_room)
 
     elif action["standard_action"] == "inventory":
         if not player.get_inventory():
-            print("\nYour backpack is empty!")
+            scroll_print("\nYour backpack is empty!")
 
         else:
-            print("\nYour backpack has: ")
+            scroll_print("\nYour backpack has: ")
 
             for item in player.get_inventory():
-                print(item.get_name())
+                scroll_print(item.get_name())
 
             equipped_item = player.get_equipped_item()
 
             if equipped_item is not None:
-                print("Equipped item: {}".format(equipped_item.get_name()))
+                scroll_print("Equipped item: {}"
+                             .format(equipped_item.get_name()))
             else:
-                print("Equipped item: None")
+                scroll_print("Equipped item: None")
 
     elif action["standard_action"] == "savegame":
         save_game(current_room)
 
     elif action["standard_action"] == "loadgame":
         if get_num_saved_games() < 1:
-            print("\nNo saved games to load.\n")
+            scroll_print("\nNo saved games to load.\n")
 
         else:
             load_game()
 
-            # Get information to print description of current room the player
-            # is in.
+            # Get information to scroll_print description of current room the
+            # player is in.
             room = get_current_room()
             player = room.get_player()
 
-            # Print out room description.
+            # scroll_print out room description.
             if player.has_memory(room.get_name()):
-                print(room.get_short_description())
+                scroll_print(room.get_short_description())
 
             else:
                 player.add_memory(room.get_name())
 
-                print(room.get_description())
+                scroll_print(room.get_description())
 
             print_item_descriptions(room)
+
+    elif action["standard_action"] == 'stats' or\
+        action["standard_action"] == 'get stats' or\
+        action["standard_action"] == 'my stats' or\
+            action["standard_action"] == 'player stats':
+
+        room = get_current_room()
+        player = room.get_player()
+
+        player.print_stats()
 
     save_object_state(current_room)
 
@@ -497,14 +514,14 @@ def travel(current_room, direction):
 
     """
     if current_room.get_adjacent_room(direction) is not None:
-        print("Moving " + direction + " to the " +
-              current_room.get_adjacent_room(direction))
+        scroll_print("Moving " + direction + " to the " +
+                     current_room.get_adjacent_room(direction))
 
         # Check if the door is locked.
         current_door_map = current_room.get_door_map()
 
         if current_door_map[direction] is False:
-            print("\nThe door is unlocked!\n")
+            scroll_print("\nThe door is unlocked!\n")
 
             # Move the character into the new room.
             player = current_room.get_player()
@@ -523,42 +540,45 @@ def travel(current_room, direction):
             # Warlock voice interaction number 1.
             if (new_room.get_name() == "store room" and
                new_room.get_puzzle_status("voice")):
-                print("As you walk through the door your vision suddenly goes "
-                      "black. A voice enters your mind. It speaks in a low "
-                      "raspy growl: \"Ahh it appears I have an intruder. "
-                      "Although you cannot see me, I assure you I can see "
-                      "you. I am Zlor and this is my fortress. Your brother "
-                      "will not be returned. You cannot save him, I will "
-                      "make sure of that...\" The voice fades and your vision "
-                      "returns. Just as it does, there is a flash of light "
-                      "and the sound of the stone floor shifting. "
-                      "Dark black vines suddenly shoot up out of the cracks "
-                      "in the floor. The vines quickly grow to cover the door "
-                      "leading north...Things quite down and you take a look "
-                      "around\n")
+                scroll_print("As you walk through the door your vision "
+                             "suddenly goes black. A voice enters your mind. "
+                             "It speaks in a low raspy growl: \"Ahh it "
+                             "appears I have an intruder. Although you cannot "
+                             "see me, I assure you I can see you. I am Zlor "
+                             "and this is my fortress. Your brother will not "
+                             "be returned. You cannot save him, I will make "
+                             "sure of that...\" The voice fades and your "
+                             "vision returns. Just as it does, there is a "
+                             "flash of light and the sound of the stone floor "
+                             "shifting. Dark black vines suddenly shoot up "
+                             "out of the cracks in the floor. The vines "
+                             "quickly grow to cover the door leading "
+                             "north...Things quite down and you take a look "
+                             "around\n")
                 new_room.set_puzzle_status("voice", False)
 
             elif (new_room.get_name() == "sauna room" and
                   new_room.get_puzzle_status("sauna voice")):
-                print("As you walk through the door your vision goes black. "
-                      "A voice enters your mind. It is the same voice as "
-                      "the one you encountered in the store room. It says, "
-                      "\"So you've made it this far...I am tired of these "
-                      "games. You will go no farther. I have prepared a "
-                      "special potion that has been added to the sauna you "
-                      "are now in. Do whatever you like, but while the steam "
-                      "remains you will not find the way forward.\". The "
-                      "voice fades and your vision returns.")
+                scroll_print("As you walk through the door your vision goes "
+                             "black. A voice enters your mind. It is the same "
+                             "voice as the one you encountered in the store "
+                             "room. It says, \"So you've made it this far...I "
+                             "am tired of these games. You will go no "
+                             "farther. I have prepared a special potion that "
+                             "has been added to the sauna you are now in. Do "
+                             "whatever you like, but while the steam remains "
+                             "you will not find the way forward.\". The voice "
+                             "fades and your vision returns.")
                 new_room.set_puzzle_status("sauna voice", False)
 
-            # Print out room description.
+            # scroll_print out room description.
             if player.has_memory(new_room_name):
-                print(new_room.get_short_description())
+                scroll_print(new_room.get_short_description())
 
             else:
                 player.add_memory(new_room_name)
 
-                print(new_room.get_description())
+                scroll_print(new_room.get_description())
 
             print_item_descriptions(new_room)
 
@@ -568,15 +588,15 @@ def travel(current_room, direction):
         else:
             if (current_room.get_name() == "room of last rites" and
                current_room.get_puzzle_status("cage")):
-                print("You try and open the door but it is locked. The fairy "
-                      "calls to you from the cage. \"Hey if you let me "
-                      "out of here I might be able to help you get the key "
-                      "to that door.\"")
+                scroll_print("You try and open the door but it is locked. The "
+                             "fairy calls to you from the cage. \"Hey if you "
+                             "let me out of here I might be able to help you "
+                             "get the key to that door.\"")
             else:
-                print("The door is locked!")
+                scroll_print("The door is locked!")
 
     else:
-        print("There is no room in that direction!")
+        scroll_print("There is no room in that direction!")
 
 
 def combat(player, monster):
@@ -589,11 +609,10 @@ def combat(player, monster):
     """
     # Begin combat dialogue
     time.sleep(1)
-    print()
-    print(monster.get_description())
+    scroll_print(monster.get_description())
     time.sleep(1)
-    print("\nYou have encountered %s! Let's begin combat..." %
-          (monster.get_name()))
+    scroll_print("\nYou have encountered %s! Let's begin combat..." %
+                 (monster.get_name()))
     time.sleep(1)
 
     combat_continues = True
@@ -601,7 +620,7 @@ def combat(player, monster):
     while combat_continues:
         # Allow the player to choose their move
         # Output player combat options
-        print("\nPlease select which move you want: ")
+        scroll_print("\nPlease select which move you want: ")
         player.get_attack_description(0)
         player.get_attack_description(1)
         player.get_attack_description(2)
@@ -614,8 +633,8 @@ def combat(player, monster):
         while(invalid_choice):
             if attack_choice != 'slash' and attack_choice != 'thunder' and \
                attack_choice != 'singe':
-                print("\nYou entered an invalid choice! ")
-                print("Please enter: Slash, Thunder, or Singe: ")
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: Slash, Thunder, or Singe: ")
 
                 attack_choice = input().lower().strip()
             else:
@@ -625,28 +644,28 @@ def combat(player, monster):
         total_damage = player.execute_attack(attack_choice)
 
         if total_damage == 0:
-            print("\nYou missed! ")
+            scroll_print("\nYou missed! ")
         else:
             # Deal the damage to the enemy
-            print("\nYou did %d damage! " % (total_damage))
+            scroll_print("\nYou did %d damage! " % (total_damage))
             current_monster_health = monster.get_health()
             monster.set_health(current_monster_health-total_damage)
 
         # Check if the enemy is dead, if so, exit combat and gain experience
         if monster.get_health() <= 0:
             time.sleep(1)
-            print("\nYou have slain %s" % (monster.get_name()))
+            scroll_print("\nYou have slain %s" % (monster.get_name()))
 
             experience_gained = monster.get_loot()
-            print("You have gained %d experience points!" %
-                  (experience_gained))
+            scroll_print("You have gained %d experience points!" %
+                         (experience_gained))
 
             new_experience_total = experience_gained + player.get_experience()
 
             # Level up the player if they have enough experience
             if new_experience_total >= 10:  # we will need to do balancing!!!
                 time.sleep(1)
-                print("\n%s has leveled up! " % player.get_name())
+                scroll_print("\n%s has leveled up! " % player.get_name())
                 player.level_up()
 
                 # Carry over the excess experience into the new level
@@ -664,12 +683,12 @@ def combat(player, monster):
 
             # Calculate the damage
             if total_damage == 0:
-                print("%s missed! " % (monster.get_name()))
+                scroll_print("%s missed! " % (monster.get_name()))
                 time.sleep(1)
             else:
                 # Deal the damage to the enemy
-                print("\n%s did %d damage! " % (monster.get_name(),
-                      total_damage))
+                scroll_print("\n%s did %d damage! " % (monster.get_name(),
+                             total_damage))
                 time.sleep(1)
                 current_player_health = player.get_health()
                 player.set_health(current_player_health-total_damage)
@@ -677,7 +696,7 @@ def combat(player, monster):
             # Check if the player is dead
             if player.get_health() <= 0:
                 player.lose_life()
-                print("\nYou blacked out! ")
+                scroll_print("\nYou blacked out! ")
 
                 # Check if the player has any lives left
                 if player.get_lives() <= 0:
@@ -685,14 +704,16 @@ def combat(player, monster):
 
                 else:
                     time.sleep(1)
-                    print("\nA small pink fairy flies around your body... ")
-                    print("You woke up! Your health has restored to 50 HP. ")
+                    scroll_print("\nA small pink fairy flies around your "
+                                 "body... ")
+                    scroll_print("You woke up! Your health has restored to "
+                                 "50 HP. ")
                     player.set_health(50)
 
     return True
 
 
-def start_game(player_name):
+def start_game(player_name, character_choice):
     """Create game files, load initial room, and load player.
 
     Args:
@@ -702,7 +723,7 @@ def start_game(player_name):
         :obj:Room: The current room that the player is in.
 
     """
-    init_game_files(player_name)
+    init_game_files(player_name, character_choice)
 
     current_room = load_object("fortress_entrance")
 
@@ -723,7 +744,7 @@ def is_game_over(player):
         return True
 
     if player.rescue_evelyn is True:
-        print("\n The End \n")
+        scroll_print("\n The End \n")
         return True
 
     else:

@@ -1,4 +1,5 @@
 from random import randint
+from scroll_print import *
 
 
 class Room:
@@ -250,14 +251,15 @@ class Player(Character):
 
         for item in self.backpack:
             if item.get_name() == item_name:
-                print("Removed item {} from inventory.".format(item_name))
+                scroll_print("Removed item {} from inventory."
+                             .format(item_name))
 
                 self.backpack.remove(item)
 
                 return item
 
     def add_item(self, item):
-        print("Added {} to your inventory.".format(item.get_name()))
+        scroll_print("Added {} to your inventory.".format(item.get_name()))
 
         self.backpack.append(item)
 
@@ -267,7 +269,7 @@ class Player(Character):
         if item is not None:
             stat_list = item.get_stats()
 
-            print("Unequipped {}".format(item.get_name()))
+            scroll_print("Unequipped {}".format(item.get_name()))
 
             for stat in stat_list:
                 if stat == 'health':
@@ -296,39 +298,41 @@ class Player(Character):
                 self.unequip_item()
 
             stat_list = item.get_stats()
-            print("You equipped the {}.".format(item.get_name()))
-            print("Stats gained:")
+            scroll_print("You equipped the {}.".format(item.get_name()))
+            scroll_print("Stats gained:")
 
             for stat in stat_list:
                 if stat == 'health':
-                    print("+{} health".format(stat_list['health']))
+                    scroll_print("+{} health".format(stat_list['health']))
 
                     self.set_health(self.get_health() + stat_list['health'])
                 if stat == 'magic':
-                    print("+{} magic".format(stat_list['magic']))
+                    scroll_print("+{} magic".format(stat_list['magic']))
 
                     self.set_magic(self.get_magic() + stat_list['magic'])
                 if stat == 'level':
-                    print("+{} level".format(stat_list['level']))
+                    scroll_print("+{} level".format(stat_list['level']))
 
                     self.set_level(self.get_level() + stat_list['level'])
                 if stat == 'magic_defense':
-                    print("+{} magic defense"
-                          .format(stat_list['magic_defense']))
+                    scroll_print("+{} magic defense"
+                                 .format(stat_list['magic_defense']))
 
                     self.set_magic_defense(self.get_magic_defense() +
                                            stat_list['magic_defense'])
                 if stat == 'magic_power':
-                    print("+{} magic power".format(stat_list['magic_power']))
+                    scroll_print("+{} magic power"
+                                 .format(stat_list['magic_power']))
 
                     self.set_magic_power(self.get_magic_power() +
                                          stat_list['magic_power'])
                 if stat == 'defense':
-                    print("+{} defense".format(stat_list['defense']))
+                    scroll_print("+{} defense".format(stat_list['defense']))
 
                     self.set_defense(self.get_defense() + stat_list['defense'])
                 if stat == 'attack_power':
-                    print("+{} attack power".format(stat_list['attack_power']))
+                    scroll_print("+{} attack power"
+                                 .format(stat_list['attack_power']))
 
                     self.set_attack_power(self.get_attack_power() +
                                           stat_list['attack_power'])
@@ -336,7 +340,7 @@ class Player(Character):
             self.equipped_item = item
 
         else:
-            print("You cannot equip that item.")
+            scroll_print("You cannot equip that item.")
 
     def get_equipped_item(self):
         return self.equipped_item
@@ -348,8 +352,8 @@ class Player(Character):
             item.decrement_durability()
 
             if item.get_durability() == 0:
-                print("Item {} used and removed from inventory."
-                      .format(item_name))
+                scroll_print("Item {} used and removed from inventory."
+                             .format(item_name))
 
                 self.backpack.remove(item)
 
@@ -390,13 +394,14 @@ class Player(Character):
 
     def get_attack_description(self, option):
         if option == 0:
-            print("   Slash: Make a large slash with your primary weapon. ")
+            scroll_print("   Slash: Make a large slash with your primary "
+                         "weapon. ")
         elif option == 1:
-            print("   Thunder: Conjur the force of thunder and launch it "
-                  "at the enemy. ")
+            scroll_print("   Thunder: Conjur the force of thunder and launch "
+                         "it at the enemy. ")
         elif option == 2:
-            print("   Singe: Strike your opponent with a burning aura on "
-                  "your primary weapon. ")
+            scroll_print("   Singe: Strike your opponent with a burning aura "
+                         "on your primary weapon. ")
 
     def execute_attack(self, option):
         if option == 'slash':
@@ -407,7 +412,7 @@ class Player(Character):
 
         elif option == 'thunder':
             if self.magic < 3:
-                print("You don't have enough magic! ")
+                scroll_print("You don't have enough magic! ")
                 attack_damage = 0
 
             else:
@@ -422,7 +427,7 @@ class Player(Character):
 
         elif option == 'singe':
             if self.magic < 5:
-                print("You don't have enough magic! ")
+                scroll_print("You don't have enough magic! ")
                 attack_damage = 0
 
             else:
@@ -436,8 +441,58 @@ class Player(Character):
 
             return attack_damage
 
+    def print_stats(self):
+        scroll_print("Current Stats")
+        scroll_print("Player Name: {}".format(self.name))
+        scroll_print("Level: {}".format(self.level))
+        scroll_print("Remaining Lives: {}".format(self.num_lives))
+        scroll_print("Health: {}".format(self.health))
+        scroll_print("Magic: {}".format(self.magic))
+        scroll_print("Attack Power: {}".format(self.attack_power))
+        scroll_print("Defense: {}".format(self.defense))
+        scroll_print("Magic Power: {}".format(self.magic_power))
+        scroll_print("Magic Defense: {}".format(self.magic_defense))
+
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
+
+
+class Wizard(Player):
+    """Wizard class tracks the state of wizard characters.
+
+    Attributes:
+
+    """
+    def __init__(self, name, health, magic, level, magic_defense, magic_power,
+                 defense, attack_power, num_lives, experience, memory,
+                 backpack, equipped_item, rescue_evelyn=False):
+        magic += 5
+        magic_power += 1
+        magic_defense += 1
+
+        super().__init__(name, health, magic, level, magic_defense,
+                         magic_power, defense, attack_power, num_lives,
+                         experience, memory, backpack, equipped_item,
+                         rescue_evelyn)
+
+
+class Ranger(Player):
+    """Wizard class tracks the state of wizard characters.
+
+    Attributes:
+
+    """
+    def __init__(self, name, health, magic, level, magic_defense, magic_power,
+                 defense, attack_power, num_lives, experience, memory,
+                 backpack, equipped_item, rescue_evelyn=False):
+        health += 5
+        attack_power += 1
+        defense += 1
+
+        super().__init__(name, health, magic, level, magic_defense,
+                         magic_power, defense, attack_power, num_lives,
+                         experience, memory, backpack, equipped_item,
+                         rescue_evelyn)
 
 
 class Monster(Character):
@@ -471,7 +526,7 @@ class Monster(Character):
         attack_type = randint(0, 1)
 
         if attack_type == 0:
-            print("\n%s swung their weapon at you! " % (self.name))
+            scroll_print("\n%s swung their weapon at you! " % (self.name))
 
             # Randomize the damage based on the move and applicable equipment
             attack_damage = randint(0, self.attack_power)
@@ -479,10 +534,10 @@ class Monster(Character):
             return attack_damage
 
         elif attack_type == 1:
-            print("\n%s is casting a spell! " % (self.name))
+            scroll_print("\n%s is casting a spell! " % (self.name))
 
             if self.magic < 3:
-                print("%s doesn't have enough magic! " % (self.name))
+                scroll_print("%s doesn't have enough magic! " % (self.name))
                 attack_damage = 0
 
             else:

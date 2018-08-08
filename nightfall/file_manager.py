@@ -1,4 +1,5 @@
 from game_classes import *
+from scroll_print import *
 from pathlib import Path
 import pickle
 import os
@@ -161,10 +162,10 @@ def init_room_2():
 
     east_door_feature = ("An oak door with a large iron handle.")
 
-    rubble_feature = ("Mostly stone from the wall strewn across the floor. "
-                      "As you look at the rubble on the ground, you also "
-                      "notice a a thin rope secured across the path from here "
-                      "to the door.")
+    rubble_feature = ("It's mostly stone from the wall strewn across the "
+                      "floor. As you look at the rubble on the ground, you "
+                      "also notice a a thin rope secured across the path from "
+                      "here to the door.")
 
     feature_dict = {"writing": goblin_graffiti_feature,
                     "rubble": rubble_feature, "door": east_door_feature}
@@ -1071,7 +1072,7 @@ def init_room_13():
                      "a key in its beak currently. He is looking at "
                      "you with great interest.")
 
-    feature_dict = {"tome": tome_feature, "couch": couch_feature, 
+    feature_dict = {"tome": tome_feature, "couch": couch_feature,
                     "raven": raven_feature}
 
     puzzle_dict = {"raven": True}
@@ -1095,10 +1096,10 @@ def init_room_14():
 
     description = ("I feel like I'm close to Evelyn. Bones are scattered in "
                    "this room. A very daunting sight indeed! There is also a "
-                   "bloody handprint on the north wall of the room. Near the "
-                   "center of the room a cage is hanging from a long chain "
-                   "connected to the ceiling. There is a tungsten door to "
-                   "the north leading to the final lair and a pine door to "
+                   "bloody handscroll_print on the north wall of the room. "
+                   "Near the center of the room a cage is hanging from a long "
+                   "chain connected to the ceiling. There is a tungsten door "
+                   "to the north leading to the final lair and a pine door to "
                    "the east, which leads back to the archives.",
                    "You're in the room of last rites. To the north, a "
                    "tungsten door leads to the final lair. To the east, a "
@@ -1129,14 +1130,13 @@ def init_room_14():
                      "thankfully none of them look like human remains."
                      )
 
-    handprint_feature = ("Wait a second, that handprint looks very "
-                         "familiar. Could it be...? Yes, it looks like "
-                         "Evelyn's handprint! "
-                         )
+    hand_print_feature = ("Wait a second, that hand print looks very "
+                          "familiar. Could it be...? Yes, it looks like "
+                          "Evelyn's hand print!")
 
     cage_feature = ("It is small and made of iron.")
 
-    feature_dict = {"bones": bones_feature, "handprint": handprint_feature,
+    feature_dict = {"bones": bones_feature, "hand print": hand_print_feature,
                     "cage": cage_feature}
 
     puzzle_dict = {"cage": True}
@@ -1258,7 +1258,7 @@ def init_room_objects():
     return room_list
 
 
-def init_player_object(player_name):
+def init_player_object(player_name, character_choice):
     """Instantiates the inital Player object.
 
     Returns:
@@ -1281,14 +1281,19 @@ def init_player_object(player_name):
     backpack = []
     equipped_item = None
 
-    player = Player(name, health, magic, level, magic_defense, magic_power,
-                    defense, attack_power, num_lives, experience, memory,
-                    backpack, equipped_item)
+    if character_choice == "Wizard":
+        player = Wizard(name, health, magic, level, magic_defense, magic_power,
+                        defense, attack_power, num_lives, experience, memory,
+                        backpack, equipped_item)
+    elif character_choice == "Ranger":
+        player = Ranger(name, health, magic, level, magic_defense, magic_power,
+                        defense, attack_power, num_lives, experience, memory,
+                        backpack, equipped_item)
 
     return player
 
 
-def init_game_files(player_name):
+def init_game_files(player_name, character_choice):
     """Serializes starting game state into game files.
 
     Args:
@@ -1305,7 +1310,7 @@ def init_game_files(player_name):
     room_list = []
 
     room_list = init_room_objects()
-    player = init_player_object(player_name)
+    player = init_player_object(player_name, character_choice)
 
     room_list[0].set_player(player)
 
@@ -1373,7 +1378,7 @@ def save_game(current_room):
             in.
 
     """
-    print("\nSave Menu")
+    scroll_print("\nSave Menu")
 
     user_input = input("New Save Game? (Y/N) ")
     user_input = user_input.lower()
@@ -1403,7 +1408,7 @@ def save_game(current_room):
             # Ensure that file name has only numbers and characters.
             while chars_valid and i < len(file_name):
                 if not file_name[i].isalpha() and not file_name[i].isdigit():
-                    print("Invalid character: {}".format(file_name[i]))
+                    scroll_print("Invalid character: {}".format(file_name[i]))
 
                     chars_valid = False
 
@@ -1431,24 +1436,24 @@ def save_game(current_room):
         # copy that folders contents into the newly created folder.
         save_game_state(current_room, file_path)
 
-        print("\nGame Saved.")
+        scroll_print("\nGame Saved.")
 
     # Overwrite saved game process.
     else:
-        print("\nSaved files")
+        scroll_print("\nSaved files")
 
         file_path = Path("game_files/saved_games")
         game_files = os.listdir(str(file_path))
 
-        print("Please type the number of the file you would like to "
-              "overwrite or type E to exit.")
+        scroll_print("Please type the number of the file you would like to "
+                     "overwrite or type E to exit.")
 
-        # Print out a list of saved files. Names are the names of the
+        # scroll_print out a list of saved files. Names are the names of the
         # directories where the saved files are stored.
         num = 1
         file_list = []
         for file in game_files:
-            print("({}) {}".format(num, file))
+            scroll_print("({}) {}".format(num, file))
 
             num += 1
 
@@ -1501,9 +1506,9 @@ def save_game(current_room):
                 # that directories contents into the file_path.
                 save_game_state(current_room, file_path)
 
-                print("\nGame Saved")
+                scroll_print("\nGame Saved")
 
-    print("\nSave Menu Exited.\n")
+    scroll_print("\nSave Menu Exited.\n")
 
 
 def save_game_state(current_room, destination_path):
@@ -1530,9 +1535,9 @@ def save_game_state(current_room, destination_path):
 
 def load_game():
     """Enables user to load prior saved game."""
-    print("\nLoad Menu")
-    print("Please type the number of the file you would like to load or press "
-          "E to exit load menu.")
+    scroll_print("\nLoad Menu")
+    scroll_print("Please type the number of the file you would like to load "
+                 "or press E to exit load menu.")
 
     file_path = Path("game_files/saved_games")
     game_files = os.listdir(str(file_path))
@@ -1541,7 +1546,7 @@ def load_game():
     num = 1
     file_list = []
     for file in game_files:
-        print("({}) {}".format(num, file))
+        scroll_print("({}) {}".format(num, file))
 
         num += 1
 
@@ -1605,9 +1610,9 @@ def load_game():
                 if os.path.isfile(full_path):
                     shutil.copy(full_path, current_game_path)
 
-            print("\nGame {} loaded.\n".format(file_name))
+            scroll_print("\nGame {} loaded.\n".format(file_name))
 
-    print("\nLoad Menu Exited\n")
+    scroll_print("\nLoad Menu Exited\n")
 
 
 def initial_load_game():
@@ -1617,8 +1622,8 @@ def initial_load_game():
         (:obj:Room): The loaded Room object.
 
     """
-    print("\nLoad Menu")
-    print("Please type the number of the file you would like to load.")
+    scroll_print("\nLoad Menu")
+    scroll_print("Please type the number of the file you would like to load.")
 
     file_path = Path("game_files/saved_games")
     game_files = os.listdir(str(file_path))
@@ -1628,7 +1633,7 @@ def initial_load_game():
     num = 1
     file_list = []
     for file in game_files:
-        print("({}) {}".format(num, file))
+        scroll_print("({}) {}".format(num, file))
         num += 1
         file_list.append(file)
 
@@ -1677,7 +1682,7 @@ def initial_load_game():
         if os.path.isfile(full_path):
             shutil.copy(full_path, current_game_path)
 
-    print("\nGame {} loaded.\n".format(file_name))
+    scroll_print("\nGame {} loaded.\n".format(file_name))
 
     return get_current_room()
 

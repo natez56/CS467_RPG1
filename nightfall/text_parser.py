@@ -1,4 +1,5 @@
 from aliases import *
+from scroll_print import *
 
 
 def get_input():
@@ -55,7 +56,8 @@ def parse_input(input, current_room):
                        ]
 
     standard_action_array = ['help', 'look', 'gamemenu', 'game menu',
-                             'inventory', 'savegame', 'loadgame']
+                             'inventory', 'stats', 'get stats', 'my stats',
+                             'player stats', 'savegame', 'loadgame']
 
     verb_array = ['take', 'use', 'drop', 'look at', 'eat', 'drink', 'smell',
                   'listen to', 'climb', 'duck', 'rotate', 'equip']
@@ -150,21 +152,21 @@ def parse_input(input, current_room):
                      'bones', 'handprint', 'cage', 'fairy',
 
                      # Room 15
-                     'evelyn', 'mirror'
+                     'evelyn',
                      ]
 
-    go_array = ['go', 'go to', 'move', 'move to', 'walk', 'walk to', 'run',
-                'run to']
+    # go_array = ['go', 'go to', 'move', 'move to', 'walk', 'walk to', 'run',
+    #             'run to']
 
-    go_direction_array = []
+    # go_direction_array = []
 
-    all_direction_array = [go_array, direction_array]
+    # all_direction_array = [go_array, direction_array]
 
-    # create array of all possible movement words + directions
-    # filling all_direction_array
-    for go in go_array:
-        for direction in direction_array:
-            go_direction_array.append(go + " " + direction)
+    # # create array of all possible movement words + directions
+    # # filling all_direction_array
+    # for go in go_array:
+    #     for direction in direction_array:
+    #         go_direction_array.append(go + " " + direction)
 
     # this takes user input and puts it all into lowercase
     command = input.lower().strip()
@@ -394,6 +396,9 @@ def parse_input(input, current_room):
     numTokens = 0
     prevValue = ""
 
+    if "on" in clean_text:
+        command_length -= 1
+
     # if there is not already an error with the input
     if done is False and assigned_tokens['error'] is None:
         # count how many assigned tokens in input
@@ -407,11 +412,13 @@ def parse_input(input, current_room):
 
         # if the number of recognized words is not equal to
         # length of the user input, there are extra words
+        # print(numTokens)
+        # print(command_length)
         if numTokens != command_length:
             assigned_tokens['error'] = "Extra, unrecognized words"
             invalid = True
 
     # ##### PRINT STATEMENT FOR TESTING #####
-    print("\n{}".format(assigned_tokens.items()))
+    # print("\n{}".format(assigned_tokens.items()))
 
     return assigned_tokens

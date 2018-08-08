@@ -1,4 +1,5 @@
 import itertools
+from scroll_print import *
 
 
 def move_alias_check(current_room_name, user_input):
@@ -379,21 +380,22 @@ def verb_alias_check(command):
     # Filled out dictionary for each of the 10 core verbs
     alias_dictionary["take"] = ["grab", "get", "obtain", "steal", "pick up"]
     alias_dictionary["use"] = ["utilize"]
-    alias_dictionary["drop"] = ["leave", "leave behind", "get rid of", "lose"]
+    alias_dictionary["drop"] = ["leave behind", "leave", "get rid of", "lose"]
     alias_dictionary["look at"] = ["inspect", "examine", "observe"]
     alias_dictionary["eat"] = ["consume", "devour", "ingest"]
     alias_dictionary["drink"] = ["swallow", "imbibe", "sip"]
-    alias_dictionary["smell"] = ["sniff", "sniff at"]
+    alias_dictionary["smell"] = ["sniff at", "sniff"]
     alias_dictionary["listen to"] = ["hear"]
-    alias_dictionary["climb"] = ["climb up", "ascend", "ascend up" "go up",
-                                 "scale", "scale up"]
-    alias_dictionary["duck"] = ["crouch", "crouch down", "get down", "squat",
-                                "squat down", "hunch", "hunch down", "stoop",
-                                "stoop down", "duck down"]
-    alias_dictionary["rotate"] = ["turn", "turn around", "pivot",
-                                  "pivot around", "twist", "twist around",
-                                  "revolve", "revolve around", "spin",
-                                  "spin around"]
+    alias_dictionary["climb"] = ["climb up", "ascend up", "ascend", "go up",
+                                 "scale up", "scale", "climb onto"]
+    alias_dictionary["duck"] = ["crouch down", "crouch", "get down",
+                                "squat down", "squat", "hunch down", "hunch",
+                                "stoop down", "stoop", "duck down"]
+    alias_dictionary["rotate"] = ["turn around", "turn", "pivot around",
+                                  "pivot", "twist around", "twist",
+                                  "revolve around", "revolve", "spin around",
+                                  "spin",
+                                  ]
 
     for key in alias_dictionary:
         for word in alias_dictionary[key]:
