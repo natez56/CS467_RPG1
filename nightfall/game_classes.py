@@ -203,6 +203,14 @@ class Character:
     def set_attack_power(self, attack_power):
         self.attack_power = attack_power
 
+    def get_attack_type(self, attack_choice):
+        if attack_choice == 'slash':
+            return 0
+        elif attack_choice == 'thunder':
+            return 1
+        else:
+            return 2
+
 
 class Player(Character):
     """Player class tracks the state of the user conrolled Character.
@@ -411,7 +419,7 @@ class Player(Character):
             return attack_damage
 
         elif option == 'thunder':
-            if self.magic < 3:
+            if self.magic < 2:
                 scroll_print("You don't have enough magic! ")
                 attack_damage = 0
 
@@ -421,12 +429,12 @@ class Player(Character):
                 attack_damage = randint(0, self.magic_power)
 
                 # Adjust the player's stats
-                self.magic -= 3
+                self.magic -= 2
 
             return attack_damage
 
         elif option == 'singe':
-            if self.magic < 5:
+            if self.magic < 3:
                 scroll_print("You don't have enough magic! ")
                 attack_damage = 0
 
@@ -437,7 +445,7 @@ class Player(Character):
                                         self.attack_power))
 
                 # Adjust the player's stats
-                self.magic -= 5
+                self.magic -= 3
 
             return attack_damage
 
@@ -452,6 +460,27 @@ class Player(Character):
         scroll_print("Defense: {}".format(self.defense))
         scroll_print("Magic Power: {}".format(self.magic_power))
         scroll_print("Magic Defense: {}".format(self.magic_defense))
+
+    def revive(self, level):
+        if level == 1:
+            self.health = 50
+            self.magic = 20
+
+        elif level == 2:
+            self.health = 60
+            self.magic = 25
+
+        elif level == 3:
+            self.health = 70
+            self.magic = 30
+
+        elif level == 4:
+            self.health = 80
+            self.magic = 35
+
+        else:
+            self.health = 90
+            self.magic = 40
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
@@ -521,10 +550,8 @@ class Monster(Character):
     def get_loot(self):
         return self.loot
 
-    def npc_attack(self):
+    def npc_attack(self, attack_type):
         # Randomly select a melee or magic attack
-        attack_type = randint(0, 1)
-
         if attack_type == 0:
             scroll_print("\n%s swung their weapon at you! " % (self.name))
 

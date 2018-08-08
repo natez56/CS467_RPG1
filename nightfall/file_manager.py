@@ -1272,9 +1272,9 @@ def init_player_object(player_name, character_choice):
     magic_defense = 0
     magic_power = 3
     defense = 0
-    # attack_power = 3
+    attack_power = 3
     # This AP for Testing Only ADLFKSLDFKSLDKFSLDKF#@$@$@#$@#$
-    attack_power = 300
+    # attack_power = 300
     num_lives = 3
     experience = 0
     memory = []
