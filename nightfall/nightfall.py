@@ -1,6 +1,6 @@
+from scroll_print import *
 from game_methods import *
 from text_parser import *
-from scroll_print import *
 
 
 def main():

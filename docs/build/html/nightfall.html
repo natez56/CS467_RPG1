@@ -1,35 +1,160 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>nightfall package &#8212; nightfall  documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nightfall package &mdash; nightfall  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <div class="wy-grid-for-nav">
 
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
           
 
-          <div class="body" role="main">
+          
+            <a href="index.html" class="icon icon-home"> nightfall
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">nightfall package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-nightfall.game_classes">nightfall.game_classes module</a></li>
+<li><a class="reference internal" href="#module-nightfall.aliases">nightfall.aliases module</a></li>
+<li><a class="reference internal" href="#module-nightfall.feature_handler">nightfall.feature_handler module</a></li>
+<li><a class="reference internal" href="#module-nightfall.file_manager">nightfall.file_manager module</a></li>
+<li><a class="reference internal" href="#module-nightfall.game_methods">nightfall.game_methods module</a></li>
+<li><a class="reference internal" href="#module-nightfall.item_handler">nightfall.item_handler module</a></li>
+<li><a class="reference internal" href="#module-nightfall.nightfall">nightfall.nightfall module</a></li>
+<li><a class="reference internal" href="#module-nightfall.scroll_print">nightfall.scroll_print module</a></li>
+<li><a class="reference internal" href="#module-nightfall.text_parser">nightfall.text_parser module</a></li>
+<li><a class="reference internal" href="#module-nightfall">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nightfall</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>nightfall package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/nightfall.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="nightfall-package">
 <h1>nightfall package<a class="headerlink" href="#nightfall-package" title="Permalink to this headline">¶</a></h1>
@@ -89,6 +214,11 @@ offensive and defensive stats and abilities).</p>
 <dl class="method">
 <dt id="nightfall.game_classes.Character.get_attack_power">
 <code class="descname">get_attack_power</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.get_attack_power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Character.get_attack_type">
+<code class="descname">get_attack_type</code><span class="sig-paren">(</span><em>attack_choice</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Character.get_attack_type" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -164,10 +294,105 @@ offensive and defensive stats and abilities).</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="nightfall.game_classes.Item">
+<em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Item</code><span class="sig-paren">(</span><em>name</em>, <em>description</em>, <em>durability</em>, <em>stats</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Item class tracks the state of items used by the player.</p>
+<dl class="attribute">
+<dt id="nightfall.game_classes.Item.name">
+<code class="descname">name</code><a class="headerlink" href="#nightfall.game_classes.Item.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Name that the item is called.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Item.description">
+<code class="descname">description</code><a class="headerlink" href="#nightfall.game_classes.Item.description" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Description of the characteristics of the item.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Item.stats">
+<code class="descname">stats</code><a class="headerlink" href="#nightfall.game_classes.Item.stats" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dictionary(str, int)</em> – Stats that item boosts.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Item.decrement_durability">
+<code class="descname">decrement_durability</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Item.decrement_durability" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Item.get_description">
+<code class="descname">get_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Item.get_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Item.get_durability">
+<code class="descname">get_durability</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Item.get_durability" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Item.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Item.get_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Item.get_stats">
+<code class="descname">get_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Item.get_stats" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nightfall.game_classes.Monster">
+<em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Monster</code><span class="sig-paren">(</span><em>name</em>, <em>description</em>, <em>loot</em>, <em>health</em>, <em>magic</em>, <em>level</em>, <em>magic_defense</em>, <em>magic_power</em>, <em>defense</em>, <em>attack_power</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Monster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nightfall.game_classes.Character" title="nightfall.game_classes.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">nightfall.game_classes.Character</span></code></a></p>
+<p>Monster class tracks the state of monster characters.</p>
+<dl class="attribute">
+<dt id="nightfall.game_classes.Monster.name">
+<code class="descname">name</code><a class="headerlink" href="#nightfall.game_classes.Monster.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The name of the monster.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Monster.description">
+<code class="descname">description</code><a class="headerlink" href="#nightfall.game_classes.Monster.description" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The description of the monster.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Monster.loot">
+<code class="descname">loot</code><a class="headerlink" href="#nightfall.game_classes.Monster.loot" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>item</em> – The item that the monster drops.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Monster.get_description">
+<code class="descname">get_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Monster.get_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Monster.get_loot">
+<code class="descname">get_loot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Monster.get_loot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Monster.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Monster.get_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Monster.npc_attack">
+<code class="descname">npc_attack</code><span class="sig-paren">(</span><em>attack_type</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Monster.npc_attack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="nightfall.game_classes.Player">
 <em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Player</code><span class="sig-paren">(</span><em>name</em>, <em>health</em>, <em>magic</em>, <em>level</em>, <em>magic_defense</em>, <em>magic_power</em>, <em>defense</em>, <em>attack_power</em>, <em>num_lives</em>, <em>experience</em>, <em>memory</em>, <em>backpack</em>, <em>equipped_item</em>, <em>rescue_evelyn=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#nightfall.game_classes.Character" title="nightfall.game_classes.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">nightfall.game_classes.Character</span></code></a></p>
-<p>Player class tracks the state of the user conrolled Character.</p>
+<p>Player class tracks the state of the user controlled Character.</p>
 <dl class="attribute">
 <dt id="nightfall.game_classes.Player.experience">
 <code class="descname">experience</code><a class="headerlink" href="#nightfall.game_classes.Player.experience" title="Permalink to this definition">¶</a></dt>
@@ -177,20 +402,21 @@ offensive and defensive stats and abilities).</p>
 <dl class="attribute">
 <dt id="nightfall.game_classes.Player.memory">
 <code class="descname">memory</code><a class="headerlink" href="#nightfall.game_classes.Player.memory" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list(string)</em> – Tracks both features and items that a character
+<dd><p><em>list(str)</em> – Tracks both features and items that a character
 has inspected.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="nightfall.game_classes.Player.backpack">
-<code class="descname">backpack</code><a class="headerlink" href="#nightfall.game_classes.Player.backpack" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list(item)</em> – Tracks items that the character is carrying.</p>
+<dt>
+<code class="descname">backpack (list(</code></dt>
+<dd><p>obj:Item)): Tracks items that the character is
+carrying.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="nightfall.game_classes.Player.equipped_item">
-<code class="descname">equipped_item</code><a class="headerlink" href="#nightfall.game_classes.Player.equipped_item" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>item</em> – Tracks item that the character is using.</p>
+<dt>
+<code class="descname">equipped_item (</code></dt>
+<dd><p>obj:Item): Tracks item that the character is using.</p>
 </dd></dl>
 
 <dl class="method">
@@ -205,12 +431,22 @@ has inspected.</p>
 
 <dl class="method">
 <dt id="nightfall.game_classes.Player.drop_item">
-<code class="descname">drop_item</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.drop_item" title="Permalink to this definition">¶</a></dt>
+<code class="descname">drop_item</code><span class="sig-paren">(</span><em>item_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.drop_item" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="nightfall.game_classes.Player.equip_item">
 <code class="descname">equip_item</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.equip_item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.execute_attack">
+<code class="descname">execute_attack</code><span class="sig-paren">(</span><em>option</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.execute_attack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.get_attack_description">
+<code class="descname">get_attack_description</code><span class="sig-paren">(</span><em>option</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.get_attack_description" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -221,6 +457,21 @@ has inspected.</p>
 <dl class="method">
 <dt id="nightfall.game_classes.Player.get_experience">
 <code class="descname">get_experience</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.get_experience" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.get_inventory">
+<code class="descname">get_inventory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.get_inventory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.get_item">
+<code class="descname">get_item</code><span class="sig-paren">(</span><em>item_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.get_item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.get_item_names">
+<code class="descname">get_item_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.get_item_names" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -249,69 +500,105 @@ has inspected.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="nightfall.game_classes.Player.print_stats">
+<code class="descname">print_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.print_stats" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.revive">
+<code class="descname">revive</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.revive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="nightfall.game_classes.Player.set_experience">
 <code class="descname">set_experience</code><span class="sig-paren">(</span><em>experience</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.set_experience" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="nightfall.game_classes.Player.use_door">
-<code class="descname">use_door</code><span class="sig-paren">(</span><em>door</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.use_door" title="Permalink to this definition">¶</a></dt>
+<dt id="nightfall.game_classes.Player.unequip_item">
+<code class="descname">unequip_item</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.unequip_item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Player.use_item">
+<code class="descname">use_item</code><span class="sig-paren">(</span><em>item_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Player.use_item" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
+<dt id="nightfall.game_classes.Ranger">
+<em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Ranger</code><span class="sig-paren">(</span><em>name</em>, <em>health</em>, <em>magic</em>, <em>level</em>, <em>magic_defense</em>, <em>magic_power</em>, <em>defense</em>, <em>attack_power</em>, <em>num_lives</em>, <em>experience</em>, <em>memory</em>, <em>backpack</em>, <em>equipped_item</em>, <em>rescue_evelyn=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Ranger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nightfall.game_classes.Player" title="nightfall.game_classes.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">nightfall.game_classes.Player</span></code></a></p>
+<p>Wizard class tracks the state of wizard characters.</p>
+<p>Attributes:</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="nightfall.game_classes.Room">
-<em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Room</code><span class="sig-paren">(</span><em>name</em>, <em>description</em>, <em>item_list</em>, <em>monster_list</em>, <em>player</em>, <em>adjacent_rooms</em>, <em>door_map</em>, <em>feature_list</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Room</code><span class="sig-paren">(</span><em>name</em>, <em>description</em>, <em>item_list</em>, <em>monster_list</em>, <em>player</em>, <em>adjacent_rooms</em>, <em>door_map</em>, <em>features</em>, <em>puzzle_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Room class representing primary game map that player navigates.</p>
 <dl class="attribute">
 <dt id="nightfall.game_classes.Room.description">
 <code class="descname">description</code><a class="headerlink" href="#nightfall.game_classes.Room.description" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>string</em> – Message printed to player.</p>
+<dd><p><em>tuple(str, str)</em> – Contains long and short description of
+room. Long description at tuple[0], short description at tuple[1].</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="nightfall.game_classes.Room.item_list">
-<code class="descname">item_list</code><a class="headerlink" href="#nightfall.game_classes.Room.item_list" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list(Item)</em> – List of all Item objects in the room.</p>
+<dt>
+<code class="descname">item_list (list(</code></dt>
+<dd><p>obj:Item)): List of all Item objects in the room.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="nightfall.game_classes.Room.monster_list">
-<code class="descname">monster_list</code><a class="headerlink" href="#nightfall.game_classes.Room.monster_list" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list(Monster)</em> – List of all Monster objects in room.</p>
+<dt>
+<code class="descname">monster_list (list(</code></dt>
+<dd><p>obj:Monster)): List of all Monster objects in room.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="nightfall.game_classes.Room.player">
-<code class="descname">player</code><a class="headerlink" href="#nightfall.game_classes.Room.player" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Player</em> – Player object used to access player in the room. Is
-None if no player is present.</p>
+<dt>
+<code class="descname">player (</code></dt>
+<dd><p>obj:Player): Player object used to access player in the room.
+Is None if no player is present.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="nightfall.game_classes.Room.adjacent_rooms">
 <code class="descname">adjacent_rooms</code><a class="headerlink" href="#nightfall.game_classes.Room.adjacent_rooms" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dictionary(string, string)</em> – Contains map of directions
+<dd><p><em>dictionary(str, str)</em> – Contains map of directions
 connected to room names that are accessible from current room. For
-example: &lt;’south’, ‘dungeon_entrance’&gt;</p>
+example: {‘south’: ‘fortress entrance’}.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="nightfall.game_classes.Room.door_map">
 <code class="descname">door_map</code><a class="headerlink" href="#nightfall.game_classes.Room.door_map" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dictionary(string, bool)</em> – Map of doors in room. Takes a
+<dd><p><em>dictionary(str, bool)</em> – Map of doors in room. Takes a
 string (‘north’, ‘east’, ‘south’, ‘west’) and returns a bool
-representing if the door is locked (True if locked)</p>
+representing if the door is locked (True if locked).</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="nightfall.game_classes.Room.feature_list">
-<code class="descname">feature_list</code><a class="headerlink" href="#nightfall.game_classes.Room.feature_list" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list(string)</em> – List contains all the text descriptions of
-the rooms features.</p>
+<dt id="nightfall.game_classes.Room.features">
+<code class="descname">features</code><a class="headerlink" href="#nightfall.game_classes.Room.features" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dictionary(str, str)</em> – Dictionary contains all of this rooms
+feature names mapped to the text description of that feature.</p>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="nightfall.game_classes.Room.puzzle_dict">
+<code class="descname">puzzle_dict</code><a class="headerlink" href="#nightfall.game_classes.Room.puzzle_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dictionary(str, bool)</em> – Dictionary used to track the state
+of puzzles in a room. True means the puzzle is not solved.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.add_feature">
+<code class="descname">add_feature</code><span class="sig-paren">(</span><em>feature</em>, <em>feature_description</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.add_feature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="nightfall.game_classes.Room.add_item">
@@ -326,6 +613,11 @@ the rooms features.</p>
 <dl class="method">
 <dt id="nightfall.game_classes.Room.get_adjacent_room">
 <code class="descname">get_adjacent_room</code><span class="sig-paren">(</span><em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_adjacent_room" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.get_adjacent_rooms">
+<code class="descname">get_adjacent_rooms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_adjacent_rooms" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -344,8 +636,18 @@ the rooms features.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="nightfall.game_classes.Room.get_items">
-<code class="descname">get_items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_items" title="Permalink to this definition">¶</a></dt>
+<dt id="nightfall.game_classes.Room.get_item">
+<code class="descname">get_item</code><span class="sig-paren">(</span><em>item_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.get_item_list">
+<code class="descname">get_item_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_item_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.get_item_names">
+<code class="descname">get_item_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_item_names" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -364,8 +666,33 @@ the rooms features.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="nightfall.game_classes.Room.get_puzzle_dict">
+<code class="descname">get_puzzle_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_puzzle_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.get_puzzle_status">
+<code class="descname">get_puzzle_status</code><span class="sig-paren">(</span><em>puzzle_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_puzzle_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.get_short_description">
+<code class="descname">get_short_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.get_short_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="nightfall.game_classes.Room.is_locked">
 <code class="descname">is_locked</code><span class="sig-paren">(</span><em>door</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.is_locked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.monster_killed">
+<code class="descname">monster_killed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.monster_killed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.remove_feature">
+<code class="descname">remove_feature</code><span class="sig-paren">(</span><em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.remove_feature" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -379,8 +706,28 @@ the rooms features.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="nightfall.game_classes.Room.set_adjacent_rooms">
+<code class="descname">set_adjacent_rooms</code><span class="sig-paren">(</span><em>adjacent_rooms</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.set_adjacent_rooms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.set_description">
+<code class="descname">set_description</code><span class="sig-paren">(</span><em>description</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.set_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.set_door_map">
+<code class="descname">set_door_map</code><span class="sig-paren">(</span><em>door_map</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.set_door_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="nightfall.game_classes.Room.set_player">
 <code class="descname">set_player</code><span class="sig-paren">(</span><em>player</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.set_player" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nightfall.game_classes.Room.set_puzzle_status">
+<code class="descname">set_puzzle_status</code><span class="sig-paren">(</span><em>puzzle_name</em>, <em>status</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Room.set_puzzle_status" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -390,6 +737,1375 @@ the rooms features.</p>
 
 </dd></dl>
 
+<dl class="class">
+<dt id="nightfall.game_classes.Wizard">
+<em class="property">class </em><code class="descclassname">nightfall.game_classes.</code><code class="descname">Wizard</code><span class="sig-paren">(</span><em>name</em>, <em>health</em>, <em>magic</em>, <em>level</em>, <em>magic_defense</em>, <em>magic_power</em>, <em>defense</em>, <em>attack_power</em>, <em>num_lives</em>, <em>experience</em>, <em>memory</em>, <em>backpack</em>, <em>equipped_item</em>, <em>rescue_evelyn=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_classes.Wizard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nightfall.game_classes.Player" title="nightfall.game_classes.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">nightfall.game_classes.Player</span></code></a></p>
+<p>Wizard class tracks the state of wizard characters.</p>
+<p>Attributes:</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nightfall.aliases">
+<span id="nightfall-aliases-module"></span><h2>nightfall.aliases module<a class="headerlink" href="#module-nightfall.aliases" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nightfall.aliases.item_alias_check">
+<code class="descclassname">nightfall.aliases.</code><code class="descname">item_alias_check</code><span class="sig-paren">(</span><em>command</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.aliases.item_alias_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check for item aliases.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>command</strong> (<em>str</em>) – Corresponds to new_command2 in text_parser.py
+file. Is a string that is the user input.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>If an alias matches it returns the item name that is used verbs</dt>
+<dd>by the feature and item handler. If an alias does not match it
+returns the unmodified command string as taken from text_parser.py</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.aliases.move_alias_check">
+<code class="descclassname">nightfall.aliases.</code><code class="descname">move_alias_check</code><span class="sig-paren">(</span><em>current_room_name</em>, <em>user_input</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.aliases.move_alias_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Movement alias check.</p>
+<p>Sources used: # <a class="reference external" href="https://stackoverflow.com/questions/14264163/search-for-any">https://stackoverflow.com/questions/14264163/search-for-any</a>
+-word-or-combination-of-words-from-one-string-in-a-list-python
+# <a class="reference external" href="https://docs.python.org/2/library/itertools.html">https://docs.python.org/2/library/itertools.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>current_room_name</strong> (<em>str</em>) – Name of the room the player is currently in.</li>
+<li><strong>user_input</strong> (<em>str</em>) – raw user input.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>If movement command is valid it will return the name of the room</dt>
+<dd><p class="first last">that the player wants to travel to. Otherwise it will return the
+user_input just as it was received.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.aliases.verb_alias_check">
+<code class="descclassname">nightfall.aliases.</code><code class="descname">verb_alias_check</code><span class="sig-paren">(</span><em>command</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.aliases.verb_alias_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check for aliases of 10 core verbs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>command</strong> (<em>str</em>) – Corresponds to new_command2 in text_parser.py
+file. Is a string that is the user input.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>If an alias matches it returns one of the 10 core verbs the</dt>
+<dd>game uses. If an alias does not match it returns the unmodified
+command string as taken from text_parser.py</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nightfall.feature_handler">
+<span id="nightfall-feature-handler-module"></span><h2>nightfall.feature_handler module<a class="headerlink" href="#module-nightfall.feature_handler" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nightfall.feature_handler.mirror_puzzle">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">mirror_puzzle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.mirror_puzzle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.raven_joke">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">raven_joke</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.raven_joke" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_10_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_10_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_10_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 10 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_11_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_11_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_11_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 11 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_12_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_12_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_12_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 12 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_13_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_13_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_13_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 13 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_14_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_14_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_14_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 14 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_15_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_15_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_15_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 15 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_1_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_1_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_1_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles verb commands related to room 1 features.</p>
+<dl class="docutils">
+<dt>Puzzles:</dt>
+<dd>None</dd>
+<dt>Room Items:</dt>
+<dd>Sword: +1 attack power.</dd>
+<dt>Features:</dt>
+<dd>door
+body
+cloak
+bag</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>current_room</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Room</span></code>) – The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_2_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_2_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_2_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 2 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_3_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_3_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_3_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles verb commands related to room 3 features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_4_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_4_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_4_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 4 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_5_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_5_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_5_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 5 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_6_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_6_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_6_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 6 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_7_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_7_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_7_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 7 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_8_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_8_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_8_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 8 player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.room_9_feature_handler">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">room_9_feature_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.room_9_feature_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 9, supplies closet, player and feature interaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>feature</strong> (<em>str</em>) – The feature in this room the user would like to act on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.feature_handler.rope_trap">
+<code class="descclassname">nightfall.feature_handler.</code><code class="descname">rope_trap</code><span class="sig-paren">(</span><em>current_room</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.feature_handler.rope_trap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles rope trap event for room 2.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>(</strong> (<em>current_room</em>) – obj:Room): The room the player is currently in.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nightfall.file_manager">
+<span id="nightfall-file-manager-module"></span><h2>nightfall.file_manager module<a class="headerlink" href="#module-nightfall.file_manager" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nightfall.file_manager.get_current_room">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">get_current_room</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.get_current_room" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Room object will player is located.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room where player is located.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.get_num_saved_games">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">get_num_saved_games</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.get_num_saved_games" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the total number of saved games.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The number of player saved games.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_game_files">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_game_files</code><span class="sig-paren">(</span><em>player_name</em>, <em>character_choice</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_game_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes starting game state into game files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>player_name</strong> (<em>string</em>) – Name decided by user for the character they
+control.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_player_object">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_player_object</code><span class="sig-paren">(</span><em>player_name</em>, <em>character_choice</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_player_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates the inital Player object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Player: Player object with attributes set.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_1">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates fortress_entrance room.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_10">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_10</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates sauna room.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_11">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_11</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates tower hall.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_12">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_12</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates archives.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_13">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_13</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_13" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates reading room.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_14">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_14</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_14" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates Room of Last Rites.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_15">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_15</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates Final Lair.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_2">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates entrance_hall room.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_3">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_3</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates mess_hall room.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_4">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_4</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates store_room room.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_5">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_5</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates kitchen room.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_6">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_6</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates washroom.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_7">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_7</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates smoking room.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_8">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_8</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates sleeping chambers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_9">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_9</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates supplies closet.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: Room object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.init_room_objects">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">init_room_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.init_room_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the starting game objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room): List of all room objects in game.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list(</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.initial_load_game">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">initial_load_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.initial_load_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load file from start menu.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">obj:Room): The loaded Room object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">(</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.load_game">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">load_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.load_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables user to load prior saved game.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.load_object">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">load_object</code><span class="sig-paren">(</span><em>object_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.load_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load object from binary file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>object_name</strong> (<em>string</em>) – Name of the object to be loaded from file. Object
+name should match the file name trying to be loaded.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">obj:: Returns the object type that the file stores.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.save_game">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">save_game</code><span class="sig-paren">(</span><em>current_room</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.save_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save entire game state to new file or overwrite current file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room that the player is located
+in.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.save_game_state">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">save_game_state</code><span class="sig-paren">(</span><em>current_room</em>, <em>destination_path</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.save_game_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save game state to specified file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room that the player is in.</li>
+<li><strong>destination_path</strong> (<em>str</em>) – The file path to the new save location.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.file_manager.save_object_state">
+<code class="descclassname">nightfall.file_manager.</code><code class="descname">save_object_state</code><span class="sig-paren">(</span><em>game_object</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.file_manager.save_object_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize object into binary file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>(</strong> (<em>game_object</em>) – obj:): Takes a class object for serialization. Object
+must have a get_name() method for this function to work.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nightfall.game_methods">
+<span id="nightfall-game-methods-module"></span><h2>nightfall.game_methods module<a class="headerlink" href="#module-nightfall.game_methods" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nightfall.game_methods.choose_character">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">choose_character</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.choose_character" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to select Wizard or Ranger as character.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A string that is Wizard or Ranger.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.choose_name">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">choose_name</code><span class="sig-paren">(</span><em>character_choice</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.choose_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ask user to enter their character name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>character_choice</strong> (<em>str</em>) – String that is either Wizard or Ranger.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The name the player entered for themselves.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.combat">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">combat</code><span class="sig-paren">(</span><em>player</em>, <em>monster</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.combat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to allow for player monster rpg combat.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>monster</em>) – obj:Player): The user selected main character.</li>
+<li><strong>(</strong> – obj:Monster): A character that the player fights.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.game_menu">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">game_menu</code><span class="sig-paren">(</span><em>current_room</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.game_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls in game menu for use during play.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room that the player is in.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.getrandbits">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">getrandbits</code><span class="sig-paren">(</span><em>k</em><span class="sig-paren">)</span> &#x2192; x.  Generates an int with k random bits.<a class="headerlink" href="#nightfall.game_methods.getrandbits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.handle_standard_action">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">handle_standard_action</code><span class="sig-paren">(</span><em>current_room</em>, <em>player</em>, <em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.handle_standard_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles standard one word game commands.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>player</em>) – obj:Room): The current room that the player is in.</li>
+<li><strong>(</strong> – obj:Player): The current player.</li>
+<li><strong>action</strong> (<em>str</em>) – The user entered command to be handled.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.help_menu">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">help_menu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.help_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>scroll_print a list of available commands for the user.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.is_game_over">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">is_game_over</code><span class="sig-paren">(</span><em>player</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.is_game_over" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to see if the player still has lives.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>(</strong> (<em>player</em>) – obj:Player): The main character of the game.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">False if the character is dead or the game is complete.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.print_item_descriptions">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">print_item_descriptions</code><span class="sig-paren">(</span><em>current_room</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.print_item_descriptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints the descriptions of all of the items in a room.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room that the player is in.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.random">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; x in the interval [0, 1).<a class="headerlink" href="#nightfall.game_methods.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.start_game">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">start_game</code><span class="sig-paren">(</span><em>player_name</em>, <em>character_choice</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.start_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create game files, load initial room, and load player.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>player_name</strong> (<em>str</em>) – The user selected main character name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">obj:Room: The current room that the player is in.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.starting_menu">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">starting_menu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.starting_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates menu viewed when game first starts.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A string that is the menu option chosen by the user.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.take_action">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">take_action</code><span class="sig-paren">(</span><em>current_room</em>, <em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.take_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles parsed input to perform actions in game.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): Current room that the player is in.</li>
+<li><strong>action</strong> (<em>dictionary</em><em>(</em><em>str</em><em>, </em><em>str</em><em>)</em>) – A dictionary mapping possible actions
+to either features or items.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.game_methods.travel">
+<code class="descclassname">nightfall.game_methods.</code><code class="descname">travel</code><span class="sig-paren">(</span><em>current_room</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.game_methods.travel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move player from one room to another.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room that the player is in.</li>
+<li><strong>direction</strong> (<em>str</em>) – Either north, east, south, west.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nightfall.item_handler">
+<span id="nightfall-item-handler-module"></span><h2>nightfall.item_handler module<a class="headerlink" href="#module-nightfall.item_handler" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nightfall.item_handler.general_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">general_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.general_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle any non-unique verb and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room that the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action a user would like to take.</li>
+<li><strong>item_name</strong> (<em>str</em>) – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_10_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_10_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_10_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 10 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_11_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_11_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_11_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 10 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_12_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_12_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_12_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 10 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_13_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_13_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_13_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 10 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_14_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_14_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_14_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 10 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_15_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_15_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_15_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 10 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_1_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_1_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_1_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 1 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_2_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_2_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_2_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles room 2 player item or room item interactions.</p>
+<p>Args:
+current_room (:obj:Room): The current room that the player is in.
+verb (str): The action a user would like to take.
+item_name (str): The name of the item the user would like to use.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_3_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_3_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_3_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 3 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_4_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_4_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_4_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 4 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_5_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_5_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_5_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 5 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_6_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_6_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_6_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 6 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_7_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_7_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_7_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 7 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_8_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_8_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_8_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 8 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.item_handler.room_9_item_handler">
+<code class="descclassname">nightfall.item_handler.</code><code class="descname">room_9_item_handler</code><span class="sig-paren">(</span><em>current_room</em>, <em>verb</em>, <em>item_name</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.item_handler.room_9_item_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle room 9 player and item and room and item interactions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>(</strong> (<em>current_room</em>) – obj:Room): The current room the player is in.</li>
+<li><strong>verb</strong> (<em>str</em>) – The action the user would like to take.</li>
+<li><strong>item_name</strong> – The name of the item the user would like to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nightfall.nightfall">
+<span id="nightfall-nightfall-module"></span><h2>nightfall.nightfall module<a class="headerlink" href="#module-nightfall.nightfall" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nightfall.nightfall.getrandbits">
+<code class="descclassname">nightfall.nightfall.</code><code class="descname">getrandbits</code><span class="sig-paren">(</span><em>k</em><span class="sig-paren">)</span> &#x2192; x.  Generates an int with k random bits.<a class="headerlink" href="#nightfall.nightfall.getrandbits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nightfall.nightfall.main">
+<code class="descclassname">nightfall.nightfall.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.nightfall.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nightfall.nightfall.random">
+<code class="descclassname">nightfall.nightfall.</code><code class="descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; x in the interval [0, 1).<a class="headerlink" href="#nightfall.nightfall.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nightfall.scroll_print">
+<span id="nightfall-scroll-print-module"></span><h2>nightfall.scroll_print module<a class="headerlink" href="#module-nightfall.scroll_print" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nightfall.scroll_print.scroll_print">
+<code class="descclassname">nightfall.scroll_print.</code><code class="descname">scroll_print</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.scroll_print.scroll_print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints text 1 character at a time to simulate scrolling text.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>text</strong> (<em>str</em>) – The text to be printed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nightfall.text_parser">
+<span id="nightfall-text-parser-module"></span><h2>nightfall.text_parser module<a class="headerlink" href="#module-nightfall.text_parser" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nightfall.text_parser.get_input">
+<code class="descclassname">nightfall.text_parser.</code><code class="descname">get_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.text_parser.get_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get raw user input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Raw user input.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nightfall.text_parser.parse_input">
+<code class="descclassname">nightfall.text_parser.</code><code class="descname">parse_input</code><span class="sig-paren">(</span><em>input</em>, <em>current_room</em><span class="sig-paren">)</span><a class="headerlink" href="#nightfall.text_parser.parse_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divide input into recognizable components.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input</strong> (<em>str</em>) – Raw user input.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>Dictionary of command mapped to the item or</dt>
+<dd>feature that the command is acting on.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary(str, str)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 <div class="section" id="module-nightfall">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-nightfall" title="Permalink to this headline">¶</a></h2>
@@ -397,65 +2113,59 @@ the rooms features.</p>
 </div>
 
 
+           </div>
+           
           </div>
-          
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Ian Lumiere, Sunny Huang, Nathan Zimmerman.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">nightfall package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-nightfall.game_classes">nightfall.game_classes module</a></li>
-<li><a class="reference internal" href="#module-nightfall">Module contents</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/nightfall.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2018, Ian Lumiere, Sunny Huang, Nathan Zimmerman.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
-      
-      |
-      <a href="_sources/nightfall.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

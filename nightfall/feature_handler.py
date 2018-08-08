@@ -5,8 +5,20 @@ from scroll_print import *
 def room_1_feature_handler(current_room, verb, feature):
     """Handles verb commands related to room 1 features.
 
+    Puzzles:
+        None
+
+    Room Items:
+        Sword: +1 attack power.
+
+    Features:
+        door
+        body
+        cloak
+        bag
+
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
