@@ -20,7 +20,7 @@ https://www.python.org/downloads/
 
 Documentation
 -------------
-Documentation can be found here.
+Documentation can be found `here <https://nightfall-cs467.appspot.com/index.html>`_
 
 Running the tests
 -----
