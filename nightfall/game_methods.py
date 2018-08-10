@@ -630,6 +630,10 @@ def combat(player, monster):
     combat_continues = True
 
     while combat_continues:
+        # TESTING ONLY:
+        player.print_stats()
+        # TESTING ONLY 6789065906590659867tyue8y72yguherijwu8grufbhriugyy
+
         # Allow the player to choose their move
         # Output player combat options
         scroll_print("\nPlease select which move you want: ")
@@ -752,7 +756,8 @@ def combat(player, monster):
                     # based on their level
                     player.revive(player.get_level())
 
-    return True
+    return player
+    # return True
 
 
 def start_game(player_name, character_choice):

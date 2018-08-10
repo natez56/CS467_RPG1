@@ -53,10 +53,18 @@ def main():
         current_room = get_current_room()
 
         if len(current_room.get_monsters()) != 0:
-            survival_check = combat(player, current_room.get_monsters()[0])
+            # survival_check = combat(player, current_room.get_monsters()[0])
 
-            if survival_check is True:
+            # if survival_check is True:
+            #     current_room.monster_killed()
+
+            # FOR TESTING
+            player = combat(player, current_room.get_monsters()[0])
+            if player is not None:
                 current_room.monster_killed()
+            # FOR TESTING 68y79uoi382gyuewbhjfknoygubehwjknluhyuqbhfjewk j
+
+
 
             else:
                 scroll_print("Oh no! You ran out of lives! ")

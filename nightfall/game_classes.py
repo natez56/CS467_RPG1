@@ -453,6 +453,7 @@ class Player(Character):
         scroll_print("Current Stats")
         scroll_print("Player Name: {}".format(self.name))
         scroll_print("Level: {}".format(self.level))
+        scroll_print("Experience {}".format(self.experience))
         scroll_print("Remaining Lives: {}".format(self.num_lives))
         scroll_print("Health: {}".format(self.health))
         scroll_print("Magic: {}".format(self.magic))
