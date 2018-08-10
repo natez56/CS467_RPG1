@@ -6,7 +6,8 @@ Nightfall is a text based role playing game created using Python 3.  The game is
 Getting Started
 ---------------
 Navigate to the nightfall folder. To run the game use the command:
->>> python3 nightfall.py
+
+    >>> python3 nightfall.py
 
 Prerequisites
 -------------
@@ -23,7 +24,8 @@ Running the tests
 -----------------
 Testing framework ``pytest`` used for this project. Additionally ``pycodestyle`` used for linting.
 To run the tests navigate to the test directory and type the command:
->>> pytest
+
+    >>> pytest
     
 Authors
 -------
