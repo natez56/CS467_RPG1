@@ -627,7 +627,7 @@ def travel(current_room, direction):
         scroll_print("There is no room in that direction!")
 
 
-def combat(player, monster):
+def combat(current_room, player, monster):
     """Function to allow for player monster rpg combat.
 
     Args:
@@ -772,8 +772,11 @@ def combat(player, monster):
                     # based on their level
                     player.revive(player.get_level())
 
-    return player
-    # return True
+    # Save the stats from the combat interactions
+    current_room.set_player(player)
+    save_object_state(current_room)
+
+    return True
 
 
 def start_game(player_name, character_choice):

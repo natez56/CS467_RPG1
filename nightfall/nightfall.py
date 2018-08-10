@@ -1,6 +1,6 @@
-from scroll_print import *
 from game_methods import *
 from text_parser import *
+from scroll_print import *
 
 
 def main():
@@ -53,18 +53,11 @@ def main():
         current_room = get_current_room()
 
         if len(current_room.get_monsters()) != 0:
-            # survival_check = combat(player, current_room.get_monsters()[0])
+            survival_check = combat(current_room, player,
+                                    current_room.get_monsters()[0])
 
-            # if survival_check is True:
-            #     current_room.monster_killed()
-
-            # FOR TESTING
-            player = combat(player, current_room.get_monsters()[0])
-            if player is not None:
+            if survival_check is True:
                 current_room.monster_killed()
-            # FOR TESTING 68y79uoi382gyuewbhjfknoygubehwjknluhyuqbhfjewk j
-
-
 
             else:
                 scroll_print("Oh no! You ran out of lives! ")
