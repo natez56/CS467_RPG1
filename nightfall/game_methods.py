@@ -111,7 +111,7 @@ def game_menu(current_room):
     """Calls in game menu for use during play.
 
     Args:
-        current_room (:obj:Room): The current room that the player is in.
+        current_room (:obj:`Room`): The current room that the player is in.
 
     """
     invalid_selection = True
@@ -195,7 +195,7 @@ def take_action(current_room, action):
     """Handles parsed input to perform actions in game.
 
     Args:
-        current_room (:obj:Room): Current room that the player is in.
+        current_room (:obj:`Room`): Current room that the player is in.
         action (dictionary(str, str)): A dictionary mapping possible actions
             to either features or items.
 
@@ -254,6 +254,8 @@ def take_action(current_room, action):
           and (action["item"] in player.get_item_names() or
           action["item"] in current_room.get_item_names())):
 
+        # Check for incorrect use of "on" preposition. It can only be used
+        # with use commands.
         if action["verb"] != "use" and action["feature"] is not None:
             scroll_print("You can't {} {} on {}".format(action["verb"],
                          action["item"],
@@ -397,7 +399,7 @@ def print_item_descriptions(current_room):
     """Prints the descriptions of all of the items in a room.
 
     Args:
-        current_room (:obj:Room): The current room that the player is in.
+        current_room (:obj:`Room`): The current room that the player is in.
 
     """
     # Custom message if there is only one item in the room.
@@ -430,8 +432,8 @@ def handle_standard_action(current_room, player, action):
     """Handles standard one word game commands.
 
     Args:
-        current_room (:obj:Room): The current room that the player is in.
-        player (:obj:Player): The current player.
+        current_room (:obj:`Room`): The current room that the player is in.
+        player (:obj:`Player`): The current player.
         action (str): The user entered command to be handled.
 
     """
@@ -458,6 +460,7 @@ def handle_standard_action(current_room, player, action):
             for item in player.get_inventory():
                 scroll_print(item.get_name())
 
+            # Also print equipped item.
             equipped_item = player.get_equipped_item()
 
             if equipped_item is not None:
@@ -509,7 +512,7 @@ def travel(current_room, direction):
     """Move player from one room to another.
 
     Args:
-        current_room (:obj:Room): The current room that the player is in.
+        current_room (:obj:`Room`): The current room that the player is in.
         direction (str): Either north, east, south, west.
 
     """
@@ -540,6 +543,7 @@ def travel(current_room, direction):
             # Warlock voice interaction number 1.
             if (new_room.get_name() == "store room" and
                new_room.get_puzzle_status("voice")):
+
                 scroll_print("As you walk through the door your vision "
                              "suddenly goes black. A voice enters your mind. "
                              "It speaks in a low raspy growl: \"Ahh it "
@@ -555,10 +559,14 @@ def travel(current_room, direction):
                              "quickly grow to block the stairwell entrance to "
                              "the north...Things quiet down and you take a "
                              "look around\n")
+
+                # Set to false so it only triggers once.
                 new_room.set_puzzle_status("voice", False)
 
+            # Warlock voice interaction number 2.
             elif (new_room.get_name() == "sauna room" and
                   new_room.get_puzzle_status("sauna voice")):
+
                 scroll_print("As you walk through the door your vision goes "
                              "black. A voice enters your mind. It is the same "
                              "voice as the one you encountered in the store "
@@ -569,6 +577,8 @@ def travel(current_room, direction):
                              "whatever you like, but while the steam remains "
                              "you will not find the way forward.\". The voice "
                              "fades and your vision returns.\n")
+
+                # Set to false so that it only triggers once.
                 new_room.set_puzzle_status("sauna voice", False)
 
             # scroll_print out room description.
@@ -586,14 +596,20 @@ def travel(current_room, direction):
             save_object_state(new_room)
 
         else:
+            # Print custom message to indicate that room 4 stairwell is
+            # blocked by vines.
             if (current_room.get_name() == "store room" and
                current_room.get_puzzle_status("vines")):
+
                 scroll_print("\nYou can't enter the stairwell. The black "
                              "vines are blocking the way. You'll need to "
                              "find a way to remove them.")
 
+            # Print custom message to give a hint concerning how to get the
+            # key for the last door.
             elif (current_room.get_name() == "room of last rites" and
                   current_room.get_puzzle_status("cage")):
+
                 scroll_print("\nYou try and open the door but it is locked. "
                              "The fairy calls to you from the cage. \"Hey "
                              "if you let me out of here I might be able to "
@@ -610,8 +626,8 @@ def combat(player, monster):
     """Function to allow for player monster rpg combat.
 
     Args:
-        player (:obj:Player): The user selected main character.
-        monster (:obj:Monster): A character that the player fights.
+        player (:obj:`Player`): The user selected main character.
+        monster (:obj:`Monster`): A character that the player fights.
 
     """
     # Begin combat dialogue
@@ -771,7 +787,7 @@ def is_game_over(player):
     """Checks to see if the player still has lives.
 
     Args:
-        player (:obj:Player): The main character of the game.
+        player (:obj:`Player`): The main character of the game.
 
     Returns:
         bool: False if the character is dead or the game is complete.

@@ -3,19 +3,22 @@ from scroll_print import *
 
 
 def room_1_feature_handler(current_room, verb, feature):
-    """Handles verb commands related to room 1 features.
+    """Handles verb commands related to room 1, fortress entrance, features.
 
     Puzzles:
         None
 
     Room Items:
-        Sword: +1 attack power.
+        - sword: +1 attack power.
 
     Features:
-        door
-        body
-        cloak
-        bag
+        - door
+        - body
+        - cloak
+        - bag
+
+    Monsters:
+        None
 
     Args:
         current_room (:obj:`Room`): The current room the player is in.
@@ -32,15 +35,15 @@ def room_1_feature_handler(current_room, verb, feature):
         if feature == "body":
             scroll_print("This body is too heavy to carry.")
 
-        if feature == "cloak":
+        elif feature == "cloak":
             scroll_print("The cloak is in tatters, better to leave it I "
                          "think.")
 
-        if feature == "bag":
+        elif feature == "bag":
             scroll_print("This bag has holes in it. Better to leave it I "
                          "think.")
 
-        if feature == "door":
+        elif feature == "door":
             scroll_print("Hmm let's see, if I unbolt the doors and go get "
                          "about 10 other villagers to help me carry them...on "
                          "second thought maybe I should leave the doors where "
@@ -62,17 +65,17 @@ def room_1_feature_handler(current_room, verb, feature):
         if feature == "body":
             scroll_print("Eat this? I don't think so. I'm not a zombie.")
 
-        if feature == "door":
+        elif feature == "door":
             scroll_print("You gnaw on the oak doors a bit. Yup that's oak all "
                          "right...")
 
-        if feature == "cloak":
+        elif feature == "cloak":
             scroll_print("You chew on the old cloak a bit and think to "
                          "yourself I better start coming up with some "
                          "reasonable things to do or I'll never rescue "
                          "Evelyn.")
 
-        if feature == "bag":
+        elif feature == "bag":
             scroll_print("You chew on the old bag a bit and think to yourself "
                          "I better start coming up with some reasonable "
                          "things to do or I'll never rescue Evelyn.")
@@ -93,7 +96,7 @@ def room_1_feature_handler(current_room, verb, feature):
 
     elif verb == "climb":
         if feature == "body":
-            scroll_print("Better to not disturb the dead.")
+            scroll_print("Better to not disturb the dead by climbing on them.")
 
         else:
             scroll_print("There's nothing to climb.")
@@ -105,10 +108,34 @@ def room_1_feature_handler(current_room, verb, feature):
 
 
 def room_2_feature_handler(current_room, verb, feature):
-    """Handle room 2 player and feature interaction.
+    """Handle room 2, entrance hall, player and feature interaction.
+
+    Puzzles:
+        1. rope:
+            Trigger: When a player looks at or trys to take the golden
+            key in the room. Also triggers when the player tries to travel to
+            the next room.
+
+            Disable: Player must look at rubble before triggering the trap.
+            Then they must type 'use sword' or 'use sword on rope' to disable
+            the trap. If the trap is triggered before the sword is used, a
+            player must type 'duck' to avoid the trap.
+
+    Room Items:
+        - golden key: Opens lock box in room 4 store room.
+
+    Features:
+        - rubble
+        - door
+        - writing
+        - rope: Appears once the player looks at rubble or triggers the rope. \
+        puzzle. Disappears once rope trap is disabled.
+
+    Monsters:
+        - Skrag, goblin.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -224,7 +251,7 @@ def rope_trap(current_room):
     """Handles rope trap event for room 2.
 
     Args:
-        current_room (:obj:Room): The room the player is currently in.
+        current_room (:obj:`Room`): The room the player is currently in.
 
     """
     scroll_print("As you walk forward, between the scattered rubble, "
@@ -267,10 +294,27 @@ def rope_trap(current_room):
 
 
 def room_3_feature_handler(current_room, verb, feature):
-    """Handles verb commands related to room 3 features.
+    """Handles verb commands related to room 3, mess hall, features.
+
+    Puzzles:
+        1. engraving:
+            Trigger: Look at engraving.
+
+            Disable: Player must enter the command 'rotate engraving'. The
+            door to the kitchen will unlock as a result.
+
+    Room Items:
+        - bread: Player can eat to gain health.
+
+    Features:
+        - armor
+        - engraving
+
+    Monsters:
+        - Renethe, skeleton.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -278,7 +322,7 @@ def room_3_feature_handler(current_room, verb, feature):
     # Dictionary of feature name mapped to a description of that feature.
     feature_dict = current_room.get_features()
 
-    # Handle feature interaction for each of the 10 main verbs.
+    # Handle feature interaction for each of the main verbs.
     if verb == "take":
         if feature == "engraving":
             scroll_print("You place both hands on the edge of the graving and "
@@ -343,14 +387,18 @@ def room_3_feature_handler(current_room, verb, feature):
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
 
+    # Unlocks the door to the kitchen. Flips the ASCII art so that it is
+    # right side up and displays a skull.
     elif verb == "rotate":
         if (feature == "engraving" and
            current_room.get_puzzle_status("engraving")):
+
             scroll_print("You place both hands on the engraving edges and "
                          "rotate with all your might. It slowly turns until "
                          "the markings have been flipped. You hear a click "
                          "and step back to take a look. The rotated "
                          "engraving...\n")
+
             new_desc = (
                         "            ________________           \n"
                         "          /-                -\\         \n"
@@ -371,12 +419,23 @@ def room_3_feature_handler(current_room, verb, feature):
                         "             \\           /             \n"
                         "              \\ _______ /              \n"
                         )
+
+            # Do not use scroll_print. It will not print the newlines
+            # correctly.
             print(new_desc)
+
             scroll_print("\nThe door is now open...")
+
             current_room.unlock("north")
+
+            # Set puzzle status to false so that the engraving can no longer
+            # be rotated.
             current_room.set_puzzle_status("engraving", False)
+
             current_room.remove_feature("engraving")
+
             current_room.add_feature("engraving", new_desc)
+
         else:
             scroll_print("The engraving can no longer be rotated.")
 
@@ -384,10 +443,45 @@ def room_3_feature_handler(current_room, verb, feature):
 
 
 def room_4_feature_handler(current_room, verb, feature):
-    """Handle room 4 player and feature interaction.
+    """Handle room 4, store room, player and feature interaction.
+
+    Puzzles:
+        1. lock box:
+            Trigger: Look at shelves.
+
+            Disable: Use golden key to unlock box and get letter item.
+
+        2. vines:
+            Trigger: Enter the store room.
+
+            Disable: Use acidic ooze item while in the store room.
+
+        3. voice:
+            Trigger: Enter the store room.
+
+            Disable: Automatically disables.
+
+        4. shelves:
+            Trigger: Enter store room.
+
+            Disable: Look at shelves.
+
+    Room Items:
+        - jar: Used to pick up acidic ooze in room 5.
+        - letter: Explains how to get into room 5.
+
+    Features:
+        - broom
+        - vines
+        - shelves
+        - carcass
+        - box
+
+    Monsters:
+        None
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -423,13 +517,20 @@ def room_4_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? I'm not carrying that.")
 
     elif verb == "look at":
+
+        # Reveals the lockbox. User can now use the golden key to get the
+        # letter item.
         if feature == "shelves" and current_room.get_puzzle_status("shelves"):
             current_room.set_puzzle_status("lock box", True)
+
+            # Set shelves staus to false so that lock box can only be
+            # opened once.
             current_room.set_puzzle_status("shelves", False)
 
             scroll_print("You take a close look at the {}.".format(feature))
 
             scroll_print(feature_dict[feature])
+
         else:
             scroll_print("You take a close look at the {}.".format(feature))
 
@@ -489,10 +590,28 @@ def room_4_feature_handler(current_room, verb, feature):
 
 
 def room_5_feature_handler(current_room, verb, feature):
-    """Handle room 5 player and feature interaction.
+    """Handle room 5, kitchen, player and feature interaction.
+
+    Puzzles:
+        1. ooze:
+            Trigger: Enter kitchen room.
+
+            Disable: Player must type 'use jar' with the jar item in their
+            inventory.
+
+    Room Items:
+        - acidic ooze: Used to open room 4 store room door.
+        - oven mitt: +3 magic defense.
+
+    Features:
+        - fish
+        - sink
+
+    Monsters:
+        Grugg, sludge monster.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -556,10 +675,27 @@ def room_5_feature_handler(current_room, verb, feature):
 
 
 def room_6_feature_handler(current_room, verb, feature):
-    """Handle room 6 player and feature interaction.
+    """Handle room 6, washroom, player and feature interaction.
+
+    Puzzles:
+        1. rubber duck:
+            Trigger: Look at tub.
+
+            Disable: Look at tub.
+
+    Room Items:
+        - Quackers: Appears in room once tub is looked at. Used in room 7 \
+        smoking room to find key. Reference room 7 puzzle information.
+
+    Features:
+        - tub
+        - fountain
+
+    Monsters:
+        Karthos, wisp.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -585,6 +721,8 @@ def room_6_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? I'm not carrying that.")
 
     elif verb == "look at":
+
+        # Adds the Quackers item to the room.
         if feature == "tub":
             scroll_print("You take a close look at the {}.".format(feature))
 
@@ -595,6 +733,8 @@ def room_6_feature_handler(current_room, verb, feature):
                              "tub, is a little yellow rubber duck. On its "
                              "side written in black ink it says \"Quackers\"")
 
+                # Disable puzzle status so that Quackers is only added to the
+                # room once.
                 current_room.set_puzzle_status("rubber duck", False)
 
                 rubber_duck = "Quackers"
@@ -605,6 +745,7 @@ def room_6_feature_handler(current_room, verb, feature):
 
                 rubber_duck = Item(rubber_duck, rubber_duck_description,
                                    rubber_duck_durability, rubber_duck_stats)
+
                 current_room.add_item(rubber_duck)
 
         else:
@@ -654,10 +795,27 @@ def room_6_feature_handler(current_room, verb, feature):
 
 
 def room_7_feature_handler(current_room, verb, feature):
-    """Handle room 7 player and feature interaction.
+    """Handle room 7, smoking room, player and feature interaction.
+
+    Puzzles:
+        1. smoke:
+            Trigger: Look at the humidor. Then look at the ash tray.
+
+            Disable: Use Quackers.
+
+    Room Items:
+        - emerald key: Get by triggering the puzzle and then using Quackers. \
+        opens room 8 emerald lock box.
+
+    Features:
+        - humidor
+        - ash tray
+
+    Monsters:
+        None
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -688,6 +846,8 @@ def room_7_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? I'm not carrying that.")
 
     elif verb == "look at":
+        # Looking at humidor enables the smoke puzzle. The player can now
+        # look at the ash tray to reveal the presence of the smoke feature.
         if (feature == "humidor" and
            not current_room.get_puzzle_status("smoke")):
 
@@ -701,6 +861,8 @@ def room_7_feature_handler(current_room, verb, feature):
                              "shape. You feel as though it is looking "
                              "expectantly at you.")
 
+            # Update ash tray feature to add reference to smoke. This is
+            # updated in the item_handler file once the puzzle is complete.
             current_room.remove_feature("ash tray")
 
             current_room.add_feature("ash tray", ash_feature)
@@ -738,10 +900,27 @@ def room_7_feature_handler(current_room, verb, feature):
 
 
 def room_8_feature_handler(current_room, verb, feature):
-    """Handle room 8 player and feature interaction.
+    """Handle room 8, sleeping chambers, player and feature interaction.
+
+    Puzzles:
+        1. nightstand:
+            Trigger: Enter the sleeping chambers.
+
+            Disable: Use the emerald key.
+
+    Room Items:
+        - book: Contains a cipher to solve the mirror puzzle in the sauna room.
+
+    Features:
+        - bed
+        - window
+        - box
+
+    Monsters:
+        None
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -803,8 +982,26 @@ def room_8_feature_handler(current_room, verb, feature):
 def room_9_feature_handler(current_room, verb, feature):
     """Handle room 9, supplies closet, player and feature interaction.
 
+    Puzzles:
+        1. shelves:
+            Trigger: Use the command 'climb shelves'.
+
+            Disable: Use the command 'climb shelves'.
+
+    Room Items:
+        - rapier: Got by triggering the shelves puzzle. Simply use the \
+        command climb shelves. Gives +5 attack power.
+
+    Features:
+        - towel
+        - shampoo
+        - shelves
+
+    Monsters:
+        Ulthu, goblin.
+
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -865,12 +1062,14 @@ def room_9_feature_handler(current_room, verb, feature):
         scroll_print("I don't hear much.")
 
     elif verb == "climb":
+        # Get the rapier by climbing the shelves in the room.
         if (feature == "shelves" and
            current_room.get_puzzle_status("shelves")):
             scroll_print("You climb the shelves to what is causing the blue "
                          "glow. As you reach the top you find that the blue "
                          "glow is caused by a long thin rapier.")
 
+            # Add rapier item to players inventory.
             rapier_name = "rapier"
             rapier_description = ("A thin and nimble long sword. The blade "
                                   "glows blue and it is razor sharp. "
@@ -882,13 +1081,25 @@ def room_9_feature_handler(current_room, verb, feature):
                           rapier_stats)
 
             player = current_room.get_player()
+
             player.add_item(rapier)
 
+            # Set the puzzle status to false so that player cannot repeat
+            # puzzle.
+            current_room.set_puzzle_status("shelves", False)
+
+            # Update shelves feature so that it does not mention glow.
             shelves_feature = ("They contain mostly towels. Nothing of note.")
 
             current_room.remove_feature("shelves")
 
             current_room.add_feature("shelves", shelves_feature)
+
+        elif feature == "shelves":
+            scroll_print("You climb the selves. There's nothing else to find.")
+
+        else:
+            scroll_print("I can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -897,10 +1108,34 @@ def room_9_feature_handler(current_room, verb, feature):
 
 
 def room_10_feature_handler(current_room, verb, feature):
-    """Handle room 10 player and feature interaction.
+    """Handle room 10, sauna room, player and feature interaction.
+
+    Puzzles:
+        1. steam:
+            Trigger: Enter the sauna and listen to machinery to locate the
+            mirror. Then look at the mirror.
+
+            Disable: Enter 'password' when prompted by the mirror. This is the
+            answer that is given by decoding the phrase given by the mirror
+            using the cipher found in the book from the sleeping chambers.
+
+        2. sauna voice:
+            Trigger: Enter the sauna room.
+
+            Disable: Automatically disables on its own.
+
+    Room Items:
+        None
+
+    Features:
+        - machinery
+        - mirror
+
+    Monsters:
+        None
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -926,6 +1161,9 @@ def room_10_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? I'm not carrying that.")
 
     elif verb == "look at":
+
+        # Mirror puzzle. Player must enter in a password to progress in the
+        # game. The password is 'password'.
         if feature == "mirror" and current_room.get_puzzle_status("steam"):
             scroll_print("You take a close look at the {}".format(feature))
 
@@ -933,6 +1171,7 @@ def room_10_feature_handler(current_room, verb, feature):
 
             puzzle_result = mirror_puzzle()
 
+            # When user enters correct password: 'password'.
             if puzzle_result:
                 scroll_print("\nThe text in the mirror swirls and changes. It "
                              "reconfigures to say \"Password accepted.\". All "
@@ -940,6 +1179,7 @@ def room_10_feature_handler(current_room, verb, feature):
                              "magic steam stops exuding from the vent and the "
                              "room slowly becomes visible.\n")
 
+                # Update room description so that there is no longer steam.
                 description = ("The room is made of marble. Benches of marble "
                                "line the walls. The magic mirror hangs from "
                                "the left side of the room. To the south is a "
@@ -951,30 +1191,45 @@ def room_10_feature_handler(current_room, verb, feature):
 
                 current_room.set_description(description)
 
+                # Update mirror feature.
                 mirror_feature = ("The message \"Password accepted.\" is "
                                   "still displayed on the mirror surface.")
+
                 current_room.remove_feature("mirror")
+
                 current_room.add_feature("mirror", mirror_feature)
 
+                # Update machinery feature.
                 machinery_feature = ("The sound of machinery has disappeared.")
+
                 current_room.remove_feature("machinery")
+
                 current_room.add_feature("machinery", machinery_feature)
 
+                # Add door from sauna room to tower hall.
                 new_door_map = {'south': False, 'north': False}
+
                 current_room.set_door_map(new_door_map)
 
                 new_adjacent_rooms = {'north': 'tower hall', 'east': None,
                                       'south': 'supplies closet', 'west': None}
+
                 current_room.set_adjacent_rooms(new_adjacent_rooms)
+
+                # Set puzzle status to false so that mirror puzzle will not
+                # repeat.
                 current_room.set_puzzle_status("steam", False)
 
                 scroll_print(current_room.get_description())
+
+            # When user enters wrong password.
             else:
                 scroll_print("The text on the mirror swirls and reconfigures "
                              "to say \"Password denied!\" A small storm cloud "
                              "forms in front of the mirror and emits a small "
                              "lightning bolt that shocks you. The cloud "
                              "quickly dissipates and the mirror goes blank.")
+
         else:
             scroll_print("You take a close look at the {}.".format(feature))
 
@@ -1000,6 +1255,7 @@ def room_10_feature_handler(current_room, verb, feature):
     elif verb == "listen to":
         if feature == "machinery":
             scroll_print(feature_dict[feature])
+
         else:
             scroll_print("I hear nothing.")
 
@@ -1013,6 +1269,12 @@ def room_10_feature_handler(current_room, verb, feature):
 
 
 def mirror_puzzle():
+    """Handles mirror puzzle for room 10, sauna room.
+
+    Returns:
+        bool: True if password: 'password' entered by user. False otherwise.
+
+    """
     user_input = input("\nThe mirror wants you to say something. What do you "
                        "say? Enter some text: ")
 
@@ -1025,10 +1287,29 @@ def mirror_puzzle():
 
 
 def room_11_feature_handler(current_room, verb, feature):
-    """Handle room 11 player and feature interaction.
+    """Handle room 11, tower hall, player and feature interaction.
+
+    Puzzles:
+        None
+
+    Room Items:
+        - charcoal: got by using the command 'take charcoal'. Use in room 12, \
+        archives, by typing the command 'use charcoal' to get the 'scrap' item.
+
+    Features:
+        - ceiling
+        - painting: Once you get the scrap item from room 12, archives, type \
+        'use scrap' in this room to get a blessing of +1 attack power.
+        - table
+        - ruby
+        - charcoal: disappears after you use the command 'take charcoal'.
+        - dagger
+
+    Monsters:
+        None
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -1052,8 +1333,10 @@ def room_11_feature_handler(current_room, verb, feature):
                          "back into a dagger. You feel weaker, the snake may "
                          "have been poisonous.")
 
+        # Charcoal is the solution to the riddle. and the only valid choice.
         elif feature == "charcoal":
 
+            # Remove charcoal feature and update table description.
             current_room.remove_feature('charcoal')
             current_room.remove_feature('table')
 
@@ -1062,6 +1345,7 @@ def room_11_feature_handler(current_room, verb, feature):
 
             current_room.add_feature('table', table_feature)
 
+            # Add charcoal item to player's inventory.
             charcoal_name = "charcoal"
             charcoal_description = ("This is charcoal like the type your "
                                     "village smithy would use to fuel his "
@@ -1073,6 +1357,7 @@ def room_11_feature_handler(current_room, verb, feature):
                             charcoal_durability, charcoal_stats)
 
             player = current_room.get_player()
+
             player.add_item(charcoal)
 
         else:
@@ -1112,10 +1397,27 @@ def room_11_feature_handler(current_room, verb, feature):
 
 
 def room_12_feature_handler(current_room, verb, feature):
-    """Handle room 12 player and feature interaction.
+    """Handle room 12, archives, player and feature interaction.
+
+    Puzzles:
+        None
+
+    Room Items:
+        - mythril tongs: +8 magic power.
+        - scrap: Got by typing 'use charcoal' with charcoal in your \
+        inventory. Charcoal got from room 11, tower hall. Use scrap in room \
+        11, tower hall, to get a blessing.
+
+
+    Features:
+        - fireplace
+        - chandelier
+
+    Monsters:
+        Exelior, skeleton.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -1183,10 +1485,28 @@ def room_12_feature_handler(current_room, verb, feature):
 
 
 def room_13_feature_handler(current_room, verb, feature):
-    """Handle room 13 player and feature interaction.
+    """Handle room 13, reading room, player and feature interaction.
+
+    Puzzles:
+        1. raven:
+            Trigger: Look at raven.
+
+            Disable: Type 'knock knock' after having looked at raven. Then
+            Type any two additional phrases when prompted.
+
+    Room Items:
+        - iron key: Got by completing the raven puzzle.
+
+    Features:
+        - tome
+        - couch
+        - raven
+
+    Monsters:
+        None
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -1213,11 +1533,15 @@ def room_13_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? I'm not carrying that.")
 
     elif verb == "look at":
+
+        # Raven puzzle. User needs to type 'knock knock' and then two
+        # additional phrases (they can be anything) to solve the puzzle.
         if feature == "raven" and current_room.get_puzzle_status("raven"):
             scroll_print("You take a close look at the {}.".format(feature))
 
             scroll_print(feature_dict[feature])
 
+            # On successful completion.
             if raven_joke():
                 scroll_print("The raven emits several hearty squawks that "
                              "almost sound like laughter. It drops the key "
@@ -1225,17 +1549,24 @@ def room_13_feature_handler(current_room, verb, feature):
                              "some reason you get the feeling the raven "
                              "doesn't speak english very well...")
 
+                # Add iron key to player inventory. Used to unlock cage
+                # in room of last rites.
                 key_name = "iron key"
                 key_description = ("A plain iron key.")
                 key_durability = 1
                 key_stats = None
+
                 key = Item(key_name, key_description, key_durability,
                            key_stats)
 
                 player = current_room.get_player()
+
                 player.add_item(key)
+
+                # Set puzzle status to false so that puzzle does not repeat.
                 current_room.set_puzzle_status("raven", False)
 
+                # Joke can only be done once. Raven feature updated.
                 new_raven = ("He has dark black feathers. Engraved at the "
                              "base of its perch is the name Artemis. The "
                              "raven is carrying nothing currently. He "
@@ -1243,7 +1574,9 @@ def room_13_feature_handler(current_room, verb, feature):
                              "anymore.")
 
                 current_room.remove_feature("raven")
+
                 current_room.add_feature("raven", new_raven)
+
             else:
                 scroll_print("Hmm well that didn't lead to anything.")
 
@@ -1325,6 +1658,13 @@ def room_13_feature_handler(current_room, verb, feature):
 
 
 def raven_joke():
+    """Handles raven puzzle for room 13, reading room.
+
+    Returns:
+        bool: True if knock knock entered and two additional phrases entered.
+        False otherwise.
+
+    """
     scroll_print("You get the feeling that the raven is expecting you to say "
                  "something.")
 
@@ -1332,6 +1672,8 @@ def raven_joke():
 
     user_input.lower().strip()
 
+    # Only required input is to enter 'knock knock' when first prompted.
+    # Other two inputs can be random.
     if user_input == "knock knock":
         scroll_print("The raven looks intently at you. You suddenly hear a "
                      "voice in your mind say \"Who's there?\"")
@@ -1344,6 +1686,8 @@ def raven_joke():
         user_input = input("Next words to the raven: ")
 
         return True
+
+    # Return false if use fails to enter in knock knock.
     else:
         scroll_print("The raven looks away from you. You suddenly hear a "
                      "voice in your mind say \"That's not how the joke "
@@ -1353,10 +1697,29 @@ def raven_joke():
 
 
 def room_14_feature_handler(current_room, verb, feature):
-    """Handle room 14 player and feature interaction.
+    """Handle room 14, room of last rites, player and feature interaction.
+
+    Puzzles:
+        1. cage:
+            Trigger: Look at cage.
+
+            Disable: Type command 'use iron key', with the iron key item in
+            your inventory. Iron key item got by completing the raven puzzle
+            in room 13, the reading room.
+
+    Room Items:
+        - skull key: Got by completing cage puzzle in this room.
+
+    Features:
+        - bones
+        - hand print
+        - cage
+
+    Monsters:
+        None
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -1390,6 +1753,9 @@ def room_14_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? I'm not carrying that.")
 
     elif verb == "look at":
+
+        # Cage puzzle. Unlocked by iron key got in the reading room by
+        # completing the raven puzzle.
         if feature == "cage" and current_room.get_puzzle_status("cage"):
             scroll_print("You take a close look at the {}.".format(feature))
 
@@ -1496,12 +1862,24 @@ def room_14_feature_handler(current_room, verb, feature):
     save_object_state(current_room)
 
 
-# TODO finish last room.
 def room_15_feature_handler(current_room, verb, feature):
-    """Handle room 15 player and feature interaction.
+    """Handle room 15, final lair, player and feature interaction.
+
+    Puzzles:
+        None
+
+    Room Items:
+        None
+
+    Features:
+        - evelyn
+        - mirror
+
+    Monsters:
+        Zlor, warlock.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         feature (str): The feature in this room the user would like to act on.
 
@@ -1511,6 +1889,8 @@ def room_15_feature_handler(current_room, verb, feature):
 
     # Handle custom feature interaction for each of the 10 core verbs.
     if verb == "take":
+
+        # Triggers end of game.
         if feature == "evelyn":
             scroll_print(feature_dict[feature])
 
@@ -1531,6 +1911,8 @@ def room_15_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? I'm not carrying that.")
 
     elif verb == "look at":
+
+        # Triggers end of game.
         if feature == "evelyn":
             scroll_print(feature_dict[feature])
 

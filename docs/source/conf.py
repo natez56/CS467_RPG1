@@ -159,3 +159,4 @@ texinfo_documents = [
 
 
 # -- Extension configuration -------------------------------------------------
+autodoc_member_order = 'bysource'

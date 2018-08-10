@@ -7,10 +7,25 @@ import shutil
 
 
 def init_room_1():
-    """Instantiates fortress_entrance room.
+    """Instantiates fortress entrance room.
+
+    Puzzles:
+        None
+
+    Room Items:
+        - sword: +1 attack power.
+
+    Features:
+        - door
+        - body
+        - cloak
+        - bag
+
+    Monsters:
+        None
 
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "fortress entrance"
@@ -25,7 +40,7 @@ def init_room_1():
                    )
 
     # Init items
-    # Item 1 - rusty_sword
+    # Item 1 - sword
     sword_name = "sword"
     sword_description = ("A rusty sword. It's long since lost its edge. "
                          "Who knows, you might be able to bludgeon monsters "
@@ -83,7 +98,31 @@ def init_room_1():
 
 
 def init_room_2():
-    """Instantiates entrance_hall room.
+    """Instantiates entrance hall room.
+
+    Puzzles:
+        1. rope:
+            Trigger: When a player looks at or trys to take the golden
+            key in the room. Also triggers when the player tries to travel to
+            the next room.
+
+            Disable: Player must look at rubble before triggering the trap.
+            Then they must type 'use sword' or 'use sword on rope' to disable
+            the trap. If the trap is triggered before the sword is used, a
+            player must type 'duck' to avoid the trap.
+
+    Room Items:
+        - golden key: Opens lock box in room 4 store room.
+
+    Features:
+        - rubble
+        - door
+        - writing
+        - rope: Appears once the player looks at rubble or triggers the rope. \
+        puzzle. Disappears once rope trap is disabled.
+
+    Monsters:
+        - Skrag, goblin.
 
     Returns:
         :obj:Room: Room object.
@@ -179,7 +218,24 @@ def init_room_2():
 
 
 def init_room_3():
-    """Instantiates mess_hall room.
+    """Instantiates mess hall room.
+
+    Puzzles:
+        1. engraving:
+            Trigger: Look at engraving.
+
+            Disable: Player must enter the command 'rotate engraving'. The
+            door to the kitchen will unlock as a result.
+
+    Room Items:
+        - bread: Player can eat to gain health.
+
+    Features:
+        - armor
+        - engraving
+
+    Monsters:
+        - Renethe, skeleton.
 
     Returns:
         :obj:Room: Room object.
@@ -285,10 +341,45 @@ def init_room_3():
 
 
 def init_room_4():
-    """Instantiates store_room room.
+    """Instantiates store room room.
+
+    Puzzles:
+        1. lock box:
+            Trigger: Look at shelves.
+
+            Disable: Use golden key to unlock box and get letter item.
+
+        2. vines:
+            Trigger: Enter the store room.
+
+            Disable: Use acidic ooze item while in the store room.
+
+        3. voice:
+            Trigger: Enter the store room.
+
+            Disable: Automatically disables.
+
+        4. shelves:
+            Trigger: Enter store room.
+
+            Disable: Look at shelves.
+
+    Room Items:
+        - jar: Used to pick up acidic ooze in room 5.
+        - letter: Explains how to get into room 5.
+
+    Features:
+        - broom
+        - vines
+        - shelves
+        - carcass
+        - box
+
+    Monsters:
+        None
 
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "store room"
@@ -366,8 +457,26 @@ def init_room_4():
 def init_room_5():
     """Instantiates kitchen room.
 
+    Puzzles:
+        1. ooze:
+            Trigger: Enter kitchen room.
+
+            Disable: Player must type 'use jar' with the jar item in their
+            inventory.
+
+    Room Items:
+        - acidic ooze: Used to open room 4 store room door.
+        - oven mitt: +3 magic defense.
+
+    Features:
+        - fish
+        - sink
+
+    Monsters:
+        Grugg, sludge monster.
+
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "kitchen"
@@ -456,8 +565,25 @@ def init_room_5():
 def init_room_6():
     """Instantiates washroom.
 
+    Puzzles:
+        1. rubber duck:
+            Trigger: Look at tub.
+
+            Disable: Look at tub.
+
+    Room Items:
+        - Quackers: Appears in room once tub is looked at. Used in room 7 \
+        smoking room to find key. Reference room 7 puzzle information.
+
+    Features:
+        - tub
+        - fountain
+
+    Monsters:
+        Karthos, wisp.
+
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "washroom"
@@ -537,8 +663,25 @@ def init_room_6():
 def init_room_7():
     """Instantiates smoking room.
 
+    Puzzles:
+        1. smoke:
+            Trigger: Look at the humidor. Then look at the ash tray.
+
+            Disable: Use Quackers.
+
+    Room Items:
+        - emerald key: Get by triggering the puzzle and then using Quackers. \
+        opens room 8 emerald lock box.
+
+    Features:
+        - humidor
+        - ash tray
+
+    Monsters:
+        None
+
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "smoking room"
@@ -601,8 +744,25 @@ def init_room_7():
 def init_room_8():
     """Instantiates sleeping chambers.
 
+    Puzzles:
+        1. nightstand:
+            Trigger: Enter the sleeping chambers.
+
+            Disable: Use the emerald key.
+
+    Room Items:
+        - book: Contains a cipher to solve the mirror puzzle in the sauna room.
+
+    Features:
+        - bed
+        - window
+        - box
+
+    Monsters:
+        None
+
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "sleeping chambers"
@@ -684,8 +844,26 @@ def init_room_8():
 def init_room_9():
     """Instantiates supplies closet.
 
+    Puzzles:
+        1. shelves:
+            Trigger: Use the command 'climb shelves'.
+
+            Disable: Use the command 'climb shelves'.
+
+    Room Items:
+        - rapier: Got by triggering the shelves puzzle. Simply use the \
+        command climb shelves. Gives +5 attack power.
+
+    Features:
+        - towel
+        - shampoo
+        - shelves
+
+    Monsters:
+        Ulthu, goblin.
+
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "supplies closet"
@@ -779,8 +957,32 @@ def init_room_9():
 def init_room_10():
     """Instantiates sauna room.
 
+    Puzzles:
+        1. steam:
+            Trigger: Enter the sauna and listen to machinery to locate the
+            mirror. Then look at the mirror.
+
+            Disable: Enter 'password' when prompted by the mirror. This is the
+            answer that is given by decoding the phrase given by the mirror
+            using the cipher found in the book from the sleeping chambers.
+
+        2. sauna voice:
+            Trigger: Enter the sauna room.
+
+            Disable: Automatically disables on its own.
+
+    Room Items:
+        None
+
+    Features:
+        - machinery
+        - mirror
+
+    Monsters:
+        None
+
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "sauna room"
@@ -834,8 +1036,27 @@ def init_room_10():
 def init_room_11():
     """Instantiates tower hall.
 
+    Puzzles:
+        None
+
+    Room Items:
+        - charcoal: got by using the command 'take charcoal'. Use in room 12, \
+        archives, by typing the command 'use charcoal' to get the 'scrap' item.
+
+    Features:
+        - ceiling
+        - painting: Once you get the scrap item from room 12, archives, type \
+        'use scrap' in this room to get a blessing of +1 attack power.
+        - table
+        - ruby
+        - charcoal: disappears after you use the command 'take charcoal'.
+        - dagger
+
+    Monsters:
+        None
+
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "tower hall"
@@ -904,7 +1125,7 @@ def init_room_11():
                     "table": table_feature, "ruby": ruby_feature,
                     "charcoal": charcoal_feature, "dagger": dagger_feature}
 
-    puzzle_dict = {"riddle": True}
+    puzzle_dict = None
 
     # Instantiate room object.
     tower_hall = Room(name, description, item_list, monster_list,
@@ -917,8 +1138,25 @@ def init_room_11():
 def init_room_12():
     """Instantiates archives.
 
+    Puzzles:
+        None
+
+    Room Items:
+        - mythril tongs: +8 magic power.
+        - scrap: Got by typing 'use charcoal' with charcoal in your \
+        inventory. Charcoal got from room 11, tower hall. Use scrap in room \
+        11, tower hall, to get a blessing.
+
+
+    Features:
+        - fireplace
+        - chandelier
+
+    Monsters:
+        Exelior, skeleton.
+
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "archives"
@@ -1014,8 +1252,26 @@ def init_room_12():
 def init_room_13():
     """Instantiates reading room.
 
+    Puzzles:
+        1. raven:
+            Trigger: Look at raven.
+
+            Disable: Type 'knock knock' after having looked at raven. Then
+            Type any two additional phrases when prompted.
+
+    Room Items:
+        - iron key: Got by completing the raven puzzle.
+
+    Features:
+        - tome
+        - couch
+        - raven
+
+    Monsters:
+        None
+
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "reading room"
@@ -1084,8 +1340,27 @@ def init_room_13():
 def init_room_14():
     """Instantiates Room of Last Rites.
 
+    Puzzles:
+        1. cage:
+            Trigger: Look at cage.
+
+            Disable: Type command 'use iron key', with the iron key item in
+            your inventory. Iron key item got by completing the raven puzzle
+            in room 13, the reading room.
+
+    Room Items:
+        - skull key: Got by completing cage puzzle in this room.
+
+    Features:
+        - bones
+        - hand print
+        - cage
+
+    Monsters:
+        None
+
     Returns:
-        :obj:Room: Room object.
+        :obj:`Room`: Room object.
 
     """
     name = "room of last rites"
@@ -1147,6 +1422,19 @@ def init_room_14():
 
 def init_room_15():
     """Instantiates Final Lair.
+
+    Puzzles:
+        None
+
+    Room Items:
+        None
+
+    Features:
+        - evelyn
+        - mirror
+
+    Monsters:
+        Zlor, warlock.
 
     Returns:
         :obj:Room: Room object.
@@ -1268,9 +1556,9 @@ def init_player_object(player_name, character_choice):
     magic_defense = 0
     magic_power = 3
     defense = 0
-    # attack_power = 3
+    attack_power = 3
     # This AP for Testing Only ADLFKSLDFKSLDKFSLDKF#@$@$@#$@#$
-    attack_power = 3000
+    # attack_power = 3000
     num_lives = 3
     experience = 0
     memory = []

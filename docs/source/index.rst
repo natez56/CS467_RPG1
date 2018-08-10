@@ -7,15 +7,19 @@ Welcome to nightfall's documentation!
 =====================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+   :caption: README Contents:
 
-   readme
+   README
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Game Modules:
 
-Indices and tables
-==================
+   nightfall
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+   :maxdepth: 1
+   :caption: Function Index
+
+   genindex

@@ -7,7 +7,7 @@ def general_item_handler(current_room, verb, item_name, feature):
     """Handle any non-unique verb and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room that the player is in.
+        current_room (:obj:`Room`): The current room that the player is in.
         verb (str): The action a user would like to take.
         item_name (str): The name of the item the user would like to use.
 
@@ -28,6 +28,9 @@ def general_item_handler(current_room, verb, item_name, feature):
 
     # Player can look at an item whether it is in inventory on in the room.
     elif verb == "look at":
+
+        # Ensures the the cipher text is correctly printed by using seperate
+        # print statements rather than just printing the feature description.
         if item_name == "book":
             if item_name in current_room.get_item_names():
                 scroll_print(current_room.get_item(item_name)
@@ -52,12 +55,14 @@ def general_item_handler(current_room, verb, item_name, feature):
             # When an item is dropped by the player it must be added to the
             # current room.
             current_room.add_item(item)
+
         else:
             scroll_print("You're not carrying that item currently.")
 
     elif verb == "eat":
         if item_name == "bread" and "bread" in player.get_item_names():
             player.use_item("bread")
+
             scroll_print("You scarf down the bread. It's delicious. You feel "
                          "healthier as a result.")
 
@@ -122,10 +127,10 @@ def general_item_handler(current_room, verb, item_name, feature):
 
 
 def room_1_item_handler(current_room, verb, item_name, feature):
-    """Handle room 1 player and item and room and item interactions.
+    """Handle room 1, fortress entrance, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
@@ -147,7 +152,7 @@ def room_1_item_handler(current_room, verb, item_name, feature):
 
 
 def room_2_item_handler(current_room, verb, item_name, feature):
-    """Handles room 2 player item or room item interactions.
+    """Handles room 2, entrance hall, player and item interactions.
 
     Args:
     current_room (:obj:Room): The current room that the player is in.
@@ -201,10 +206,10 @@ def room_2_item_handler(current_room, verb, item_name, feature):
 
 
 def room_3_item_handler(current_room, verb, item_name, feature):
-    """Handle room 3 player and item and room and item interactions.
+    """Handle room 3, mess hall, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
@@ -218,7 +223,7 @@ def room_3_item_handler(current_room, verb, item_name, feature):
 
 
 def room_4_item_handler(current_room, verb, item_name, feature):
-    """Handle room 4 player and item and room and item interactions.
+    """Handle room 4, store room, player and item interactions.
 
     Args:
         current_room (:obj:Room): The current room the player is in.
@@ -228,7 +233,8 @@ def room_4_item_handler(current_room, verb, item_name, feature):
     """
     player = current_room.get_player()
 
-    # The verb use has custom interactions for each room.
+    # Print custom message if user tries to use sword on vines or use sword
+    # when vines are in the room.
     if (verb == "use" and item_name == "sword" and
         "sword" in player.get_item_names() and
        current_room.get_puzzle_status("vines")):
@@ -237,6 +243,8 @@ def room_4_item_handler(current_room, verb, item_name, feature):
                      "each vine you hack off another grows in its place. "
                      "Better find another way to remove them...")
 
+    # Unlock the lock box revealed by looking at the shelves. Gives the player
+    # the letter item.
     elif (verb == "use" and item_name == "golden key" and
           "golden key" in player.get_item_names() and
           current_room.get_puzzle_status("lock box") and
@@ -247,6 +255,8 @@ def room_4_item_handler(current_room, verb, item_name, feature):
 
         player.use_item("golden key")
 
+        # Add letter item to player. This letter gives a hint as to how to
+        # open the mess hall engraved door.
         letter_name = "letter"
         letter_description = ("The letter is neat and well written, it reads:"
                               "                                    "
@@ -262,14 +272,21 @@ def room_4_item_handler(current_room, verb, item_name, feature):
 
         letter = Item(letter_name, letter_description, letter_durability,
                       letter_stats)
+
         player.add_item(letter)
+
+        # Set the lock box puzzle status to false so that it cannot be opened
+        # again.
         current_room.set_puzzle_status("lock box", False)
 
+    # Remove the vines and unlock the door by using the acidic ooze item. This
+    # item is got by using the jar in the kitchen.
     elif (verb == "use" and item_name == "acidic ooze" and
           "acidic ooze" in player.get_item_names() and
           current_room.get_puzzle_status("vines") and
           (feature is None or feature == "vines")):
 
+        # Set vines to false so that they cannot be removed twice.
         current_room.set_puzzle_status("vines", False)
 
         player.use_item("acidic ooze")
@@ -279,6 +296,7 @@ def room_4_item_handler(current_room, verb, item_name, feature):
                      "shrink away from the door. You can reach the stairwell "
                      "to the north.")
 
+        # Update room description so that vines are no longer present.
         description = ("The room you are in has large shelves that go from "
                        "floor ceiling. There is a stone area for "
                        "refrigeration where animal carcasses hang from the "
@@ -302,27 +320,34 @@ def room_4_item_handler(current_room, verb, item_name, feature):
 
 
 def room_5_item_handler(current_room, verb, item_name, feature):
-    """Handle room 5 player and item and room and item interactions.
+    """Handle room 5, kitchen, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
     """
     player = current_room.get_player()
 
+    # Pick up acidic ooze by using the jar.
     if (verb == "use" and item_name == "jar" and
         "jar" in player.get_item_names() and
        "acidic ooze" in current_room.get_item_names() and
             (feature is None or feature == "acidic ooze")):
 
         scroll_print("You use the jar to grab some of the ooze.")
+
         player.use_item("jar")
+
         ooze = current_room.get_item("acidic ooze")
+
+        # Remove ooze as the player has now picked it up.
         current_room.remove_item(ooze)
+
         current_room.set_puzzle_status("ooze", False)
 
+        # Add acidic ooze item to player.
         jar_name = "acidic ooze"
         jar_description = ("The jar is doing a good job of holding the "
                            "ooze.")
@@ -333,8 +358,10 @@ def room_5_item_handler(current_room, verb, item_name, feature):
 
         player.add_item(jar)
 
+    # Player cannot pick up the ooze. They must use the jar.
     elif (verb == "take" and item_name == "acidic ooze" and
           current_room.get_puzzle_status("ooze")):
+
         scroll_print("You reach out to grab some of the ooze. When you touch "
                      "it you feel a sharp burning sensation. Ouch! You "
                      "quickly run to the sink to wash your hand off. I better "
@@ -348,10 +375,10 @@ def room_5_item_handler(current_room, verb, item_name, feature):
 
 
 def room_6_item_handler(current_room, verb, item_name, feature):
-    """Handle room 6 player and item and room and item interactions.
+    """Handle room 6, washroom, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
@@ -365,16 +392,19 @@ def room_6_item_handler(current_room, verb, item_name, feature):
 
 
 def room_7_item_handler(current_room, verb, item_name, feature):
-    """Handle room 7 player and item and room and item interactions.
+    """Handle room 7, smoking room, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
     """
     player = current_room.get_player()
 
+    # Use Quackers when smoke is visible in the room to get the emerald key.
+    # Add the smoke feature to the room by first looking at the humidor
+    # and then looking at the ash tray.
     if (verb == "use" and item_name == "Quackers" and
         "Quackers" in player.get_item_names() and
        current_room.get_puzzle_status("smoke") and
@@ -389,6 +419,7 @@ def room_7_item_handler(current_room, verb, item_name, feature):
                      "and find an emerald key hanging from a small hook. The "
                      "smoke figure waves and then promptly disappears.\n")
 
+        # Update ash tray description to no longer mention smoke.
         ash_feature = ("The ash embers have cooled. You walk towards the ash "
                        "tray and just when you are about to touch it, the ash "
                        "from the ash tray spreads out towards the edges of "
@@ -396,11 +427,13 @@ def room_7_item_handler(current_room, verb, item_name, feature):
                        "spells out \"LEAVE NOW\""
                        )
 
+        # Remove smoke feature and update ash tray feature.
         current_room.remove_feature("ash tray")
         current_room.remove_feature("smoke")
 
         current_room.add_feature("ash tray", ash_feature)
 
+        # Add emerald key to player inventory.
         key_name = "emerald key"
         key_description = ("A key with a large emerald embedded in it. ")
         key_durability = 1
@@ -410,6 +443,7 @@ def room_7_item_handler(current_room, verb, item_name, feature):
 
         player.add_item(key)
 
+        # Quackers dropped in room.
         duck = player.drop_item("Quackers")
 
         current_room.add_item(duck)
@@ -422,26 +456,29 @@ def room_7_item_handler(current_room, verb, item_name, feature):
 
 
 def room_8_item_handler(current_room, verb, item_name, feature):
-    """Handle room 8 player and item and room and item interactions.
+    """Handle room 8, sleeping chambers, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
     """
     player = current_room.get_player()
 
+    # Use the emerald key to unlock the emerald lock box.
     if (verb == "use" and item_name == "emerald key" and
         "emerald key" in player.get_item_names() and
        current_room.get_puzzle_status("nightstand") and
        (feature is None or feature == "box")):
 
+        # Set puzzle to false so that this puzzle cannot be completed twice.
         current_room.set_puzzle_status("nightstand", False)
 
         scroll_print("You use the emerald key on the lock box and it opens. "
                      "Inside is a healing potion.")
 
+        # Add healing potion to player inventory.
         healing_potion_name = "healing potion"
         healing_potion_description = ("A glass vial of thick red liquid. ")
         healing_potion_durability = 1
@@ -451,6 +488,7 @@ def room_8_item_handler(current_room, verb, item_name, feature):
                               healing_potion_durability, healing_potion_stats)
 
         player.use_item("emerald key")
+
         player.add_item(healing_potion)
 
     # These verbs do not need unique room interactions.
@@ -461,10 +499,10 @@ def room_8_item_handler(current_room, verb, item_name, feature):
 
 
 def room_9_item_handler(current_room, verb, item_name, feature):
-    """Handle room 9 player and item and room and item interactions.
+    """Handle room 9, supplies closet, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
@@ -478,10 +516,10 @@ def room_9_item_handler(current_room, verb, item_name, feature):
 
 
 def room_10_item_handler(current_room, verb, item_name, feature):
-    """Handle room 10 player and item and room and item interactions.
+    """Handle room 10, sauna room, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
@@ -495,16 +533,19 @@ def room_10_item_handler(current_room, verb, item_name, feature):
 
 
 def room_11_item_handler(current_room, verb, item_name, feature):
-    """Handle room 10 player and item and room and item interactions.
+    """Handle room 11, tower hall, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
     """
     player = current_room.get_player()
 
+    # Use scrap of painting on painting to receive blessing giving you
+    # plus attack power. Scrap item got by using the charcoal item in room 12.
+    # Charcoal got in this room.
     if (verb == "use" and item_name == "scrap" and
        "scrap" in player.get_item_names() and
             (feature is None or feature == "painting")):
@@ -519,6 +560,9 @@ def room_11_item_handler(current_room, verb, item_name, feature):
                      "fight.\" As the voice fades you feel your strength "
                      "increase. +1 has been added to you attack power.")
 
+        # Scrap disappears from inventory.
+        player.use_item("scrap")
+
         attack_power = player.get_attack_power()
 
         player.set_attack_power(attack_power + 1)
@@ -531,20 +575,22 @@ def room_11_item_handler(current_room, verb, item_name, feature):
 
 
 def room_12_item_handler(current_room, verb, item_name, feature):
-    """Handle room 10 player and item and room and item interactions.
+    """Handle room 12, archives, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
     """
     player = current_room.get_player()
 
+    # Use charcoal to get the painting scrap.
     if (verb == "use" and item_name == "charcoal" and
        "charcoal" in player.get_item_names() and
             (feature is "charcoal" or feature == "fireplace")):
 
+        # Charcoal removed from inventory.
         player.use_item("charcoal")
 
         scroll_print("You throw the charcoal into the fire. There is a green "
@@ -552,6 +598,7 @@ def room_12_item_handler(current_room, verb, item_name, feature):
                      "into a small scrap of paper. You see that it is a "
                      "torn piece of a painting. A face is on the paper.")
 
+        # Add scrap to player inventory.
         scrap_name = "scrap"
         scrap_description = ("A torn piece of a painting. You can make out a "
                              "face on the canvas scrap.")
@@ -570,10 +617,10 @@ def room_12_item_handler(current_room, verb, item_name, feature):
 
 
 def room_13_item_handler(current_room, verb, item_name, feature):
-    """Handle room 10 player and item and room and item interactions.
+    """Handle room 13, reading room, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
@@ -587,24 +634,28 @@ def room_13_item_handler(current_room, verb, item_name, feature):
 
 
 def room_14_item_handler(current_room, verb, item_name, feature):
-    """Handle room 10 player and item and room and item interactions.
+    """Handle room 14, room of last rites, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 
     """
     player = current_room.get_player()
 
+    # Skull key unlocks the final door. Skull key got by completing the cage
+    # puzzle.
     if (verb == "use" and item_name == "skull key" and
        item_name in player.get_item_names()):
 
         player.use_item("skull key")
+
         scroll_print("The door to the final lair is now open")
 
         current_room.unlock("north")
 
+    # iron key got by completing the raven puzzle.
     elif (verb == "use" and item_name == "iron key" and
           item_name in player.get_item_names() and
           current_room.get_puzzle_status("cage") and
@@ -627,14 +678,20 @@ def room_14_item_handler(current_room, verb, item_name, feature):
                      "and then disappears. You feel a warm glow about you. "
                      "Your health returns to full.")
 
+        # Add skull key to player inventory.
         key_name = "skull key"
         key_description = ("The key has a skull on it. ")
         key_durability = 1
         key_stats = None
 
         skull_key = Item(key_name, key_description, key_durability, key_stats)
+
         player.add_item(skull_key)
+
+        # Set puzzle to false so that user cannot trigger custom descriptions
+        # related to it.
         current_room.set_puzzle_status("cage", False)
+
         current_room.remove_feature("fairy")
 
     # These verbs do not need unique room interactions.
@@ -645,10 +702,10 @@ def room_14_item_handler(current_room, verb, item_name, feature):
 
 
 def room_15_item_handler(current_room, verb, item_name, feature):
-    """Handle room 10 player and item and room and item interactions.
+    """Handle room 15, final lair, player and item interactions.
 
     Args:
-        current_room (:obj:Room): The current room the player is in.
+        current_room (:obj:`Room`): The current room the player is in.
         verb (str): The action the user would like to take.
         item_name: The name of the item the user would like to use.
 

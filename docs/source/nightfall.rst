@@ -1,8 +1,14 @@
 nightfall package
 =================
 
-Submodules
-----------
+
+nightfall.nightfall module
+--------------------------
+
+.. automodule:: nightfall.nightfall
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 nightfall.game\_classes module
 ------------------------------
@@ -58,15 +64,6 @@ nightfall.item\_handler module
     :show-inheritance:
 
 
-nightfall.nightfall module
---------------------------
-
-.. automodule:: nightfall.nightfall
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
 nightfall.scroll\_print module
 ------------------------------
 
@@ -80,15 +77,6 @@ nightfall.text\_parser module
 -----------------------------
 
 .. automodule:: nightfall.text_parser
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: nightfall
     :members:
     :undoc-members:
     :show-inheritance:
