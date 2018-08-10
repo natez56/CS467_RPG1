@@ -293,19 +293,31 @@ def move_alias_check(current_room_name, user_input):
                 ["door", "doors"],
                 ])
 
-    # generate invalid combinations:
+    # generate invalid combinations. This creates combinations using the move
+    # list and door/doors. Will generate combinations like "move door.". This
+    # is not valid due to their being multiple doors in a room.
     invalid_list = []
     total_invalid_list = []
+
+    # Combine the move_lists with door_list.
     for list_obj_1 in move_lists:
         for list_obj_2 in door_list:
             invalid_list.append(list_obj_1 + list_obj_2)
 
+    # Generate the actual invalid combinations.
     for word_list in invalid_list:
         _gen_invalid = (itertools.combinations(word_list, i + 1)
                         for i in range(len(word_list)))
+
         all_invalid = itertools.chain(*_gen_invalid)
+
         list_all_invalid = list(all_invalid)
+
         total_invalid_list += list_all_invalid
+
+    # Create a set of sentences that include spaces to check against. Uses the
+    # combinations generated in the above for loop.
+    invalid_combination = set(' '.join(i) for i in total_invalid_list)
 
     for key in possible_destinations:
         # List to hold the combinations of both movement commands and
@@ -334,10 +346,10 @@ def move_alias_check(current_room_name, user_input):
 
             combinations = list(all_combinations_gen)
 
-            # Door descriptions require that the word door or doors be in
-            # the command to travel to that door.
+            # Door descriptions require that the word door/doors or staircase
+            # be in the command to travel to that door.
             if i % 2 == 0:
-                # Must have word + door or word + doors
+                # Must have word + door or word + doors or word + staircase.
                 _gen_valid = (word_tuple for word_tuple in combinations
                               if (("door" in word_tuple and
                                    "doors" not in word_tuple) or
@@ -361,9 +373,7 @@ def move_alias_check(current_room_name, user_input):
             # are checking against
             combination_lists.append(valid_combination)
 
-        invalid_combination = set(' '.join(i) for i in total_invalid_list)
-
-        # Check for valid match
+        # Check for valid match. Also checks against sentence.
         for word_list in combination_lists:
             if (user_input in word_list and
                user_input not in invalid_combination):
@@ -376,18 +386,22 @@ def verb_alias_check(command):
     """Check for aliases of 10 core verbs.
 
     Args:
-        word_list (list(str)): Corresponds to clean_text in text_parser.py
-            file. Contains user input as a list of words.
+        command (str): Corresponds to new_command2 in text_parser.py
+            file. Is a string that is the user input.
 
     Returns:
         str: If an alias matches it returns one of the 10 core verbs the
             game uses. If an alias does not match it returns the unmodified
-            word_list as taken from text_parser.py
+            command string as taken from text_parser.py
 
     """
     alias_dictionary = {}
 
-    # Filled out dictionary for each of the 10 core verbs
+    # Filled out dictionary for each of the 10 core verbs. The order of the
+    # alias array matters. Multi-word aliases that have a single word
+    # counterpart, such as sniff at and sniff, must appear before their single
+    # word counterpart in the list. This is to prevent the function from
+    # replacing the single word without replacing the additional word "at".
     alias_dictionary["take"] = ["grab", "get", "obtain", "steal", "pick up"]
     alias_dictionary["use"] = ["utilize"]
     alias_dictionary["drop"] = ["leave behind", "leave", "get rid of", "lose"]
@@ -415,12 +429,31 @@ def verb_alias_check(command):
 
 
 def item_alias_check(command):
+    """Check for item aliases.
+
+    Args:
+        command (str): Corresponds to new_command2 in text_parser.py
+            file. Is a string that is the user input.
+
+    Returns:
+        str: If an alias matches it returns the item name that is used verbs
+            by the feature and item handler. If an alias does not match it
+            returns the unmodified command string as taken from text_parser.py
+
+    """
     alias_dictionary = {}
 
+    # Filled out dictionary for items. The order of the
+    # alias array matters. Multi-word aliases that have a single word
+    # counterpart, such as sniff at and sniff, must appear before their single
+    # word counterpart in the list. This is to prevent the function from
+    # replacing the single word without replacing the additional word "at".
     alias_dictionary['Quackers'] = ['rubber duck', 'quackers']
     alias_dictionary['box'] = ['lock box', 'emerald box']
     alias_dictionary['scrap'] = ['painting scrap']
 
+    # If the user enters "key" as part of their command, but does not specify
+    # the key type, this code will ask them to enter in the type.
     if ('key' in command and 'emerald' not in command and
         'golden' not in command and 'iron' not in command and
        'skull' not in command):
@@ -435,6 +468,7 @@ def item_alias_check(command):
 
         command = command.replace('key', new_input)
 
+    # Replace alias with item name used by the item_handler.
     for key in alias_dictionary:
         for word in alias_dictionary[key]:
             command = command.replace(word, key)

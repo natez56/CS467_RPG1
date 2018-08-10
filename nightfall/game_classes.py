@@ -6,12 +6,14 @@ class Room:
     """Room class representing primary game map that player navigates.
 
     Attributes:
+        name (str): The room name. For example, fortress entrance.
         description (tuple(str, str)): Contains long and short description of
             room. Long description at tuple[0], short description at tuple[1].
-        item_list (list(:obj:Item)): List of all Item objects in the room.
-        monster_list (list(:obj:Monster)): List of all Monster objects in room.
-        player (:obj:Player): Player object used to access player in the room.
-            Is None if no player is present.
+        item_list (list(:obj:`Item`)): List of all Item objects in the room.
+        monster_list (list(:obj:`Monster`)): List of all Monster objects in
+            room.
+        player (:obj:`Player`): Player object used to access player in the
+            room. Is None if no player is present.
         adjacent_rooms (dictionary(str, str)): Contains map of directions
             connected to room names that are accessible from current room. For
             example: {'south': 'fortress entrance'}.
@@ -137,6 +139,7 @@ class Character:
     """Character class parent to Monster and Player classes.
 
     Attributes:
+        name (str): The name of the character.
         health (int): Character dies when this reaches zero.
         magic (int): Using spells drains this attribute.
         level (int): Relative measure of toughness (the combination of all
@@ -219,9 +222,10 @@ class Player(Character):
         experience (int): Tracks points until next level.
         memory (list(str)): Tracks both features and items that a character
             has inspected.
-        backpack (list(:obj:Item)): Tracks items that the character is
+        backpack (list(:obj:`Item`)): Tracks items that the character is
             carrying.
-        equipped_item (:obj:Item): Tracks item that the character is using.
+        equipped_item (:obj:`Item`): Tracks item that the character is using.
+        rescue_evelyn (bool): Tracks if the game has ended.
 
     """
     def __init__(self, name, health, magic, level, magic_defense, magic_power,
@@ -242,21 +246,47 @@ class Player(Character):
     def set_experience(self, experience):
         self.experience = experience
 
-    def has_memory(self, thing):
-        if thing in self.memory:
+    def has_memory(self, room_name):
+        """Check if user has visited room.
+
+        Args:
+            room_name: Room name to check against
+
+        Returns:
+            bool: True if room has been visited before, False otherwise.
+
+        """
+        if room_name in self.memory:
             return True
         else:
             return False
 
-    def add_memory(self, thing):
-        if thing not in self.memory:
-            self.memory.append(thing)
+    def add_memory(self, room_name):
+        """Track which room user has visited.
+
+        Args:
+            room_name: Name of room being tracked.
+
+        """
+        if room_name not in self.memory:
+            self.memory.append(room_name)
 
     def drop_item(self, item_name):
+        """Removes item from inventory and returns it.
+
+        Args:
+            item_name: Name of item to be removed.
+
+        Returns:
+            :obj:`Item`: The item object removed from inventory.
+
+        """
+        # Check if item is equipped. Unequip it if it is.
         if (self.equipped_item is not None and
            self.equipped_item.get_name() == item_name):
             self.unequip_item()
 
+        # Remove item and return it.
         for item in self.backpack:
             if item.get_name() == item_name:
                 scroll_print("Removed item {} from inventory."
@@ -267,18 +297,23 @@ class Player(Character):
                 return item
 
     def add_item(self, item):
+        """Add item from room to player inventory."""
         scroll_print("Added {} to your inventory.".format(item.get_name()))
 
         self.backpack.append(item)
 
     def unequip_item(self):
+        """Unequip current equipped item."""
         item = self.equipped_item
 
         if item is not None:
+            # Remove item stats that were added when item was first equipped.
             stat_list = item.get_stats()
 
             scroll_print("Unequipped {}".format(item.get_name()))
 
+            # Check the specific item stat list for the presence of stats.
+            # Remove stats from player if found.
             for stat in stat_list:
                 if stat == 'health':
                     self.set_health(self.get_health() - stat_list['health'])
@@ -301,14 +336,24 @@ class Player(Character):
             self.equipped_item = None
 
     def equip_item(self, item):
+        """Equip item that is in player inventory to get stats.
+
+        Args:
+            item: The item object to be equipped
+
+        """
         if item in self.backpack and item.get_stats() is not None:
             if self.equipped_item is not None:
                 self.unequip_item()
 
             stat_list = item.get_stats()
+
             scroll_print("You equipped the {}.\n".format(item.get_name()))
+
             scroll_print("Stats gained:")
 
+            # Check specific item stat list for stats. For each stat found,
+            # add it to the player stats.
             for stat in stat_list:
                 if stat == 'health':
                     scroll_print("+{} health".format(stat_list['health']))
@@ -354,11 +399,13 @@ class Player(Character):
         return self.equipped_item
 
     def use_item(self, item_name):
+        """Simulate using item by removing item durability."""
         if item_name in self.get_item_names():
             item = self.get_item(item_name)
 
             item.decrement_durability()
 
+            # Item destroyed if durability is 0.
             if item.get_durability() == 0:
                 scroll_print("Item {} used and removed from inventory.\n"
                              .format(item_name))
@@ -392,6 +439,7 @@ class Player(Character):
         return name_list
 
     def level_up(self):
+        """Increase character stats when certain experience reached."""
         self.level += 1
         self.health += 10
         self.magic += 5
@@ -401,6 +449,12 @@ class Player(Character):
         self.attack_power += 1
 
     def get_attack_description(self, option):
+        """Prints the attack result for the user chosen attack.
+
+        Args:
+            option: The user choice of attack.
+
+        """
         if option == 0:
             scroll_print("   Slash: Make a large slash with your primary "
                          "weapon. ")
@@ -412,6 +466,15 @@ class Player(Character):
                          "on your primary weapon. ")
 
     def execute_attack(self, option):
+        """Calculates attack damage for user chosen attack.
+
+        Args:
+            option: The user chosen attack.
+
+        Returns:
+            int: The player's attack damage that will be done.
+
+        """
         if option == 'slash':
             # Randomize the damage based on the move and applicable equipment
             attack_damage = randint(0, self.attack_power)
@@ -450,6 +513,7 @@ class Player(Character):
             return attack_damage
 
     def print_stats(self):
+        """Prints the players stats."""
         scroll_print("Current Stats")
         scroll_print("Player Name: {}".format(self.name))
         scroll_print("Level: {}".format(self.level))
@@ -463,6 +527,12 @@ class Player(Character):
         scroll_print("Magic Defense: {}".format(self.magic_defense))
 
     def revive(self, level):
+        """Revive players that lose all their health.
+
+        Args:
+            level: The players current level.
+
+        """
         if level == 1:
             self.health = 50
             self.magic = 20
@@ -490,7 +560,7 @@ class Player(Character):
 class Wizard(Player):
     """Wizard class tracks the state of wizard characters.
 
-    Attributes:
+    Modifies Character attributes.
 
     """
     def __init__(self, name, health, magic, level, magic_defense, magic_power,
@@ -509,7 +579,7 @@ class Wizard(Player):
 class Ranger(Player):
     """Wizard class tracks the state of wizard characters.
 
-    Attributes:
+    Modifies Character attributes.
 
     """
     def __init__(self, name, health, magic, level, magic_defense, magic_power,
@@ -529,9 +599,8 @@ class Monster(Character):
     """Monster class tracks the state of monster characters.
 
     Attributes:
-        name (str): The name of the monster.
         description (str): The description of the monster.
-        loot (item): The item that the monster drops.
+        loot (int): Integer loot.
 
     """
     def __init__(self, name, description, loot, health, magic, level,
@@ -552,7 +621,16 @@ class Monster(Character):
         return self.loot
 
     def npc_attack(self, attack_type):
-        # Randomly select a melee or magic attack
+        """Calculate the monster attack damage.
+
+        Args:
+            attack_type: The monster chosen attack.
+
+        Returns:
+            int: The calculated monster attack damage.
+
+        """
+        # Randomly select a melee or magic attack.
         if attack_type == 0:
             scroll_print("\n%s swung their weapon at you! " % (self.name))
 
@@ -570,10 +648,10 @@ class Monster(Character):
 
             else:
                 # Randomize the damage based on the move and
-                # applicable equipment
+                # applicable equipment.
                 attack_damage = randint(0, self.magic_power)
 
-                # Adjust the player's stats
+                # Adjust the player's stats.
                 self.magic -= 3
 
             return attack_damage
@@ -585,6 +663,7 @@ class Item():
     Attributes:
         name (str): Name that the item is called.
         description (str): Description of the characteristics of the item.
+        durability (int): The amount of times this item can be used.
         stats (dictionary(str, int)): Stats that item boosts.
 
     """
@@ -604,6 +683,7 @@ class Item():
         return self.durability
 
     def decrement_durability(self):
+        """Remove 1 point of item durability."""
         if self.durability is not None:
             self.durability -= 1
 

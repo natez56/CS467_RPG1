@@ -393,6 +393,8 @@ def parse_input(input, current_room):
 
     # Check for extra, unrecognized words in input
     numTokens = 0
+
+    # Used to track cases where feature and item have the same name.
     prevValue = ""
 
     if "on" in clean_text:
@@ -402,6 +404,8 @@ def parse_input(input, current_room):
     if done is False and assigned_tokens['error'] is None:
         # count how many assigned tokens in input
         for key, value in assigned_tokens.items():
+            # Checks against feature and item having the same name. Will not
+            # Count twice in this case.
             if value is not None and value != prevValue:
                 # count the number of words in the token
                 numTokens = numTokens + len(value.split())
