@@ -206,14 +206,6 @@ class Character:
     def set_attack_power(self, attack_power):
         self.attack_power = attack_power
 
-    def get_attack_type(self, attack_choice):
-        if attack_choice == 'slash':
-            return 0
-        elif attack_choice == 'thunder':
-            return 1
-        else:
-            return 2
-
 
 class Player(Character):
     """Player class tracks the state of the user controlled Character.
@@ -518,7 +510,7 @@ class Wizard(Player):
             level: The player's level.
 
         """
-        scroll_print("   . ")
+        scroll_print("   1. ")
         scroll_print("   Thunder: Conjure the force of thunder and launch "
                      "it at the enemy. ")
         scroll_print("   Singe: Strike your opponent with a burning aura "
@@ -613,6 +605,14 @@ class Wizard(Player):
 
             return attack_damage
 
+    def get_attack_type(self, attack_choice):
+        if attack_choice == '':
+            return 0
+        elif attack_choice == 'thunder':
+            return 1
+        else:
+            return 2
+
 
 class Ranger(Player):
     """Wizard class tracks the state of wizard characters.
@@ -641,8 +641,8 @@ class Ranger(Player):
         """
         scroll_print("   Slash: Make a large slash with your primary "
                      "weapon. ")
-        scroll_print("   . ")
-        scroll_print("   . ")
+        scroll_print("   2. ")
+        scroll_print("   3. ")
         if level > 2:
             scroll_print("   Level 3 attack placeholder. ")
         if level > 4:
@@ -731,6 +731,14 @@ class Ranger(Player):
                 self.magic -= 3
 
             return attack_damage
+
+    def get_attack_type(self, attack_choice):
+        if attack_choice == 'slash':
+            return 0
+        elif attack_choice == '':
+            return 1
+        else:
+            return 2
 
 
 class Monster(Character):
