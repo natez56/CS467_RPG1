@@ -662,9 +662,6 @@ def combat(current_room, player, monster):
 
         while(invalid_choice):
             if player.check_invalid_attack(attack_choice, player.get_level()):
-                scroll_print("\nYou entered an invalid choice! ")
-                scroll_print("Please enter: Slash, Thunder, or Singe: ")
-
                 attack_choice = input().lower().strip()
             else:
                 invalid_choice = False

@@ -540,14 +540,28 @@ class Wizard(Player):
             if attack_choice != '1' and attack_choice != 'thunder' and \
                attack_choice != 'singe' and attack_choice != '4' and \
                attack_choice != '5':
+
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: 1, Thunder, Singe, 4, or 5: ")
+
                 return True
+
         elif level > 2:
             if attack_choice != '1' and attack_choice != 'thunder' and \
                attack_choice != 'singe' and attack_choice != '4':
+
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: 1, Thunder, Singe, or 4: ")
+
                 return True
+
         else:
             if attack_choice != '1' and attack_choice != 'thunder' and \
                attack_choice != 'singe':
+
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: 1, Thunder, or Singe: ")
+
                 return True
 
         return False
@@ -562,7 +576,7 @@ class Wizard(Player):
             int: The player's attack damage that will be done.
 
         """
-        if option == 'slash':
+        if option == '1':
             # Randomize the damage based on the move and applicable equipment
             attack_damage = randint(0, self.attack_power)
 
@@ -646,14 +660,27 @@ class Ranger(Player):
             if attack_choice != 'slash' and attack_choice != '2' and \
                attack_choice != '3' and attack_choice != '4' and \
                attack_choice != '5':
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: Slash, 2, 3, 4, or 5: ")
+
                 return True
+
         elif level > 2:
             if attack_choice != 'slash' and attack_choice != '2' and \
                attack_choice != '3' and attack_choice != '4':
+
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: Slash, 2, 3, or 4: ")
+
                 return True
+
         else:
             if attack_choice != 'slash' and attack_choice != '2' and \
                attack_choice != '3':
+
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: Slash, 2, or 3: ")
+
                 return True
 
         return False
@@ -674,7 +701,7 @@ class Ranger(Player):
 
             return attack_damage
 
-        elif option == 'thunder':
+        elif option == '2':
             if self.magic < 2:
                 scroll_print("You don't have enough magic! ")
                 attack_damage = 0
@@ -689,7 +716,7 @@ class Ranger(Player):
 
             return attack_damage
 
-        elif option == 'singe':
+        elif option == '3':
             if self.magic < 3:
                 scroll_print("You don't have enough magic! ")
                 attack_damage = 0
