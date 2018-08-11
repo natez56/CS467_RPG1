@@ -707,8 +707,9 @@ def combat(current_room, player, monster):
             # Level up the player if they have enough experience
             if new_experience_total >= 10:  # we will need to do balancing!!!
                 time.sleep(1)
-                scroll_print("\n%s has leveled up! " % player.get_name())
-                player.level_up()
+                scroll_print("\n%s has leveled up! " % (player.get_name()))
+                new_level = player.get_level() + 1
+                player.level_up(new_level)
 
                 # Carry over the excess experience into the new level
                 new_experience_total = new_experience_total - 10
@@ -760,8 +761,8 @@ def combat(current_room, player, monster):
                     time.sleep(1)
                     scroll_print("\nA small pink fairy flies around your "
                                  "body... ")
-                    scroll_print("You woke up! Your health has restored to "
-                                 "50 HP. ")
+                    scroll_print("You woke up! Your health and magic have "
+                                 "been restored. ")
                     # Reset the player's health and magic
                     # based on their level
                     player.revive(player.get_level())

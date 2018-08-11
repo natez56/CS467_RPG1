@@ -430,16 +430,6 @@ class Player(Character):
 
         return name_list
 
-    def level_up(self):
-        """Increase character stats when certain experience reached."""
-        self.level += 1
-        self.health += 10
-        self.magic += 5
-        self.magic_defense += 1
-        self.magic_power += 1
-        self.defense += 1
-        self.attack_power += 1
-
     def print_stats(self):
         """Prints the players stats."""
         scroll_print("Current Stats")
@@ -613,6 +603,22 @@ class Wizard(Player):
         else:
             return 2
 
+    def level_up(self, new_level):
+        """Increase character stats when certain experience reached."""
+        self.level += 1
+        self.health += 10
+        self.magic += 5
+        self.magic_defense += 1
+        self.magic_power += 1
+        self.defense += 1
+        self.attack_power += 1
+
+        if new_level == 3:
+            scroll_print("%s has learned 4! " % (self.name))
+
+        elif new_level == 5:
+            scroll_print("%s has learned 5! " % (self.name))
+
 
 class Ranger(Player):
     """Wizard class tracks the state of wizard characters.
@@ -739,6 +745,22 @@ class Ranger(Player):
             return 1
         else:
             return 2
+
+    def level_up(self, new_level):
+        """Increase character stats when certain experience reached."""
+        self.level += 1
+        self.health += 10
+        self.magic += 5
+        self.magic_defense += 1
+        self.magic_power += 1
+        self.defense += 1
+        self.attack_power += 1
+
+        if new_level == 3:
+            scroll_print("%s has learned 4! " % (self.name))
+
+        elif new_level == 5:
+            scroll_print("%s has learned 5! " % (self.name))
 
 
 class Monster(Character):
