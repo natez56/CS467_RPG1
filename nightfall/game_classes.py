@@ -507,7 +507,7 @@ class Wizard(Player):
         scroll_print("   Singe: Strike your opponent with a burning aura "
                      "on your primary weapon. ")
         if level > 2:
-            scroll_print("   Level 3 attack placeholder. ")
+            scroll_print("   Inferno: Engulf the enemy in a burning inferno. ")
         if level > 4:
             scroll_print("   Level 5 attack placeholder. ")
 
@@ -521,20 +521,22 @@ class Wizard(Player):
         """
         if level > 4:
             if attack_choice != 'bash' and attack_choice != 'thunder' and \
-               attack_choice != 'singe' and attack_choice != '4' and \
+               attack_choice != 'singe' and attack_choice != 'inferno' and \
                attack_choice != '5':
 
                 scroll_print("\nYou entered an invalid choice! ")
-                scroll_print("Please enter: Bash, Thunder, Singe, 4, or 5: ")
+                scroll_print("Please enter: Bash, Thunder, Singe, Inferno, or "
+                             "5: ")
 
                 return True
 
         elif level > 2:
             if attack_choice != 'bash' and attack_choice != 'thunder' and \
-               attack_choice != 'singe' and attack_choice != '4':
+               attack_choice != 'singe' and attack_choice != 'inferno':
 
                 scroll_print("\nYou entered an invalid choice! ")
-                scroll_print("Please enter: Bash, Thunder, Singe, or 4: ")
+                scroll_print("Please enter: Bash, Thunder, Singe, or Inferno: "
+                             )
 
                 return True
 
@@ -596,10 +598,25 @@ class Wizard(Player):
 
             return attack_damage
 
+        elif option == 'inferno':
+            if self.magic < 5:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power * 2))
+
+                # Adjust the player's stats
+                self.magic -= 5
+
+            return attack_damage
+
     def get_attack_type(self, attack_choice):
         if attack_choice == 'bash':
             return 0
-        elif attack_choice == 'thunder':
+        elif attack_choice == 'thunder' or attack_choice == 'inferno':
             return 1
         else:
             return 2
@@ -615,7 +632,7 @@ class Wizard(Player):
         self.attack_power += 1
 
         if new_level == 3:
-            scroll_print("%s has learned 4! " % (self.name))
+            scroll_print("%s has learned Inferno! " % (self.name))
 
         elif new_level == 5:
             scroll_print("%s has learned 5! " % (self.name))
