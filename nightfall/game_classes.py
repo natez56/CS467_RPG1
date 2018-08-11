@@ -687,7 +687,8 @@ class Ranger(Player):
         scroll_print("   Sharpshot: Conjour three magical arrows and "
                      "shoot them at the enemy. ")
         if level > 2:
-            scroll_print("   Level 3 attack placeholder. ")
+            scroll_print("   Cleave: Swing your weapon hard at the "
+                         "enemy's center mass. ")
         if level > 4:
             scroll_print("   Level 5 attack placeholder. ")
 
@@ -701,21 +702,21 @@ class Ranger(Player):
         """
         if level > 4:
             if attack_choice != 'slash' and attack_choice != 'snare' and \
-               attack_choice != 'sharpshot' and attack_choice != '4' and \
+               attack_choice != 'sharpshot' and attack_choice != 'cleave' and \
                attack_choice != '5':
                 scroll_print("\nYou entered an invalid choice! ")
                 scroll_print("Please enter: Slash, Snare, Sharpshot, "
-                             "4 or 5: ")
+                             "Cleave or 5: ")
 
                 return True
 
         elif level > 2:
             if attack_choice != 'slash' and attack_choice != 'snare' and \
-               attack_choice != 'sharpshot' and attack_choice != '4':
+               attack_choice != 'sharpshot' and attack_choice != 'cleave':
 
                 scroll_print("\nYou entered an invalid choice! ")
                 scroll_print("Please enter: Slash, Snare, Sharpshot, or "
-                             "4: ")
+                             "Cleave: ")
 
                 return True
 
@@ -777,8 +778,14 @@ class Ranger(Player):
 
             return attack_damage
 
+        elif option == 'cleave':
+            # Randomize the damage based on the move and applicable equipment
+            attack_damage = randint(0, (self.attack_power * 2))
+
+            return attack_damage
+
     def get_attack_type(self, attack_choice):
-        if attack_choice == 'slash':
+        if attack_choice == 'slash' or attack_choice == 'cleave':
             return 0
         elif attack_choice == 'snare':
             return 1
@@ -796,7 +803,7 @@ class Ranger(Player):
         self.attack_power += 1
 
         if new_level == 3:
-            scroll_print("%s has learned 4! " % (self.name))
+            scroll_print("%s has learned Cleave! " % (self.name))
 
         elif new_level == 5:
             scroll_print("%s has learned 5! " % (self.name))
