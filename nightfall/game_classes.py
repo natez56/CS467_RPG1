@@ -500,7 +500,8 @@ class Wizard(Player):
             level: The player's level.
 
         """
-        scroll_print("   1. ")
+        scroll_print("   Bash: Swing your weapon at the enemy to bludgeon "
+                     "them. ")
         scroll_print("   Thunder: Conjure the force of thunder and launch "
                      "it at the enemy. ")
         scroll_print("   Singe: Strike your opponent with a burning aura "
@@ -519,30 +520,30 @@ class Wizard(Player):
 
         """
         if level > 4:
-            if attack_choice != '1' and attack_choice != 'thunder' and \
+            if attack_choice != 'bash' and attack_choice != 'thunder' and \
                attack_choice != 'singe' and attack_choice != '4' and \
                attack_choice != '5':
 
                 scroll_print("\nYou entered an invalid choice! ")
-                scroll_print("Please enter: 1, Thunder, Singe, 4, or 5: ")
+                scroll_print("Please enter: Bash, Thunder, Singe, 4, or 5: ")
 
                 return True
 
         elif level > 2:
-            if attack_choice != '1' and attack_choice != 'thunder' and \
+            if attack_choice != 'bash' and attack_choice != 'thunder' and \
                attack_choice != 'singe' and attack_choice != '4':
 
                 scroll_print("\nYou entered an invalid choice! ")
-                scroll_print("Please enter: 1, Thunder, Singe, or 4: ")
+                scroll_print("Please enter: Bash, Thunder, Singe, or 4: ")
 
                 return True
 
         else:
-            if attack_choice != '1' and attack_choice != 'thunder' and \
+            if attack_choice != 'bash' and attack_choice != 'thunder' and \
                attack_choice != 'singe':
 
                 scroll_print("\nYou entered an invalid choice! ")
-                scroll_print("Please enter: 1, Thunder, or Singe: ")
+                scroll_print("Please enter: Bash, Thunder, or Singe: ")
 
                 return True
 
@@ -558,7 +559,7 @@ class Wizard(Player):
             int: The player's attack damage that will be done.
 
         """
-        if option == '1':
+        if option == 'bash':
             # Randomize the damage based on the move and applicable equipment
             attack_damage = randint(0, self.attack_power)
 
@@ -596,7 +597,7 @@ class Wizard(Player):
             return attack_damage
 
     def get_attack_type(self, attack_choice):
-        if attack_choice == '':
+        if attack_choice == 'bash':
             return 0
         elif attack_choice == 'thunder':
             return 1
