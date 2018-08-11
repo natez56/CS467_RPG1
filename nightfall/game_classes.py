@@ -648,8 +648,10 @@ class Ranger(Player):
         """
         scroll_print("   Slash: Make a large slash with your primary "
                      "weapon. ")
-        scroll_print("   2. ")
-        scroll_print("   3. ")
+        scroll_print("   Snare: Cast a spell that causes thorny vines "
+                     "to burst from the ground and slice the enemy. ")
+        scroll_print("   Sharpshot: Conjour three magical arrows and "
+                     "shoot them at the enemy. ")
         if level > 2:
             scroll_print("   Level 3 attack placeholder. ")
         if level > 4:
@@ -664,29 +666,31 @@ class Ranger(Player):
 
         """
         if level > 4:
-            if attack_choice != 'slash' and attack_choice != '2' and \
-               attack_choice != '3' and attack_choice != '4' and \
+            if attack_choice != 'slash' and attack_choice != 'snare' and \
+               attack_choice != 'sharpshot' and attack_choice != '4' and \
                attack_choice != '5':
                 scroll_print("\nYou entered an invalid choice! ")
-                scroll_print("Please enter: Slash, 2, 3, 4, or 5: ")
+                scroll_print("Please enter: Slash, Snare, Sharpshot, "
+                             "4 or 5: ")
 
                 return True
 
         elif level > 2:
-            if attack_choice != 'slash' and attack_choice != '2' and \
-               attack_choice != '3' and attack_choice != '4':
+            if attack_choice != 'slash' and attack_choice != 'snare' and \
+               attack_choice != 'sharpshot' and attack_choice != '4':
 
                 scroll_print("\nYou entered an invalid choice! ")
-                scroll_print("Please enter: Slash, 2, 3, or 4: ")
+                scroll_print("Please enter: Slash, Snare, Sharpshot, or "
+                             "4: ")
 
                 return True
 
         else:
-            if attack_choice != 'slash' and attack_choice != '2' and \
-               attack_choice != '3':
+            if attack_choice != 'slash' and attack_choice != 'snare' and \
+               attack_choice != 'sharpshot':
 
                 scroll_print("\nYou entered an invalid choice! ")
-                scroll_print("Please enter: Slash, 2, or 3: ")
+                scroll_print("Please enter: Slash, Snare, or Sharpshot: ")
 
                 return True
 
@@ -708,7 +712,7 @@ class Ranger(Player):
 
             return attack_damage
 
-        elif option == '2':
+        elif option == 'snare':
             if self.magic < 2:
                 scroll_print("You don't have enough magic! ")
                 attack_damage = 0
@@ -723,7 +727,7 @@ class Ranger(Player):
 
             return attack_damage
 
-        elif option == '3':
+        elif option == 'sharpshot':
             if self.magic < 3:
                 scroll_print("You don't have enough magic! ")
                 attack_damage = 0
@@ -742,7 +746,7 @@ class Ranger(Player):
     def get_attack_type(self, attack_choice):
         if attack_choice == 'slash':
             return 0
-        elif attack_choice == '':
+        elif attack_choice == 'snare':
             return 1
         else:
             return 2
