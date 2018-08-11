@@ -448,53 +448,6 @@ class Player(Character):
         self.defense += 1
         self.attack_power += 1
 
-    def execute_attack(self, option):
-        """Calculates attack damage for user chosen attack.
-
-        Args:
-            option: The user chosen attack.
-
-        Returns:
-            int: The player's attack damage that will be done.
-
-        """
-        if option == 'slash':
-            # Randomize the damage based on the move and applicable equipment
-            attack_damage = randint(0, self.attack_power)
-
-            return attack_damage
-
-        elif option == 'thunder':
-            if self.magic < 2:
-                scroll_print("You don't have enough magic! ")
-                attack_damage = 0
-
-            else:
-                # Randomize the damage based on the move and
-                # applicable equipment
-                attack_damage = randint(0, self.magic_power)
-
-                # Adjust the player's stats
-                self.magic -= 2
-
-            return attack_damage
-
-        elif option == 'singe':
-            if self.magic < 3:
-                scroll_print("You don't have enough magic! ")
-                attack_damage = 0
-
-            else:
-                # Randomize the damage based on the move and
-                # applicable equipment
-                attack_damage = randint(0, (self.magic_power +
-                                        self.attack_power))
-
-                # Adjust the player's stats
-                self.magic -= 3
-
-            return attack_damage
-
     def print_stats(self):
         """Prints the players stats."""
         scroll_print("Current Stats")
@@ -575,6 +528,53 @@ class Wizard(Player):
         if level > 4:
             scroll_print("   Level 5 attack placeholder. ")
 
+    def execute_attack(self, option):
+        """Calculates attack damage for user chosen attack.
+
+        Args:
+            option: The user chosen attack.
+
+        Returns:
+            int: The player's attack damage that will be done.
+
+        """
+        if option == 'slash':
+            # Randomize the damage based on the move and applicable equipment
+            attack_damage = randint(0, self.attack_power)
+
+            return attack_damage
+
+        elif option == 'thunder':
+            if self.magic < 2:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, self.magic_power)
+
+                # Adjust the player's stats
+                self.magic -= 2
+
+            return attack_damage
+
+        elif option == 'singe':
+            if self.magic < 3:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power +
+                                        self.attack_power))
+
+                # Adjust the player's stats
+                self.magic -= 3
+
+            return attack_damage
+
 
 class Ranger(Player):
     """Wizard class tracks the state of wizard characters.
@@ -609,6 +609,53 @@ class Ranger(Player):
             scroll_print("   Level 3 attack placeholder. ")
         if level > 4:
             scroll_print("   Level 5 attack placeholder. ")
+
+    def execute_attack(self, option):
+        """Calculates attack damage for user chosen attack.
+
+        Args:
+            option: The user chosen attack.
+
+        Returns:
+            int: The player's attack damage that will be done.
+
+        """
+        if option == 'slash':
+            # Randomize the damage based on the move and applicable equipment
+            attack_damage = randint(0, self.attack_power)
+
+            return attack_damage
+
+        elif option == 'thunder':
+            if self.magic < 2:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, self.magic_power)
+
+                # Adjust the player's stats
+                self.magic -= 2
+
+            return attack_damage
+
+        elif option == 'singe':
+            if self.magic < 3:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power +
+                                        self.attack_power))
+
+                # Adjust the player's stats
+                self.magic -= 3
+
+            return attack_damage
 
 
 class Monster(Character):
