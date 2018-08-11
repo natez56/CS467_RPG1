@@ -512,10 +512,10 @@ class Wizard(Player):
                          rescue_evelyn)
 
     def get_attack_description(self, level):
-        """Prints the attack result for the user chosen attack.
+        """Prints the attack options the player has given their level.
 
         Args:
-            option: The user choice of attack.
+            level: The player's level.
 
         """
         scroll_print("   . ")
@@ -527,6 +527,30 @@ class Wizard(Player):
             scroll_print("   Level 3 attack placeholder. ")
         if level > 4:
             scroll_print("   Level 5 attack placeholder. ")
+
+    def check_invalid_attack(self, attack_choice, level):
+        """Checks if the player selected an invalid attack.
+
+        Args:
+            attack_choice: The user choice of attack.
+            level: The player's level.
+
+        """
+        if level > 4:
+            if attack_choice != '1' and attack_choice != 'thunder' and \
+               attack_choice != 'singe' and attack_choice != '4' and \
+               attack_choice != '5':
+                return True
+        elif level > 2:
+            if attack_choice != '1' and attack_choice != 'thunder' and \
+               attack_choice != 'singe' and attack_choice != '4':
+                return True
+        else:
+            if attack_choice != '1' and attack_choice != 'thunder' and \
+               attack_choice != 'singe':
+                return True
+
+        return False
 
     def execute_attack(self, option):
         """Calculates attack damage for user chosen attack.
@@ -595,10 +619,10 @@ class Ranger(Player):
                          rescue_evelyn)
 
     def get_attack_description(self, level):
-        """Prints the attack result for the user chosen attack.
+        """Prints the attack options the player has given their level.
 
         Args:
-            option: The user choice of attack.
+            level: The player's level.
 
         """
         scroll_print("   Slash: Make a large slash with your primary "
@@ -609,6 +633,30 @@ class Ranger(Player):
             scroll_print("   Level 3 attack placeholder. ")
         if level > 4:
             scroll_print("   Level 5 attack placeholder. ")
+
+    def check_invalid_attack(self, attack_choice, level):
+        """Checks if the player selected an invalid attack.
+
+        Args:
+            attack_choice: The user choice of attack.
+            level: The player's level.
+
+        """
+        if level > 4:
+            if attack_choice != 'slash' and attack_choice != '2' and \
+               attack_choice != '3' and attack_choice != '4' and \
+               attack_choice != '5':
+                return True
+        elif level > 2:
+            if attack_choice != 'slash' and attack_choice != '2' and \
+               attack_choice != '3' and attack_choice != '4':
+                return True
+        else:
+            if attack_choice != 'slash' and attack_choice != '2' and \
+               attack_choice != '3':
+                return True
+
+        return False
 
     def execute_attack(self, option):
         """Calculates attack damage for user chosen attack.
