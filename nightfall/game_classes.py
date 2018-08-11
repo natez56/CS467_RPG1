@@ -504,7 +504,7 @@ class Wizard(Player):
                      "them. ")
         scroll_print("   Thunder: Conjure the force of thunder and launch "
                      "it at the enemy. ")
-        scroll_print("   Singe: Strike your opponent with a burning aura "
+        scroll_print("   Singe: Strike your opponent with a freezing aura "
                      "on your primary weapon. ")
         if level > 2:
             scroll_print("   Inferno: Engulf the enemy in a burning inferno. ")
@@ -690,7 +690,8 @@ class Ranger(Player):
             scroll_print("   Cleave: Swing your weapon hard at the "
                          "enemy's center mass. ")
         if level > 4:
-            scroll_print("   Level 5 attack placeholder. ")
+            scroll_print("   Sever: Cast a spell to make your weapon "
+                         "burning hot, then swing it with all of your might. ")
 
     def check_invalid_attack(self, attack_choice, level):
         """Checks if the player selected an invalid attack.
@@ -703,10 +704,10 @@ class Ranger(Player):
         if level > 4:
             if attack_choice != 'slash' and attack_choice != 'snare' and \
                attack_choice != 'sharpshot' and attack_choice != 'cleave' and \
-               attack_choice != '5':
+               attack_choice != 'sever':
                 scroll_print("\nYou entered an invalid choice! ")
                 scroll_print("Please enter: Slash, Snare, Sharpshot, "
-                             "Cleave or 5: ")
+                             "Cleave or Sever: ")
 
                 return True
 
@@ -784,6 +785,22 @@ class Ranger(Player):
 
             return attack_damage
 
+        elif option == 'sever':
+            if self.magic < 5:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power +
+                                        (self.attack_power * 2)))
+
+                # Adjust the player's stats
+                self.magic -= 5
+
+            return attack_damage
+
     def get_attack_type(self, attack_choice):
         if attack_choice == 'slash' or attack_choice == 'cleave':
             return 0
@@ -806,7 +823,7 @@ class Ranger(Player):
             scroll_print("%s has learned Cleave! " % (self.name))
 
         elif new_level == 5:
-            scroll_print("%s has learned 5! " % (self.name))
+            scroll_print("%s has learned Sever! " % (self.name))
 
 
 class Monster(Character):
