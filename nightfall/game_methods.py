@@ -653,9 +653,7 @@ def combat(current_room, player, monster):
         # Allow the player to choose their move
         # Output player combat options
         scroll_print("\nPlease select which move you want: ")
-        player.get_attack_description(0)
-        player.get_attack_description(1)
-        player.get_attack_description(2)
+        player.get_attack_description(player.get_level())
 
         # Get the player's choice
         attack_choice = input().lower().strip()

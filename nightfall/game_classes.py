@@ -448,22 +448,24 @@ class Player(Character):
         self.defense += 1
         self.attack_power += 1
 
-    def get_attack_description(self, option):
+    def get_attack_description(self, level):
         """Prints the attack result for the user chosen attack.
 
         Args:
             option: The user choice of attack.
 
         """
-        if option == 0:
+        if level < 3:
             scroll_print("   Slash: Make a large slash with your primary "
                          "weapon. ")
-        elif option == 1:
             scroll_print("   Thunder: Conjure the force of thunder and launch "
                          "it at the enemy. ")
-        elif option == 2:
             scroll_print("   Singe: Strike your opponent with a burning aura "
                          "on your primary weapon. ")
+        if level > 2:
+            scroll_print("   Level 3 attack placeholder. ")
+        if level > 4:
+            scroll_print("   Level 5 attack placeholder. ")
 
     def execute_attack(self, option):
         """Calculates attack damage for user chosen attack.
