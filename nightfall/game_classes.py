@@ -448,25 +448,6 @@ class Player(Character):
         self.defense += 1
         self.attack_power += 1
 
-    def get_attack_description(self, level):
-        """Prints the attack result for the user chosen attack.
-
-        Args:
-            option: The user choice of attack.
-
-        """
-        if level < 3:
-            scroll_print("   Slash: Make a large slash with your primary "
-                         "weapon. ")
-            scroll_print("   Thunder: Conjure the force of thunder and launch "
-                         "it at the enemy. ")
-            scroll_print("   Singe: Strike your opponent with a burning aura "
-                         "on your primary weapon. ")
-        if level > 2:
-            scroll_print("   Level 3 attack placeholder. ")
-        if level > 4:
-            scroll_print("   Level 5 attack placeholder. ")
-
     def execute_attack(self, option):
         """Calculates attack damage for user chosen attack.
 
@@ -519,7 +500,7 @@ class Player(Character):
         scroll_print("Current Stats")
         scroll_print("Player Name: {}".format(self.name))
         scroll_print("Level: {}".format(self.level))
-        scroll_print("Experience {}".format(self.experience))
+        scroll_print("Experience: {}".format(self.experience))
         scroll_print("Remaining Lives: {}".format(self.num_lives))
         scroll_print("Health: {}".format(self.health))
         scroll_print("Magic: {}".format(self.magic))
@@ -577,6 +558,23 @@ class Wizard(Player):
                          experience, memory, backpack, equipped_item,
                          rescue_evelyn)
 
+    def get_attack_description(self, level):
+        """Prints the attack result for the user chosen attack.
+
+        Args:
+            option: The user choice of attack.
+
+        """
+        scroll_print("   . ")
+        scroll_print("   Thunder: Conjure the force of thunder and launch "
+                     "it at the enemy. ")
+        scroll_print("   Singe: Strike your opponent with a burning aura "
+                     "on your primary weapon. ")
+        if level > 2:
+            scroll_print("   Level 3 attack placeholder. ")
+        if level > 4:
+            scroll_print("   Level 5 attack placeholder. ")
+
 
 class Ranger(Player):
     """Wizard class tracks the state of wizard characters.
@@ -595,6 +593,22 @@ class Ranger(Player):
                          magic_power, defense, attack_power, num_lives,
                          experience, memory, backpack, equipped_item,
                          rescue_evelyn)
+
+    def get_attack_description(self, level):
+        """Prints the attack result for the user chosen attack.
+
+        Args:
+            option: The user choice of attack.
+
+        """
+        scroll_print("   Slash: Make a large slash with your primary "
+                     "weapon. ")
+        scroll_print("   . ")
+        scroll_print("   . ")
+        if level > 2:
+            scroll_print("   Level 3 attack placeholder. ")
+        if level > 4:
+            scroll_print("   Level 5 attack placeholder. ")
 
 
 class Monster(Character):
