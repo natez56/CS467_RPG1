@@ -509,7 +509,8 @@ class Wizard(Player):
         if level > 2:
             scroll_print("   Inferno: Engulf the enemy in a burning inferno. ")
         if level > 4:
-            scroll_print("   Level 5 attack placeholder. ")
+            scroll_print("   Corrupt: Enter the mind of the enemy and torment "
+                         "their psyche.")
 
     def check_invalid_attack(self, attack_choice, level):
         """Checks if the player selected an invalid attack.
@@ -522,11 +523,11 @@ class Wizard(Player):
         if level > 4:
             if attack_choice != 'bash' and attack_choice != 'thunder' and \
                attack_choice != 'singe' and attack_choice != 'inferno' and \
-               attack_choice != '5':
+               attack_choice != 'corrupt':
 
                 scroll_print("\nYou entered an invalid choice! ")
                 scroll_print("Please enter: Bash, Thunder, Singe, Inferno, or "
-                             "5: ")
+                             "Corrupt: ")
 
                 return True
 
@@ -613,10 +614,26 @@ class Wizard(Player):
 
             return attack_damage
 
+        elif option == 'corrupt':
+            if self.magic < 7:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power * 3))
+
+                # Adjust the player's stats
+                self.magic -= 7
+
+            return attack_damage
+
     def get_attack_type(self, attack_choice):
         if attack_choice == 'bash':
             return 0
-        elif attack_choice == 'thunder' or attack_choice == 'inferno':
+        elif attack_choice == 'thunder' or attack_choice == 'inferno' or \
+             attack_choice == 'corrupt':
             return 1
         else:
             return 2
@@ -635,7 +652,7 @@ class Wizard(Player):
             scroll_print("%s has learned Inferno! " % (self.name))
 
         elif new_level == 5:
-            scroll_print("%s has learned 5! " % (self.name))
+            scroll_print("%s has learned Corrupt! " % (self.name))
 
 
 class Ranger(Player):
