@@ -206,14 +206,6 @@ class Character:
     def set_attack_power(self, attack_power):
         self.attack_power = attack_power
 
-    def get_attack_type(self, attack_choice):
-        if attack_choice == 'slash':
-            return 0
-        elif attack_choice == 'thunder':
-            return 1
-        else:
-            return 2
-
 
 class Player(Character):
     """Player class tracks the state of the user controlled Character.
@@ -438,85 +430,12 @@ class Player(Character):
 
         return name_list
 
-    def level_up(self):
-        """Increase character stats when certain experience reached."""
-        self.level += 1
-        self.health += 10
-        self.magic += 5
-        self.magic_defense += 1
-        self.magic_power += 1
-        self.defense += 1
-        self.attack_power += 1
-
-    def get_attack_description(self, option):
-        """Prints the attack result for the user chosen attack.
-
-        Args:
-            option: The user choice of attack.
-
-        """
-        if option == 0:
-            scroll_print("   Slash: Make a large slash with your primary "
-                         "weapon. ")
-        elif option == 1:
-            scroll_print("   Thunder: Conjure the force of thunder and launch "
-                         "it at the enemy. ")
-        elif option == 2:
-            scroll_print("   Singe: Strike your opponent with a burning aura "
-                         "on your primary weapon. ")
-
-    def execute_attack(self, option):
-        """Calculates attack damage for user chosen attack.
-
-        Args:
-            option: The user chosen attack.
-
-        Returns:
-            int: The player's attack damage that will be done.
-
-        """
-        if option == 'slash':
-            # Randomize the damage based on the move and applicable equipment
-            attack_damage = randint(0, self.attack_power)
-
-            return attack_damage
-
-        elif option == 'thunder':
-            if self.magic < 2:
-                scroll_print("You don't have enough magic! ")
-                attack_damage = 0
-
-            else:
-                # Randomize the damage based on the move and
-                # applicable equipment
-                attack_damage = randint(0, self.magic_power)
-
-                # Adjust the player's stats
-                self.magic -= 2
-
-            return attack_damage
-
-        elif option == 'singe':
-            if self.magic < 3:
-                scroll_print("You don't have enough magic! ")
-                attack_damage = 0
-
-            else:
-                # Randomize the damage based on the move and
-                # applicable equipment
-                attack_damage = randint(0, (self.magic_power +
-                                        self.attack_power))
-
-                # Adjust the player's stats
-                self.magic -= 3
-
-            return attack_damage
-
     def print_stats(self):
         """Prints the players stats."""
         scroll_print("Current Stats")
         scroll_print("Player Name: {}".format(self.name))
         scroll_print("Level: {}".format(self.level))
+        scroll_print("Experience: {}".format(self.experience))
         scroll_print("Remaining Lives: {}".format(self.num_lives))
         scroll_print("Health: {}".format(self.health))
         scroll_print("Magic: {}".format(self.magic))
@@ -574,6 +493,167 @@ class Wizard(Player):
                          experience, memory, backpack, equipped_item,
                          rescue_evelyn)
 
+    def get_attack_description(self, level):
+        """Prints the attack options the player has given their level.
+
+        Args:
+            level: The player's level.
+
+        """
+        scroll_print("   Bash: Swing your weapon at the enemy to bludgeon "
+                     "them. ")
+        scroll_print("   Thunder: Conjure the force of thunder and launch "
+                     "it at the enemy. ")
+        scroll_print("   Singe: Strike your opponent with a freezing aura "
+                     "on your primary weapon. ")
+        if level > 2:
+            scroll_print("   Inferno: Engulf the enemy in a burning inferno. ")
+        if level > 4:
+            scroll_print("   Corrupt: Enter the mind of the enemy and torment "
+                         "their psyche.")
+
+    def check_invalid_attack(self, attack_choice, level):
+        """Checks if the player selected an invalid attack.
+
+        Args:
+            attack_choice: The user choice of attack.
+            level: The player's level.
+
+        """
+        if level > 4:
+            if attack_choice != 'bash' and attack_choice != 'thunder' and \
+               attack_choice != 'singe' and attack_choice != 'inferno' and \
+               attack_choice != 'corrupt':
+
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: Bash, Thunder, Singe, Inferno, or "
+                             "Corrupt: ")
+
+                return True
+
+        elif level > 2:
+            if attack_choice != 'bash' and attack_choice != 'thunder' and \
+               attack_choice != 'singe' and attack_choice != 'inferno':
+
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: Bash, Thunder, Singe, or Inferno: "
+                             )
+
+                return True
+
+        else:
+            if attack_choice != 'bash' and attack_choice != 'thunder' and \
+               attack_choice != 'singe':
+
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: Bash, Thunder, or Singe: ")
+
+                return True
+
+        return False
+
+    def execute_attack(self, option):
+        """Calculates attack damage for user chosen attack.
+
+        Args:
+            option: The user chosen attack.
+
+        Returns:
+            int: The player's attack damage that will be done.
+
+        """
+        if option == 'bash':
+            # Randomize the damage based on the move and applicable equipment
+            attack_damage = randint(0, self.attack_power)
+
+            return attack_damage
+
+        elif option == 'thunder':
+            if self.magic < 2:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, self.magic_power)
+
+                # Adjust the player's stats
+                self.magic -= 2
+
+            return attack_damage
+
+        elif option == 'singe':
+            if self.magic < 3:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power +
+                                        self.attack_power))
+
+                # Adjust the player's stats
+                self.magic -= 3
+
+            return attack_damage
+
+        elif option == 'inferno':
+            if self.magic < 5:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power * 2))
+
+                # Adjust the player's stats
+                self.magic -= 5
+
+            return attack_damage
+
+        elif option == 'corrupt':
+            if self.magic < 7:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power * 3))
+
+                # Adjust the player's stats
+                self.magic -= 7
+
+            return attack_damage
+
+    def get_attack_type(self, attack_choice):
+        if attack_choice == 'bash':
+            return 0
+        elif attack_choice == 'thunder' or attack_choice == 'inferno' or \
+             attack_choice == 'corrupt':
+            return 1
+        else:
+            return 2
+
+    def level_up(self, new_level):
+        """Increase character stats when certain experience reached."""
+        self.level += 1
+        self.health += 10
+        self.magic += 5
+        self.magic_defense += 1
+        self.magic_power += 1
+        self.defense += 1
+        self.attack_power += 1
+
+        if new_level == 3:
+            scroll_print("%s has learned Inferno! " % (self.name))
+
+        elif new_level == 5:
+            scroll_print("%s has learned Corrupt! " % (self.name))
+
 
 class Ranger(Player):
     """Wizard class tracks the state of wizard characters.
@@ -592,6 +672,158 @@ class Ranger(Player):
                          magic_power, defense, attack_power, num_lives,
                          experience, memory, backpack, equipped_item,
                          rescue_evelyn)
+
+    def get_attack_description(self, level):
+        """Prints the attack options the player has given their level.
+
+        Args:
+            level: The player's level.
+
+        """
+        scroll_print("   Slash: Make a large slash with your primary "
+                     "weapon. ")
+        scroll_print("   Snare: Cast a spell that causes thorny vines "
+                     "to burst from the ground and slice the enemy. ")
+        scroll_print("   Sharpshot: Conjure three magical arrows and "
+                     "shoot them at the enemy. ")
+        if level > 2:
+            scroll_print("   Cleave: Swing your weapon hard at the "
+                         "enemy's center mass. ")
+        if level > 4:
+            scroll_print("   Sever: Cast a spell to make your weapon "
+                         "burning hot, then swing it with all of your might. ")
+
+    def check_invalid_attack(self, attack_choice, level):
+        """Checks if the player selected an invalid attack.
+
+        Args:
+            attack_choice: The user choice of attack.
+            level: The player's level.
+
+        """
+        if level > 4:
+            if attack_choice != 'slash' and attack_choice != 'snare' and \
+               attack_choice != 'sharpshot' and attack_choice != 'cleave' and \
+               attack_choice != 'sever':
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: Slash, Snare, Sharpshot, "
+                             "Cleave or Sever: ")
+
+                return True
+
+        elif level > 2:
+            if attack_choice != 'slash' and attack_choice != 'snare' and \
+               attack_choice != 'sharpshot' and attack_choice != 'cleave':
+
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: Slash, Snare, Sharpshot, or "
+                             "Cleave: ")
+
+                return True
+
+        else:
+            if attack_choice != 'slash' and attack_choice != 'snare' and \
+               attack_choice != 'sharpshot':
+
+                scroll_print("\nYou entered an invalid choice! ")
+                scroll_print("Please enter: Slash, Snare, or Sharpshot: ")
+
+                return True
+
+        return False
+
+    def execute_attack(self, option):
+        """Calculates attack damage for user chosen attack.
+
+        Args:
+            option: The user chosen attack.
+
+        Returns:
+            int: The player's attack damage that will be done.
+
+        """
+        if option == 'slash':
+            # Randomize the damage based on the move and applicable equipment
+            attack_damage = randint(0, self.attack_power)
+
+            return attack_damage
+
+        elif option == 'snare':
+            if self.magic < 2:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, self.magic_power)
+
+                # Adjust the player's stats
+                self.magic -= 2
+
+            return attack_damage
+
+        elif option == 'sharpshot':
+            if self.magic < 3:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power +
+                                        self.attack_power))
+
+                # Adjust the player's stats
+                self.magic -= 3
+
+            return attack_damage
+
+        elif option == 'cleave':
+            # Randomize the damage based on the move and applicable equipment
+            attack_damage = randint(0, (self.attack_power * 2))
+
+            return attack_damage
+
+        elif option == 'sever':
+            if self.magic < 5:
+                scroll_print("You don't have enough magic! ")
+                attack_damage = 0
+
+            else:
+                # Randomize the damage based on the move and
+                # applicable equipment
+                attack_damage = randint(0, (self.magic_power +
+                                        (self.attack_power * 2)))
+
+                # Adjust the player's stats
+                self.magic -= 5
+
+            return attack_damage
+
+    def get_attack_type(self, attack_choice):
+        if attack_choice == 'slash' or attack_choice == 'cleave':
+            return 0
+        elif attack_choice == 'snare':
+            return 1
+        else:
+            return 2
+
+    def level_up(self, new_level):
+        """Increase character stats when certain experience reached."""
+        self.level += 1
+        self.health += 10
+        self.magic += 5
+        self.magic_defense += 1
+        self.magic_power += 1
+        self.defense += 1
+        self.attack_power += 1
+
+        if new_level == 3:
+            scroll_print("%s has learned Cleave! " % (self.name))
+
+        elif new_level == 5:
+            scroll_print("%s has learned Sever! " % (self.name))
 
 
 class Monster(Character):

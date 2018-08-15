@@ -627,7 +627,7 @@ def travel(current_room, direction):
         scroll_print("There is no room in that direction!")
 
 
-def combat(player, monster):
+def combat(current_room, player, monster):
     """Function to allow for player monster rpg combat.
 
     Args:
@@ -646,12 +646,14 @@ def combat(player, monster):
     combat_continues = True
 
     while combat_continues:
+        # TESTING ONLY:
+        player.print_stats()
+        # TESTING ONLY 6789065906590659867tyue8y72yguherijwu8grufbhriugyy
+
         # Allow the player to choose their move
         # Output player combat options
         scroll_print("\nPlease select which move you want: ")
-        player.get_attack_description(0)
-        player.get_attack_description(1)
-        player.get_attack_description(2)
+        player.get_attack_description(player.get_level())
 
         # Get the player's choice
         attack_choice = input().lower().strip()
@@ -659,11 +661,7 @@ def combat(player, monster):
         invalid_choice = True
 
         while(invalid_choice):
-            if attack_choice != 'slash' and attack_choice != 'thunder' and \
-               attack_choice != 'singe':
-                scroll_print("\nYou entered an invalid choice! ")
-                scroll_print("Please enter: Slash, Thunder, or Singe: ")
-
+            if player.check_invalid_attack(attack_choice, player.get_level()):
                 attack_choice = input().lower().strip()
             else:
                 invalid_choice = False
@@ -709,8 +707,9 @@ def combat(player, monster):
             # Level up the player if they have enough experience
             if new_experience_total >= 10:  # we will need to do balancing!!!
                 time.sleep(1)
-                scroll_print("\n%s has leveled up! " % player.get_name())
-                player.level_up()
+                scroll_print("\n%s has leveled up! " % (player.get_name()))
+                new_level = player.get_level() + 1
+                player.level_up(new_level)
 
                 # Carry over the excess experience into the new level
                 new_experience_total = new_experience_total - 10
@@ -762,11 +761,15 @@ def combat(player, monster):
                     time.sleep(1)
                     scroll_print("\nA small pink fairy flies around your "
                                  "body... ")
-                    scroll_print("You woke up! Your health has restored to "
-                                 "50 HP. ")
+                    scroll_print("You woke up! Your health and magic have "
+                                 "been restored. ")
                     # Reset the player's health and magic
                     # based on their level
                     player.revive(player.get_level())
+
+    # Save the stats from the combat interactions
+    current_room.set_player(player)
+    save_object_state(current_room)
 
     return True
 

@@ -155,19 +155,6 @@ def parse_input(input, current_room):
                      'evelyn',
                      ]
 
-    # go_array = ['go', 'go to', 'move', 'move to', 'walk', 'walk to', 'run',
-    #             'run to']
-
-    # go_direction_array = []
-
-    # all_direction_array = [go_array, direction_array]
-
-    # # create array of all possible movement words + directions
-    # # filling all_direction_array
-    # for go in go_array:
-    #     for direction in direction_array:
-    #         go_direction_array.append(go + " " + direction)
-
     # this takes user input and puts it all into lowercase
     command = input.lower().strip()
     # ##### PRINT STATEMENT FOR TESTING #####
@@ -232,7 +219,7 @@ def parse_input(input, current_room):
     clean_text = new_command2.split()
     command_length = len(clean_text)
 
-    # CHECK FOR VERBS -- need to pop off words from array?
+    # CHECK FOR VERBS
     if done is False:
 
         # for each item in the verb array
@@ -279,18 +266,16 @@ def parse_input(input, current_room):
                 # many verbs
                 # to process
                 else:
-                    print("Too many verbs!")
-                    assigned_tokens['error'] = "Too many verbs"
+                    assigned_tokens['error'] = "You input too many verbs!"
                     invalid = True
                     # assigned_tokens['verb'] = None
 
     # WE NEED TO HAVE A FAILURE HERE -- commands must have verbs unless
     # they are a direction or standard action!
     if done is False and assigned_tokens['verb'] is None:
-        print("You may want to enter a verb, or at least a destination or "
-              "standard game action, like 'help'!\n")
-        assigned_tokens['error'] = ("Need verb, or least a destination or "
-                                    "standard action. ")
+        assigned_tokens['error'] = ("You need a recognized verb, or least a "
+                                    "destination or standard game action, "
+                                    "like \"help\"!")
         invalid = True
 
     # CHECK FOR ITEMS
@@ -337,8 +322,7 @@ def parse_input(input, current_room):
                 # if there was already an item, then this sentence has too many
                 # items to process
                 else:
-                    print("Too many items!")
-                    assigned_tokens['error'] = "Too many items"
+                    assigned_tokens['error'] = "You input too many items!"
                     invalid = True
                     # assigned_tokens['item'] = None
 
@@ -386,8 +370,7 @@ def parse_input(input, current_room):
                 # if there was already a feature, then this sentence has too
                 # many features to process
                 else:
-                    print("Too many features!")
-                    assigned_tokens['error'] = "Too many features"
+                    assigned_tokens['error'] = "You input too many features!"
                     invalid = True
                     # assigned_tokens['feature'] = None
 
@@ -418,7 +401,8 @@ def parse_input(input, current_room):
         # print(numTokens)
         # print(command_length)
         if numTokens != command_length:
-            assigned_tokens['error'] = "Extra, unrecognized words"
+            assigned_tokens['error'] = ("You input extra and/or unrecognized "
+                                        "words!")
             invalid = True
 
     # ##### PRINT STATEMENT FOR TESTING #####

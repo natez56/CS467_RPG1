@@ -36,25 +36,23 @@ def room_1_feature_handler(current_room, verb, feature):
             scroll_print("This body is too heavy to carry.")
 
         elif feature == "cloak":
-            scroll_print("The cloak is in tatters, better to leave it I "
-                         "think.")
+            scroll_print("The cloak is in tatters. Better to leave it.")
 
         elif feature == "bag":
-            scroll_print("This bag has holes in it. Better to leave it I "
-                         "think.")
+            scroll_print("This bag has holes in it. Better to leave it.")
 
         elif feature == "door":
-            scroll_print("Hmm let's see, if I unbolt the doors and go get "
-                         "about 10 other villagers to help me carry them...on "
-                         "second thought maybe I should leave the doors where "
-                         "they are.")
+            scroll_print("Hmm let's see, if you unbolt the doors and go get "
+                         "about 10 other villagers to help you carry them... "
+                         "on second thought, maybe you should leave the doors "
+                         "where they are.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
         scroll_print("You take a close look at the {}.".format(feature))
@@ -63,25 +61,26 @@ def room_1_feature_handler(current_room, verb, feature):
 
     elif verb == "eat":
         if feature == "body":
-            scroll_print("Eat this? I don't think so. I'm not a zombie.")
+            scroll_print("Eat this? I don't think so. You're not a zombie.")
 
         elif feature == "door":
-            scroll_print("You gnaw on the oak doors a bit. Yup that's oak all "
-                         "right...")
+            scroll_print("You gnaw on the oak doors a bit. Yup, that's oak "
+                         "alright...")
 
         elif feature == "cloak":
             scroll_print("You chew on the old cloak a bit and think to "
-                         "yourself I better start coming up with some "
+                         "yourself, \"I better start coming up with some "
                          "reasonable things to do or I'll never rescue "
-                         "Evelyn.")
+                         "Evelyn.\"")
 
         elif feature == "bag":
-            scroll_print("You chew on the old bag a bit and think to yourself "
-                         "I better start coming up with some reasonable "
-                         "things to do or I'll never rescue Evelyn.")
+            scroll_print("You chew on the old bag a bit and think to "
+                         "yourself, \"I better start coming up with some "
+                         "reasonable things to do or I'll never rescue "
+                         "Evelyn.\"")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         if feature == "door":
@@ -146,23 +145,23 @@ def room_2_feature_handler(current_room, verb, feature):
     # Handle custom feature interaction for each of the 10 core verbs.
     if verb == "take":
         if feature == "rubble":
-            scroll_print("The pieces of rubble are to heavy to carry.")
+            scroll_print("The pieces of rubble are too heavy to carry.")
 
         elif feature == "door":
-            scroll_print("Hmm let's see, if I unbolt the doors and go get "
+            scroll_print("Hmm let's see, if you unbolt the doors and go get "
                          "about 10 other villagers to help me carry them...on "
-                         "second thought maybe I should leave the doors where "
-                         "they are.")
+                         "second thought maybe you should leave the doors "
+                         "where they are.")
 
         else:
-            scroll_print("I can't take that.")
+            scroll_print("You can't take that.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
         # Trigger to add rope to feature list. The command use sword will
@@ -174,7 +173,7 @@ def room_2_feature_handler(current_room, verb, feature):
 
             # Add the rope feature so that it can be acted upon by the user.
             if current_room.get_puzzle_status("rope"):
-                rope_feature = ("The rope is taut, and looks as though it is "
+                rope_feature = ("The rope is taut and looks as though it is "
                                 "meant to trip someone walking toward the "
                                 "inner door.")
 
@@ -214,14 +213,14 @@ def room_2_feature_handler(current_room, verb, feature):
                          "Ouch!")
 
         elif feature == "door":
-            scroll_print("You gnaw on the oak doors a bit. Yup that's oak all "
-                         "right...")
+            scroll_print("You gnaw on the oak doors a bit. Yup, that's oak "
+                         "alright...")
 
         elif feature == "writing":
             scroll_print("You can't eat writing, that's silly.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         if feature == "door":
@@ -234,12 +233,12 @@ def room_2_feature_handler(current_room, verb, feature):
             scroll_print("Ahh nothing like the smell of some good rubble.")
 
     elif verb == "listen to":
-        scroll_print("All quite...too quite.")
+        scroll_print("All quiet...too quiet.")
 
     elif verb == "climb":
         if feature == "rubble":
-            scroll_print("You climb on top of a pile of rubble. Congrats "
-                         "you're king of rubble mountain.")
+            scroll_print("You climb on top of a pile of rubble. Congrats! "
+                         "You're king of rubble mountain.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -255,7 +254,7 @@ def rope_trap(current_room):
 
     """
     scroll_print("As you walk forward, between the scattered rubble, "
-                 "your foot trips on a small hard to see rope. You here a "
+                 "your foot trips on a small hard to see rope. You hear a "
                  "click...\n")
 
     # Get user response for this mini event.
@@ -267,13 +266,13 @@ def rope_trap(current_room):
 
     # The only valid response to avoid damage is to duck.
     if "duck" in response:
-        scroll_print("You duck just as a crossbow bolt passes over head. "
-                     "A narrow miss. I should probably inspect rooms more "
+        scroll_print("You duck just as a crossbow bolt passes overhead. "
+                     "A narrow miss. You should probably inspect rooms more "
                      "closely in the future.")
     else:
-        scroll_print("Before you can do anything a crossbow bolt flies "
+        scroll_print("Before you can do anything, a crossbow bolt flies "
                      "across the room from a hidden opening and strikes "
-                     "you in the shoulder. Ouch should have ducked.")
+                     "you in the shoulder. Ouch! Should have ducked.")
 
     # Set the puzzle status to false to indicate that the rope trap event is
     # complete.
@@ -325,18 +324,18 @@ def room_3_feature_handler(current_room, verb, feature):
     # Handle feature interaction for each of the main verbs.
     if verb == "take":
         if feature == "engraving":
-            scroll_print("You place both hands on the edge of the graving and "
-                         "pull with all your might. It doesn't budge.")
+            scroll_print("You place both hands on the edge of the engraving "
+                         "and pull with all your might. It doesn't budge.")
 
         if feature == "armor":
             scroll_print("The armor is too heavy to take.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
         if feature == "engraving":
@@ -354,10 +353,10 @@ def room_3_feature_handler(current_room, verb, feature):
             scroll_print(feature_dict[feature])
 
     elif verb == "eat":
-        scroll_print("I can't eat that.")
+        scroll_print("You can't eat that.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         if feature == "engraving":
@@ -369,7 +368,7 @@ def room_3_feature_handler(current_room, verb, feature):
     elif verb == "listen to":
         if feature == "armor":
             scroll_print("You put your ear up to one of the suits of armor. "
-                         "Inside your hear a mouse scurrying.")
+                         "Inside you hear a mouse scurrying.")
 
         if feature == "engraving":
             scroll_print("You put your ear up to the engraving. You hear "
@@ -378,11 +377,11 @@ def room_3_feature_handler(current_room, verb, feature):
     elif verb == "climb":
         if feature == "armor":
             scroll_print("You start climbing one of the armor statues. As "
-                         "climb the armor tips and comes crashing to the "
-                         "floor. Good that should wake up the entire "
+                         "you climb, the armor tips and comes crashing to the "
+                         "floor. Good, that should wake up the entire "
                          "fortress...")
         else:
-            scroll_print("I can't climb that")
+            scroll_print("You can't climb that")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -497,24 +496,24 @@ def room_4_feature_handler(current_room, verb, feature):
                          "settles in the corner.")
 
         elif feature == "vines":
-            scroll_print("You pull at the vines but they do not move.")
+            scroll_print("You pull at the vines, but they do not move.")
 
         elif feature == "carcass":
-            scroll_print("I don't think so, this carcass is way to heavy.")
+            scroll_print("I don't think so, this carcass is way too heavy.")
 
         elif feature == "box":
-            scroll_print("I'm not sure that I need a box. I already have a "
-                         "bag.")
+            scroll_print("I'm not sure that you need a box. You already have "
+                         "a bag.")
 
         else:
-            scroll_print("I can't take that.")
+            scroll_print("You can't take that.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
 
@@ -538,7 +537,7 @@ def room_4_feature_handler(current_room, verb, feature):
 
     elif verb == "eat":
         if feature == "broom":
-            scroll_print("You try to take bite the broom. It flies behind you "
+            scroll_print("You try to bite the broom. It flies behind you "
                          "and whacks you on the back of the head. Ouch!")
 
         elif feature == "vines":
@@ -549,13 +548,13 @@ def room_4_feature_handler(current_room, verb, feature):
             scroll_print("What's with you and trying to eat furniture?")
 
         elif feature == "carcass":
-            scroll_print("What are you a wild animal? This isn't cooked.")
+            scroll_print("What are you, a wild animal? This isn't cooked.")
 
         else:
-            scroll_print("I can't eat that.")
+            scroll_print("You can't eat that.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         if feature == "vines":
@@ -563,7 +562,7 @@ def room_4_feature_handler(current_room, verb, feature):
 
         if feature == "broom":
             scroll_print("You go to smell the broom. It flies up and hits "
-                         "you in face. Ouch!")
+                         "you in the face. Ouch!")
 
         if feature == "shelves":
             scroll_print("They smell dusty.")
@@ -572,16 +571,16 @@ def room_4_feature_handler(current_room, verb, feature):
             scroll_print("Smells like meat.")
 
     elif verb == "listen to":
-        scroll_print("Not much to hear. Nothing happening really.")
+        scroll_print("Not much to hear. Nothing happening, really.")
 
     elif verb == "climb":
         if feature == "shelves":
             scroll_print("You start climbing the shelves, but before you get "
-                         "too far up them the broom flies over and pokes you "
+                         "too far up them, the broom flies over and pokes you "
                          "until you stop.")
 
         else:
-            scroll_print("I can't climb that.")
+            scroll_print("You can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -626,22 +625,22 @@ def room_5_feature_handler(current_room, verb, feature):
                          "probably a health risk.")
 
         elif feature == "sink":
-            scroll_print("You know when people say \"He took everything but "
-                         "the kitchen sink!\" Well there's good reason. It's "
+            scroll_print("You know when people say, \"He took everything but "
+                         "the kitchen sink!\" Well, there's good reason. It's "
                          "heavy and attached to the wall. So unless you're "
                          "gonna drop this whole rescue mission and take up "
                          "plumbing I would say no, no you cannot take the "
                          "kitchen sink.")
 
         else:
-            scroll_print("I can't take that.")
+            scroll_print("You can't take that.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
         scroll_print("You take a close look at the {}.".format(feature))
@@ -654,19 +653,19 @@ def room_5_feature_handler(current_room, verb, feature):
                          "it.")
 
         else:
-            scroll_print("I can't eat that.")
+            scroll_print("You can't eat that.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         scroll_print("Smells rancid.")
 
     elif verb == "listen to":
-        scroll_print("Not much to hear. Nothing happening really.")
+        scroll_print("Not much to hear. Nothing happening, really.")
 
     elif verb == "climb":
-        scroll_print("I can't climb that.")
+        scroll_print("You can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -711,14 +710,14 @@ def room_6_feature_handler(current_room, verb, feature):
                          "tub.")
 
         else:
-            scroll_print("I can't take that.")
+            scroll_print("You can't take that.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something"
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
 
@@ -754,7 +753,7 @@ def room_6_feature_handler(current_room, verb, feature):
             scroll_print(feature_dict[feature])
 
     elif verb == "eat":
-        scroll_print("I can't eat that.")
+        scroll_print("You can't eat that.")
 
     elif verb == "drink":
         if feature == "tub":
@@ -830,20 +829,20 @@ def room_7_feature_handler(current_room, verb, feature):
                          "bolted to the wall.")
 
         elif feature == "ash tray":
-            scroll_print("There are still some embers, I better not grab "
-                         "those or I might get burned.")
+            scroll_print("There are still some embers, you better not grab "
+                         "those or you might get burned.")
 
         elif feature == "smoke":
-            scroll_print("You tray and grab the smoky figure but your hand "
+            scroll_print("You try and grab the smoky figure but your hand "
                          "passes through. The figure quickly reforms and "
                          "continues looking at you expectantly.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
         # Looking at humidor enables the smoke puzzle. The player can now
@@ -879,19 +878,19 @@ def room_7_feature_handler(current_room, verb, feature):
             scroll_print(feature_dict[feature])
 
     elif verb == "eat":
-        scroll_print("I can't eat that.")
+        scroll_print("You can't eat that.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         scroll_print("Smells smoky.")
 
     elif verb == "listen to":
-        scroll_print("All is quite.")
+        scroll_print("All is quiet.")
 
     elif verb == "climb":
-        scroll_print("I can't climb that.")
+        scroll_print("You can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -931,18 +930,18 @@ def room_8_feature_handler(current_room, verb, feature):
     # Handle custom feature interaction for each of the 10 core verbs.
     if verb == "take":
         if feature == "box":
-            scroll_print("As you reach out to take the emerald box a small "
+            scroll_print("As you reach out to take the emerald box, a small "
                          "flash of green lightning arcs from it and shocks "
-                         "you. I better leave this box where it is.")
+                         "you. You better leave this box where it is.")
         else:
-            scroll_print("I can't take that.")
+            scroll_print("You can't take that.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
         scroll_print("You take a close look at the {}.".format(feature))
@@ -950,10 +949,10 @@ def room_8_feature_handler(current_room, verb, feature):
         scroll_print(feature_dict[feature])
 
     elif verb == "eat":
-        scroll_print("I can't eat that.")
+        scroll_print("You can't eat that.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         if feature == "bed":
@@ -963,7 +962,7 @@ def room_8_feature_handler(current_room, verb, feature):
             scroll_print("Doesn't smell like much.")
 
     elif verb == "listen to":
-        scroll_print("I don't hear much.")
+        scroll_print("You don't hear much.")
 
     elif verb == "climb":
         if feature == "bed":
@@ -971,7 +970,7 @@ def room_8_feature_handler(current_room, verb, feature):
                          "Wooo what fun.")
 
         else:
-            scroll_print("I can't climb that.")
+            scroll_print("You can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -1013,19 +1012,19 @@ def room_9_feature_handler(current_room, verb, feature):
     if verb == "take":
         if feature == "towel":
             scroll_print("You reach out to grab a towel. The towel quickly "
-                         "rises up and raps around your face. As you try to "
+                         "rises up and wraps around your face. As you try to "
                          "remove it, two other towels proceed to roll up and "
-                         "start whipping you. Eventually the towels fly away "
+                         "start whipping you. Eventually the towels fly away, "
                          "leaving you feeling rather embarrassed.")
         if feature == "shampoo":
             scroll_print(feature_dict[feature])
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
         scroll_print("You take a close look at the {}.".format(feature))
@@ -1041,15 +1040,15 @@ def room_9_feature_handler(current_room, verb, feature):
 
         if feature == "shampoo":
             scroll_print("Does your mouth have hair in it? No? Then why are "
-                         "you trying to put shampoo in it.")
+                         "you trying to put shampoo in it?")
 
     elif verb == "drink":
         if feature == "shampoo":
             scroll_print("Does your mouth have hair in it? No? Then why are "
-                         "you trying to put shampoo in it.")
+                         "you trying to put shampoo in it?")
 
         else:
-            scroll_print("I can't drink that.")
+            scroll_print("You can't drink that.")
 
     elif verb == "smell":
         if feature == "towel":
@@ -1059,15 +1058,15 @@ def room_9_feature_handler(current_room, verb, feature):
             scroll_print("Smells like lavender.")
 
     elif verb == "listen to":
-        scroll_print("I don't hear much.")
+        scroll_print("You don't hear much.")
 
     elif verb == "climb":
         # Get the rapier by climbing the shelves in the room.
         if (feature == "shelves" and
            current_room.get_puzzle_status("shelves")):
-            scroll_print("You climb the shelves to what is causing the blue "
-                         "glow. As you reach the top you find that the blue "
-                         "glow is caused by a long thin rapier.")
+            scroll_print("You climb the shelves to find what is causing the "
+                         "blue glow. As you reach the top, you find that the "
+                         "blue glow is caused by a long, thin rapier.")
 
             # Add rapier item to players inventory.
             rapier_name = "rapier"
@@ -1099,7 +1098,7 @@ def room_9_feature_handler(current_room, verb, feature):
             scroll_print("You climb the selves. There's nothing else to find.")
 
         else:
-            scroll_print("I can't climb that.")
+            scroll_print("You can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -1147,18 +1146,19 @@ def room_10_feature_handler(current_room, verb, feature):
     if verb == "take":
         if feature == "mirror":
             scroll_print("You reach out to take the mirror. Before you can "
-                         "grab it a little storm cloud forms in front of your "
-                         "face and emits a tiny lightning bolt that shocks "
-                         "you. Ouch! I better leave this mirror here.")
+                         "grab it, a little storm cloud forms in front of "
+                         "your face and emits a tiny lightning bolt that "
+                         "shocks you. Ouch! You better leave this mirror "
+                         "here.")
         else:
-            scroll_print("I can't take that.")
+            scroll_print("You can't take that.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
 
@@ -1175,7 +1175,7 @@ def room_10_feature_handler(current_room, verb, feature):
             if puzzle_result:
                 scroll_print("\nThe text in the mirror swirls and changes. It "
                              "reconfigures to say \"Password accepted.\". All "
-                             "the sudden you hear the machinery stop. The "
+                             "of a sudden you hear the machinery stop. The "
                              "magic steam stops exuding from the vent and the "
                              "room slowly becomes visible.\n")
 
@@ -1183,11 +1183,13 @@ def room_10_feature_handler(current_room, verb, feature):
                 description = ("The room is made of marble. Benches of marble "
                                "line the walls. The magic mirror hangs from "
                                "the left side of the room. To the south is a "
-                               "birch door and to the north is a marble "
-                               "staircase.",
-                               "I am in the sauna room. There is a birch door "
-                               "to the south and a marble staircase to the "
-                               "north.")
+                               "birch door leading to the supplies closet. To "
+                               "the north is a marble staircase leading to "
+                               "the tower hall.",
+                               "You're in the sauna room. To the south, there "
+                               "is a birch door leading back to the supplies "
+                               "closet. To the north, a marble staircase "
+                               "leads to the tower hall.")
 
                 current_room.set_description(description)
 
@@ -1244,10 +1246,10 @@ def room_10_feature_handler(current_room, verb, feature):
                          "for the prevention of magic mirror related "
                          "crimes.\"")
         else:
-            scroll_print("I can't eat that.")
+            scroll_print("You can't eat that.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         scroll_print("Doesn't smell like much.")
@@ -1257,10 +1259,10 @@ def room_10_feature_handler(current_room, verb, feature):
             scroll_print(feature_dict[feature])
 
         else:
-            scroll_print("I hear nothing.")
+            scroll_print("You hear nothing.")
 
     elif verb == "climb":
-        scroll_print("I can't climb that.")
+        scroll_print("You can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -1321,14 +1323,14 @@ def room_11_feature_handler(current_room, verb, feature):
     if verb == "take":
         if feature == "ruby":
             scroll_print("You reach out to take the ruby. As your hand closes "
-                         "around it you feel nothing. The ruby is an "
+                         "around it, you feel nothing. The ruby is an "
                          "illusion. Suddenly your hand bursts into flames. "
                          "You quickly use your bag to smother the flames, but "
                          "not before your hand is badly burned.")
 
         elif feature == "dagger":
             scroll_print("You reach out to take the dagger. As your hand gets "
-                         "close the dagger morphs into a snake and strikes. "
+                         "close, the dagger morphs into a snake and strikes. "
                          "Your hand is bit. You pull away and the snake turns "
                          "back into a dagger. You feel weaker, the snake may "
                          "have been poisonous.")
@@ -1361,14 +1363,14 @@ def room_11_feature_handler(current_room, verb, feature):
             player.add_item(charcoal)
 
         else:
-            scroll_print("I can't take that.")
+            scroll_print("You can't take that.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
         scroll_print("You take a close look at the {}.".format(feature))
@@ -1376,19 +1378,19 @@ def room_11_feature_handler(current_room, verb, feature):
         scroll_print(feature_dict[feature])
 
     elif verb == "eat":
-        scroll_print("I can't eat that.")
+        scroll_print("You can't eat that.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         scroll_print("Doesn't smell like much.")
 
     elif verb == "listen to":
-        scroll_print("I don't hear much.")
+        scroll_print("You don't hear much.")
 
     elif verb == "climb":
-        scroll_print("I can't climb that.")
+        scroll_print("You can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -1429,17 +1431,17 @@ def room_12_feature_handler(current_room, verb, feature):
     if verb == "take":
         if feature == "chandelier":
             scroll_print("Maybe if you can find a ladder you can make an "
-                         "attempt. Until then better leave the chandelier "
+                         "attempt. Until then, better leave the chandelier "
                          "where it is.")
         else:
-            scroll_print("I can't take that.")
+            scroll_print("You can't take that.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
         scroll_print("You take a close look at the {}.".format(feature))
@@ -1447,10 +1449,10 @@ def room_12_feature_handler(current_room, verb, feature):
         scroll_print(feature_dict[feature])
 
     elif verb == "eat":
-        scroll_print("I can't eat that.")
+        scroll_print("You can't eat that.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         if feature == "chandelier":
@@ -1472,11 +1474,11 @@ def room_12_feature_handler(current_room, verb, feature):
 
     elif verb == "climb":
         if feature == "chandelier":
-            scroll_print("You start to sing \"I'm gonna swing from the "
+            scroll_print("You start to sing, \"I'm gonna swing from the "
                          "chandelieeeer, from the chandelieeer. I'm gonna "
                          "live like tomorrow doesn't exiiiist...\"")
         else:
-            scroll_print("I can't climb that.")
+            scroll_print("You can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -1526,11 +1528,11 @@ def room_13_feature_handler(current_room, verb, feature):
             scroll_print("The raven's perch is too high to reach.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
 
@@ -1544,10 +1546,10 @@ def room_13_feature_handler(current_room, verb, feature):
             # On successful completion.
             if raven_joke():
                 scroll_print("The raven emits several hearty squawks that "
-                             "almost sound like laughter. It drops the key "
-                             "which clatters the floor. You pick it up. For "
-                             "some reason you get the feeling the raven "
-                             "doesn't speak english very well...")
+                             "almost sound like laughter. It drops the key, "
+                             "which clatters to the floor. You pick it up. "
+                             "For some reason you get the feeling the raven "
+                             "doesn't speak English very well...")
 
                 # Add iron key to player inventory. Used to unlock cage
                 # in room of last rites.
@@ -1588,21 +1590,21 @@ def room_13_feature_handler(current_room, verb, feature):
     elif verb == "eat":
         if feature == "tome":
             scroll_print("You step closer to the tome with the intent to tear "
-                         "a page off and eat it. As you near The book "
+                         "a page off and eat it. As you near it, the book "
                          "suddenly becomes surrounded by a raging inferno of "
                          "flames. You can feel the heat. As you take a step "
-                         "back the flames subside leaving the book unharmed.")
+                         "back the flames subside, leaving the book unharmed.")
 
         if feature == "couch":
             scroll_print(feature_dict[feature])
 
         if feature == "raven":
-            scroll_print("In your mind a picture of a nice cooked pheasant "
+            scroll_print("In your mind, a picture of a nice cooked pheasant "
                          "replaces the image of the raven. You look at the "
                          "raven high up on its perch and start to drool.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         if feature == "tome":
@@ -1610,12 +1612,12 @@ def room_13_feature_handler(current_room, verb, feature):
                          "strange, as do most highly magical items.")
 
         elif feature == "couch":
-            scroll_print("Every time you get remotely close to the couch it "
-                         "starts sinking into the ground. Guess I'll have to "
-                         "find something else to smell.")
+            scroll_print("Every time you get remotely close to the couch, it "
+                         "starts sinking into the ground. Guess you'll have "
+                         "to find something else to smell.")
 
         elif feature == "raven":
-            scroll_print("You walk over to the area under where the birds "
+            scroll_print("You walk over to the area under where the bird's "
                          "perch is. You start sniffing the air. The bird "
                          "looks at you with a somewhat alarmed expression on "
                          "its face.")
@@ -1624,7 +1626,7 @@ def room_13_feature_handler(current_room, verb, feature):
         if feature == "tome":
             scroll_print("You step closer to the tome and listen. You hear "
                          "the faint sound of writing. As you look at the "
-                         "current page you see that words are appearing out "
+                         "current page, you see that words are appearing out "
                          "of nowhere. They are in a language you have never "
                          "seen before.")
 
@@ -1639,7 +1641,7 @@ def room_13_feature_handler(current_room, verb, feature):
     elif verb == "climb":
         if feature == "couch":
             scroll_print("You've had enough. You step back and take a "
-                         "running leap try and climb onto the couch before "
+                         "running leap to try and climb onto the couch before "
                          "it disappears. Just as you almost touch it, it "
                          "sinks the last couple inches into the ground and "
                          "you faceplant onto the hard stone floor. Ouch!")
@@ -1676,11 +1678,11 @@ def raven_joke():
     # Other two inputs can be random.
     if user_input == "knock knock":
         scroll_print("The raven looks intently at you. You suddenly hear a "
-                     "voice in your mind say \"Who's there?\"")
+                     "voice in your mind say, \"Who's there?\"")
 
         user_input = input("Next words to the raven: ")
 
-        scroll_print("You hear a voice in you mind say \"{} who?\""
+        scroll_print("You hear a voice in you mind say, \"{} Who?\""
                      .format(user_input))
 
         user_input = input("Next words to the raven: ")
@@ -1690,7 +1692,7 @@ def raven_joke():
     # Return false if use fails to enter in knock knock.
     else:
         scroll_print("The raven looks away from you. You suddenly hear a "
-                     "voice in your mind say \"That's not how the joke "
+                     "voice in your mind say, \"That's not how the joke "
                      "starts.\"")
 
         return False
@@ -1739,18 +1741,18 @@ def room_14_feature_handler(current_room, verb, feature):
 
         elif feature == "cage":
             scroll_print("The cage is firmly attached to the ceiling by a "
-                         "long chain. I can't take this.")
+                         "long chain. You can't take this.")
 
         elif feature == "fairy":
             scroll_print("The bars of the cage are too narrow for you to "
                          "reach through and grab the fairy.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
 
@@ -1769,11 +1771,11 @@ def room_14_feature_handler(current_room, verb, feature):
             scroll_print("As you near you notice a small light glowing near "
                          "the cages' center. You hear a small voice. It "
                          "says, \"Hey you! You're not a Goblin! I can tell by "
-                         "your magic aura. Oh thank goodness, please you must "
+                         "your magic aura. Oh thank goodness, you must "
                          "help me! I'm a fairy from the forest. I was "
                          "captured and put on display here. Normally I would "
                          "use my magic to escape, but this cage seems to be "
-                         "preventing me from casting any spells. Please you "
+                         "preventing me from casting any spells. Please, you "
                          "must get the keys to unlock the cage. The warlock's "
                          "pet raven has them in the reading room. His name is "
                          "Artemis. To get the keys you must look directly at "
@@ -1788,43 +1790,43 @@ def room_14_feature_handler(current_room, verb, feature):
 
     elif verb == "eat":
         if feature == "bones":
-            scroll_print("Um I don't think I should do that. Eating bones is "
-                         "what the bad guys do...")
+            scroll_print("Um I don't think you should do that. Eating bones "
+                         "is what the bad guys do...")
 
         elif feature == "handscroll_print":
             scroll_print("You can't eat a handscroll_print.")
 
         elif feature == "cage" and current_room.get_puzzle_status("cage"):
             scroll_print("You gnaw on the bars. The fairy looks at you and "
-                         "says \"Um I don't think that's going to work...\"")
+                         "says, \"Um I don't think that's going to work...\"")
 
         elif feature == "cage":
             scroll_print("You gnaw on the bars a bit. Nothing happens.")
 
         elif feature == "fairy":
             scroll_print("They say if you harm a fairy you will be cursed for "
-                         "life. I'd much rather look for a way to help her.")
+                         "life. You should find a way to help her instead.")
 
     elif verb == "drink":
-        scroll_print("I can't drink that.")
+        scroll_print("You can't drink that.")
 
     elif verb == "smell":
         if feature == "bones":
             scroll_print("The bones smell like death and decay.")
 
         elif feature == "handscroll_print":
-            scroll_print("Hmm maybe if I was a bloodhound I could smell "
+            scroll_print("Hmm maybe if you were a bloodhound you could smell "
                          "something useful from this handscroll_print. As it "
-                         "stands I smell nothing.")
+                         "stands, you smell nothing.")
 
         elif feature == "cage" and current_room.get_puzzle_status("cage"):
             scroll_print("You start sniffing around the cage. The fairy looks "
-                         "at you and says \"Um what are you doing? You're "
+                         "at you and says, \"Um what are you doing? You're "
                          "scaring me a little...\"")
 
         elif feature == "fairy":
             scroll_print("You start sniffing around the cage. The fairy looks "
-                         "at you and says \"Um what are you doing? You're "
+                         "at you and says, \"Um what are you doing? You're "
                          "scaring me a little...\"")
 
         else:
@@ -1845,16 +1847,17 @@ def room_14_feature_handler(current_room, verb, feature):
 
         elif feature == "cage" and current_room.get_puzzle_status("cage"):
             scroll_print("You grab onto the cage and it starts to swing back "
-                         "and forth. The fairy yells \"Stop that! You can't "
-                         "open this cage by climbing it you know.\"")
+                         "and forth. The fairy yells, \"Stop that! You can't "
+                         "open this cage by climbing it, you know.\"")
 
         elif feature == "cage":
             scroll_print("You hop in the open cage and sit for a bit. Feels "
-                         "kinda cramped. I better climb out before the "
-                         "cage door accidentally closes and traps me in here.")
+                         "kinda cramped. You better climb out before the "
+                         "cage door accidentally closes and traps you in "
+                         "here.")
 
         else:
-            scroll_print("I can't climb that.")
+            scroll_print("You can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")
@@ -1899,16 +1902,16 @@ def room_15_feature_handler(current_room, verb, feature):
             player.rescue_evelyn = True
 
         else:
-            scroll_print("You've come so far. You're to tired to think about "
-                         "taking. the mirror. All you can think about is "
+            scroll_print("You've come so far. You're too tired to think about "
+                         "taking the mirror. All you can think about is "
                          "taking Evelyn and going home.")
 
     elif verb == "use":
-        scroll_print("I can't use that. Better move on or find something I "
-                     "can use.")
+        scroll_print("You can't use that. Better move on or find something "
+                     "you can use.")
 
     elif verb == "drop":
-        scroll_print("Drop what? I'm not carrying that.")
+        scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
 
@@ -1939,11 +1942,11 @@ def room_15_feature_handler(current_room, verb, feature):
         if feature == 'evelyn':
             scroll_print("Evelyn's breathing has started to calm down.")
         else:
-            scroll_print("You don't hear anything. The room is quite except "
+            scroll_print("You don't hear anything. The room is quiet except "
                          "for Evelyn's breathing.")
 
     elif verb == "climb":
-        scroll_print("I can't climb that.")
+        scroll_print("You can't climb that.")
 
     elif verb == "duck":
         scroll_print("You duck quickly and then stand back up.")

@@ -85,10 +85,10 @@ def general_item_handler(current_room, verb, item_name, feature):
             scroll_print("You can't drink that.")
 
     elif verb == "smell":
-        scroll_print("I can't smell that.")
+        scroll_print("You can't smell that.")
 
     elif verb == "listen to":
-        scroll_print("I can't listen to that.")
+        scroll_print("You can't listen to that.")
 
     elif verb == "use":
         if feature is not None:
@@ -141,7 +141,7 @@ def room_1_item_handler(current_room, verb, item_name, feature):
        "sword" in player.get_item_names() and feature is None):
 
         scroll_print("You start swinging your sword around like a "
-                     "lunatic. If anyone was around to see you I'm sure "
+                     "lunatic. If anyone were around to see you I'm sure "
                      "they'd be terrified.")
 
     # These verbs do not need unique room interactions.
@@ -193,7 +193,7 @@ def room_2_item_handler(current_room, verb, item_name, feature):
         if "rope" in current_room.get_features():
             scroll_print("You kneel down and cut the rope. As soon as the "
                          "rope is cut you here a click and a crossbow "
-                         "bolt zooms over your head. Good thing I saw "
+                         "bolt zooms over your head. Good thing you saw "
                          "this trap ahead of time.")
 
             current_room.remove_feature("rope")
@@ -301,11 +301,11 @@ def room_4_item_handler(current_room, verb, item_name, feature):
                        "floor ceiling. There is a stone area for "
                        "refrigeration where animal carcasses hang from the "
                        "ceiling. Nearby a broom leans against the wall. To "
-                       "the west a large oak door leads to the mess hall. To "
-                       "the north is a stairwell going up.",
-                       "I'm in the store room. To the west a large oak door "
-                       "leads to the mess hall and to the north is a "
-                       "stairwell going up."
+                       "the west, a large oak door leads to the mess hall. To "
+                       "the north, a stairwell goes up to the washroom.",
+                       "You're in the store room. To the west, a large oak "
+                       "door leads to the mess hall. To the north, a "
+                       "stairwell goes up to the washroom."
                        )
 
         current_room.set_description(description)
@@ -364,8 +364,8 @@ def room_5_item_handler(current_room, verb, item_name, feature):
 
         scroll_print("You reach out to grab some of the ooze. When you touch "
                      "it you feel a sharp burning sensation. Ouch! You "
-                     "quickly run to the sink to wash your hand off. I better "
-                     "find a better way to carry this ooze.")
+                     "quickly run to the sink to wash your hand off. You "
+                     "better find a better way to carry this ooze.")
 
     # These verbs do not need unique room interactions.
     else:
@@ -556,7 +556,7 @@ def room_11_item_handler(current_room, verb, item_name, feature):
                      "say, \"Thank you for restoring me to my rightful place, "
                      "in doing so you have freed the portion of my soul that "
                      "the warlock Zlor had trapped here many years ago. As "
-                     "thanks take my blessing, it will aid you in your "
+                     "thanks, take my blessing, it will aid you in your "
                      "fight.\" As the voice fades you feel your strength "
                      "increase. +1 has been added to you attack power.")
 
