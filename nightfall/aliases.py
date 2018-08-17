@@ -581,7 +581,7 @@ def feature_alias_check(command):
 
     # Room 7 Smoking Room
     alias_dictionary['humidor'] = ['large humidor']
-    alias_dictionary['ash tray'] = ['crystal ash tray']
+    alias_dictionary['ashtray'] = ['crystal ashtray']
     alias_dictionary['chair'] = ['large chair', 'plush chair']
 
     # Room 8 Sleeping Chambers
@@ -627,9 +627,9 @@ def feature_alias_check(command):
         for word in alias_dictionary[key]:
             command = command.replace(word, key)
 
-    # Ash tray edge case
-    if "tray" in command and "ash tray" not in command:
-        command = command.replace("tray", "ash tray")
+    # ashtray edge case
+    if "tray" in command and "ashtray" not in command:
+        command = command.replace("tray", "ashtray")
 
     # Plates edge case
     if "plate" in command and "plates" not in command:

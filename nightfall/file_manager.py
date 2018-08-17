@@ -672,7 +672,7 @@ def init_room_7():
 
     Puzzles:
         1. smoke:
-            Trigger: Look at the humidor. Then look at the ash tray.
+            Trigger: Look at the humidor. Then look at the ashtray.
 
             Disable: Use Quackers.
 
@@ -682,7 +682,7 @@ def init_room_7():
 
     Features:
         - humidor
-        - ash tray
+        - ashtray
 
     Monsters:
         None
@@ -694,8 +694,8 @@ def init_room_7():
     name = "smoking room"
     description = ("The room before you has a luscious red carpet. There "
                    "is a large chair with gold stitching. By the chair there "
-                   "is a table with a crystal ash tray on it. Little wisps of "
-                   "smoke drift up from the leftover embers in the ash tray. "
+                   "is a table with a crystal ashtray on it. Little wisps of "
+                   "smoke drift up from the leftover embers in the ashtray. "
                    "On one wall is a large humidor that stands out in the "
                    "dimly lit room. The room has a strong scent of smoke. To "
                    "the south, there is a maple door leading to the washroom. "
@@ -732,16 +732,16 @@ def init_room_7():
 
     chair_feature = ("The chair is plush and looks very comfortable.")
 
-    table_feature = ("There is nothing on the table but the ash tray.")
+    table_feature = ("There is nothing on the table but the ashtray.")
 
-    ash_feature = ("The ash embers have cooled. you walk towards the ash tray "
+    ash_feature = ("The ash embers have cooled. you walk towards the ashtray "
                    "and just when you are about to touch it, the ash from the "
-                   "ash tray spreads out towards the edges of the tray. It "
+                   "ashtray spreads out towards the edges of the tray. It "
                    "slowly regathers in the middle and spells out "
                    "\"LEAVE NOW\""
                    )
 
-    feature_dict = {"humidor": humidor_feature, "ash tray": ash_feature,
+    feature_dict = {"humidor": humidor_feature, "ashtray": ash_feature,
                     "chair": chair_feature, "table": table_feature}
 
     puzzle_dict = {"smoke": False}

@@ -128,7 +128,7 @@ def parse_input(input, current_room):
                      'tub', 'fountain',
 
                      # Room 7
-                     'humidor', 'ash tray', 'smoke', 'chair',
+                     'humidor', 'ashtray', 'smoke', 'chair',
 
                      # Room 8
                      'bed', 'window',

@@ -450,7 +450,7 @@ def room_7_item_handler(current_room, verb, item_name, feature):
 
     # Use Quackers when smoke is visible in the room to get the emerald key.
     # Add the smoke feature to the room by first looking at the humidor
-    # and then looking at the ash tray.
+    # and then looking at the ashtray.
     if (verb == "use" and item_name == "Quackers" and
         "Quackers" in player.get_item_names() and
        current_room.get_puzzle_status("smoke") and
@@ -465,19 +465,19 @@ def room_7_item_handler(current_room, verb, item_name, feature):
                      "and find an emerald key hanging from a small hook. The "
                      "smoke figure waves and then promptly disappears.\n")
 
-        # Update ash tray description to no longer mention smoke.
+        # Update ashtray description to no longer mention smoke.
         ash_feature = ("The ash embers have cooled. You walk towards the ash "
                        "tray and just when you are about to touch it, the ash "
-                       "from the ash tray spreads out towards the edges of "
+                       "from the ashtray spreads out towards the edges of "
                        "the tray. It slowly regathers in the middle and "
                        "spells out \"LEAVE NOW\""
                        )
 
-        # Remove smoke feature and update ash tray feature.
-        current_room.remove_feature("ash tray")
+        # Remove smoke feature and update ashtray feature.
+        current_room.remove_feature("ashtray")
         current_room.remove_feature("smoke")
 
-        current_room.add_feature("ash tray", ash_feature)
+        current_room.add_feature("ashtray", ash_feature)
 
         # Add emerald key to player inventory.
         key_name = "emerald key"

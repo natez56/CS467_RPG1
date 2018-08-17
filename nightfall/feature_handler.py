@@ -958,7 +958,7 @@ def room_7_feature_handler(current_room, verb, feature):
 
     Puzzles:
         1. smoke:
-            Trigger: Look at the humidor. Then look at the ash tray.
+            Trigger: Look at the humidor. Then look at the ashtray.
 
             Disable: Use Quackers.
 
@@ -968,7 +968,7 @@ def room_7_feature_handler(current_room, verb, feature):
 
     Features:
         - humidor
-        - ash tray
+        - ashtray
 
     Monsters:
         None
@@ -988,7 +988,7 @@ def room_7_feature_handler(current_room, verb, feature):
             scroll_print("You attempt to take the humidor, however, it is "
                          "bolted to the wall.")
 
-        elif feature == "ash tray":
+        elif feature == "ashtray":
             scroll_print("There are still some embers, you better not grab "
                          "those or you might get burned.")
 
@@ -1009,25 +1009,25 @@ def room_7_feature_handler(current_room, verb, feature):
 
     elif verb == "look at":
         # Looking at humidor enables the smoke puzzle. The player can now
-        # look at the ash tray to reveal the presence of the smoke feature.
+        # look at the ashtray to reveal the presence of the smoke feature.
         if (feature == "humidor" and
            not current_room.get_puzzle_status("smoke")):
 
             current_room.set_puzzle_status("smoke", True)
 
             ash_feature = ("The heat from looking at the humidor has brought "
-                           "some of the embers in the ash tray back to life. "
+                           "some of the embers in the ashtray back to life. "
                            "Some peculiar smoke patterns start to appear.")
 
             smoke_feature = ("A wisp of smoke turns into a small humanoid "
                              "shape. You feel as though it is looking "
                              "expectantly at you.")
 
-            # Update ash tray feature to add reference to smoke. This is
+            # Update ashtray feature to add reference to smoke. This is
             # updated in the item_handler file once the puzzle is complete.
-            current_room.remove_feature("ash tray")
+            current_room.remove_feature("ashtray")
 
-            current_room.add_feature("ash tray", ash_feature)
+            current_room.add_feature("ashtray", ash_feature)
 
             current_room.add_feature("smoke", smoke_feature)
 
@@ -1041,10 +1041,10 @@ def room_7_feature_handler(current_room, verb, feature):
             scroll_print(feature_dict[feature])
 
     elif verb == "eat":
-        if feature == "ash tray":
-            scroll_print("Eating an whole ash tray, wouldn't that be an "
+        if feature == "ashtray":
+            scroll_print("Eating an whole ashtray, wouldn't that be an "
                          "interesting party trick. You decide to leave the "
-                         "ash tray where it is.")
+                         "ashtray where it is.")
         else:
             scroll_print("You can't eat that.")
 
@@ -1072,8 +1072,8 @@ def room_7_feature_handler(current_room, verb, feature):
         scroll_print("You duck quickly and then stand back up.")
 
     elif verb == "rotate":
-        if feature == "ash tray":
-            scroll_print("You pick up the ash tray and turn it around a bit.")
+        if feature == "ashtray":
+            scroll_print("You pick up the ashtray and turn it around a bit.")
 
         elif feature == "chair":
             scroll_print("You pick the chair up and turn it around.")
