@@ -5,6 +5,7 @@ from item_handler import *
 from random import *
 from scroll_print import *
 import time
+import shutil
 
 
 def starting_menu():
@@ -61,6 +62,14 @@ def starting_menu():
 
         else:
             invalid_selection = False
+
+    if menu_choice != "quit" and shutil.get_terminal_size()[0] < 80:
+        scroll_print("\nTerminating program. Your terminal window is too "
+                     "small. Please adjust your terminal window size so it "
+                     "has a width of at least 80 chars and restart the "
+                     "program.")
+
+        menu_choice = "quit"
 
     return menu_choice
 
