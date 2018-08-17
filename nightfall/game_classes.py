@@ -640,7 +640,7 @@ class Wizard(Player):
         if attack_choice == 'bash':
             return 0
         elif attack_choice == 'thunder' or attack_choice == 'inferno' or \
-             attack_choice == 'corrupt':
+                attack_choice == 'corrupt':
             return 1
         else:
             return 2
