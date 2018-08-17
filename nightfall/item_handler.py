@@ -604,7 +604,7 @@ def room_11_item_handler(current_room, verb, item_name, feature):
                      "the warlock Zlor had trapped here many years ago. As "
                      "thanks, take my blessing, it will aid you in your "
                      "fight.\" As the voice fades you feel your strength "
-                     "increase. +1 has been added to you attack power.")
+                     "increase. +1 has been added to you attack power.\n")
 
         # Scrap disappears from inventory.
         player.use_item("scrap")
@@ -712,7 +712,7 @@ def room_14_item_handler(current_room, verb, item_name, feature):
         scroll_print("The cage door opens and the fairy flies out. \"Oh thank "
                      "you, thank you, thank you!!! You've saved me! Oh how "
                      "can I ever repay you. Oh yah! Almost forgot, let me see "
-                     "if I can get the key to the final lair for you.\"")
+                     "if I can get the key to the final lair for you.\"\n")
         scroll_print("There is a flash of light and the fairy disappears. A "
                      "couple of seconds pass and there is another blinding "
                      "flash. The fairy has reappeared. \"Phew, that was "

@@ -1399,8 +1399,6 @@ def init_room_14():
     # Set item list
     item_list = []
 
-    # ADD CHEST/FAIRY??
-
     # Set monster list
     monster_list = []
 

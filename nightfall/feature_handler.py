@@ -1567,21 +1567,32 @@ def room_11_feature_handler(current_room, verb, feature):
                          "around it, you feel nothing. The ruby is an "
                          "illusion. Suddenly your hand bursts into flames. "
                          "You quickly use your bag to smother the flames, but "
-                         "not before your hand is badly burned. You lose 5 "
-                         "health.")
+                         "not before your hand is badly burned. \n")
 
             player = current_room.get_player()
-            player.set_health(player.get_health() - 5)
+
+            if player.get_health() > 5:
+                scroll_print("You lose 5 health.")
+
+                player.set_health(player.get_health() - 5)
+            else:
+                scroll_print("You are very low on health!")
 
         elif feature == "dagger":
             scroll_print("You reach out to take the dagger. As your hand gets "
                          "close, the dagger morphs into a snake and strikes. "
                          "Your hand is bit. You pull away and the snake turns "
                          "back into a dagger. You feel weaker, the snake may "
-                         "have been poisonous. You lose 5 health.")
+                         "have been poisonous.\n")
 
             player = current_room.get_player()
-            player.set_health(player.get_health() - 5)
+
+            if player.get_health() > 5:
+                scroll_print("You lose 5 health.")
+
+                player.set_health(player.get_health() - 5)
+            else:
+                scroll_print("You are very low on health!")
 
         # Charcoal is the solution to the riddle. and the only valid choice.
         elif feature == "charcoal":
@@ -2085,7 +2096,7 @@ def room_14_feature_handler(current_room, verb, feature):
 
             current_room.add_feature("fairy", fairy_feature)
 
-            scroll_print("As you near you notice a small light glowing near "
+            scroll_print("\nAs you near you notice a small light glowing near "
                          "the cages' center. You hear a small voice. It "
                          "says, \"Hey you! You're not a Goblin! I can tell by "
                          "your magic aura. Oh thank goodness, you must "
