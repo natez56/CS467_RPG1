@@ -68,6 +68,9 @@ def general_item_handler(current_room, verb, item_name, feature):
 
             player.set_health(player.get_health() + 2)
 
+        elif item_name == "bread":
+            scroll_print("You have to pick up the bread first.")
+
         elif item_name == "acidic ooze":
             scroll_print("You take one whiff of the ooze and think better of "
                          "it.")

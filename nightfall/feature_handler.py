@@ -58,7 +58,7 @@ def room_1_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
-        scroll_print("You take a close look at the {}.".format(feature))
+        scroll_print("You take a close look at the {}.\n".format(feature))
 
         scroll_print(feature_dict[feature])
 
@@ -192,7 +192,7 @@ def room_2_feature_handler(current_room, verb, feature):
         # Trigger to add rope to feature list. The command use sword will
         # eliminate the rope trap after the feature is discovered.
         if feature == "rubble":
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -209,7 +209,7 @@ def room_2_feature_handler(current_room, verb, feature):
                 current_room.set_puzzle_status("rope", False)
 
         elif feature == "rope":
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -228,12 +228,12 @@ def room_2_feature_handler(current_room, verb, feature):
             # If the trap has already been triggered then the player can
             # inspect the writing as normal.
             else:
-                scroll_print("You take a close look at the {}".format(feature))
+                scroll_print("You take a close look at the {}.\n".format(feature))
 
                 scroll_print(feature_dict[feature])
 
         else:
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -415,7 +415,7 @@ def room_3_feature_handler(current_room, verb, feature):
 
     elif verb == "look at":
         if feature == "engraving":
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
             scroll_print("A closer inspection reveals that the engraving is "
                          "on a disc of silver that is attached to, but not "
                          "quite flush with, the surface of the door. Strange "
@@ -424,7 +424,7 @@ def room_3_feature_handler(current_room, verb, feature):
             print(feature_dict[feature])
 
         else:
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -633,12 +633,12 @@ def room_4_feature_handler(current_room, verb, feature):
             # opened once.
             current_room.set_puzzle_status("shelves", False)
 
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
         else:
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -773,7 +773,7 @@ def room_5_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
-        scroll_print("You take a close look at the {}.".format(feature))
+        scroll_print("You take a close look at the {}.\n".format(feature))
 
         scroll_print(feature_dict[feature])
 
@@ -868,7 +868,7 @@ def room_6_feature_handler(current_room, verb, feature):
     elif verb == "look at":
         # Adds the Quackers item to the room.
         if feature == "tub":
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -893,7 +893,7 @@ def room_6_feature_handler(current_room, verb, feature):
                 current_room.add_item(rubber_duck)
 
         else:
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -1031,12 +1031,12 @@ def room_7_feature_handler(current_room, verb, feature):
 
             current_room.add_feature("smoke", smoke_feature)
 
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
         else:
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -1134,7 +1134,7 @@ def room_8_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
-        scroll_print("You take a close look at the {}.".format(feature))
+        scroll_print("You take a close look at the {}.\n".format(feature))
 
         scroll_print(feature_dict[feature])
 
@@ -1231,7 +1231,7 @@ def room_9_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
-        scroll_print("You take a close look at the {}.".format(feature))
+        scroll_print("You take a close look at the {}.\n".format(feature))
 
         scroll_print(feature_dict[feature])
 
@@ -1280,7 +1280,7 @@ def room_9_feature_handler(current_room, verb, feature):
            current_room.get_puzzle_status("shelves")):
             scroll_print("You climb the shelves to find what is causing the "
                          "blue glow. As you reach the top, you find that the "
-                         "blue glow is caused by a long, thin rapier.")
+                         "blue glow is caused by a long, thin rapier.\n")
 
             # Add rapier item to players inventory.
             rapier_name = "rapier"
@@ -1391,7 +1391,7 @@ def room_10_feature_handler(current_room, verb, feature):
         # Mirror puzzle. Player must enter in a password to progress in the
         # game. The password is 'password'.
         if feature == "mirror" and current_room.get_puzzle_status("steam"):
-            scroll_print("You take a close look at the {}".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -1452,14 +1452,26 @@ def room_10_feature_handler(current_room, verb, feature):
 
             # When user enters wrong password.
             else:
-                scroll_print("The text on the mirror swirls and reconfigures "
-                             "to say \"Password denied!\" A small storm cloud "
-                             "forms in front of the mirror and emits a small "
-                             "lightning bolt that shocks you. The cloud "
-                             "quickly dissipates and the mirror goes blank.")
+                scroll_print("\nThe text on the mirror swirls and "
+                             "reconfigures to say \"Password denied!\" A "
+                             "small storm cloud forms in front of the mirror "
+                             "and emits a small lightning bolt that shocks "
+                             "you.\n")
+
+                player = current_room.get_player()
+
+                if player.get_health() > 2:
+                    scroll_print("The small shock deals 2 damage to you.\n")
+
+                    player.set_health(player.get_health() - 2)
+                else:
+                    scroll_print("Ouch that shock hurt!\n")
+
+                scroll_print("The cloud quickly dissipates and the "
+                             "mirror goes blank.")
 
         else:
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -1632,7 +1644,7 @@ def room_11_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
-        scroll_print("You take a close look at the {}.".format(feature))
+        scroll_print("You take a close look at the {}.\n".format(feature))
 
         scroll_print(feature_dict[feature])
 
@@ -1724,7 +1736,7 @@ def room_12_feature_handler(current_room, verb, feature):
         scroll_print("Drop what? You're not carrying that.")
 
     elif verb == "look at":
-        scroll_print("You take a close look at the {}.".format(feature))
+        scroll_print("You take a close look at the {}.\n".format(feature))
 
         scroll_print(feature_dict[feature])
 
@@ -1840,7 +1852,7 @@ def room_13_feature_handler(current_room, verb, feature):
         # Raven puzzle. User needs to type 'knock knock' and then two
         # additional phrases (they can be anything) to solve the puzzle.
         if feature == "raven" and current_room.get_puzzle_status("raven"):
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -1884,7 +1896,7 @@ def room_13_feature_handler(current_room, verb, feature):
                 scroll_print("\nHmm well that didn't lead to anything.")
 
         else:
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -2087,7 +2099,7 @@ def room_14_feature_handler(current_room, verb, feature):
         # Cage puzzle. Unlocked by iron key got in the reading room by
         # completing the raven puzzle.
         if feature == "cage" and current_room.get_puzzle_status("cage"):
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 
@@ -2112,7 +2124,7 @@ def room_14_feature_handler(current_room, verb, feature):
                          "He likes knock knock jokes. Maybe try one of "
                          "those...")
         else:
-            scroll_print("You take a close look at the {}.".format(feature))
+            scroll_print("You take a close look at the {}.\n".format(feature))
 
             scroll_print(feature_dict[feature])
 

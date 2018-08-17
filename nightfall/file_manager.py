@@ -556,7 +556,7 @@ def init_room_5():
     fish_feature = ("Sushi anyone? On second thought maybe not...")
 
     sink_feature = ("The massive double basin sink is filled to the brim "
-                    "with dishes covered in sludge. ")
+                    "with dishes covered in sludge.")
 
     feature_dict = {"fish": fish_feature, "sink": sink_feature}
 
@@ -696,11 +696,12 @@ def init_room_7():
                    "is a large chair with gold stitching. By the chair there "
                    "is a table with a crystal ashtray on it. Little wisps of "
                    "smoke drift up from the leftover embers in the ashtray. "
-                   "On one wall is a large humidor that stands out in the "
-                   "dimly lit room. The room has a strong scent of smoke. To "
-                   "the south, there is a maple door leading to the washroom. "
-                   "To the west, there is a mahogany door to the supplies "
-                   "closet.",
+                   "The smoke makes interesting patterns that you've never "
+                   "seen before. On one wall is a large humidor that stands "
+                   "out in the dimly lit room. The room has a strong scent of "
+                   "smoke. To the south, there is a maple door leading to the "
+                   "washroom. To the west, there is a mahogany door to the "
+                   "supplies closet.",
                    "You're in the smoking room. To the south, there is a "
                    "maple door to the washroom. To the west, there is a "
                    "mahogany door to the supplies closet."
@@ -734,11 +735,13 @@ def init_room_7():
 
     table_feature = ("There is nothing on the table but the ashtray.")
 
-    ash_feature = ("The ash embers have cooled. you walk towards the ashtray "
-                   "and just when you are about to touch it, the ash from the "
-                   "ashtray spreads out towards the edges of the tray. It "
-                   "slowly regathers in the middle and spells out "
-                   "\"LEAVE NOW\""
+    ash_feature = ("The ash embers have cooled. The smoke drifting from the "
+                   "embers is no more. Perhaps if there was a way to heat "
+                   "the embers you might be able to see the smoke again. "
+                   "You walk towards the ashtray and just when you are about "
+                   "to touch it, the ash from the ashtray spreads out towards "
+                   "the edges of the tray. It slowly regathers in the middle "
+                   "and spells out \"LEAVE NOW\""
                    )
 
     feature_dict = {"humidor": humidor_feature, "ashtray": ash_feature,
