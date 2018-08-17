@@ -690,7 +690,8 @@ class Ranger(Player):
         print("   Slash: Make a large slash with your primary "
               "weapon. ")
         print("   Snare: Cast a spell that causes thorny vines "
-              "to burst from the ground and slice       the enemy. ")
+              "to burst from the ground and slice")
+        print("      the enemy. ")
         print("   Sharpshot: Conjure three magical arrows and "
               "shoot them at the enemy. ")
         if level > 2:
@@ -698,7 +699,8 @@ class Ranger(Player):
                   "enemy's center mass. ")
         if level > 4:
             print("   Sever: Cast a spell to make your weapon "
-                  "burning hot, then swing it with all of your might. ")
+                  "burning hot, then swing it with all")
+            print("      of your might. ")
 
     def check_invalid_attack(self, attack_choice, level):
         """Checks if the player selected an invalid attack.
