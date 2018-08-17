@@ -444,6 +444,13 @@ class Player(Character):
         scroll_print("Magic Power: {}".format(self.magic_power))
         scroll_print("Magic Defense: {}".format(self.magic_defense))
 
+    def print_combat_stats(self):
+        """Prints the players combat stats."""
+        scroll_print("Current Stats")
+        scroll_print("Remaining Lives: {}".format(self.num_lives))
+        scroll_print("Health: {}".format(self.health))
+        scroll_print("Magic: {}".format(self.magic))
+        
     def revive(self, level):
         """Revive players that lose all their health.
 
