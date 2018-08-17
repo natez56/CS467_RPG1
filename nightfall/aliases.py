@@ -477,7 +477,8 @@ def item_alias_check(command):
     # Room 10 Sauna Room
     # Room 11 Tower Hall
     # Room 12 Archives
-    alias_dictionary['scrap'] = ['painting scrap']
+    alias_dictionary['scrap'] = ['small scrap of fabric', 'scrap of fabric'
+                                 'painting scrap', 'torn piece of painting']
 
     # Room 13 Reading Room
     # Room 14 Room of Last Rites
@@ -552,12 +553,12 @@ def feature_alias_check(command):
                                   'floor rubble']
 
     # Room 3 Mess Hall.
-    alias_dictionary['plates'] = ['dirty plates', 'plate']
-    alias_dictionary['table'] = ['long tables', 'tables']
+    alias_dictionary['plates'] = ['dirty plates', 'dirty plate']
+    alias_dictionary['table'] = ['long tables', 'small table', 'tables']
     alias_dictionary['armor'] = ['suits of armor', 'suit of armor']
 
     # Room 4 Store Room.
-    alias_dictionary['shelves'] = ['large shelves', 'shelve']
+    alias_dictionary['shelves'] = ['large shelves']
     alias_dictionary['carcass'] = ['animal carcasses', 'animal carcass',
                                    'hanging carcasses', 'hanging carcass',
                                    'carcasses']
@@ -568,12 +569,15 @@ def feature_alias_check(command):
                                  'thick vines', 'black vines', 'magic vines']
 
     # Room 5 kitchen
+    alias_dictionary['sink'] = ['kitchen sink']
+
     # Room 6 Washroom
     alias_dictionary['tub'] = ['massive tub']
 
     # Room 7 Smoking Room
     alias_dictionary['humidor'] = ['large humidor']
     alias_dictionary['ash tray'] = ['crystal ash tray']
+    alias_dictionary['chair'] = ['large chair', 'plush chair']
 
     # Room 8 Sleeping Chambers
     alias_dictionary['bed'] = ['large bed']
@@ -581,7 +585,7 @@ def feature_alias_check(command):
                                   'massive window']
 
     # Room 9 Supplies Closet
-    alias_dictionary['towels'] = ['stack of towels', 'towel']
+    alias_dictionary['towels'] = ['stack of towels']
 
     # Room 10 Sauna Room
     alias_dictionary['machinery'] = ['faint sound of machinery',
@@ -604,7 +608,7 @@ def feature_alias_check(command):
                                 'old open tome', 'large tome', 'old tome',
                                 'open tome']
     alias_dictionary['couch'] = ['long couch']
-    alias_dictionary['raven'] = ['dark raven', 'Artemis']
+    alias_dictionary['raven'] = ['dark raven', 'artemis']
 
     # Room 14 Room of Last Rites
     alias_dictionary['bones'] = ['scattered bones']
@@ -617,6 +621,26 @@ def feature_alias_check(command):
     for key in alias_dictionary:
         for word in alias_dictionary[key]:
             command = command.replace(word, key)
+
+    # Ash tray edge case
+    if "tray" in command and "ash tray" not in command:
+        command = command.replace("tray", "ash tray")
+
+    # Plates edge case
+    if "plate" in command and "plates" not in command:
+        command = command.replace("plate", "plates")
+
+    # Cobweb edge case
+    if "cobweb" in command and "cobwebs" not in command:
+        command = command.replace("cobweb", "cobwebs")
+
+    # Shelves edge case
+    if "shelve" in command and "shelves" not in command:
+        command = command.replace("shelve", "shelves")
+
+    # Towel edge case
+    if "towel" in command and "towels" not in command:
+        command = command.replace("towel", "towels")
 
     return command
 
@@ -639,7 +663,16 @@ def item_preposition_handler(command):
     # counterpart, such as sniff at and sniff, must appear before their single
     # word counterpart in the list. This is to prevent the function from
     # replacing the single word without replacing the additional word "at".
-    alias_dictionary["use jar"] = ["use jar on acidic ooze", "use jar on ooze"]
+    alias_dictionary["use jar"] = ["use empty jar on acidic ooze",
+                                   "use empty jar on ooze", 
+                                   "use jar on acidic ooze", "use jar on ooze"]
+
+    alias_dictionary["use acidic ooze"] = ["use jar of acidic ooze",
+                                           "use jar of ooze"]
+
+    alias_dictionary["use charcoal"] = ["use charcoal on fireplace",
+                                        "throw charcoal in fireplace",
+                                        "place charcoal in fireplace"]
 
     for key in alias_dictionary:
         for word in alias_dictionary[key]:

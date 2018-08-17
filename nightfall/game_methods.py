@@ -29,6 +29,14 @@ def starting_menu():
     scroll_print("Welcome to Nightfall. The path that lies ahead is dark and "
                  "full of terrors.\n")
 
+    scroll_print("Before beginning the game please ensure that your "
+                 "terminal window is wide enough to allow a minimum of 80 "
+                 "characters to be printed on a single line. Here is 80 "
+                 "characters: ")
+    scroll_print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                 "XXXXXXXXXXXXXXXXXXXXX\n")
+    scroll_print("Make sure all the X's show on one line.\n")
+
     # Check user input for valid menu option.
     invalid_selection = True
 
@@ -620,7 +628,7 @@ def travel(current_room, direction):
                   current_room.get_puzzle_status("cage")):
 
                 scroll_print("\nYou try and open the door but it is locked. "
-                             "The fairy calls to you from the cage. \"Hey "
+                             "A voice calls to you from the cage. \"Hey "
                              "if you let me out of here I might be able to "
                              "help you get the key to that door.\"")
 
@@ -810,6 +818,9 @@ def is_game_over(player):
 
     if player.rescue_evelyn is True:
         scroll_print("\n The End \n")
+        scroll_print("Game created by Ian Lumiere, Sunny Huang, and Nathan "
+                     "Zimmerman.")
+        scroll_print("Thanks for playing!")
         return True
 
     else:

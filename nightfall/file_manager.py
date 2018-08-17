@@ -695,11 +695,11 @@ def init_room_7():
     description = ("The room before you has a luscious red carpet. There "
                    "is a large chair with gold stitching. By the chair there "
                    "is a table with a crystal ash tray on it. Little wisps of "
-                   "smoke drift up from the leftover embers in the tray. On "
-                   "one wall is a large humidor that stands out in the dimly "
-                   "lit room. The room has a strong scent of smoke. To the "
-                   "south, there is a maple door leading to the washroom. To "
-                   "the west, there is a mahogany door to the supplies "
+                   "smoke drift up from the leftover embers in the ash tray. "
+                   "On one wall is a large humidor that stands out in the "
+                   "dimly lit room. The room has a strong scent of smoke. To "
+                   "the south, there is a maple door leading to the washroom. "
+                   "To the west, there is a mahogany door to the supplies "
                    "closet.",
                    "You're in the smoking room. To the south, there is a "
                    "maple door to the washroom. To the west, there is a "
@@ -730,6 +730,10 @@ def init_room_7():
                        "the heat dissipate immediately. "
                        )
 
+    chair_feature = ("The chair is plush and looks very comfortable.")
+
+    table_feature = ("There is nothing on the table but the ash tray.")
+
     ash_feature = ("The ash embers have cooled. you walk towards the ash tray "
                    "and just when you are about to touch it, the ash from the "
                    "ash tray spreads out towards the edges of the tray. It "
@@ -737,7 +741,8 @@ def init_room_7():
                    "\"LEAVE NOW\""
                    )
 
-    feature_dict = {"humidor": humidor_feature, "ash tray": ash_feature}
+    feature_dict = {"humidor": humidor_feature, "ash tray": ash_feature,
+                    "chair": chair_feature, "table": table_feature}
 
     puzzle_dict = {"smoke": False}
 
@@ -1027,8 +1032,10 @@ def init_room_10():
                       "your image. Instead letters appear. On the mirror's "
                       "surface it reads: \"Speak the password: SDVVZRUG\"")
 
+    vent_feature = ("The vent is high up, too high up to interact with.")
+
     feature_dict = {"machinery": machine_sound_feature,
-                    "mirror": mirror_feature}
+                    "mirror": mirror_feature, "vent": vent_feature}
 
     puzzle_dict = {"steam": True, "sauna voice": True}
 
@@ -1236,6 +1243,8 @@ def init_room_12():
                          "near! "
                          )
 
+    cobwebs_feature = ("No spiders as far as you can see. Just old cobwebs.")
+
     chandelier_feature = ("As you look at the chandelier it begins to rattle "
                           "loudly. Rain then begins to fall from the "
                           "and continues for about ten seconds before "
@@ -1244,7 +1253,8 @@ def init_room_12():
                           )
 
     feature_dict = {"fireplace": fireplace_feature,
-                    "chandelier": chandelier_feature}
+                    "chandelier": chandelier_feature,
+                    'cobwebs': cobwebs_feature}
 
     puzzle_dict = None
 

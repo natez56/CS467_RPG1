@@ -64,7 +64,9 @@ def general_item_handler(current_room, verb, item_name, feature):
             player.use_item("bread")
 
             scroll_print("You scarf down the bread. It's delicious. You feel "
-                         "healthier as a result.")
+                         "healthier as a result. You gain 2 health!")
+
+            player.set_health(player.get_health() + 2)
 
         else:
             scroll_print("You can't eat that.")
@@ -100,7 +102,9 @@ def general_item_handler(current_room, verb, item_name, feature):
         elif item_name == "bread" and "bread" in player.get_item_names():
             player.use_item("bread")
             scroll_print("You scarf down the bread. It's delicious. You feel "
-                         "healthier as a result.")
+                         "healthier as a result. You gain 2 health!")
+
+            player.set_health(player.get_health() + 2)
 
         elif (item_name == "healing potion" and
               "healing potion" in player.get_item_names()):
@@ -595,7 +599,7 @@ def room_12_item_handler(current_room, verb, item_name, feature):
 
         scroll_print("You throw the charcoal into the fire. There is a green "
                      "flash of light. Ash floats up from the fire and forms "
-                     "into a small scrap of paper. You see that it is a "
+                     "into a small scrap of fabric. You see that it is a "
                      "torn piece of a painting. A face is on the paper.")
 
         # Add scrap to player inventory.
@@ -676,7 +680,9 @@ def room_14_item_handler(current_room, verb, item_name, feature):
                      "go, let me give you my blessing. It will aid in your "
                      "final fight.\" The fairy glows brighter for a second "
                      "and then disappears. You feel a warm glow about you. "
-                     "Your health returns to full.")
+                     "You gain 5 health!\n")
+
+        player.set_health(player.get_health() + 5)
 
         # Add skull key to player inventory.
         key_name = "skull key"

@@ -128,7 +128,7 @@ def parse_input(input, current_room):
                      'tub', 'fountain',
 
                      # Room 7
-                     'humidor', 'ash tray', 'smoke',
+                     'humidor', 'ash tray', 'smoke', 'chair',
 
                      # Room 8
                      'bed', 'window',
@@ -137,14 +137,14 @@ def parse_input(input, current_room):
                      'towels', 'shampoo',
 
                      # Room 10
-                     'machinery', 'mirror',
+                     'machinery', 'mirror', 'vent',
 
                      # Room 11
                      'ceiling', 'painting', 'table', 'ruby', 'charcoal',
                      'dagger',
 
                      # Room 12
-                     'fireplace', 'chandelier',
+                     'fireplace', 'chandelier', 'cobwebs',
 
                      # Room 13
                      'tome', 'couch', 'raven',
