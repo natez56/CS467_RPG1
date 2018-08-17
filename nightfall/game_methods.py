@@ -269,6 +269,13 @@ def take_action(current_room, action):
                 else:
                     scroll_print("That room is not connected to the "
                                  "current room!")
+            else:
+                if current_room.get_name() == desired_room:
+                    scroll_print("You're already in that room.")
+
+                else:
+                    scroll_print("That room is not connected to the current "
+                                 "room!")
 
         else:
             travel(current_room, action["direction"])

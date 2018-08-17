@@ -2005,8 +2005,8 @@ def raven_joke():
         False otherwise.
 
     """
-    scroll_print("\nYou get the feeling that the raven is expecting you to say "
-                 "something.")
+    scroll_print("\nYou get the feeling that the raven is expecting you to "
+                 "say something.")
 
     user_input = input("Words you would like to say to raven: ")
 
