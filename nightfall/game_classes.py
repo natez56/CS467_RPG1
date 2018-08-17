@@ -446,7 +446,7 @@ class Player(Character):
 
     def print_combat_stats(self):
         """Prints the players combat stats."""
-        scroll_print("Current Stats")
+        scroll_print("\nYour Current Stats")
         scroll_print("Remaining Lives: {}".format(self.num_lives))
         scroll_print("Health: {}".format(self.health))
         scroll_print("Magic: {}".format(self.magic))
