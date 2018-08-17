@@ -57,7 +57,8 @@ def parse_input(input, current_room):
 
     standard_action_array = ['help', 'look', 'gamemenu', 'game menu',
                              'inventory', 'stats', 'get stats', 'my stats',
-                             'player stats', 'savegame', 'loadgame']
+                             'player stats', 'savegame', 'loadgame',
+                             'save game', 'load game']
 
     verb_array = ['take', 'use', 'drop', 'look at', 'eat', 'drink', 'smell',
                   'listen to', 'climb', 'duck', 'rotate', 'equip']
@@ -115,7 +116,7 @@ def parse_input(input, current_room):
                      'writing', 'rope', 'rubble',
 
                      # Room 3
-                     'engraving', 'armor',
+                     'engraving', 'armor', 'plates',
 
                      # Room 4
                      'box', 'broom', 'shelves', 'carcass', 'vines',
@@ -133,7 +134,7 @@ def parse_input(input, current_room):
                      'bed', 'window',
 
                      # Room 9
-                     'towel', 'shampoo',
+                     'towels', 'shampoo',
 
                      # Room 10
                      'machinery', 'mirror',
@@ -157,6 +158,7 @@ def parse_input(input, current_room):
 
     # this takes user input and puts it all into lowercase
     command = input.lower().strip()
+    command = item_preposition_handler(command)
     # ##### PRINT STATEMENT FOR TESTING #####
     # print("You typed: ", command)
 
@@ -214,6 +216,7 @@ def parse_input(input, current_room):
 
     new_command2 = verb_alias_check(new_command2)
     new_command2 = item_alias_check(new_command2)
+    new_command2 = feature_alias_check(new_command2)
 
     # split each word in the string to be an element in an array
     clean_text = new_command2.split()

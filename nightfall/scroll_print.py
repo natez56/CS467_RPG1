@@ -13,7 +13,7 @@ def scroll_print(text):
 
     for char in text:
         # Decrease this to increase the scroll speed.
-        time.sleep(0.01)
+        time.sleep(0.001)
 
         # Print a newline when a space is encountered after 80 characters have
         # already been printed.

@@ -193,7 +193,9 @@ def help_menu():
     scroll_print("smell <feature>")
     scroll_print("listen to <feature>")
     scroll_print("climb <feature>")
+    scroll_print("rotate <feature>")
     scroll_print("duck")
+    scroll_print("equip <item>")
 
 
 def take_action(current_room, action):
@@ -474,10 +476,12 @@ def handle_standard_action(current_room, player, action):
             else:
                 scroll_print("\nEquipped item: None")
 
-    elif action["standard_action"] == "savegame":
+    elif (action["standard_action"] == "savegame" or
+          action["standard_action"] == "save game"):
         save_game(current_room)
 
-    elif action["standard_action"] == "loadgame":
+    elif (action["standard_action"] == "loadgame" or
+          action["standard_action"] == "load game"):
         if get_num_saved_games() < 1:
             scroll_print("\nNo saved games to load.\n")
 

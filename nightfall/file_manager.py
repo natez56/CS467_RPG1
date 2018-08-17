@@ -199,7 +199,8 @@ def init_room_2():
                                "clan's home."
                                )
 
-    east_door_feature = ("An oak door with a large iron handle.")
+    east_door_feature = ("The doors to the fortress entrance are oak with "
+                         "large iron handles.")
 
     rubble_feature = ("It's mostly stone from the wall strewn across the "
                       "floor. As you look at the rubble on the ground, you "
@@ -308,6 +309,10 @@ def init_room_3():
 
     armor_feature = ("The suits of armor are old and dusty.")
 
+    table_feature = ("The tables are cluttered with dirty plates.")
+
+    plates_feature = ("The plates are dirty. Some of them are broken.")
+
     engraving_feature = ("                _______                 \n"
                          "              /         \\              \n"
                          "             /           \\             \n"
@@ -329,7 +334,8 @@ def init_room_3():
                          "            ________________           \n"
                          )
 
-    feature_dict = {"armor": armor_feature, "engraving": engraving_feature}
+    feature_dict = {"armor": armor_feature, "engraving": engraving_feature,
+                    "table": table_feature, "plates": plates_feature}
 
     puzzle_dict = {"engraving": True, "armor": True}
 
@@ -482,9 +488,10 @@ def init_room_5():
     name = "kitchen"
     description = ("The room before you is clearly the kitchen of the "
                    "fortress. There are fish still on cutting boards. "
-                   "The smell is rancid. It appears as though no one has "
-                   "cleaned the kitchen for a very long time. To the south, "
-                   "a steel door leads to the mess hall.",
+                   "A rancid smell is coming from the sink in the room. It "
+                   "appears as though no one has cleaned the kitchen for a "
+                   "very long time. To the south, a steel door leads to the "
+                   "mess hall.",
                    "You're in the kitchen. To the south, a steel door leads "
                    "to the mess hall."
                    )
@@ -855,7 +862,7 @@ def init_room_9():
         command climb shelves. Gives +5 attack power.
 
     Features:
-        - towel
+        - towels
         - shampoo
         - shelves
 
@@ -941,7 +948,7 @@ def init_room_9():
                        "can't quite make out what it is from your vantage "
                        "point on the ground.")
 
-    feature_dict = {"towel": towel_feature, "shampoo": shampoo_feature,
+    feature_dict = {"towels": towel_feature, "shampoo": shampoo_feature,
                     "shelves": shelves_feature}
 
     puzzle_dict = {"shelves": True}
@@ -1367,7 +1374,7 @@ def init_room_14():
 
     description = ("I feel like I'm close to Evelyn. Bones are scattered in "
                    "this room. A very daunting sight indeed! There is also a "
-                   "bloody handscroll_print on the north wall of the room. "
+                   "bloody hand print on the north wall of the room. "
                    "Near the center of the room a cage is hanging from a long "
                    "chain connected to the ceiling. There is a tungsten door "
                    "to the north leading to the final lair and a pine door to "
@@ -1556,9 +1563,9 @@ def init_player_object(player_name, character_choice):
     magic_defense = 0
     magic_power = 3
     defense = 0
-    attack_power = 3
+    # attack_power = 3
     # This AP for Testing Only ADLFKSLDFKSLDKFSLDKF#@$@$@#$@#$
-    # attack_power = 3000
+    attack_power = 3000
     num_lives = 3
     experience = 0
     memory = []
@@ -1843,9 +1850,10 @@ def load_game():
     # Verify user input is 'e' or a number within the range of number of files.
     valid_input = False
     while not valid_input:
-        if (user_input.isalpha() and user_input != 'e') or " " in user_input:
+        if ((user_input.isalpha() and user_input != 'e') or
+           (not user_input.isalpha() and not is_digit_check(user_input))):
             valid_input = False
-        elif (user_input.isdigit() and
+        elif (is_digit_check(user_input) and
               (int(user_input) < 1 or int(user_input) > num - 1)):
             valid_input = False
         else:
@@ -1929,9 +1937,9 @@ def initial_load_game():
     # to the total number of files.
     valid_input = False
     while not valid_input:
-        if user_input.isalpha() or " " in user_input:
+        if not is_digit_check(user_input):
             valid_input = False
-        elif (user_input.isdigit() and
+        elif (is_digit_check(user_input) and
               (int(user_input) < 1 or int(user_input) > num - 1)):
             valid_input = False
         else:
@@ -2011,3 +2019,13 @@ def get_num_saved_games():
         count += 1
 
     return count
+
+
+def is_digit_check(string_val):
+    """Function returns true if a string can be converted to an int."""
+    try:
+        int(string_val)
+
+        return True
+    except ValueError:
+        return False

@@ -448,9 +448,40 @@ def item_alias_check(command):
     # counterpart, such as sniff at and sniff, must appear before their single
     # word counterpart in the list. This is to prevent the function from
     # replacing the single word without replacing the additional word "at".
-    alias_dictionary['Quackers'] = ['rubber duck', 'quackers']
-    alias_dictionary['box'] = ['lock box', 'emerald box']
+
+    # Room 1 Fortress Entrance
+    alias_dictionary['sword'] = ['rusty sword']
+
+    # Room 2 Entrance Hall
+    # Room 3 Mess Hall
+    alias_dictionary['bread'] = ['fresh chunk of french bread',
+                                 'fresh chunk of bread', 'chunk of bread',
+                                 'french bread']
+
+    # Room 4 Store Room
+    alias_dictionary['jar'] = ['empty jar']
+
+    # Room 5 Kitchen
+    alias_dictionary['oven mitt'] = ['glowing oven mitt', 'orange oven mitt',
+                                     'magic oven mitt']
+
+    # Room 6 Washroom
+    alias_dictionary['Quackers'] = ['rubber duck', 'quackers', 'duck']
+
+    # Room 7 Smoking Room
+    # Room 8 Sleeping Chambers
+    alias_dictionary['book'] = ['magic encryption for dummies',
+                                'encryption book']
+
+    # Room 9 Supplies Closet
+    # Room 10 Sauna Room
+    # Room 11 Tower Hall
+    # Room 12 Archives
     alias_dictionary['scrap'] = ['painting scrap']
+
+    # Room 13 Reading Room
+    # Room 14 Room of Last Rites
+    # Room 15 Final Lair
 
     # If the user enters "key" as part of their command, but does not specify
     # the key type, this code will ask them to enter in the type.
@@ -469,6 +500,147 @@ def item_alias_check(command):
         command = command.replace('key', new_input)
 
     # Replace alias with item name used by the item_handler.
+    for key in alias_dictionary:
+        for word in alias_dictionary[key]:
+            command = command.replace(word, key)
+
+    # Oven mitt edge case
+    if "mitt" in command and "oven mitt" not in command:
+        command = command.replace("mitt", "oven mitt")
+
+    # Mythril tongs edge case
+    if "tongs" in command and "mythril tongs" not in command:
+        command = command.replace("tongs", "mythril tongs")
+
+    # Acidic ooze edge case
+    if "ooze" in command and "acidic ooze" not in command:
+        command = command.replace("ooze", "acidic ooze")
+
+    return command
+
+
+def feature_alias_check(command):
+    """Check for feature aliases.
+
+    Args:
+        command (str): Corresponds to new_command2 in text_parser.py
+            file. Is a string that is the user input.
+
+    Returns:
+        str: If an alias matches it returns the feature name that is used
+            by the feature and item handler. If an alias does not match it
+            returns the unmodified command string as taken from text_parser.py
+
+    """
+    alias_dictionary = {}
+
+    # Filled out dictionary for items. The order of the
+    # alias array matters. Multi-word aliases that have a single word
+    # counterpart, such as sniff at and sniff, must appear before their single
+    # word counterpart in the list. This is to prevent the function from
+    # replacing the single word without replacing the additional word "at".
+
+    # Room 1 Fortress Entrance.
+    alias_dictionary['door'] = ['doors']
+    alias_dictionary['body'] = ['body on the ground']
+    alias_dictionary['cloak'] = ['heavy traveling cloak', 'heavy cloak',
+                                 'traveling cloak']
+
+    # Room 2 Entrance Hall.
+    alias_dictionary['writing'] = ['goblin writing']
+    alias_dictionary['rubble'] = ['pieces of rubble', 'wall rubble',
+                                  'floor rubble']
+
+    # Room 3 Mess Hall.
+    alias_dictionary['plates'] = ['dirty plates', 'plate']
+    alias_dictionary['table'] = ['long tables', 'tables']
+    alias_dictionary['armor'] = ['suits of armor', 'suit of armor']
+
+    # Room 4 Store Room.
+    alias_dictionary['shelves'] = ['large shelves', 'shelve']
+    alias_dictionary['carcass'] = ['animal carcasses', 'animal carcass',
+                                   'hanging carcasses', 'hanging carcass',
+                                   'carcasses']
+    alias_dictionary['box'] = ['emerald colored lock box', 'emerald lock box',
+                               'small lock box', 'lock box', 'small box',
+                               'emerald box']
+    alias_dictionary['vines'] = ['dark black vines', 'dark vines',
+                                 'thick vines', 'black vines', 'magic vines']
+
+    # Room 5 kitchen
+    # Room 6 Washroom
+    alias_dictionary['tub'] = ['massive tub']
+
+    # Room 7 Smoking Room
+    alias_dictionary['humidor'] = ['large humidor']
+    alias_dictionary['ash tray'] = ['crystal ash tray']
+
+    # Room 8 Sleeping Chambers
+    alias_dictionary['bed'] = ['large bed']
+    alias_dictionary['window'] = ['western wall window', 'western window',
+                                  'massive window']
+
+    # Room 9 Supplies Closet
+    alias_dictionary['towels'] = ['stack of towels', 'towel']
+
+    # Room 10 Sauna Room
+    alias_dictionary['machinery'] = ['faint sound of machinery',
+                                     'sound of machinery']
+    alias_dictionary['mirror'] = ['magic mirror']
+
+    # Room 11 Tower Hall
+    alias_dictionary['ceiling'] = ['ornate vaulted ceiling', 'vaulted ceiling',
+                                   'ornate ceiling']
+    alias_dictionary['painting'] = ['massive painting on the wall',
+                                    'massive painting', 'painting on the wall']
+    alias_dictionary['ruby'] = ['crimson ruby', 'large ruby']
+
+    # Room 12 Archives
+    alias_dictionary['fireplace'] = ['corner fireplace', 'roaring fireplace']
+    alias_dictionary['chandelier'] = ['large chandelier', 'crystal chandelier']
+
+    # Room 13 Reading Room
+    alias_dictionary['tome'] = ['large old open tome', 'large open tome',
+                                'old open tome', 'large tome', 'old tome',
+                                'open tome']
+    alias_dictionary['couch'] = ['long couch']
+    alias_dictionary['raven'] = ['dark raven', 'Artemis']
+
+    # Room 14 Room of Last Rites
+    alias_dictionary['bones'] = ['scattered bones']
+    alias_dictionary['hand print'] = ['bloody hand print']
+    alias_dictionary['cage'] = ['hanging cage']
+
+    # Room 15 Final Lair
+
+    # Replace alias with item name used by the item_handler.
+    for key in alias_dictionary:
+        for word in alias_dictionary[key]:
+            command = command.replace(word, key)
+
+    return command
+
+
+def item_preposition_handler(command):
+    """Check for item on item preposition.
+
+    Args:
+        command (str): Corresponds to new_command2 in text_parser.py
+            file. Is a string that is the user input.
+
+    Returns:
+        str: The modified command given a valid item on item interaction.
+
+    """
+    alias_dictionary = {}
+
+    # Filled out dictionary for each of the 10 core verbs. The order of the
+    # alias array matters. Multi-word aliases that have a single word
+    # counterpart, such as sniff at and sniff, must appear before their single
+    # word counterpart in the list. This is to prevent the function from
+    # replacing the single word without replacing the additional word "at".
+    alias_dictionary["use jar"] = ["use jar on acidic ooze", "use jar on ooze"]
+
     for key in alias_dictionary:
         for word in alias_dictionary[key]:
             command = command.replace(word, key)
