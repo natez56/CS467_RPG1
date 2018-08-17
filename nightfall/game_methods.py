@@ -287,7 +287,9 @@ def take_action(current_room, action):
 
         # Check for incorrect use of "on" preposition. It can only be used
         # with use commands.
-        if action["verb"] != "use" and action["feature"] is not None:
+        if (action["verb"] != "use" and action["feature"] is not None and
+            (action["feature"] != "charcoal" and
+                action["item"] != "charcoal")):
             scroll_print("You can't {} {} on {}".format(action["verb"],
                          action["item"],
                          action["feature"]))
@@ -434,29 +436,80 @@ def print_item_descriptions(current_room):
 
     """
     # Custom message if there is only one item in the room.
-    if len(current_room.get_item_names()) == 1:
-        item_list = current_room.get_item_names()
+    item_list = current_room.get_item_names()
+    for i, item_name in enumerate(item_list):
+        if item_name == "sword":
+            item_list[i] = "a sword"
 
-        scroll_print("\nAs you enter the area you also notice a {} on the "
+        elif item_name == "golden key":
+            item_list[i] = "a golden key"
+
+        elif item_name == "bread":
+            item_list[i] = "a piece of bread"
+
+        elif item_name == "letter":
+            item_list[i] = "a letter"
+
+        elif item_name == "jar":
+            item_list[i] = "a jar"
+
+        elif item_name == "oven mitt":
+            item_list[i] = "an oven mitt"
+
+        elif item_name == "emerald key":
+            item_list[i] = "an emerald key"
+
+        elif item_name == "healing potion":
+            item_list[i] = "a healing potion"
+
+        elif item_name == "book":
+            item_list[i] = "a book"
+
+        elif item_name == "rapier":
+            item_list[i] = "a rapier"
+
+        elif item_name == "charcoal":
+            item_list[i] = "a piece of charcoal"
+
+        elif item_name == "scrap":
+            item_list[i] = "a painting scrap"
+
+        elif item_name == "iron key":
+            item_list[i] = "an iron key"
+
+        elif item_name == "skull key":
+            item_list[i] = "a skull key"
+
+    if len(current_room.get_item_names()) == 1:
+        scroll_print("\nAs you enter the area you also notice {} on the "
                      "ground.".format(item_list[0]))
 
     # Custom message if there is only two items in the room.
-    if len(current_room.get_item_names()) == 2:
-        item_list = current_room.get_item_names()
-
-        scroll_print("\nAs you enter the area you also notice a {} and a {} "
+    elif len(current_room.get_item_names()) == 2:
+        scroll_print("\nAs you enter the area you also notice {} and {} "
                      "on the ground.".format(item_list[0], item_list[1]))
 
     # Custom message if there is more than two items in the room.
     elif len(current_room.get_item_names()) > 2:
         scroll_print("\nAs you enter the area you also notice ")
 
-        for i, item_name in enumerate(current_room.get_item_names()):
+        count = 0
+        for i, item_name in enumerate(item_list):
             if i == len(current_room.get_item_names()) - 1:
-                scroll_print("and a {} on the ground.".format(item_name))
+                if count > 6:
+                    print("")
+                    count = 0
+
+                scroll_print("and {} on the ground.".format(item_name))
 
             else:
-                scroll_print("a {},".format(item_name))
+                if count > 6:
+                    count = 0
+                    print("")
+
+                print("{}, ".format(item_name), end='')
+
+            count += 1
 
 
 def handle_standard_action(current_room, player, action):

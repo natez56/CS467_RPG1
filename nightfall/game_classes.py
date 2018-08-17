@@ -507,17 +507,17 @@ class Wizard(Player):
             level: The player's level.
 
         """
-        scroll_print("   Bash: Swing your weapon at the enemy to bludgeon "
-                     "them. ")
-        scroll_print("   Thunder: Conjure the force of thunder and launch "
-                     "it at the enemy. ")
-        scroll_print("   Singe: Strike your opponent with a freezing aura "
-                     "on your primary weapon. ")
+        print("   Bash: Swing your weapon at the enemy to bludgeon "
+              "them. ")
+        print("   Thunder: Conjure the force of thunder and launch "
+              "it at the enemy. ")
+        print("   Singe: Strike your opponent with a freezing aura "
+              "on your primary weapon. ")
         if level > 2:
-            scroll_print("   Inferno: Engulf the enemy in a burning inferno. ")
+            print("   Inferno: Engulf the enemy in a burning inferno. ")
         if level > 4:
-            scroll_print("   Corrupt: Enter the mind of the enemy and torment "
-                         "their psyche.")
+            print("   Corrupt: Enter the mind of the enemy and torment "
+                  "their psyche.")
 
     def check_invalid_attack(self, attack_choice, level):
         """Checks if the player selected an invalid attack.
@@ -687,18 +687,18 @@ class Ranger(Player):
             level: The player's level.
 
         """
-        scroll_print("   Slash: Make a large slash with your primary "
-                     "weapon. ")
-        scroll_print("   Snare: Cast a spell that causes thorny vines "
-                     "to burst from the ground and slice       the enemy. ")
-        scroll_print("   Sharpshot: Conjure three magical arrows and "
-                     "shoot them at the enemy. ")
+        print("   Slash: Make a large slash with your primary "
+              "weapon. ")
+        print("   Snare: Cast a spell that causes thorny vines "
+              "to burst from the ground and slice       the enemy. ")
+        print("   Sharpshot: Conjure three magical arrows and "
+              "shoot them at the enemy. ")
         if level > 2:
-            scroll_print("   Cleave: Swing your weapon hard at the "
-                         "enemy's center mass. ")
+            print("   Cleave: Swing your weapon hard at the "
+                  "enemy's center mass. ")
         if level > 4:
-            scroll_print("   Sever: Cast a spell to make your weapon "
-                         "burning hot, then swing it with all of your might. ")
+            print("   Sever: Cast a spell to make your weapon "
+                  "burning hot, then swing it with all of your might. ")
 
     def check_invalid_attack(self, attack_choice, level):
         """Checks if the player selected an invalid attack.

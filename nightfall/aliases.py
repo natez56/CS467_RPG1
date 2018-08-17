@@ -455,8 +455,8 @@ def item_alias_check(command):
     # Room 2 Entrance Hall
     # Room 3 Mess Hall
     alias_dictionary['bread'] = ['fresh chunk of french bread',
-                                 'fresh chunk of bread', 'chunk of bread',
-                                 'french bread']
+                                 'fresh chunk of bread', 'piece of bread',
+                                 'chunk of bread', 'french bread']
 
     # Room 4 Store Room
     alias_dictionary['jar'] = ['empty jar']
@@ -477,8 +477,9 @@ def item_alias_check(command):
     # Room 10 Sauna Room
     # Room 11 Tower Hall
     # Room 12 Archives
-    alias_dictionary['scrap'] = ['small scrap of fabric', 'scrap of fabric'
-                                 'painting scrap', 'torn piece of painting']
+    alias_dictionary['scrap'] = ['scrap of painting', 'small scrap of fabric',
+                                 'scrap of fabric', 'painting scrap',
+                                 'torn piece of painting']
 
     # Room 13 Reading Room
     # Room 14 Room of Last Rites
@@ -603,6 +604,7 @@ def feature_alias_check(command):
     alias_dictionary['painting'] = ['massive painting on the wall',
                                     'massive painting', 'painting on the wall']
     alias_dictionary['ruby'] = ['crimson ruby', 'large ruby']
+    alias_dictionary['charcoal'] = ['piece of charcoal']
 
     # Room 12 Archives
     alias_dictionary['fireplace'] = ['corner fireplace', 'roaring fireplace']
