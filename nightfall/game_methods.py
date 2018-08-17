@@ -651,7 +651,7 @@ def combat(current_room, player, monster):
 
     while combat_continues:
         # TESTING ONLY:
-        player.print_stats()
+        player.print_combat_stats()
         # TESTING ONLY 6789065906590659867tyue8y72yguherijwu8grufbhriugyy
 
         # Allow the player to choose their move
