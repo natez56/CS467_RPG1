@@ -150,9 +150,13 @@ def general_item_handler(current_room, verb, item_name, feature):
             scroll_print("You can't use that here.")
 
     elif verb == "equip":
-        item = player.get_item(item_name)
+        if item_name in player.get_item_names():
+            item = player.get_item(item_name)
 
-        player.equip_item(item)
+            player.equip_item(item)
+
+        else:
+            scroll_print("You're not carrying that item currently.")
 
     elif verb == "climb":
         scroll_print("You can't climb that.")
@@ -328,6 +332,8 @@ def room_4_item_handler(current_room, verb, item_name, feature):
 
         # Set vines to false so that they cannot be removed twice.
         current_room.set_puzzle_status("vines", False)
+
+        current_room.remove_feature("vines")
 
         player.use_item("acidic ooze")
 
@@ -522,7 +528,7 @@ def room_8_item_handler(current_room, verb, item_name, feature):
         healing_potion_name = "healing potion"
         healing_potion_description = ("A glass vial of thick red liquid. ")
         healing_potion_durability = 1
-        healing_potion_stats = {"health": 5}
+        healing_potion_stats = None
 
         healing_potion = Item(healing_potion_name, healing_potion_description,
                               healing_potion_durability, healing_potion_stats)

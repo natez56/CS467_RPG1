@@ -402,8 +402,13 @@ def room_3_feature_handler(current_room, verb, feature):
             scroll_print("I can't take that.")
 
     elif verb == "use":
-        scroll_print("You can't use that. Better move on or find something "
-                     "you can use.")
+        if feature == "armor":
+            scroll_print("The armor looks to be to big and heavy for you "
+                         "to use.")
+
+        else:
+            scroll_print("You can't use that. Better move on or find "
+                         "something you can use.")
 
     elif verb == "drop":
         scroll_print("Drop what? You're not carrying that.")

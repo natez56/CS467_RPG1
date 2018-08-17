@@ -1767,10 +1767,13 @@ def save_game(current_room):
         # Check that input is a number within the correct range or 'e'.
         valid_input = False
         while not valid_input:
-            if user_input.isalpha() and user_input != 'e':
+            if ((user_input.isalpha() and user_input != 'e') or
+               (not user_input.isalpha() and not is_digit_check(user_input))):
+
                 valid_input = False
-            elif (user_input.isdigit() and
+            elif (is_digit_check(user_input) and
                   (int(user_input) < 1 or int(user_input) > num - 1)):
+
                 valid_input = False
             else:
                 valid_input = True

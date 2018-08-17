@@ -498,6 +498,9 @@ def item_alias_check(command):
         if "key" not in user_input:
             new_input = user_input + ' ' + 'key'
 
+        else:
+            new_input = user_input
+
         command = command.replace('key', new_input)
 
     # Replace alias with item name used by the item_handler.
@@ -556,7 +559,8 @@ def feature_alias_check(command):
     alias_dictionary['plates'] = ['dirty plates', 'dirty plate']
     alias_dictionary['table'] = ['long tables', 'small table', 'tables']
     alias_dictionary['armor'] = ['suits of armor', 'suit of armor']
-    alias_dictionary['engraving'] = ['strange engraving', 'silver engraving']
+    alias_dictionary['engraving'] = ['door engraving', 'strange engraving',
+                                     'silver engraving']
 
     # Room 4 Store Room.
     alias_dictionary['shelves'] = ['large shelves']
