@@ -450,7 +450,7 @@ class Player(Character):
         scroll_print("Remaining Lives: {}".format(self.num_lives))
         scroll_print("Health: {}".format(self.health))
         scroll_print("Magic: {}".format(self.magic))
-        
+
     def revive(self, level):
         """Revive players that lose all their health.
 
