@@ -466,7 +466,7 @@ def item_alias_check(command):
                                      'magic oven mitt']
 
     # Room 6 Washroom
-    alias_dictionary['Quackers'] = ['rubber duck', 'quackers', 'duck']
+    alias_dictionary['Quackers'] = ['rubber duck', 'quackers']
 
     # Room 7 Smoking Room
     # Room 8 Sleeping Chambers
@@ -556,6 +556,7 @@ def feature_alias_check(command):
     alias_dictionary['plates'] = ['dirty plates', 'dirty plate']
     alias_dictionary['table'] = ['long tables', 'small table', 'tables']
     alias_dictionary['armor'] = ['suits of armor', 'suit of armor']
+    alias_dictionary['engraving'] = ['strange engraving', 'silver engraving']
 
     # Room 4 Store Room.
     alias_dictionary['shelves'] = ['large shelves']
@@ -673,6 +674,8 @@ def item_preposition_handler(command):
     alias_dictionary["use charcoal"] = ["use charcoal on fireplace",
                                         "throw charcoal in fireplace",
                                         "place charcoal in fireplace"]
+
+    alias_dictionary["look at engraving"] = ["look at door engraving"]
 
     for key in alias_dictionary:
         for word in alias_dictionary[key]:

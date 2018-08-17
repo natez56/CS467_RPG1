@@ -690,7 +690,7 @@ class Ranger(Player):
         scroll_print("   Slash: Make a large slash with your primary "
                      "weapon. ")
         scroll_print("   Snare: Cast a spell that causes thorny vines "
-                     "to burst from the ground and slice the enemy. ")
+                     "to burst from the ground and slice       the enemy. ")
         scroll_print("   Sharpshot: Conjure three magical arrows and "
                      "shoot them at the enemy. ")
         if level > 2:

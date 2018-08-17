@@ -127,6 +127,15 @@ def general_item_handler(current_room, verb, item_name, feature):
 
         player.equip_item(item)
 
+    elif verb == "climb":
+        scroll_print("You can't climb that.")
+
+    elif verb == "rotate":
+        scroll_print("You can't rotate that.")
+
+    elif verb == "duck":
+        scroll_print("You can't do that.")
+
     save_object_state(current_room)
 
 

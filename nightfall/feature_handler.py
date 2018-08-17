@@ -112,7 +112,7 @@ def room_1_feature_handler(current_room, verb, feature):
     elif verb == "rotate":
         if feature == "body":
             scroll_print("You move the body so that it is facing the other "
-                         " way.")
+                         "way.")
 
         elif feature == "cloak":
             scroll_print("You pick the cloak up, turn it around, and set it "
@@ -124,6 +124,9 @@ def room_1_feature_handler(current_room, verb, feature):
 
         else:
             scroll_print("You can't rotate that.")
+
+    elif verb == "equip":
+        scroll_print("You can't do that.")
 
     save_object_state(current_room)
 
@@ -288,6 +291,9 @@ def room_2_feature_handler(current_room, verb, feature):
 
         else:
             scroll_print("I can't rotate that.")
+
+    elif verb == "equip":
+        scroll_print("You can't do that.")
 
     save_object_state(current_room)
 
@@ -531,6 +537,9 @@ def room_3_feature_handler(current_room, verb, feature):
         else:
             scroll_print("You can't rotate that.")
 
+    elif verb == "equip":
+        scroll_print("You can't do that.")
+
     save_object_state(current_room)
 
 
@@ -698,6 +707,9 @@ def room_4_feature_handler(current_room, verb, feature):
         else:
             scroll_print("I can't rotate that.")
 
+    elif verb == "equip":
+        scroll_print("You can't do that.")
+
     save_object_state(current_room)
 
 
@@ -795,6 +807,9 @@ def room_5_feature_handler(current_room, verb, feature):
 
         else:
             scroll_print("You can't rotate that.")
+
+    elif verb == "equip":
+        scroll_print("You can't do that.")
 
     save_object_state(current_room)
 
@@ -927,6 +942,9 @@ def room_6_feature_handler(current_room, verb, feature):
     elif verb == "rotate":
         scroll_print("You can't rotate that.")
 
+    elif verb == "equip":
+        scroll_print("You can't do that.")
+
     save_object_state(current_room)
 
 
@@ -1058,6 +1076,9 @@ def room_7_feature_handler(current_room, verb, feature):
         else:
             scroll_print("You can't rotate that.")
 
+    elif verb == "equip":
+        scroll_print("You can't do that.")
+
     save_object_state(current_room)
 
 
@@ -1145,6 +1166,9 @@ def room_8_feature_handler(current_room, verb, feature):
 
     elif verb == "rotate":
         scroll_print("You can't rotate that.")
+
+    elif verb == "equip":
+        scroll_print("You can't do that.")
 
     save_object_state(current_room)
 
@@ -1297,6 +1321,9 @@ def room_9_feature_handler(current_room, verb, feature):
 
         else:
             scroll_print("I can't rotate that.")
+
+    elif verb == "equip":
+        scroll_print("You can't do that.")
 
     save_object_state(current_room)
 
@@ -1473,6 +1500,9 @@ def room_10_feature_handler(current_room, verb, feature):
         else:
             scroll_print("You can't rotate that.")
 
+    elif verb == "equip":
+        scroll_print("You can't do that.")
+
     save_object_state(current_room)
 
 
@@ -1618,6 +1648,9 @@ def room_11_feature_handler(current_room, verb, feature):
     elif feature == "rotate":
         scroll_print("You can't rotate that.")
 
+    elif verb == "equip":
+        scroll_print("You can't do that.")
+
     save_object_state(current_room)
 
 
@@ -1729,6 +1762,9 @@ def room_12_feature_handler(current_room, verb, feature):
 
     elif verb == "rotate":
         scroll_print("You can't rotate that.")
+
+    elif verb == "equip":
+        scroll_print("You can't do that.")
 
     save_object_state(current_room)
 
@@ -1926,6 +1962,9 @@ def room_13_feature_handler(current_room, verb, feature):
 
         else:
             scroll_print("You can't rotate that.")
+
+    elif verb == "equip":
+        scroll_print("You can't do that.")
 
     save_object_state(current_room)
 
@@ -2144,6 +2183,9 @@ def room_14_feature_handler(current_room, verb, feature):
     elif verb == "rotate":
         scroll_print("You can't rotate that.")
 
+    elif verb == "equip":
+        scroll_print("You can't do that.")
+
     save_object_state(current_room)
 
 
@@ -2236,5 +2278,8 @@ def room_15_feature_handler(current_room, verb, feature):
 
     elif verb == "rotate":
         scroll_print("You can't rotate that.")
+
+    elif verb == "equip":
+        scroll_print("You can't do that.")
 
     save_object_state(current_room)
