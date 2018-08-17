@@ -68,6 +68,13 @@ def general_item_handler(current_room, verb, item_name, feature):
 
             player.set_health(player.get_health() + 2)
 
+        elif item_name == "acidic ooze":
+            scroll_print("You take one whiff of the ooze and think better of "
+                         "it.")
+
+        elif item_name == "Quackers":
+            scroll_print("Eat Quackers?!??!? You monster!!! I don't think so.")
+
         else:
             scroll_print("You can't eat that.")
 
@@ -87,10 +94,30 @@ def general_item_handler(current_room, verb, item_name, feature):
             scroll_print("You can't drink that.")
 
     elif verb == "smell":
-        scroll_print("You can't smell that.")
+        if item_name == "sword":
+            scroll_print("The sword doesn't smell like much. Maybe a bit like "
+                         "dirt.")
+
+        elif item_name == "bread":
+            scroll_print("The bread smells fresh.")
+
+        elif item_name == "acidic ooze":
+            scroll_print("Smells rancid.")
+
+        elif item_name == "Quackers":
+            scroll_print("Smells like a rubber duck.")
+
+        elif item_name == "book":
+            scroll_print("Smells like the familiar smell of all books.")
+
+        elif item_name == "charcoal":
+            scroll_print("Smells like charcoal.")
+
+        else:
+            scroll_print("Doesn't smell like much.")
 
     elif verb == "listen to":
-        scroll_print("You can't listen to that.")
+        scroll_print("You don't hear anything.")
 
     elif verb == "use":
         if feature is not None:
@@ -131,7 +158,7 @@ def general_item_handler(current_room, verb, item_name, feature):
         scroll_print("You can't climb that.")
 
     elif verb == "rotate":
-        scroll_print("You can't rotate that.")
+        scroll_print("You rotate the item in your hands.")
 
     elif verb == "duck":
         scroll_print("You can't do that.")
