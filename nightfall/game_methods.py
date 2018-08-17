@@ -650,9 +650,8 @@ def combat(current_room, player, monster):
     combat_continues = True
 
     while combat_continues:
-        # TESTING ONLY:
+        # Print short stats for combat
         player.print_combat_stats()
-        # TESTING ONLY 6789065906590659867tyue8y72yguherijwu8grufbhriugyy
 
         # Allow the player to choose their move
         # Output player combat options
